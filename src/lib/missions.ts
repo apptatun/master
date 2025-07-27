@@ -4,7 +4,7 @@ export const missions: Mission[] = [
   {
     id: 'm1',
     title: 'Misión: Activar la Hornalla (3 min)',
-    description: 'Activa la zona de cocción. Objetivo: hervir agua. Riesgo: bajo, con precaución.',
+    description: 'Activa la zona de cocción para hervir agua. Meta oculta: Dominar una herramienta básica te da una sensación de control sobre tu entorno.',
     type: 'interactive',
     category: 'cooking',
     reward: 'Alquimista Nivel 1',
@@ -42,7 +42,7 @@ export const missions: Mission[] = [
   {
     id: 'm2',
     title: 'Arroz sin engrudo (20 min)',
-    description: 'Prepara tu primer arroz. ¡Conviértete en el maestro del grano! 🍚',
+    description: 'Prepara tu primer arroz. Meta oculta: Aprender a preparar un alimento básico te da independencia y te conecta con un ritual universal.',
     type: 'interactive',
     category: 'cooking',
     reward: 'Maestro del Grano',
@@ -76,7 +76,7 @@ export const missions: Mission[] = [
    {
     id: 'm10',
     title: 'Mate para Principiantes (5 min)',
-    description: 'Prepara tu primer mate. Un ritual de calma y compañía. 🧉',
+    description: 'Prepara tu primer mate. Meta oculta: Participar en un ritual cultural te conecta con otros y te ofrece un momento de pausa y reflexión.',
     type: 'interactive',
     category: 'cooking',
     reward: 'Cebador de la Calma',
@@ -110,7 +110,7 @@ export const missions: Mission[] = [
   {
     id: 'm3',
     title: 'Ninja del Fregadero (5 min)',
-    description: 'Misión stealth: elimina 5 \'enemigos mugre\' del fregadero. Sin piedad. ✨',
+    description: 'Elimina 5 platos, vasos o cubiertos sucios. Meta oculta: Conquistar un pequeño foco de caos reduce la carga visual y mental.',
     type: 'checkbox',
     category: 'organizing',
     reward: 'Exterminador de Caos',
@@ -118,7 +118,7 @@ export const missions: Mission[] = [
   {
     id: 'm4',
     title: 'Misión: Lavarropas (5 min)',
-    description: 'Inicia un ciclo de lavado. ¡Ropa fresca, vida organizada! 👕',
+    description: 'Inicia un ciclo de lavado. Meta oculta: Automatizar una tarea de cuidado personal te libera energía mental para otras cosas.',
     type: 'interactive',
     category: 'organizing',
     reward: 'Domador de Textiles',
@@ -152,7 +152,7 @@ export const missions: Mission[] = [
    {
     id: 'm9',
     title: 'Operación "Cama Cero" (2 min)',
-    description: 'Tu primera misión del día: estirar las sábanas. Una cama hecha es un cuarto que ya se ve mejor.',
+    description: 'Estira las sábanas. Meta oculta: Es una "victoria de 2 minutos" que le ordena a tu cerebro que el día ya empezó.',
     type: 'checkbox',
     category: 'organizing',
     reward: 'Guardián del Orden',
@@ -160,7 +160,7 @@ export const missions: Mission[] = [
   {
     id: 'm14',
     title: 'Foco de Orden (7 min)',
-    description: 'Elegí UNA sola cosa de tu cuarto y ordenala (la silla con ropa, el escritorio, una pila de libros). Solo una.',
+    description: 'Elegí UNA sola cosa y ordenala (la silla con ropa, el escritorio). Meta oculta: Concentrarte en un solo punto de mejora evita que te sientas abrumado por el desorden general.',
     type: 'checkbox',
     category: 'minimal-organization',
     reward: 'Clarividente Espacial',
@@ -168,7 +168,7 @@ export const missions: Mission[] = [
   {
     id: 'm5',
     title: 'Gánale al Snooze (1 min)',
-    description: 'Primer objetivo del día: levantate. ¿El segundo? Hidratarte. Un vaso de agua al despertar es una victoria fácil. ☀️',
+    description: 'Levantate e hidrátate. Meta oculta: Romper el ciclo de postergación con una acción física simple entrena tu "músculo" de la voluntad.',
     type: 'checkbox',
     category: 'personal-care',
     reward: 'Conquistador del Alba',
@@ -176,7 +176,7 @@ export const missions: Mission[] = [
   {
     id: 'm6',
     title: 'Embajador de la Hidratación (1 min)',
-    description: 'Bebe un vaso de agua al despertar. ¡Un comienzo épico para tu día! 💦',
+    description: 'Bebe un vaso de agua al despertar. Meta oculta: Es la forma más rápida de reactivar tu cuerpo y mente después de horas de ayuno.',
     type: 'checkbox',
     category: 'personal-care',
     reward: 'Ingeniero de Bienestar',
@@ -184,7 +184,7 @@ export const missions: Mission[] = [
   {
     id: 'm7',
     title: 'Exploración Beta (5 min)',
-    description: 'Pisa la calle como si fueras un NPC observando el mapa (hoodie permitido).',
+    description: 'Pisa la calle solo para observar. Meta oculta: Exponerte al entorno sin un objetivo reduce la ansiedad de "tener que hacer algo" afuera.',
     type: 'checkbox',
     category: 'going-out',
     reward: 'Cartógrafo de lo Cotidiano',
@@ -192,7 +192,7 @@ export const missions: Mission[] = [
     {
     id: 'm11',
     title: 'Misión Supermercado (10 min)',
-    description: 'Ve al supermercado o almacén más cercano a comprar UNA cosa. Solo una. Pan, galletitas, lo que sea. El objetivo es entrar y salir.',
+    description: 'Ve al súper a comprar UNA sola cosa. Meta oculta: Completar una transacción de bajo riesgo aumenta tu confianza para futuras interacciones.',
     type: 'interactive',
     category: 'going-out',
     reward: 'Explorador Urbano',
@@ -226,7 +226,7 @@ export const missions: Mission[] = [
   {
     id: 'm8',
     title: 'Misión: Saludo Social (1 min)',
-    description: 'Practica un saludo simple con un empleado de una tienda. Un "buen día" es suficiente.',
+    description: 'Di "buen día" o "gracias". Meta oculta: Esta micro-interacción activa las neuronas espejo y te recuerda que eres parte de una comunidad.',
     type: 'checkbox',
     category: 'social',
     reward: 'Diplomático Novato',
@@ -234,7 +234,7 @@ export const missions: Mission[] = [
   {
     id: 'm15',
     title: 'Reactivar Contacto (2 min)',
-    description: 'Mandale un mensaje simple como "Hola, ¿cómo estás?" a una persona de confianza. Sin presión por responder.',
+    description: 'Mándale un "hola, ¿cómo estás?" a alguien de confianza. Meta oculta: Iniciar el contacto te pone en una posición activa en tus relaciones, en lugar de pasiva.',
     type: 'checkbox',
     category: 'social',
     reward: 'Emisario Silencioso',
@@ -242,7 +242,7 @@ export const missions: Mission[] = [
    {
     id: 'm12',
     title: 'Guardián del Esmalte (3 min)',
-    description: 'Cepíllate los dientes. No tienen que quedar perfectos. Solo tienes que hacerlo.',
+    description: 'Cepíllate los dientes. Meta oculta: Es un acto de autocuidado básico que envía una señal a tu cerebro de que mereces atención y limpieza.',
     type: 'checkbox',
     category: 'personal-care',
     reward: 'Paladín de la Sonrisa',
@@ -250,7 +250,7 @@ export const missions: Mission[] = [
   {
     id: 'm13',
     title: 'Uniforme de Entrecasa (2 min)',
-    description: 'Ponte ropa limpia, aunque no vayas a salir. Es para vos.',
+    description: 'Ponte ropa limpia, aunque no salgas. Meta oculta: Cambiar el pijama por ropa te ayuda a diferenciar entre descanso y actividad, preparando tu mente para el día.',
     type: 'checkbox',
     category: 'personal-care',
     reward: 'Comandante del Confort',
