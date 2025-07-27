@@ -92,12 +92,10 @@ export function InteractiveGuideModal({
                     </Button>
                 )}
             </div>
-            {!isLastStep && (
-                 <Button variant="outline" onClick={handleComplete} className="w-full text-base">
-                     Ya sé cómo seguir (Marcar como conquistada)
-                    <Forward className="ml-2 h-4 w-4" />
-                </Button>
-            )}
+            <Button variant="outline" onClick={handleComplete} className="w-full text-base">
+                Ya sé cómo seguir (Marcar como conquistada)
+                <Forward className="ml-2 h-4 w-4" />
+            </Button>
         </DialogFooter>
       </DialogContent>
     </Dialog>

@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, SkipForward, MessageCircleQuestion, ClipboardCheck, ArrowLeft, Trophy, Compass } from 'lucide-react';
+import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, SkipForward, MessageCircleQuestion, ClipboardCheck, Trophy, Compass } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -133,41 +133,34 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   )}
                 </CardHeader>
                 <CardFooter className="flex flex-col items-stretch gap-3 bg-background/50 py-4 px-6">
-                    {mission.type === 'interactive' && !isCompleted && (
-                    <Button onClick={() => handleOpenModal(mission)} size="lg" className="text-base px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
-                        Ver cómo se hace
-                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  )}
-                    {mission.type === 'checkbox' && (
-                      <Button onClick={() => onCompleteMission(mission.id)} size="lg" disabled={isCompleted} className="text-base px-4 py-6">
-                         <Check className="mr-2 h-5 w-5" /> ¡Misión Conquistada!
-                      </Button>
-                    )}
-                    {isCompleted && (
+                    {isCompleted ? (
                       <div className="flex items-center justify-center space-x-2 text-lg font-bold text-green-600 p-4 rounded-md bg-green-500/10">
                         <Check className="h-6 w-6" />
                         <span>¡Conquistado!</span>
                       </div>
-                    )}
-                    {!isCompleted && (
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                             <Button variant="outline" onClick={() => setIsHelpModalOpen(true)}>
-                                <MessageCircleQuestion className="mr-2 h-4 w-4"/>
-                                Pedir Ayuda
-                            </Button>
-                            <Button variant="outline" onClick={onNextMission}>
-                                Saltar por ahora
-                                <SkipForward className="ml-2 h-4 w-4"/>
-                            </Button>
-                        </div>
-                    )}
-                     {canGoBack && !isCompleted && (
-                         <Button variant="ghost" onClick={onPreviousMission} className="mt-2">
-                            <ArrowLeft className="mr-2 h-4 w-4"/>
-                            Misión anterior
+                    ) : (
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                        {mission.type === 'interactive' && (
+                           <Button onClick={() => handleOpenModal(mission)} size="lg" className="text-base px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90 sm:col-span-2">
+                              Ver cómo se hace
+                              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                          </Button>
+                        )}
+                        {mission.type === 'checkbox' && (
+                          <Button onClick={() => onCompleteMission(mission.id)} size="lg" className="text-base px-4 py-6 sm:col-span-2">
+                            <Check className="mr-2 h-5 w-5" /> ¡Misión Conquistada!
+                          </Button>
+                        )}
+                        <Button variant="outline" onClick={() => setIsHelpModalOpen(true)}>
+                            <MessageCircleQuestion className="mr-2 h-4 w-4"/>
+                            Pedir Ayuda
                         </Button>
-                     )}
+                        <Button variant="outline" onClick={onNextMission}>
+                            Saltar por ahora
+                            <SkipForward className="ml-2 h-4 w-4"/>
+                        </Button>
+                      </div>
+                    )}
                 </CardFooter>
               </Card>
             );
