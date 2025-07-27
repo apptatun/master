@@ -9,6 +9,7 @@ import { Sparkles, Gamepad2, PartyPopper, ArrowRight, Check, Rocket } from 'luci
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { Badge } from './ui/badge';
+import Link from 'next/link';
 
 interface MissionListProps {
   missions: Mission[];
@@ -37,8 +38,14 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
           <PartyPopper className="mx-auto h-16 w-16 text-accent mb-4" />
           <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
           <p className="text-lg text-muted-foreground mt-2">
-            Completaste todos los desafíos disponibles. ¡Tomate un momento para celebrar tu increíble progreso! Pronto habrá nuevos retos para vos.
+            Completaste todos los desafíos disponibles. ¡Tomate un momento para celebrar tu increíble progreso!
           </p>
+           <Link href="/setup">
+              <Button size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90">
+                Elegir otro camino
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </Button>
+            </Link>
         </div>
       );
     }
