@@ -1,14 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Sparkles, Gamepad2, PartyPopper } from 'lucide-react';
+import { Sparkles, Gamepad2, PartyPopper, ArrowRight } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { Badge } from './ui/badge';
+import { Separator } from './ui/separator';
 
 interface MissionListProps {
   missions: Mission[];
@@ -29,7 +30,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
   };
 
   return (
-    <Card>
+    <Card className="bg-card/50">
       <CardHeader>
         <CardTitle className="flex items-center font-headline text-4xl">
           <Gamepad2 className="mr-3 h-8 w-8 text-accent" />
@@ -50,58 +51,52 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
             <p className="text-muted-foreground mb-6 text-lg">
               Un paso a la vez. Concentrate en esto. Vos podés.
             </p>
-            <div className="space-y-4">
+            <div className="space-y-6">
               {missions.map((mission) => {
                 const isCompleted = completedMissions.includes(mission.id);
                 return (
-                  <div
-                    key={mission.id}
-                    className={cn(
-                      'flex items-center justify-between rounded-lg border p-4 transition-all',
-                      isCompleted ? 'bg-primary/30 border-primary/50' : 'bg-card'
-                    )}
-                  >
-                    <div className="flex-grow space-y-1">
-                       <label
-                          htmlFor={mission.id}
-                          className={cn(
-                            'font-bold text-xl text-foreground',
-                            isCompleted && 'line-through text-muted-foreground'
-                          )}
-                        >
-                          {mission.title}
-                        </label>
-                        <p className={cn('text-lg text-muted-foreground', isCompleted && 'line-through')}>
-                          {mission.description}
-                        </p>
-                    </div>
-
-                    <div className="flex flex-col items-end space-y-2 ml-4">
-                       <Badge variant="secondary" className="text-base px-3 py-1">
-                          <Sparkles className="inline-block mr-1.5 h-4 w-4" />
+                  <Card key={mission.id} className={cn('transition-all', isCompleted ? 'bg-primary/30 border-primary/50' : 'bg-card')}>
+                    <CardHeader>
+                      <CardTitle className="text-2xl font-bold text-foreground">{mission.title}</CardTitle>
+                      <p className={cn('text-lg text-muted-foreground pt-1', isCompleted && 'line-through')}>
+                        {mission.description}
+                      </p>
+                    </CardHeader>
+                    <CardFooter className="flex items-center justify-between bg-background/50 py-3 px-6">
+                       <Badge variant="secondary" className="text-lg font-bold px-4 py-1">
+                          <Sparkles className="inline-block mr-2 h-5 w-5 text-accent" />
                           {mission.points} Puntos
                        </Badge>
                        {mission.type === 'interactive' && !isCompleted && (
-                        <Button onClick={() => handleOpenModal(mission)} size="sm" className="text-base px-4 py-2">
+                        <Button onClick={() => handleOpenModal(mission)} size="sm" className="text-base px-4 py-2 group">
                           Iniciar Protocolo
+                           <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
                       )}
                        {mission.type === 'checkbox' && (
-                         <Checkbox
-                          id={mission.id}
-                          checked={isCompleted}
-                          onCheckedChange={(checked) => {
-                            if (checked) {
-                              onCompleteMission(mission.id, mission.points, mission.rewardTitle);
-                            }
-                          }}
-                          disabled={isCompleted}
-                          aria-label={`Marcar ${mission.title} como completada`}
-                          className="h-7 w-7"
-                        />
+                         <div className="flex items-center space-x-2">
+                           <label htmlFor={mission.id} className={cn("font-semibold text-lg", isCompleted ? "text-muted-foreground line-through" : "text-foreground")}>¡Hecho!</label>
+                           <Checkbox
+                            id={mission.id}
+                            checked={isCompleted}
+                            onCheckedChange={(checked) => {
+                              if (checked) {
+                                onCompleteMission(mission.id, mission.points, mission.rewardTitle);
+                              }
+                            }}
+                            disabled={isCompleted}
+                            aria-label={`Marcar ${mission.title} como completada`}
+                            className="h-8 w-8"
+                          />
+                         </div>
                        )}
-                    </div>
-                  </div>
+                       {isCompleted && (
+                          <div className="flex items-center space-x-2 text-lg font-bold text-green-600">
+                             <span>¡Superado!</span>
+                          </div>
+                       )}
+                    </CardFooter>
+                  </Card>
                 );
               })}
             </div>
