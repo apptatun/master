@@ -119,7 +119,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
         <div className="space-y-6">
           {missions.map((mission) => {
             return (
-              <Card key={mission.id} className={cn('transition-all border-0 shadow-none bg-card/80')}>
+              <Card key={mission.id} className={cn('transition-all border-2 border-transparent bg-card shadow-xl rounded-2xl')}>
                 <CardHeader>
                   <CardTitle className="font-headline text-4xl sm:text-5xl font-bold text-foreground pt-2 pb-4">{mission.title}</CardTitle>
                 </CardHeader>
@@ -182,6 +182,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
 
   return (
     <Card className="bg-transparent border-0 shadow-none">
+      <h1 style={{ color: 'red', fontSize: '24px', textAlign: 'center', margin: '20px 0' }}>DEBUG: EL PROTOTYPER ESTÁ EDITANDO ESTE ARCHIVO.</h1>
       <CardContent className="p-0">
         {renderContent()}
       </CardContent>
