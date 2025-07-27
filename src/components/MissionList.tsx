@@ -124,10 +124,10 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   <CardTitle className="font-headline text-4xl sm:text-5xl font-bold text-foreground pt-2 pb-4">{mission.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4 px-6 pb-4">
-                  <p className="text-lg text-muted-foreground">{mission.description}</p>
+                  <p className="text-xl text-muted-foreground">{mission.description}</p>
                   
                   {mission.type === 'checkbox' && mission.steps && (
-                    <div className="space-y-3 text-lg text-muted-foreground pt-4">
+                    <div className="space-y-3 text-xl text-muted-foreground pt-4">
                       <ol className="list-decimal list-inside space-y-2">
                         {mission.steps.map((step, index) => (
                           <li key={index}>{step.title}</li>
@@ -138,12 +138,12 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   
                   {mission.why && (
                       <div className="pt-4 mt-4 border-t">
-                          <p className="font-bold text-foreground text-lg">¿Por qué esto?</p>
-                          <p className="text-muted-foreground text-base">{mission.why}</p>
+                          <p className="font-bold text-foreground text-xl">¿Por qué esto?</p>
+                          <p className="text-muted-foreground text-lg">{mission.why}</p>
                       </div>
                   )}
                 </CardContent>
-                <CardFooter className="flex flex-col items-stretch gap-4 bg-foreground/5 py-5 px-6">
+                <CardFooter className="flex flex-col items-stretch gap-3 bg-foreground/5 py-5 px-6">
                     {mission.type === 'interactive' && (
                       <Tooltip>
                         <TooltipTrigger asChild>
@@ -162,12 +162,12 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                       </Button>
                     )}
                     
-                    <div className="flex justify-between items-center gap-2 mt-2">
-                        <Button variant="ghost" onClick={() => setIsAssistantModalOpen(true)} className="text-muted-foreground">
+                    <div className="flex justify-between items-center gap-4 mt-2">
+                        <Button variant="ghost" onClick={() => setIsAssistantModalOpen(true)} className="text-muted-foreground text-base">
                             <Bot className="mr-2 h-4 w-4"/>
                             Necesito una mano
                         </Button>
-                        <Button variant="ghost" onClick={handleDeclineMission} className="text-muted-foreground">
+                        <Button variant="ghost" onClick={handleDeclineMission} className="text-muted-foreground text-base">
                             No hoy, gracias
                         </Button>
                     </div>
