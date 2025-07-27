@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { AiAssistantModal } from './AiAssistantModal';
 import { EmojiFeedback } from './EmojiFeedback';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 
 
 interface MissionListProps {
@@ -129,7 +130,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
     }
 
     return (
-      <>
+      <TooltipProvider>
         <div className="space-y-6">
           {missions.map((mission) => {
             const isCompleted = completedMissions.includes(mission.id);
@@ -151,10 +152,17 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                     ) : (
                       <div className="flex flex-col gap-3 pt-2">
                          {mission.type === 'interactive' && (
-                           <Button onClick={() => handleOpenModal(mission)} size="lg" className="text-base px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
-                              Ver cómo se hace
-                              <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                          </Button>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                               <Button onClick={() => handleOpenModal(mission)} size="lg" className="text-base px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
+                                  Ver cómo se hace
+                                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
+                              </Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Vas a ver una mini instrucción simple. Tranquilo, es rápido.</p>
+                            </TooltipContent>
+                          </Tooltip>
                         )}
                         {mission.type === 'checkbox' && (
                           <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="text-base px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
@@ -175,7 +183,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
             );
           })}
         </div>
-      </>
+      </TooltipProvider>
     );
   };
 
