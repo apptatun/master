@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, Compass, Bot, Trophy, Smile } from 'lucide-react';
+import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, Compass, Bot, Trophy, Smile, Sparkles } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -78,11 +78,10 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
     if (showRejectionMessage) {
         return (
              <div className="text-center p-6 bg-card rounded-lg border">
-                <Smile className="mx-auto h-12 w-12 text-accent mb-4" />
+                <Sparkles className="mx-auto h-12 w-12 text-accent mb-4" />
                 <h3 className="text-2xl font-bold text-foreground">Está bien.</h3>
                 <p className="text-lg text-muted-foreground mt-2">
-                  No tenés que estar siempre al 100%. <br/>
-                  Esto va a seguir acá para cuando quieras volver. Sin presiones.
+                 A veces decir que no también es avanzar. <br/> Volvé cuando te sientas con ganas.
                 </p>
               </div>
         )
