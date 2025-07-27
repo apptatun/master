@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { CookingPot, Home, Users, MessageSquareHeart, HelpCircle, ArrowRight, ArrowLeft } from 'lucide-react';
+import { CookingPot, Home, Users, MessageSquareHeart, HelpCircle, ArrowRight, ArrowLeft, HeartPulse } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 
 type Category = Mission['category'];
@@ -21,6 +21,12 @@ const options: { icon: JSX.Element; title: string; description: string; category
         title: "Ordenar tu espacio",
         description: "Creá un ambiente más tranquilo y organizado.",
         category: 'organizing'
+    },
+     {
+        icon: <HeartPulse className="w-10 h-10 mb-4 text-accent" />,
+        title: "Cuidar de vos",
+        description: "Pequeños hábitos que te hacen sentir mejor.",
+        category: 'personal-care'
     },
     {
         icon: <Users className="w-10 h-10 mb-4 text-accent" />,

@@ -163,7 +163,7 @@ export const missions: Mission[] = [
     description: 'Primer objetivo del día: levantate. ¿El segundo? Hidratarte. Un vaso de agua al despertar es una victoria fácil. ☀️',
     points: 5,
     type: 'checkbox',
-    category: 'generic',
+    category: 'personal-care',
   },
   {
     id: 'm6',
@@ -171,7 +171,7 @@ export const missions: Mission[] = [
     description: 'Bebe un vaso de agua al despertar. ¡Un comienzo épico para tu día! 💦',
     points: 5,
     type: 'checkbox',
-    category: 'generic',
+    category: 'personal-care',
   },
   {
     id: 'm7',
@@ -223,4 +223,20 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'social',
   },
+   {
+    id: 'm12',
+    title: 'Guardián del Esmalte',
+    description: 'Cepíllate los dientes. No tienen que quedar perfectos. Solo tienes que hacerlo.',
+    points: 5,
+    type: 'checkbox',
+    category: 'personal-care'
+  },
+  {
+    id: 'm13',
+    title: 'Uniforme de Entrecasa',
+    description: 'Ponte ropa limpia, aunque no vayas a salir. Es para vos.',
+    points: 5,
+    type: 'checkbox',
+    category: 'personal-care'
+  }
 ];

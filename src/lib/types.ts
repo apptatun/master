@@ -9,6 +9,14 @@ export interface Mission {
   description: string;
   points: number;
   type: 'checkbox' | 'interactive';
-  category: 'cooking' | 'organizing' | 'social' | 'going-out' | 'generic';
+  category: 
+    | 'cooking' 
+    | 'organizing' 
+    | 'social' 
+    | 'going-out' 
+    | 'generic' 
+    | 'personal-care'
+    | 'minimal-organization'
+    | 'emotional-management';
   steps?: Step[];
 }
