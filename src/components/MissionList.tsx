@@ -182,7 +182,6 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
 
   return (
     <Card className="bg-transparent border-0 shadow-none">
-      <h1 style={{ color: 'red', fontSize: '24px', textAlign: 'center', margin: '20px 0' }}>DEBUG: EL PROTOTYPER ESTÁ EDITANDO ESTE ARCHIVO.</h1>
       <CardContent className="p-0">
         {renderContent()}
       </CardContent>
