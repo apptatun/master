@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, Compass, Bot, Trophy, Smile, Sparkles } from 'lucide-react';
+import { PartyPopper, ArrowRight, Check, Rocket, Compass, Bot, Trophy, Sparkles } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -137,12 +137,28 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
             return (
               <Card key={mission.id} className={cn('transition-all border-2 border-transparent')}>
                 <CardHeader>
-                  <p className="text-xl text-muted-foreground">Te sugerimos empezar por acá.</p>
+                  <p className="text-xl text-muted-foreground">🎯 Te sugerimos empezar por acá.</p>
                   <CardTitle className="font-headline text-4xl sm:text-5xl font-bold text-foreground pt-2 pb-4">{mission.title}</CardTitle>
-                  <p className={cn('text-lg text-muted-foreground pt-1')}>
-                    {mission.description}
-                  </p>
                 </CardHeader>
+                <CardContent className="space-y-4 px-6 pb-4">
+                  {mission.type === 'checkbox' && mission.steps && (
+                    <div className="space-y-3 text-lg text-muted-foreground">
+                      <ol className="list-decimal list-inside space-y-2">
+                        {mission.steps.map((step, index) => (
+                          <li key={index}>{step.title}</li>
+                        ))}
+                      </ol>
+                    </div>
+                  )}
+                  {mission.type === 'interactive' && <p className="text-lg text-muted-foreground">{mission.description}</p>}
+                  
+                  {mission.why && (
+                      <div className="pt-2">
+                          <p className="font-bold text-foreground">¿Por qué esto?</p>
+                          <p className="text-muted-foreground">{mission.why}</p>
+                      </div>
+                  )}
+                </CardContent>
                 <CardFooter className="flex flex-col items-stretch gap-3 bg-background/50 py-4 px-6">
                     {isCompleted ? (
                       <div className="flex items-center justify-center space-x-2 text-lg font-bold text-green-600 p-4 rounded-md bg-green-500/10">
@@ -212,3 +228,4 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
     </Card>
   );
 }
+

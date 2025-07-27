@@ -1,7 +1,7 @@
 
 export interface Step {
   title: string;
-  description: string;
+  description?: string;
 }
 
 export type Path = 'guarida' | 'explorador';
@@ -61,4 +61,5 @@ export interface Mission {
     | SubCategory;
   steps?: Step[];
   reward?: string;
+  why?: string;
 }
