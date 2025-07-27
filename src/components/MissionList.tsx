@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, Compass, Bot } from 'lucide-react';
+import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, Compass, Bot, Trophy } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
