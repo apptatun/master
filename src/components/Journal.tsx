@@ -24,13 +24,13 @@ export function Journal() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center font-headline text-2xl">
-          <Book className="mr-2 h-6 w-6 text-accent" />
+        <CardTitle className="flex items-center font-headline text-3xl">
+          <Book className="mr-3 h-7 w-7 text-accent" />
           Diario Personal
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground mb-4">
+        <p className="text-muted-foreground mb-4 text-lg">
           Un espacio para vos. Anotá tus victorias, tus frustraciones, lo que
           sea. Nadie más lo va a leer.
         </p>
@@ -39,7 +39,7 @@ export function Journal() {
           onChange={handleChange}
           placeholder="¿Cómo te sentís hoy?"
           rows={8}
-          className="resize-none"
+          className="resize-none text-base"
         />
       </CardContent>
     </Card>

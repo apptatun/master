@@ -56,11 +56,11 @@ export default function DashboardPage() {
     toast({
       title: '¡Misión Completada!',
       description: (
-        <div className="flex flex-col">
+        <div className="flex flex-col text-base">
           <span>+{missionPoints} puntos!</span>
           {newTitle !== currentTitle && (
             <span className="font-bold mt-1">
-              <Medal className="inline-block mr-1 h-4 w-4 text-accent" />
+              <Medal className="inline-block mr-1 h-5 w-5 text-accent" />
               Nuevo Título: {newTitle}
             </span>
           )}

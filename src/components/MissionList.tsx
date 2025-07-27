@@ -29,13 +29,13 @@ export function MissionList({ missions, completedMissions, onCompleteMission }: 
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center font-headline text-3xl">
-          <Gamepad2 className="mr-3 h-7 w-7 text-accent" />
+        <CardTitle className="flex items-center font-headline text-4xl">
+          <Gamepad2 className="mr-3 h-8 w-8 text-accent" />
           Misiones
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground mb-4 text-base">
+        <p className="text-muted-foreground mb-6 text-lg">
           Empecemos con algo chico. Cada misión completada te da puntos y te
           acerca a tu próximo título.
         </p>
@@ -62,30 +62,30 @@ export function MissionList({ missions, completedMissions, onCompleteMission }: 
                       }}
                       disabled={isCompleted}
                       aria-label={`Marcar ${mission.title} como completada`}
-                      className="mt-1 h-5 w-5"
+                      className="mt-1 h-6 w-6"
                     />
                   )}
                   <div className="space-y-1">
                     <label
                       htmlFor={mission.id}
                       className={cn(
-                        'font-bold text-lg text-foreground',
+                        'font-bold text-xl text-foreground',
                         isCompleted && 'line-through text-muted-foreground'
                       )}
                     >
                       {mission.title}
                     </label>
-                    <p className={cn('text-base text-muted-foreground', isCompleted && 'line-through')}>
+                    <p className={cn('text-lg text-muted-foreground', isCompleted && 'line-through')}>
                       {mission.description}
                     </p>
-                    <p className="text-base font-bold text-accent">
-                      <Sparkles className="inline-block mr-1 h-4 w-4" />
+                    <p className="text-lg font-bold text-accent pt-1">
+                      <Sparkles className="inline-block mr-1 h-5 w-5" />
                       {mission.points} Puntos
                     </p>
                   </div>
                 </div>
                 {mission.type === 'interactive' && !isCompleted && (
-                  <Button onClick={() => handleOpenModal(mission)} size="sm">
+                  <Button onClick={() => handleOpenModal(mission)} size="sm" className="text-base px-4 py-2 self-center ml-4">
                     Ver Pasos
                   </Button>
                 )}

@@ -7,7 +7,6 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
-  DialogClose,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, ArrowRight, Check, Forward } from 'lucide-react';
@@ -55,35 +54,35 @@ export function InteractiveGuideModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[480px] bg-card">
+      <DialogContent className="sm:max-w-[525px] bg-card">
         <DialogHeader>
-          <DialogTitle className="font-headline text-2xl">{mission.title}</DialogTitle>
+          <DialogTitle className="font-headline text-3xl">{mission.title}</DialogTitle>
         </DialogHeader>
-        <div className="my-4 min-h-[120px] space-y-2">
-          <p className="font-bold text-lg text-foreground">{steps[currentStep]?.title}</p>
-          <p className="text-muted-foreground">{steps[currentStep]?.description}</p>
+        <div className="my-4 min-h-[150px] space-y-3">
+          <p className="font-bold text-xl text-foreground">{steps[currentStep]?.title}</p>
+          <p className="text-lg text-muted-foreground">{steps[currentStep]?.description}</p>
         </div>
         <DialogFooter className="flex-col sm:flex-col sm:space-x-0 gap-2">
-            <div className="flex w-full justify-between">
-                <Button variant="ghost" onClick={handlePrevious} disabled={currentStep === 0}>
+            <div className="flex w-full justify-between items-center flex-wrap gap-2">
+                <Button variant="ghost" onClick={handlePrevious} disabled={currentStep === 0} className="text-base">
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Anterior
                 </Button>
                  {isLastStep ? (
-                    <Button onClick={handleComplete} className="bg-accent text-accent-foreground hover:bg-accent/90">
+                    <Button onClick={handleComplete} className="bg-accent text-accent-foreground hover:bg-accent/90 text-base">
                         <Check className="mr-2 h-4 w-4" />
                         Marcar como Completado
                     </Button>
                 ) : (
-                    <Button onClick={handleNext}>
+                    <Button onClick={handleNext} className="text-base">
                         Siguiente
                         <ArrowRight className="ml-2 h-4 w-4" />
                     </Button>
                 )}
             </div>
             {!isLastStep && (
-                 <Button variant="outline" onClick={handleNext} className="w-full">
-                     Saltar Paso
+                 <Button variant="outline" onClick={handleComplete} className="w-full text-base">
+                     Saltar Guía y Completar
                     <Forward className="ml-2 h-4 w-4" />
                 </Button>
             )}

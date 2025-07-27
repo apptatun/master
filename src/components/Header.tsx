@@ -12,18 +12,18 @@ export function Header({ title, points, totalPoints }: HeaderProps) {
 
   return (
     <header className="sticky top-0 z-10 w-full border-b bg-background/80 backdrop-blur-sm">
-      <div className="container mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <h1 className="font-headline text-3xl font-bold text-foreground">
+      <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <h1 className="font-headline text-4xl font-bold text-foreground sm:text-5xl">
           CAMINO
         </h1>
         <div className="flex flex-col items-end space-y-1">
           <div className="flex items-center space-x-2">
-            <Medal className="h-5 w-5 text-accent" />
-            <span className="font-semibold text-base text-foreground">{title}</span>
+            <Medal className="h-6 w-6 text-accent" />
+            <span className="font-semibold text-lg text-foreground">{title}</span>
           </div>
-          <div className="w-36">
-            <Progress value={progressPercentage} className="h-2" />
-            <span className="text-sm text-muted-foreground">{points} / {totalPoints} Puntos</span>
+          <div className="w-40">
+            <Progress value={progressPercentage} className="h-2.5" />
+            <span className="text-base text-muted-foreground">{points} / {totalPoints} Puntos</span>
           </div>
         </div>
       </div>
