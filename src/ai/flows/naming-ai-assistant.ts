@@ -34,7 +34,7 @@ const prompt = ai.definePrompt({
   name: 'namingAIPrompt',
   input: {schema: NamingAIInputSchema},
   output: {schema: NamingAIOutputSchema},
-  prompt: `You are a creative naming assistant. Generate a list of names based on the following hints, respond with a JSON array:
+  prompt: `You are a creative naming assistant. Generate a list of names in Spanish based on the following hints, respond with a JSON array of strings:
 
 Hints: {{{hints}}}`,
 });
