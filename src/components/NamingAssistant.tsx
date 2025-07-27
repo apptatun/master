@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { getSuggestedNames } from '@/app/actions';
-import { Wand2, Loader2, Info } from 'lucide-react';
+import { Wand2, Loader2, Info, PlusCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 import { Badge } from './ui/badge';
 
@@ -18,7 +18,7 @@ export function NamingAssistant() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!hints.trim()) {
-      setError('Por favor, ingresa algunas pistas.');
+      setError('Por favor, ingresa algunas pistas sobre tu misión.');
       return;
     }
     setLoading(true);
@@ -40,23 +40,23 @@ export function NamingAssistant() {
     setLoading(false);
   };
   
-  const exampleHints = ['limpieza', 'rápido', 'ninja'];
+  const exampleHints = ['limpiar mi pieza', 'hacer una llamada', 'comprar pan'];
 
   return (
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center font-headline text-3xl">
           <Wand2 className="mr-3 h-7 w-7 text-accent" />
-          Asistente de Nombres
+          Creador de Misiones
         </CardTitle>
         <CardDescription className="text-lg">
-          ¿No sabés cómo llamar a tu próxima misión? Dale un nombre épico.
+          ¿Tenés un objetivo en mente? Describilo acá y dale un nombre épico para empezar.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <label htmlFor="hints-input" className="text-base font-medium">Pistas (separadas por comas)</label>
+            <label htmlFor="hints-input" className="text-base font-medium">Describí tu misión personal</label>
             <Input
               id="hints-input"
               value={hints}
@@ -64,12 +64,12 @@ export function NamingAssistant() {
                 setHints(e.target.value);
                 if (error) setError(null);
               }}
-              placeholder="Ej: cocina, fácil, desayuno"
+              placeholder="Ej: ordenar los apuntes, llamar al médico..."
               className="text-base"
             />
-            <div className="flex gap-1 pt-1">
+            <div className="flex gap-1 pt-1 flex-wrap">
                 {exampleHints.map(hint => (
-                    <Button key={hint} variant="outline" size="sm" type="button" className="text-sm" onClick={() => setHints(prev => prev ? `${prev}, ${hint}` : hint)}>{hint}</Button>
+                    <Button key={hint} variant="outline" size="sm" type="button" className="text-sm" onClick={() => setHints(hint)}>{hint}</Button>
                 ))}
             </div>
           </div>
@@ -79,7 +79,7 @@ export function NamingAssistant() {
             ) : (
               <Wand2 className="mr-2 h-4 w-4" />
             )}
-            Generar Nombres
+            Generar Nombre Épico
           </Button>
         </form>
 
@@ -93,7 +93,7 @@ export function NamingAssistant() {
 
         {names.length > 0 && (
           <div className="mt-6">
-            <h4 className="font-bold mb-2 text-lg">Sugerencias:</h4>
+            <h4 className="font-bold mb-3 text-lg">Nombres sugeridos para tu misión:</h4>
             <div className="flex flex-wrap gap-2">
               {names.map((name, index) => (
                 <Badge key={index} variant="secondary" className="text-lg px-4 py-1">
@@ -101,6 +101,10 @@ export function NamingAssistant() {
                 </Badge>
               ))}
             </div>
+            <Button className="w-full mt-4 text-base" disabled>
+                <PlusCircle className="mr-2 h-4 w-4" />
+                Añadir como nueva misión (Próximamente)
+            </Button>
           </div>
         )}
       </CardContent>
