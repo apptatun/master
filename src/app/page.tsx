@@ -8,20 +8,18 @@ export default function Home() {
       <div className="max-w-3xl space-y-8">
         <div className="space-y-4">
           <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
-            Estás en pausa. El mundo sigue girando.
+            ¿Sentís que estás en pausa mientras el mundo gira?
           </h1>
           <p className="text-xl text-muted-foreground md:text-2xl">
-            No vinimos a darte lecciones ni a decirte que "madures". Vinimos a
-            proponerte algo mucho mejor: que arranques tu propia vida. En serio.
-            A tu ritmo. Desde hoy.
+            Llegaste acá porque estás cansado de sentir que todos avanzan y vos seguís en el mismo lugar. No vinimos a darte lecciones de Instagram. Vinimos porque querés cambiar, pero no sabés por dónde empezar sin que todo sea abrumador.
           </p>
         </div>
         <div className="space-y-4">
           <p className="text-xl text-muted-foreground md:text-2xl">
-            ¿La buena noticia? No necesitás una transformación épica. Necesitás romper el hielo. Necesitás una primera victoria, por pequeña que sea, que te recuerde que <span className="font-bold text-foreground">SÍ podés.</span>
+            ¿La buena noticia? No necesitás una transformación épica. Necesitás romper el hielo. Necesitás una primera victoria, por pequeña que sea, que te recuerde que <span className="font-bold text-foreground">SÍ PODÉS</span>.
           </p>
           <p className="text-xl text-muted-foreground md:text-2xl">
-            Te propongo algo: arranquemos con algo tan simple que te va a dar risa.
+           Te propongo algo: en vez de planear tu vida entera, arranquemos con algo tan simple que te va a dar risa. Algo que podés hacer HOY.
           </p>
         </div>
         <Link href="/dashboard">

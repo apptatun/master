@@ -4,7 +4,7 @@ export const missions: Mission[] = [
   {
     id: 'm1',
     title: 'Operación Hornalla',
-    description: 'Hierve agua en una olla. ¡Primer paso para tus propias comidas! 💧',
+    description: 'Activa la zona de cocción. Objetivo: hervir agua. Riesgo: bajo.',
     points: 10,
     rewardTitle: 'Ingeniero Termodinámico Lv.1',
     type: 'interactive',
@@ -31,7 +31,7 @@ export const missions: Mission[] = [
       },
       {
         title: '¡Felicitaciones!',
-        description: 'Lo lograste. Ahora espera a que el agua hierva. Has completado el primer paso para dominar la cocina.',
+        description: 'Lo lograste. Has completado el protocolo. Ya diste un paso clave para dominar la cocina.',
       },
     ],
   },
@@ -46,7 +46,7 @@ export const missions: Mission[] = [
   {
     id: 'm3',
     title: 'Ninja de la limpieza',
-    description: 'Completa el reto de 5 platos. ¡Cocina limpia, mente clara! ✨',
+    description: 'Misión stealth: elimina 5 \'enemigos mugre\' del fregadero. ✨',
     points: 10,
     rewardTitle: 'Guardián del Fregadero',
     type: 'checkbox',
@@ -54,7 +54,7 @@ export const missions: Mission[] = [
   {
     id: 'm4',
     title: 'Protocolo Lavarropas',
-    description: 'Pon una tanda de ropa en el lavarropas. ¡Ropa fresca, vida organizada! 👕',
+    description: 'Inicia un ciclo de lavado. ¡Ropa fresca, vida organizada! 👕',
     points: 20,
     rewardTitle: 'Técnico Textil',
     type: 'checkbox',
@@ -62,7 +62,7 @@ export const missions: Mission[] = [
   {
     id: 'm5',
     title: 'Despertador Motivador',
-    description: 'Levántate antes de las 11 AM. ¡Gana la mañana, gana el día! ☀️',
+    description: 'Gánale a la mañana. Levántate antes de las 11 AM. ☀️',
     points: 5,
     rewardTitle: 'Madrugador Principiante',
     type: 'checkbox',

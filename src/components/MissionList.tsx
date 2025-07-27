@@ -96,7 +96,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
                     </div>
                     {mission.type === 'interactive' && !isCompleted && (
                       <Button onClick={() => handleOpenModal(mission)} size="sm" className="text-base px-4 py-2 self-center ml-4">
-                        Empezar Guía
+                        Iniciar Protocolo
                       </Button>
                     )}
                   </div>
