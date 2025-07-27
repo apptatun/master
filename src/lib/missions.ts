@@ -61,8 +61,8 @@ export const missions: Mission[] = [
   },
   {
     id: 'm5',
-    title: 'Despertador Motivador',
-    description: 'Gánale a la mañana. Levántate antes de las 11 AM. ☀️',
+    title: 'Gánale al Snooze',
+    description: 'Primer objetivo del día: levantate. ¿El segundo? Hidratarte. Un vaso de agua al despertar es una victoria fácil. ☀️',
     points: 5,
     type: 'checkbox',
     category: 'generic',
