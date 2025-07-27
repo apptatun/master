@@ -82,7 +82,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   Ya diste un gran paso hoy. Recordá, esto es a tu ritmo. <br/> 
                   Si te sentís con energía, podés ir por el siguiente. Si no, ¡lo de hoy ya es una victoria enorme!
                 </p>
-                <Button onClick={onNextMission} size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90">
+                <Button onClick={onNextMission} size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
                   Siguiente Desafío
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -99,7 +99,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
             Completaste todos los desafíos disponibles. ¡Tomate un momento para celebrar tu increíble progreso!
           </p>
            <Link href="/setup">
-              <Button size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90">
+              <Button size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
                 Elegir otro camino
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
@@ -130,7 +130,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                 </CardHeader>
                 <CardFooter className="flex flex-col items-stretch gap-3 bg-background/50 py-4 px-6">
                     {mission.type === 'interactive' && !isCompleted && (
-                    <Button onClick={() => handleOpenModal(mission)} size="lg" className="text-base px-4 py-6 group bg-accent hover:bg-accent/90">
+                    <Button onClick={() => handleOpenModal(mission)} size="lg" className="text-base px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
                         Ver cómo se hace
                         <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
