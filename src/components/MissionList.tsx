@@ -68,7 +68,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
                        </Badge>
                        {mission.type === 'interactive' && !isCompleted && (
                         <Button onClick={() => handleOpenModal(mission)} size="sm" className="text-base px-4 py-2 group">
-                          Iniciar Protocolo
+                          Iniciar Guía
                            <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Button>
                       )}

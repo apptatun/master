@@ -3,35 +3,39 @@ import { Mission } from './types';
 export const missions: Mission[] = [
   {
     id: 'm1',
-    title: 'Protocolo Hornalla',
+    title: 'Misión: Activar la Hornalla',
     description: 'Activa la zona de cocción. Objetivo: hervir agua. Riesgo: bajo.',
     points: 10,
     type: 'interactive',
     category: 'cooking',
     steps: [
       {
-        title: 'Paso 1: Ubicar la hornalla',
+        title: 'Paso 1: Pedir ayuda es de cracks',
+        description: 'Esta misión involucra fuego. Si nunca lo hiciste o no te sentís 100% seguro, este es el momento de pedirle ayuda a un adulto en casa. No es una derrota, al contrario: demostrar que querés aprender es una victoria gigante.',
+      },
+      {
+        title: 'Paso 2: Ubicar la hornalla',
         description: 'Busca los círculos de metal en tu cocina. La más estable y segura suele ser una de las de atrás. Elige una.',
       },
       {
-        title: 'Paso 2: La perilla',
+        title: 'Paso 3: La perilla',
         description: 'Cada hornalla tiene una perilla. Para encenderla, a menudo tenés que presionar hacia adentro y luego girar hacia la izquierda (anti-horario).',
       },
       {
-        title: 'Paso 3: El fuego',
+        title: 'Paso 4: El fuego',
         description: 'Si tu cocina tiene encendedor automático, oirás un "click-click-click" y verás la llama. Si es manual, acerca un fósforo o encendedor con cuidado.',
       },
       {
-        title: 'Paso 4: La llama ideal',
+        title: 'Paso 5: La llama ideal',
         description: 'Una llama azul es perfecta. Si es amarilla o naranja, podría haber un problema. En ese caso, apaga todo y ventila. Si todo está bien, ponla a fuego medio.',
       },
       {
-        title: 'Paso 5: La olla',
+        title: 'Paso 6: La olla',
         description: 'Llena una olla con agua (no hasta el borde, deja espacio). Colócala con cuidado sobre la hornalla encendida.',
       },
       {
-        title: 'Paso 6: ¡Felicitaciones!',
-        description: 'Lo lograste. Has completado el protocolo. Ya diste un paso clave para dominar la cocina.',
+        title: 'Paso 7: ¡Felicitaciones!',
+        description: 'Lo lograste. Has completado la guía. Ya diste un paso clave para dominar la cocina.',
       },
     ],
   },
@@ -113,7 +117,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm4',
-    title: 'Protocolo Lavarropas',
+    title: 'Misión: Lavarropas',
     description: 'Inicia un ciclo de lavado. ¡Ropa fresca, vida organizada! 👕',
     points: 20,
     type: 'interactive',
@@ -213,7 +217,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm8',
-    title: 'Protocolo de Saludo',
+    title: 'Misión: Saludo Social',
     description: 'Practica un saludo simple con un empleado de una tienda. Un "buen día" es suficiente.',
     points: 10,
     type: 'checkbox',
