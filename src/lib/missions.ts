@@ -254,5 +254,13 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'personal-care',
     reward: 'Comandante del Confort',
+  },
+  {
+    id: 'm16',
+    title: 'Operación Hibernación: Apagar pantallas 1h antes de dormir',
+    description: 'Desconéctate para conectar con tu descanso. Meta oculta: Regular tus ciclos de sueño es el hack de productividad más potente que existe.',
+    type: 'checkbox',
+    category: 'personal-care',
+    reward: 'Guardián del Ritmo Circadiano',
   }
 ];
