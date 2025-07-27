@@ -40,11 +40,8 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
 
   const handleCompleteMission = (missionId: string) => {
     onCompleteMission(missionId);
-    setShowFeedback(true);
+    setShowFeedback(false);
     setUserChoseToRest(false); 
-    setTimeout(() => {
-      setShowFeedback(false);
-    }, 4000); 
   };
   
   const handleDeclineMission = () => {
