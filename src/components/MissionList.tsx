@@ -60,6 +60,18 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
         )
     }
     
+    if (missions.length === 0 && !allMissionsCompleted) {
+        return (
+        <div className="text-center p-8">
+          <PartyPopper className="mx-auto h-16 w-16 text-accent mb-4" />
+          <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
+          <p className="text-lg text-muted-foreground mt-2">
+            Completaste todos los desafíos disponibles. ¡Tomate un momento para celebrar tu increíble progreso! Pronto habrá nuevos retos para vos.
+          </p>
+        </div>
+      );
+    }
+
     return (
       <>
         <p className="text-muted-foreground mb-6 text-lg">
