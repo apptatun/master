@@ -93,7 +93,9 @@ function PathPageContent() {
   const title = mode === 'guarida' ? 'Modo Guarida' : 'Modo Explorador';
 
   const handleSelectCategory = (category: SubCategory) => {
+    localStorage.setItem('missionPath', ''); // Clear path to prioritize category
     localStorage.setItem('missionCategory', category);
+    localStorage.setItem('activeMissionIndex', '0'); // Reset index
     router.push('/dashboard');
   };
 

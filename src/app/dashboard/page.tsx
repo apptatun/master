@@ -4,13 +4,14 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { MissionList } from '@/components/MissionList';
-import { Header } from '@/components/Header';
+import { DashboardHeader } from '@/components/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
 import { Check } from 'lucide-react';
-import type { Mission } from '@/lib/types';
+import type { Mission, Path } from '@/lib/types';
 import { UpcomingMissions } from '@/components/UpcomingMissions';
 import Confetti from 'react-confetti';
+import { subCategoryMap } from '@/lib/types';
 
 export default function DashboardPage() {
   const [completedMissions, setCompletedMissions] = useState<string[]>([]);
@@ -19,39 +20,56 @@ export default function DashboardPage() {
   const [activeMissionIndex, setActiveMissionIndex] = useState(0);
   const [showConfetti, setShowConfetti] = useState(false);
   const [windowSize, setWindowSize] = useState<{ width: number, height: number }>({ width: 0, height: 0 });
+  const [currentPath, setCurrentPath] = useState<Path | null>(null);
 
   const { toast } = useToast();
   const router = useRouter();
 
   useEffect(() => {
-    const savedCompleted = localStorage.getItem('completedMissions');
-    const category = localStorage.getItem('missionCategory') as Mission['category'] | null;
-    const savedIndex = localStorage.getItem('activeMissionIndex');
+    setIsMounted(true);
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
 
-    if (!category) {
+    const savedCompleted = localStorage.getItem('completedMissions');
+    if (savedCompleted) {
+      setCompletedMissions(JSON.parse(savedCompleted));
+    }
+    
+    const savedIndex = localStorage.getItem('activeMissionIndex');
+    if (savedIndex) {
+      setActiveMissionIndex(parseInt(savedIndex, 10));
+    }
+    
+    const missionCategory = localStorage.getItem('missionCategory');
+    const missionPath = localStorage.getItem('missionPath') as Path | null;
+    
+    if (!missionCategory && !missionPath) {
       router.push('/setup');
       return;
     }
 
-    if (savedCompleted) {
-      setCompletedMissions(JSON.parse(savedCompleted));
-    }
-     if (savedIndex) {
-      setActiveMissionIndex(parseInt(savedIndex, 10));
+    let filteredMissions: Mission[] = [];
+    
+    if (missionCategory) {
+      // Priority to specific subcategory selected from /path
+      filteredMissions = missions.filter(m => m.category === missionCategory);
+      const pathForCategory = Object.keys(subCategoryMap).find(path => 
+        subCategoryMap[path as Path].includes(missionCategory as any)
+      ) as Path | undefined;
+      setCurrentPath(pathForCategory || null);
+    } else if (missionPath) {
+      // Fallback to the general path selected from /setup
+      const categoriesForPath = subCategoryMap[missionPath];
+      filteredMissions = missions.filter(m => categoriesForPath.includes(m.category as any));
+      setCurrentPath(missionPath);
     }
     
-    let filteredMissions = missions.filter(
-      (mission) => mission.category === category
-    );
-
     if (filteredMissions.length === 0) {
-      filteredMissions = missions.filter((mission) => mission.category === 'generic');
+      // Ultimate fallback to generic
+      filteredMissions = missions.filter(m => m.category === 'generic');
     }
 
     setUserMissions(filteredMissions);
 
-    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-    setIsMounted(true);
   }, [router]);
 
   useEffect(() => {
@@ -94,7 +112,6 @@ export default function DashboardPage() {
     }
   }
 
-
   if (!isMounted) {
     return null; // or a loading spinner
   }
@@ -107,7 +124,7 @@ export default function DashboardPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} />}
-      <Header />
+      <DashboardHeader path={currentPath}/>
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
         <div className="space-y-8">
             <MissionList

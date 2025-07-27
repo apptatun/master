@@ -1,3 +1,4 @@
+
 export interface Step {
   title: string;
   description: string;
@@ -19,6 +20,22 @@ export type SubCategory =
   | 'preparacion-laboral'
   | 'aventuras-de-crecimiento';
 
+export const subCategoryMap: Record<Path, SubCategory[]> = {
+  guarida: [
+    'rescate-de-territorio',
+    'laboratorio-mental',
+    'supervivencia-culinaria',
+    'dominio-digital',
+    'finanzas-ninja',
+  ],
+  explorador: [
+    'primeros-pasos',
+    'interacciones-humanas',
+    'misiones-oficiales',
+    'preparacion-laboral',
+    'aventuras-de-crecimiento',
+  ]
+};
 
 export interface Mission {
   id: string;

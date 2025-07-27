@@ -33,7 +33,8 @@ export default function SetupPage() {
 
   const handleSelectPath = (path: Path) => {
     localStorage.clear(); // Clear all previous progress
-    router.push(`/path?mode=${path}`);
+    localStorage.setItem('missionPath', path);
+    router.push('/dashboard');
   };
 
   return (

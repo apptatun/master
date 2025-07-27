@@ -1,7 +1,14 @@
 
 import Link from 'next/link';
+import { Button } from './ui/button';
+import type { Path } from '@/lib/types';
+import { Compass } from 'lucide-react';
 
-export function Header() {
+interface DashboardHeaderProps {
+    path: Path | null;
+}
+
+export function DashboardHeader({ path }: DashboardHeaderProps) {
   return (
     <header className="sticky top-0 z-10 w-full border-b bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -13,6 +20,14 @@ export function Header() {
             <p className="text-sm text-muted-foreground -mt-1">Un paso a la vez.</p>
           </div>
         </Link>
+        {path && (
+             <Link href={`/path?mode=${path}`}>
+                <Button variant="outline">
+                    <Compass className="mr-2 h-4 w-4" />
+                    Explorar otros caminos
+                </Button>
+            </Link>
+        )}
       </div>
     </header>
   );
