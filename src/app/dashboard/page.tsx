@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { MissionList } from '@/components/MissionList';
-import { Journal } from '@/components/Journal';
 import { NamingAssistant } from '@/components/NamingAssistant';
 import { Header } from '@/components/Header';
 import { useToast } from '@/hooks/use-toast';
@@ -83,7 +82,6 @@ export default function DashboardPage() {
             />
           </div>
           <div className="space-y-8">
-            <Journal />
             <NamingAssistant />
           </div>
         </div>
