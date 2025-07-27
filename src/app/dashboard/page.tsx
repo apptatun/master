@@ -10,12 +10,16 @@ import { missions } from '@/lib/missions';
 import { Check } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { UpcomingMissions } from '@/components/UpcomingMissions';
+import Confetti from 'react-confetti';
 
 export default function DashboardPage() {
   const [completedMissions, setCompletedMissions] = useState<string[]>([]);
   const [userMissions, setUserMissions] = useState<Mission[]>([]);
   const [isMounted, setIsMounted] = useState(false);
   const [activeMissionIndex, setActiveMissionIndex] = useState(0);
+  const [showConfetti, setShowConfetti] = useState(false);
+  const [windowSize, setWindowSize] = useState<{ width: number, height: number }>({ width: 0, height: 0 });
+
   const { toast } = useToast();
   const router = useRouter();
 
@@ -41,6 +45,7 @@ export default function DashboardPage() {
     );
     setUserMissions(filteredMissions);
 
+    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
     setIsMounted(true);
   }, [router]);
 
@@ -56,6 +61,9 @@ export default function DashboardPage() {
 
     const newCompleted = [...completedMissions, missionId];
     setCompletedMissions(newCompleted);
+
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), 5000); // Confetti for 5 seconds
 
     toast({
       title: (
@@ -93,6 +101,7 @@ export default function DashboardPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} />}
       <Header />
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
         <div className="space-y-8">

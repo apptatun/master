@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -82,7 +83,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   Si te sentís con energía, podés ir por el siguiente. Si no, ¡lo de hoy ya es una victoria enorme!
                 </p>
                 <Button onClick={onNextMission} size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
-                  Siguiente Desafío
+                  ¡Vamos por el siguiente!
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </div>
