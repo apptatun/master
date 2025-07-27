@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Button } from './ui/button';
 import type { Path } from '@/lib/types';
-import { Compass } from 'lucide-react';
+import { Compass, Trophy } from 'lucide-react';
 
 interface DashboardHeaderProps {
     path: Path | null;
@@ -17,17 +17,22 @@ export function DashboardHeader({ path }: DashboardHeaderProps) {
             <h1 className="font-headline text-4xl font-bold text-foreground sm:text-5xl">
               CAMINO
             </h1>
-            <p className="text-sm text-muted-foreground -mt-1">Un paso a la vez.</p>
           </div>
         </Link>
-        {path && (
-             <Link href={`/path?mode=${path}`}>
-                <Button variant="outline">
-                    <Compass className="mr-2 h-4 w-4" />
-                    Explorar otros caminos
-                </Button>
-            </Link>
-        )}
+        <div className="flex items-center gap-4">
+            <Button variant="ghost">
+                <Trophy className="mr-2 h-4 w-4" />
+                Mis Logros
+            </Button>
+            {path && (
+                <Link href={`/path?mode=${path}`}>
+                    <Button variant="outline">
+                        <Compass className="mr-2 h-4 w-4" />
+                        Explorar otros caminos
+                    </Button>
+                </Link>
+            )}
+        </div>
       </div>
     </header>
   );

@@ -26,7 +26,11 @@ export default function DashboardPage() {
 
   useEffect(() => {
     setIsMounted(true);
-    setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    const handleResize = () => {
+      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
+    };
+    window.addEventListener('resize', handleResize);
+    handleResize();
 
     const savedCompleted = localStorage.getItem('completedMissions');
     if (savedCompleted) {
@@ -49,25 +53,24 @@ export default function DashboardPage() {
     let filteredMissions: Mission[] = [];
     
     if (missionCategory) {
-      // Priority to specific subcategory selected from /path
       filteredMissions = missions.filter(m => m.category === missionCategory);
       const pathForCategory = Object.keys(subCategoryMap).find(path => 
         subCategoryMap[path as Path].includes(missionCategory as any)
       ) as Path | undefined;
       setCurrentPath(pathForCategory || null);
     } else if (missionPath) {
-      // Fallback to the general path selected from /setup
       const categoriesForPath = subCategoryMap[missionPath];
       filteredMissions = missions.filter(m => categoriesForPath.includes(m.category as any));
       setCurrentPath(missionPath);
     }
     
     if (filteredMissions.length === 0) {
-      // Ultimate fallback to generic
       filteredMissions = missions.filter(m => m.category === 'generic');
     }
 
     setUserMissions(filteredMissions);
+    
+    return () => window.removeEventListener('resize', handleResize);
 
   }, [router]);
 
@@ -85,7 +88,7 @@ export default function DashboardPage() {
     setCompletedMissions(newCompleted);
 
     setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 5000); // Confetti for 5 seconds
+    setTimeout(() => setShowConfetti(false), 5000);
 
     toast({
       title: (
@@ -100,30 +103,29 @@ export default function DashboardPage() {
   
   const handleNextMission = () => {
     const upcomingMissions = userMissions.filter(mission => !completedMissions.includes(mission.id));
-    if(activeMissionIndex < upcomingMissions.length -1) {
+    if(activeMissionIndex < upcomingMissions.length - 1) {
        setActiveMissionIndex(activeMissionIndex + 1);
+    } else {
+        // If it's the last mission, we should reflect that all are completed
+        // This is handled by the `allMissionsCompleted` prop now
     }
   };
   
-  const handlePreviousMission = () => {
-    if(activeMissionIndex > 0) {
-      setActiveMissionIndex(activeMissionIndex - 1);
-    }
-  }
-
   if (!isMounted) {
-    return null; // or a loading spinner
+    return null;
   }
   
   const upcomingMissions = userMissions.filter(mission => !completedMissions.includes(mission.id));
-  const currentMission = upcomingMissions.length > activeMissionIndex ? [upcomingMissions[activeMissionIndex]] : [];
-  const isCurrentMissionCompleted = currentMission.length > 0 && completedMissions.includes(currentMission[0].id);
+  const activeMission = upcomingMissions.length > 0 ? upcomingMissions[activeMissionIndex] : null;
+  const currentMission = activeMission ? [activeMission] : [];
+  const isCurrentMissionCompleted = activeMission ? completedMissions.includes(activeMission.id) : false;
+  const allMissionsCompleted = upcomingMissions.length === 0 && userMissions.length > 0;
   
   return (
     <div className="flex min-h-screen flex-col bg-background">
       {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} />}
       <DashboardHeader path={currentPath}/>
-      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
+      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
         <div className="space-y-8">
             <MissionList
               missions={currentMission}
@@ -131,7 +133,7 @@ export default function DashboardPage() {
               onCompleteMission={handleCompleteMission}
               onNextMission={handleNextMission}
               isCurrentMissionCompleted={isCurrentMissionCompleted}
-              allMissionsCompleted={upcomingMissions.length === 0}
+              allMissionsCompleted={allMissionsCompleted}
             />
         </div>
       </main>

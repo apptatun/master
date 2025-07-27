@@ -5,10 +5,9 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { PartyPopper, ArrowRight, Check, Rocket, Compass, Bot, Trophy, Sparkles } from 'lucide-react';
+import { Rocket, Check, Bot, Sparkles, Trophy } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import Link from 'next/link';
 import { AiAssistantModal } from './AiAssistantModal';
 import { EmojiFeedback } from './EmojiFeedback';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -50,24 +49,17 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
     setShowRejectionMessage(true);
   }
   
-  const missionPath = typeof window !== 'undefined' ? localStorage.getItem('missionPath') : 'guarida';
   const currentMissionForReward = missions[0];
 
   const renderContent = () => {
     if (allMissionsCompleted) {
       return (
         <div className="text-center p-8">
-          <PartyPopper className="mx-auto h-16 w-16 text-accent mb-4" />
+          <Trophy className="mx-auto h-16 w-16 text-accent mb-4" />
           <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
           <p className="text-lg text-muted-foreground mt-2">
             Conquistaste todos los desafíos disponibles en este camino. ¡Tomate un momento para celebrar tu increíble progreso!
           </p>
-           <Link href={`/path?mode=${missionPath}`}>
-              <Button size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
-                <Compass className="mr-2 h-5 w-5" />
-                Explorar otros desafíos
-              </Button>
-            </Link>
         </div>
       );
     }
@@ -104,8 +96,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   Si te sentís con energía, podés ir por el siguiente. Si no, ¡lo de hoy ya es una victoria enorme!
                 </p>
                 <Button onClick={onNextMission} size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
-                  Siguiente Misión
-                  <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  Lo hice. ¿Qué sigue?
                 </Button>
               </div>
         )
@@ -114,17 +105,11 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
     if (missions.length === 0 && !allMissionsCompleted) {
         return (
         <div className="text-center p-8">
-          <PartyPopper className="mx-auto h-16 w-16 text-accent mb-4" />
+          <Trophy className="mx-auto h-16 w-16 text-accent mb-4" />
           <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
           <p className="text-lg text-muted-foreground mt-2">
             Conquistaste todos los desafíos de esta categoría. ¡Tomate un momento para celebrar tu progreso!
           </p>
-           <Link href={`/path?mode=${missionPath}`}>
-              <Button size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
-                 <Compass className="mr-2 h-5 w-5" />
-                Ver otros desafíos
-              </Button>
-            </Link>
         </div>
       );
     }
@@ -137,7 +122,6 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
             return (
               <Card key={mission.id} className={cn('transition-all border-2 border-transparent')}>
                 <CardHeader>
-                  <p className="text-xl text-muted-foreground">🎯 Te sugerimos empezar por acá.</p>
                   <CardTitle className="font-headline text-4xl sm:text-5xl font-bold text-foreground pt-2 pb-4">{mission.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4 px-6 pb-4">
@@ -153,13 +137,13 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   {mission.type === 'interactive' && <p className="text-lg text-muted-foreground">{mission.description}</p>}
                   
                   {mission.why && (
-                      <div className="pt-2">
-                          <p className="font-bold text-foreground">¿Por qué esto?</p>
-                          <p className="text-muted-foreground">{mission.why}</p>
+                      <div className="pt-4 mt-4 border-t">
+                          <p className="font-bold text-foreground text-lg">¿Por qué esto?</p>
+                          <p className="text-muted-foreground text-base">{mission.why}</p>
                       </div>
                   )}
                 </CardContent>
-                <CardFooter className="flex flex-col items-stretch gap-3 bg-background/50 py-4 px-6">
+                <CardFooter className="flex flex-col items-stretch gap-3 bg-foreground/5 py-4 px-6">
                     {isCompleted ? (
                       <div className="flex items-center justify-center space-x-2 text-lg font-bold text-green-600 p-4 rounded-md bg-green-500/10">
                         <Check className="h-6 w-6" />
@@ -172,7 +156,6 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                             <TooltipTrigger asChild>
                                <Button onClick={() => handleOpenModal(mission)} size="lg" className="text-base px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
                                   Ver cómo se hace
-                                  <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                               </Button>
                             </TooltipTrigger>
                             <TooltipContent>
@@ -204,8 +187,8 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
   };
 
   return (
-    <Card className="bg-card/50">
-      <CardContent className="p-4 sm:p-6">
+    <Card className="bg-card/50 border-0 shadow-none">
+      <CardContent className="p-0">
         {renderContent()}
       </CardContent>
       {selectedMission && (
@@ -218,7 +201,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
           }}
         />
       )}
-      {missions.length > 0 && !allMissionsCompleted && (
+      {missions.length > 0 && !isCurrentMissionCompleted && !allMissionsCompleted && (
          <AiAssistantModal
           missionTitle={missions[0]?.title}
           isOpen={isAssistantModalOpen}
@@ -228,4 +211,3 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
     </Card>
   );
 }
-
