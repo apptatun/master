@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, SkipForward, MessageCircleQuestion, ClipboardCheck, ArrowLeft, Trophy } from 'lucide-react';
+import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, SkipForward, MessageCircleQuestion, ClipboardCheck, ArrowLeft, Trophy, Compass } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -53,6 +53,8 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
     });
     setIsHelpModalOpen(false);
   }
+  
+  const missionPath = typeof window !== 'undefined' ? localStorage.getItem('missionPath') : 'guarida';
 
   const renderContent = () => {
     if (allMissionsCompleted) {
@@ -61,12 +63,12 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
           <PartyPopper className="mx-auto h-16 w-16 text-accent mb-4" />
           <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
           <p className="text-lg text-muted-foreground mt-2">
-            Conquistaste todos los desafíos disponibles. ¡Tomate un momento para celebrar tu increíble progreso!
+            Conquistaste todos los desafíos disponibles en este camino. ¡Tomate un momento para celebrar tu increíble progreso!
           </p>
-           <Link href="/setup">
+           <Link href={`/path?mode=${missionPath}`}>
               <Button size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
-                Elegir otro camino
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                <Compass className="mr-2 h-5 w-5" />
+                Explorar otros desafíos
               </Button>
             </Link>
         </div>
@@ -96,12 +98,12 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
           <PartyPopper className="mx-auto h-16 w-16 text-accent mb-4" />
           <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
           <p className="text-lg text-muted-foreground mt-2">
-            Conquistaste todos los desafíos disponibles. ¡Tomate un momento para celebrar tu increíble progreso!
+            Conquistaste todos los desafíos de esta categoría. ¡Tomate un momento para celebrar tu progreso!
           </p>
-           <Link href="/setup">
+           <Link href={`/path?mode=${missionPath}`}>
               <Button size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
-                Elegir otro camino
-                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                 <Compass className="mr-2 h-5 w-5" />
+                Ver otros desafíos
               </Button>
             </Link>
         </div>
