@@ -158,6 +158,14 @@ export const missions: Mission[] = [
     category: 'organizing',
   },
   {
+    id: 'm14',
+    title: 'Foco de Orden',
+    description: 'Elegí UNA sola cosa de tu cuarto y ordenala (la silla con ropa, el escritorio, una pila de libros). Solo una.',
+    points: 10,
+    type: 'checkbox',
+    category: 'minimal-organization',
+  },
+  {
     id: 'm5',
     title: 'Gánale al Snooze',
     description: 'Primer objetivo del día: levantate. ¿El segundo? Hidratarte. Un vaso de agua al despertar es una victoria fácil. ☀️',
@@ -223,6 +231,14 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'social',
   },
+  {
+    id: 'm15',
+    title: 'Reactivar Contacto',
+    description: 'Mandale un mensaje simple como "Hola, ¿cómo estás?" a una persona de confianza. Sin presión por responder.',
+    points: 10,
+    type: 'checkbox',
+    category: 'social',
+  },
    {
     id: 'm12',
     title: 'Guardián del Esmalte',
@@ -240,5 +256,3 @@ export const missions: Mission[] = [
     category: 'personal-care'
   }
 ];
-
-    
