@@ -10,8 +10,8 @@ export const missions: Mission[] = [
     category: 'cooking',
     steps: [
       {
-        title: 'Paso 1: Pedir ayuda es de cracks',
-        description: 'Esta misión involucra fuego. Si nunca lo hiciste o no te sentís 100% seguro, este es el momento de pedirle ayuda a un adulto en casa. No es una derrota, al contrario: demostrar que querés aprender es una victoria gigante.',
+        title: 'Paso 1: Pedir ayuda es de cracks. ¡Y es obligatorio si no estás seguro!',
+        description: 'Esta misión involucra fuego y gas. La seguridad no es negociable. Si es tu primera vez, no estás 100% seguro o te da un mínimo de ansiedad, es fundamental que pidas ayuda a un adulto. No es una opción, es el paso más inteligente y valiente que podés dar. Demostrar que te cuidás es una victoria enorme.',
       },
       {
         title: 'Paso 2: Ubicar la hornalla',
