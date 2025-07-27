@@ -143,35 +143,33 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                       </div>
                   )}
                 </CardContent>
-                <CardFooter className="flex flex-col items-stretch gap-3 bg-foreground/5 py-4 px-6">
-                    <div className="flex flex-col gap-3 pt-2">
-                        {mission.type === 'interactive' && (
-                          <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button onClick={() => handleOpenModal(mission)} size="lg" className="text-lg px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
-                                Ver cómo se hace
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>Vas a ver una mini instrucción simple. Tranquilo, es rápido.</p>
-                            </TooltipContent>
-                          </Tooltip>
-                        )}
-                        {mission.type === 'checkbox' && (
-                          <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="text-lg px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
-                            <Check className="mr-2 h-5 w-5" /> ¡Misión Conquistada!
+                <CardFooter className="flex flex-col items-stretch gap-4 bg-foreground/5 py-5 px-6">
+                    {mission.type === 'interactive' && (
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button onClick={() => handleOpenModal(mission)} size="lg" className="text-lg px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
+                            Ver cómo se hace
                           </Button>
-                        )}
-                        
-                        <div className="flex justify-between items-center gap-2 mt-2">
-                            <Button variant="ghost" onClick={() => setIsAssistantModalOpen(true)} className="text-muted-foreground">
-                                <Bot className="mr-2 h-4 w-4"/>
-                                Necesito una mano
-                            </Button>
-                            <Button variant="ghost" onClick={handleDeclineMission} className="text-muted-foreground">
-                                No hoy, gracias
-                            </Button>
-                        </div>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Vas a ver una mini instrucción simple. Tranquilo, es rápido.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    )}
+                    {mission.type === 'checkbox' && (
+                      <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="text-lg px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
+                        <Check className="mr-2 h-5 w-5" /> ¡Misión Conquistada!
+                      </Button>
+                    )}
+                    
+                    <div className="flex justify-between items-center gap-2 mt-2">
+                        <Button variant="ghost" onClick={() => setIsAssistantModalOpen(true)} className="text-muted-foreground">
+                            <Bot className="mr-2 h-4 w-4"/>
+                            Necesito una mano
+                        </Button>
+                        <Button variant="ghost" onClick={handleDeclineMission} className="text-muted-foreground">
+                            No hoy, gracias
+                        </Button>
                     </div>
                 </CardFooter>
               </Card>
