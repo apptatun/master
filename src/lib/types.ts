@@ -3,12 +3,30 @@ export interface Step {
   description: string;
 }
 
+export type Path = 'guarida' | 'explorador';
+
+export type SubCategory = 
+  // Guarida
+  | 'supervivencia-culinaria'
+  | 'rescate-de-territorio'
+  | 'dominio-digital'
+  | 'finanzas-ninja'
+  | 'laboratorio-mental'
+  // Explorador
+  | 'primeros-pasos'
+  | 'interacciones-humanas'
+  | 'misiones-oficiales'
+  | 'preparacion-laboral'
+  | 'aventuras-de-crecimiento';
+
+
 export interface Mission {
   id: string;
   title: string;
   description: string;
   type: 'checkbox' | 'interactive';
   category: 
+    // Legacy categories - to be phased out
     | 'cooking' 
     | 'organizing' 
     | 'social' 
@@ -21,9 +39,9 @@ export interface Mission {
     | 'advanced'
     | 'financial'
     | 'career'
-    | 'physical-wellbeing';
+    | 'physical-wellbeing'
+    // New structure
+    | SubCategory;
   steps?: Step[];
   reward?: string;
 }
-
-    

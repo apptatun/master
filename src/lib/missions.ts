@@ -2,12 +2,14 @@
 import { Mission } from './types';
 
 export const missions: Mission[] = [
+  // MODO GUARIDA
+  // Supervivencia Culinaria
   {
     id: 'm1',
     title: 'Misión: Activar la Hornalla (3 min)',
     description: 'Activa la zona de cocción para hervir agua. Meta oculta: Dominar una herramienta básica te da una sensación de control sobre tu entorno.',
     type: 'interactive',
-    category: 'cooking',
+    category: 'supervivencia-culinaria',
     reward: 'Alquimista Nivel 1',
     steps: [
       {
@@ -45,7 +47,7 @@ export const missions: Mission[] = [
     title: 'Arroz sin engrudo (20 min)',
     description: 'Prepara tu primer arroz. Meta oculta: Aprender a preparar un alimento básico te da independencia y te conecta con un ritual universal.',
     type: 'interactive',
-    category: 'cooking',
+    category: 'supervivencia-culinaria',
     reward: 'Maestro del Grano',
     steps: [
         {
@@ -74,12 +76,12 @@ export const missions: Mission[] = [
         }
     ]
   },
-   {
+  {
     id: 'm10',
     title: 'Mate para Principiantes (5 min)',
     description: 'Prepara tu primer mate. Meta oculta: Participar en un ritual cultural te conecta con otros y te ofrece un momento de pausa y reflexión.',
     type: 'interactive',
-    category: 'cooking',
+    category: 'supervivencia-culinaria',
     reward: 'Cebador de la Calma',
     steps: [
         {
@@ -109,11 +111,21 @@ export const missions: Mission[] = [
     ]
   },
   {
+    id: 'm29',
+    title: 'Huevo Frito para Dummies',
+    description: 'Cocina un huevo frito sin que se queme ni se rompa la yema. Meta oculta: Dominar una receta simple te da un rápido retorno de inversión en confianza culinaria.',
+    type: 'checkbox',
+    category: 'supervivencia-culinaria',
+    reward: 'Artista de la Sartén'
+  },
+  
+  // Rescate de Territorio
+  {
     id: 'm3',
     title: 'Ninja del Fregadero (5 min)',
     description: 'Elimina 5 platos, vasos o cubiertos sucios. Meta oculta: Conquistar un pequeño foco de caos reduce la carga visual y mental.',
     type: 'checkbox',
-    category: 'organizing',
+    category: 'rescate-de-territorio',
     reward: 'Exterminador de Caos',
   },
   {
@@ -121,7 +133,7 @@ export const missions: Mission[] = [
     title: 'Misión: Lavarropas (5 min)',
     description: 'Inicia un ciclo de lavado. Meta oculta: Automatizar una tarea de cuidado personal te libera energía mental para otras cosas.',
     type: 'interactive',
-    category: 'organizing',
+    category: 'rescate-de-territorio',
     reward: 'Domador de Textiles',
     steps: [
         {
@@ -155,7 +167,7 @@ export const missions: Mission[] = [
     title: 'Operación "Cama Cero" (2 min)',
     description: 'Estira las sábanas. Meta oculta: Es una "victoria de 2 minutos" que le ordena a tu cerebro que el día ya empezó.',
     type: 'checkbox',
-    category: 'organizing',
+    category: 'rescate-de-territorio',
     reward: 'Guardián del Orden',
   },
   {
@@ -163,113 +175,15 @@ export const missions: Mission[] = [
     title: 'Foco de Orden (7 min)',
     description: 'Elegí UNA sola cosa y ordenala (la silla con ropa, el escritorio). Meta oculta: Concentrarte en un solo punto de mejora evita que te sientas abrumado por el desorden general.',
     type: 'checkbox',
-    category: 'minimal-organization',
+    category: 'rescate-de-territorio',
     reward: 'Clarividente Espacial',
   },
-  {
-    id: 'm5',
-    title: 'Gánale al Snooze (1 min)',
-    description: 'Levantate e hidrátate. Meta oculta: Romper el ciclo de postergación con una acción física simple entrena tu "músculo" de la voluntad.',
-    type: 'checkbox',
-    category: 'personal-care',
-    reward: 'Conquistador del Alba',
-  },
-  {
-    id: 'm6',
-    title: 'Embajador de la Hidratación (1 min)',
-    description: 'Bebe un vaso de agua al despertar. Meta oculta: Es la forma más rápida de reactivar tu cuerpo y mente después de horas de ayuno.',
-    type: 'checkbox',
-    category: 'personal-care',
-    reward: 'Ingeniero de Bienestar',
-  },
-  {
-    id: 'm7',
-    title: 'Exploración Beta (5 min)',
-    description: 'Pisa la calle solo para observar. Meta oculta: Exponerte al entorno sin un objetivo reduce la ansiedad de "tener que hacer algo" afuera.',
-    type: 'checkbox',
-    category: 'going-out',
-    reward: 'Cartógrafo de lo Cotidiano',
-  },
-  {
-    id: 'm11',
-    title: 'EXPEDICIÓN KIOSCO',
-    description: 'Comprar 1 producto sin voz temblorosa. Meta oculta: Completar una transacción de bajo riesgo aumenta tu confianza para futuras interacciones.',
-    type: 'interactive',
-    category: 'going-out',
-    reward: 'Comerciante de Confianza',
-    steps: [
-        {
-            title: 'Paso 1: El Objetivo',
-            description: 'Define qué vas a comprar. Una sola cosa. ¿Pan? ¿Leche? ¿Algo para tomar? Tener un objetivo claro reduce la incertidumbre.'
-        },
-        {
-            title: 'Paso 2: La Preparación',
-            description: 'Agarra tu billetera/plata, llaves y celular. Revisa si tienes una bolsa reutilizable. Ponte auriculares si te ayuda a reducir el estrés del ambiente.'
-        },
-        {
-            title: 'Paso 3: La Entrada',
-            description: 'Camina hacia el lugar. Al entrar, respira hondo. Tu única misión es encontrar tu objetivo. Ignora el resto. No tienes que saludar a nadie si no quieres.'
-        },
-        {
-            title: 'Paso 4: La Búsqueda',
-            description: 'Dirígete a la sección donde está tu producto. Si no sabes dónde está, camina por los pasillos hasta encontrarlo. Concéntrate en las etiquetas.'
-        },
-        {
-            title: 'Paso 5: La Caja',
-            description: 'Una vez que tengas tu producto, ve a la caja. Coloca el item en el mostrador. El cajero te dirá el precio. Paga. No necesitas hablar más de lo necesario.'
-        },
-        {
-            title: 'Paso 6: ¡Escape Exitoso!',
-            description: '¡Lo lograste! Saliste de la tienda con tu objetivo cumplido. Te enfrentaste al mundo y ganaste. ¡Excelente trabajo!'
-        }
-    ]
-  },
-  {
-    id: 'm8',
-    title: 'PROTOCOLO SALUDO VOCAL',
-    description: 'Decir "buen día" o "gracias". Meta oculta: Esta micro-interacción activa las neuronas espejo y te recuerda que eres parte de una comunidad.',
-    type: 'checkbox',
-    category: 'social',
-    reward: 'Emisario Diplomático Iniciado',
-  },
-  {
-    id: 'm15',
-    title: 'Reactivar Contacto (2 min)',
-    description: 'Mándale un "hola, ¿cómo estás?" a alguien de confianza. Meta oculta: Iniciar el contacto te pone en una posición activa en tus relaciones, en lugar de pasiva.',
-    type: 'checkbox',
-    category: 'social',
-    reward: 'Emisario Silencioso',
-  },
    {
-    id: 'm12',
-    title: 'Guardián del Esmalte (3 min)',
-    description: 'Cepíllate los dientes. Meta oculta: Es un acto de autocuidado básico que envía una señal a tu cerebro de que mereces atención y limpieza.',
-    type: 'checkbox',
-    category: 'personal-care',
-    reward: 'Paladín de la Sonrisa',
-  },
-  {
-    id: 'm13',
-    title: 'Uniforme de Entrecasa (2 min)',
-    description: 'Ponte ropa limpia, aunque no salgas. Meta oculta: Cambiar el pijama por ropa te ayuda a diferenciar entre descanso y actividad, preparando tu mente para el día.',
-    type: 'checkbox',
-    category: 'personal-care',
-    reward: 'Comandante del Confort',
-  },
-  {
-    id: 'm16',
-    title: 'Operación Hibernación: Apagar pantallas 1h antes de dormir',
-    description: 'Desconéctate para conectar con tu descanso. Meta oculta: Regular tus ciclos de sueño es el hack de productividad más potente que existe.',
-    type: 'checkbox',
-    category: 'personal-care',
-    reward: 'Guardián del Ritmo Circadiano',
-  },
-  {
     id: 'm17',
     title: 'MISIÓN LÍNEA BLANCA',
     description: 'Descongelar el freezer sin causar una inundación. Meta oculta: Enfrentar una tarea doméstica grande te demuestra que podés manejar proyectos más complejos de lo que creés.',
     type: 'interactive',
-    category: 'organizing',
+    category: 'rescate-de-territorio',
     reward: 'Domador de Escarcha',
     steps: [
       {
@@ -303,15 +217,274 @@ export const missions: Mission[] = [
     title: 'PROTOCOLO CUBO BASURA',
     description: 'Saca los residuos sin posponer. Meta oculta: Completar una tarea rutinaria de inmediato rompe el ciclo de la procrastinación y libera espacio mental.',
     type: 'checkbox',
-    category: 'organizing',
+    category: 'rescate-de-territorio',
     reward: 'Operario de Saneamiento Élite',
+  },
+  
+  // Dominio Digital
+  {
+    id: 'm22',
+    title: 'MISIÓN EMAIL FANTASMA',
+    description: 'Enviar una consulta a un servicio técnico o administrativo. Meta oculta: Usar la comunicación escrita te permite pensar y editar, eliminando la presión de la respuesta inmediata.',
+    type: 'interactive',
+    category: 'dominio-digital',
+    reward: 'Diplomático Digital',
+    steps: [
+      {
+        title: 'Paso 1: Identifica el Asunto',
+        description: 'Sé claro y conciso. Por ejemplo: "Consulta sobre [tu producto/servicio]" o "Problema con [número de pedido]".'
+      },
+      {
+        title: 'Paso 2: La Plantilla Anti-Pánico',
+        description: 'Copia y pega esto: "Estimados, [Nombre de la empresa]. Les escribo para consultar sobre [tu problema o pregunta de forma simple]. Mi número de cliente/pedido es [si aplica]. Agradezco su ayuda. Saludos, [Tu Nombre]".'
+      },
+      {
+        title: 'Paso 3: Revisa y Envía',
+        description: 'Lee el email una vez más para asegurarte de que está claro. No tiene que ser perfecto. Dale al botón de Enviar. ¡Ya está fuera de tu cabeza!'
+      },
+      {
+        title: 'Paso 4: ¡Mensaje Enviado!',
+        description: '¡Misión cumplida! Delegaste el problema. Ahora la respuesta está en su cancha. Diste un paso importante para resolver algo que te trababa.'
+      }
+    ]
+  },
+  {
+    id: 'm33',
+    title: 'OPERACIÓN CV CERO',
+    description: 'Crear tu primer CV usando una plantilla simple. Meta oculta: Plasmar tus (pocas o muchas) experiencias en un documento te ayuda a ver tu propio valor y potencial.',
+    type: 'interactive',
+    category: 'dominio-digital',
+    reward: 'Arquitecto de tu Futuro',
+    steps: [
+      {
+        title: 'Paso 1: Buscá una plantilla',
+        description: 'No empieces de cero. Entrá a Google Docs, Canva o Word y buscá "plantilla de CV para principiantes". Elegí la más limpia y simple.'
+      },
+      {
+        title: 'Paso 2: Datos de Contacto',
+        description: 'Rellená lo fácil: Tu nombre completo, un email (que suene profesional), tu número de teléfono y tu ciudad. No es necesaria la dirección exacta.'
+      },
+      {
+        title: 'Paso 3: El Resumen (Opcional pero potente)',
+        description: 'Escribí 2 o 3 líneas sobre vos. Ejemplo: "Estudiante proactivo con ganas de aprender sobre [área de interés]. Busco una primera oportunidad para aplicar mis habilidades de [menciona algo en lo que seas bueno, aunque sea un juego]".'
+      },
+      {
+        title: 'Paso 4: Experiencia (¡Todo cuenta!)',
+        description: '¿No tenés trabajo formal? No importa. Poné cualquier cosa: "Ayudante en el negocio familiar", "Administrador de un server de Discord", "Vendedor de artículos por internet". Lo que sea.'
+      },
+      {
+        title: 'Paso 5: Educación y Habilidades',
+        description: 'Poné tu nivel de estudios (secundario completo, etc.) y en habilidades, poné cosas reales: "Manejo de Office/Google Docs", "Inglés: Nivel Lectura", "Buena comunicación en entornos digitales".'
+      },
+      {
+        title: 'Paso 6: ¡Tenés un CV!',
+        description: 'Guardalo como PDF. No tiene que ser perfecto, solo existir. ¡Felicitaciones, acabás de crear una herramienta clave para tu futuro!'
+      }
+    ]
+  },
+
+  // Finanzas Ninja
+  {
+    id: 'm23',
+    title: 'HACKEO FINANCIERO',
+    description: 'Revisar tu saldo bancario online. Meta oculta: Mirar tus finanzas de frente, aunque sea por 5 segundos, disminuye el poder que la incertidumbre tiene sobre vos.',
+    type: 'checkbox',
+    category: 'finanzas-ninja',
+    reward: 'Auditor de Recursos'
+  },
+  {
+    id: 'm30',
+    title: 'OPERACIÓN FACTURA DIGITAL',
+    description: 'Paga una factura o servicio online por primera vez. Meta oculta: Tomar control de una pequeña responsabilidad financiera reduce la ansiedad sobre "el dinero" y te empodera.',
+    type: 'interactive',
+    category: 'finanzas-ninja',
+    reward: 'Controlador de Cuentas',
+    steps: [
+      {
+        title: 'Paso 1: La Factura',
+        description: 'Encontrá una factura que necesites pagar. Puede ser de tu celular, un servicio, etc. Buscá el código de pago electrónico o el código de barras.'
+      },
+      {
+        title: 'Paso 2: La App de Pago',
+        description: 'Abrí la app de tu banco o una billetera virtual (como Mercado Pago). Buscá la sección de "Pagar Servicios".'
+      },
+      {
+        title: 'Paso 3: Escanear o Ingresar',
+        description: 'La app te dará la opción de escanear el código de barras con tu cámara o de ingresar el número manualmente. Elegí la que te sea más fácil.'
+      },
+      {
+        title: 'Paso 4: Confirmar y Pagar',
+        description: 'La app reconocerá la factura y te mostrará el monto. Verificá que sea correcto y presioná "Pagar".'
+      },
+      {
+        title: 'Paso 5: ¡Deuda Aniquilada!',
+        description: '¡Felicitaciones! Acabás de resolver un trámite de adulto desde tu celular. Guardá el comprobante digital y disfrutá de tu nueva autonomía.'
+      }
+    ]
+  },
+
+  // Laboratorio Mental
+  {
+    id: 'm5',
+    title: 'Gánale al Snooze (1 min)',
+    description: 'Levantate e hidrátate. Meta oculta: Romper el ciclo de postergación con una acción física simple entrena tu "músculo" de la voluntad.',
+    type: 'checkbox',
+    category: 'laboratorio-mental',
+    reward: 'Conquistador del Alba',
+  },
+  {
+    id: 'm6',
+    title: 'Embajador de la Hidratación (1 min)',
+    description: 'Bebe un vaso de agua al despertar. Meta oculta: Es la forma más rápida de reactivar tu cuerpo y mente después de horas de ayuno.',
+    type: 'checkbox',
+    category: 'laboratorio-mental',
+    reward: 'Ingeniero de Bienestar',
+  },
+  {
+    id: 'm12',
+    title: 'Guardián del Esmalte (3 min)',
+    description: 'Cepíllate los dientes. Meta oculta: Es un acto de autocuidado básico que envía una señal a tu cerebro de que mereces atención y limpieza.',
+    type: 'checkbox',
+    category: 'laboratorio-mental',
+    reward: 'Paladín de la Sonrisa',
+  },
+  {
+    id: 'm13',
+    title: 'Uniforme de Entrecasa (2 min)',
+    description: 'Ponte ropa limpia, aunque no salgas. Meta oculta: Cambiar el pijama por ropa te ayuda a diferenciar entre descanso y actividad, preparando tu mente para el día.',
+    type: 'checkbox',
+    category: 'laboratorio-mental',
+    reward: 'Comandante del Confort',
+  },
+  {
+    id: 'm16',
+    title: 'Operación Hibernación: Apagar pantallas 1h antes de dormir',
+    description: 'Desconéctate para conectar con tu descanso. Meta oculta: Regular tus ciclos de sueño es el hack de productividad más potente que existe.',
+    type: 'checkbox',
+    category: 'laboratorio-mental',
+    reward: 'Guardián del Ritmo Circadiano',
+  },
+  {
+    id: 'm24',
+    title: 'OPERACIÓN TORBELLINO',
+    description: 'Ducha express de 5 minutos usando un timer. Meta oculta: Completar una tarea básica con un límite de tiempo te energiza y te da una sensación de eficiencia.',
+    type: 'checkbox',
+    category: 'laboratorio-mental',
+    reward: 'Hidronauta Certificado'
+  },
+  {
+    id: 'm25',
+    title: 'PROTOCOLO MICRO-PIRÁMIDE',
+    description: 'Ingerir 1 fruta y 1 vaso de agua. Meta oculta: Es el combo de energía y cuidado más simple y efectivo que existe. Le estás dando a tu cuerpo combustible de calidad.',
+    type: 'checkbox',
+    category: 'laboratorio-mental',
+    reward: 'Ingeniero Celular'
+  },
+  {
+    id: 'm26',
+    title: 'MISIÓN GROUNDING TÁCTICO',
+    description: 'Nombrar 5 sonidos que oyes y 3 colores que ves. Meta oculta: Este ejercicio te saca de tu cabeza y te ancla en el presente, cortando de raíz el espiral de ansiedad.',
+    type: 'interactive',
+    category: 'laboratorio-mental',
+    reward: 'Ancla Sensorial',
+    steps: [
+      {
+        title: 'Paso 1: Hacé una pausa',
+        description: 'No importa dónde estés. Simplemente detente por un momento. No necesitas cerrar los ojos.'
+      },
+      {
+        title: 'Paso 2: Escuchá',
+        description: 'Concentrate en tu oído. Identificá cinco sonidos distintos. El teclado, un auto afuera, tu propia respiración, un pájaro, el zumbido de la heladera. Nombralos en tu mente.'
+      },
+      {
+        title: 'Paso 3: Mirá',
+        description: 'Ahora, usá tu vista. Encontrá tres colores diferentes a tu alrededor. El azul de la pantalla, el negro de tu silla, el blanco de la pared. Nombralos.'
+      },
+      {
+        title: 'Paso 4: Respirá',
+        description: 'Tomá una respiración profunda y sentí cómo tus pies tocan el suelo o tu cuerpo se apoya en la silla. Ya está.'
+      },
+      {
+        title: 'Paso 5: ¡Anclado!',
+        description: 'Acabás de usar una técnica poderosa para calmar tu sistema nervioso. Es una herramienta que ahora tenés para siempre. ¡Victoria!'
+      }
+    ]
+  },
+  {
+    id: 'm27',
+    title: 'OPERACIÓN MURO DE LAMENTOS',
+    description: 'Escribir una única preocupación en un papel y romperlo. Meta oculta: Externalizar un pensamiento le quita poder y el acto físico de destruirlo ofrece un cierre simbólico.',
+    type: 'checkbox',
+    category: 'laboratorio-mental',
+    reward: 'Liberador de Carga Mental'
+  },
+  {
+    id: 'm34',
+    title: 'DETECTOR DE ANSIEDAD',
+    description: 'Identificar UNA situación o pensamiento que te genera ansiedad y anotarlo. Meta oculta: Nombrar a tu "monstruo" le quita poder. Lo que se puede nombrar, se puede manejar.',
+    type: 'checkbox',
+    category: 'laboratorio-mental',
+    reward: 'Cartógrafo Emocional'
+  },
+  {
+    id: 'm35',
+    title: 'MISIÓN 30 MINUTOS',
+    description: 'Caminar durante 30 minutos escuchando un podcast o música. Meta oculta: El movimiento físico es el antidepresivo natural más efectivo y accesible que existe.',
+    type: 'checkbox',
+    category: 'laboratorio-mental',
+    reward: 'Generador de Endorfinas'
+  },
+  
+  // MODO EXPLORADOR
+  // Primeros Pasos
+  {
+    id: 'm7',
+    title: 'Exploración Beta (5 min)',
+    description: 'Pisa la calle solo para observar. Meta oculta: Exponerte al entorno sin un objetivo reduce la ansiedad de "tener que hacer algo" afuera.',
+    type: 'checkbox',
+    category: 'primeros-pasos',
+    reward: 'Cartógrafo de lo Cotidiano',
+  },
+  {
+    id: 'm11',
+    title: 'EXPEDICIÓN KIOSCO',
+    description: 'Comprar 1 producto sin voz temblorosa. Meta oculta: Completar una transacción de bajo riesgo aumenta tu confianza para futuras interacciones.',
+    type: 'interactive',
+    category: 'primeros-pasos',
+    reward: 'Comerciante de Confianza',
+    steps: [
+        {
+            title: 'Paso 1: El Objetivo',
+            description: 'Define qué vas a comprar. Una sola cosa. ¿Pan? ¿Leche? ¿Algo para tomar? Tener un objetivo claro reduce la incertidumbre.'
+        },
+        {
+            title: 'Paso 2: La Preparación',
+            description: 'Agarra tu billetera/plata, llaves y celular. Revisa si tienes una bolsa reutilizable. Ponte auriculares si te ayuda a reducir el estrés del ambiente.'
+        },
+        {
+            title: 'Paso 3: La Entrada',
+            description: 'Camina hacia el lugar. Al entrar, respira hondo. Tu única misión es encontrar tu objetivo. Ignora el resto. No tienes que saludar a nadie si no quieres.'
+        },
+        {
+            title: 'Paso 4: La Búsqueda',
+            description: 'Dirígete a la sección donde está tu producto. Si no sabes dónde está, camina por los pasillos hasta encontrarlo. Concéntrate en las etiquetas.'
+        },
+        {
+            title: 'Paso 5: La Caja',
+            description: 'Una vez que tengas tu producto, ve a la caja. Coloca el item en el mostrador. El cajero te dirá el precio. Paga. No necesitas hablar más de lo necesario.'
+        },
+        {
+            title: 'Paso 6: ¡Escape Exitoso!',
+            description: '¡Lo lograste! Saliste de la tienda con tu objetivo cumplido. Te enfrentaste al mundo y ganaste. ¡Excelente trabajo!'
+        }
+    ]
   },
   {
     id: 'm19',
     title: 'OPERACIÓN BUS-ALPHA',
     description: 'Sube al transporte público en una hora de poco tráfico. Meta oculta: Dominar una ruta de transporte público te da autonomía y expande tu mapa mental de la ciudad.',
     type: 'interactive',
-    category: 'going-out',
+    category: 'primeros-pasos',
     reward: 'Mapa de rutas seguras',
     steps: [
       {
@@ -349,7 +522,7 @@ export const missions: Mission[] = [
     title: 'MISIÓN COORDENADAS MÉDICAS',
     description: 'Llegar a un consultorio usando GPS. Meta oculta: Aprender a confiar en una herramienta te quita la presión de tener que "saber" todo y reduce la ansiedad de perderte.',
     type: 'interactive',
-    category: 'going-out',
+    category: 'primeros-pasos',
     reward: 'Explorador Urbano Avanzado',
     steps: [
       {
@@ -374,12 +547,30 @@ export const missions: Mission[] = [
       }
     ]
   },
+
+  // Interacciones Humanas
+  {
+    id: 'm8',
+    title: 'PROTOCOLO SALUDO VOCAL',
+    description: 'Decir "buen día" o "gracias". Meta oculta: Esta micro-interacción activa las neuronas espejo y te recuerda que eres parte de una comunidad.',
+    type: 'checkbox',
+    category: 'interacciones-humanas',
+    reward: 'Emisario Diplomático Iniciado',
+  },
+  {
+    id: 'm15',
+    title: 'Reactivar Contacto (2 min)',
+    description: 'Mándale un "hola, ¿cómo estás?" a alguien de confianza. Meta oculta: Iniciar el contacto te pone en una posición activa en tus relaciones, en lugar de pasiva.',
+    type: 'checkbox',
+    category: 'interacciones-humanas',
+    reward: 'Emisario Silencioso',
+  },
   {
     id: 'm21',
     title: 'OPERACIÓN LLAMADA FRÍA',
     description: 'Pedir un turno médico por teléfono. Meta oculta: Superar la barrera de una llamada te entrena para interacciones más complejas y te da control sobre tu salud.',
     type: 'interactive',
-    category: 'social',
+    category: 'interacciones-humanas',
     reward: 'Maestro de la Comunicación Directa',
     steps: [
       {
@@ -405,205 +596,39 @@ export const missions: Mission[] = [
     ]
   },
   {
-    id: 'm22',
-    title: 'MISIÓN EMAIL FANTASMA',
-    description: 'Enviar una consulta a un servicio técnico o administrativo. Meta oculta: Usar la comunicación escrita te permite pensar y editar, eliminando la presión de la respuesta inmediata.',
-    type: 'interactive',
-    category: 'digital',
-    reward: 'Diplomático Digital',
-    steps: [
-      {
-        title: 'Paso 1: Identifica el Asunto',
-        description: 'Sé claro y conciso. Por ejemplo: "Consulta sobre [tu producto/servicio]" o "Problema con [número de pedido]".'
-      },
-      {
-        title: 'Paso 2: La Plantilla Anti-Pánico',
-        description: 'Copia y pega esto: "Estimados, [Nombre de la empresa]. Les escribo para consultar sobre [tu problema o pregunta de forma simple]. Mi número de cliente/pedido es [si aplica]. Agradezco su ayuda. Saludos, [Tu Nombre]".'
-      },
-      {
-        title: 'Paso 3: Revisa y Envía',
-        description: 'Lee el email una vez más para asegurarte de que está claro. No tiene que ser perfecto. Dale al botón de Enviar. ¡Ya está fuera de tu cabeza!'
-      },
-      {
-        title: 'Paso 4: ¡Mensaje Enviado!',
-        description: '¡Misión cumplida! Delegaste el problema. Ahora la respuesta está en su cancha. Diste un paso importante para resolver algo que te trababa.'
-      }
-    ]
-  },
-  {
-    id: 'm23',
-    title: 'HACKEO FINANCIERO',
-    description: 'Revisar tu saldo bancario online. Meta oculta: Mirar tus finanzas de frente, aunque sea por 5 segundos, disminuye el poder que la incertidumbre tiene sobre vos.',
+    id: 'm31',
+    title: 'DIPLOMACIA DEL "NO"',
+    description: 'Decir "no" a un pequeño pedido o invitación sin sentirte culpable. Meta oculta: Aprender a poner límites es la habilidad de autocuidado más importante. Protege tu tiempo y energía.',
     type: 'checkbox',
-    category: 'digital',
-    reward: 'Auditor de Recursos'
+    category: 'interacciones-humanas',
+    reward: 'Guardián de tus Límites'
   },
-  {
-    id: 'm24',
-    title: 'OPERACIÓN TORBELLINO',
-    description: 'Ducha express de 5 minutos usando un timer. Meta oculta: Completar una tarea básica con un límite de tiempo te energiza y te da una sensación de eficiencia.',
-    type: 'checkbox',
-    category: 'personal-care',
-    reward: 'Hidronauta Certificado'
-  },
-  {
-    id: 'm25',
-    title: 'PROTOCOLO MICRO-PIRÁMIDE',
-    description: 'Ingerir 1 fruta y 1 vaso de agua. Meta oculta: Es el combo de energía y cuidado más simple y efectivo que existe. Le estás dando a tu cuerpo combustible de calidad.',
-    type: 'checkbox',
-    category: 'personal-care',
-    reward: 'Ingeniero Celular'
-  },
-  {
-    id: 'm26',
-    title: 'MISIÓN GROUNDING TÁCTICO',
-    description: 'Nombrar 5 sonidos que oyes y 3 colores que ves. Meta oculta: Este ejercicio te saca de tu cabeza y te ancla en el presente, cortando de raíz el espiral de ansiedad.',
-    type: 'interactive',
-    category: 'emotional-management',
-    reward: 'Ancla Sensorial',
-    steps: [
-      {
-        title: 'Paso 1: Hacé una pausa',
-        description: 'No importa dónde estés. Simplemente detente por un momento. No necesitas cerrar los ojos.'
-      },
-      {
-        title: 'Paso 2: Escuchá',
-        description: 'Concentrate en tu oído. Identificá cinco sonidos distintos. El teclado, un auto afuera, tu propia respiración, un pájaro, el zumbido de la heladera. Nombralos en tu mente.'
-      },
-      {
-        title: 'Paso 3: Mirá',
-        description: 'Ahora, usá tu vista. Encontrá tres colores diferentes a tu alrededor. El azul de la pantalla, el negro de tu silla, el blanco de la pared. Nombralos.'
-      },
-      {
-        title: 'Paso 4: Respirá',
-        description: 'Tomá una respiración profunda y sentí cómo tus pies tocan el suelo o tu cuerpo se apoya en la silla. Ya está.'
-      },
-      {
-        title: 'Paso 5: ¡Anclado!',
-        description: 'Acabás de usar una técnica poderosa para calmar tu sistema nervioso. Es una herramienta que ahora tenés para siempre. ¡Victoria!'
-      }
-    ]
-  },
-  {
-    id: 'm27',
-    title: 'OPERACIÓN MURO DE LAMENTOS',
-    description: 'Escribir una única preocupación en un papel y romperlo. Meta oculta: Externalizar un pensamiento le quita poder y el acto físico de destruirlo ofrece un cierre simbólico.',
-    type: 'checkbox',
-    category: 'emotional-management',
-    reward: 'Liberador de Carga Mental'
-  },
+
+  // Aventuras de Crecimiento
   {
     id: 'm28',
     title: 'OPERACIÓN PHOENIX',
     description: 'Reintentar una misión que salteaste o sentiste que te costó. Meta oculta: La resiliencia no es no fallar, es volver a intentarlo. Esto fortalece tu auto-confianza más que 10 éxitos seguidos.',
     type: 'checkbox',
-    category: 'advanced',
+    category: 'aventuras-de-crecimiento',
     reward: 'Resiliencia Nivel 2'
-  },
-  {
-    id: 'm29',
-    title: 'Huevo Frito para Dummies',
-    description: 'Cocina un huevo frito sin que se queme ni se rompa la yema. Meta oculta: Dominar una receta simple te da un rápido retorno de inversión en confianza culinaria.',
-    type: 'checkbox',
-    category: 'cooking',
-    reward: 'Artista de la Sartén'
-  },
-  {
-    id: 'm30',
-    title: 'OPERACIÓN FACTURA DIGITAL',
-    description: 'Paga una factura o servicio online por primera vez. Meta oculta: Tomar control de una pequeña responsabilidad financiera reduce la ansiedad sobre "el dinero" y te empodera.',
-    type: 'interactive',
-    category: 'financial',
-    reward: 'Controlador de Cuentas',
-    steps: [
-      {
-        title: 'Paso 1: La Factura',
-        description: 'Encontrá una factura que necesites pagar. Puede ser de tu celular, un servicio, etc. Buscá el código de pago electrónico o el código de barras.'
-      },
-      {
-        title: 'Paso 2: La App de Pago',
-        description: 'Abrí la app de tu banco o una billetera virtual (como Mercado Pago). Buscá la sección de "Pagar Servicios".'
-      },
-      {
-        title: 'Paso 3: Escanear o Ingresar',
-        description: 'La app te dará la opción de escanear el código de barras con tu cámara o de ingresar el número manualmente. Elegí la que te sea más fácil.'
-      },
-      {
-        title: 'Paso 4: Confirmar y Pagar',
-        description: 'La app reconocerá la factura y te mostrará el monto. Verificá que sea correcto y presioná "Pagar".'
-      },
-      {
-        title: 'Paso 5: ¡Deuda Aniquilada!',
-        description: '¡Felicitaciones! Acabás de resolver un trámite de adulto desde tu celular. Guardá el comprobante digital y disfrutá de tu nueva autonomía.'
-      }
-    ]
-  },
-  {
-    id: 'm31',
-    title: 'DIPLOMACIA DEL "NO"',
-    description: 'Decir "no" a un pequeño pedido o invitación sin sentirte culpable. Meta oculta: Aprender a poner límites es la habilidad de autocuidado más importante. Protege tu tiempo y energía.',
-    type: 'checkbox',
-    category: 'social',
-    reward: 'Guardián de tus Límites'
   },
   {
     id: 'm32',
     title: 'AVENTURA CINÉFILA SOLITARIA',
     description: 'Ir al cine a ver una película solo. Meta oculta: Disfrutar de tu propia compañía en un espacio público es un superpoder que aniquila la dependencia y el "qué dirán".',
     type: 'checkbox',
-    category: 'advanced',
+    category: 'aventuras-de-crecimiento',
     reward: 'Explorador Cultural Independiente'
   },
+  
+  // Generic - Fallback
   {
-    id: 'm33',
-    title: 'OPERACIÓN CV CERO',
-    description: 'Crear tu primer CV usando una plantilla simple. Meta oculta: Plasmar tus (pocas o muchas) experiencias en un documento te ayuda a ver tu propio valor y potencial.',
-    type: 'interactive',
-    category: 'career',
-    reward: 'Arquitecto de tu Futuro',
-    steps: [
-      {
-        title: 'Paso 1: Buscá una plantilla',
-        description: 'No empieces de cero. Entrá a Google Docs, Canva o Word y buscá "plantilla de CV para principiantes". Elegí la más limpia y simple.'
-      },
-      {
-        title: 'Paso 2: Datos de Contacto',
-        description: 'Rellená lo fácil: Tu nombre completo, un email (que suene profesional), tu número de teléfono y tu ciudad. No es necesaria la dirección exacta.'
-      },
-      {
-        title: 'Paso 3: El Resumen (Opcional pero potente)',
-        description: 'Escribí 2 o 3 líneas sobre vos. Ejemplo: "Estudiante proactivo con ganas de aprender sobre [área de interés]. Busco una primera oportunidad para aplicar mis habilidades de [menciona algo en lo que seas bueno, aunque sea un juego]".'
-      },
-      {
-        title: 'Paso 4: Experiencia (¡Todo cuenta!)',
-        description: '¿No tenés trabajo formal? No importa. Poné cualquier cosa: "Ayudante en el negocio familiar", "Administrador de un server de Discord", "Vendedor de artículos por internet". Lo que sea.'
-      },
-      {
-        title: 'Paso 5: Educación y Habilidades',
-        description: 'Poné tu nivel de estudios (secundario completo, etc.) y en habilidades, poné cosas reales: "Manejo de Office/Google Docs", "Inglés: Nivel Lectura", "Buena comunicación en entornos digitales".'
-      },
-      {
-        title: 'Paso 6: ¡Tenés un CV!',
-        description: 'Guardalo como PDF. No tiene que ser perfecto, solo existir. ¡Felicitaciones, acabás de crear una herramienta clave para tu futuro!'
-      }
-    ]
-  },
-  {
-    id: 'm34',
-    title: 'DETECTOR DE ANSIEDAD',
-    description: 'Identificar UNA situación o pensamiento que te genera ansiedad y anotarlo. Meta oculta: Nombrar a tu "monstruo" le quita poder. Lo que se puede nombrar, se puede manejar.',
+    id: 'g1',
+    title: 'Misión Sorpresa: Romper el Hielo',
+    description: 'Bebe un vaso de agua ahora mismo. Meta oculta: Es la forma más rápida de reactivar tu cuerpo y mente, una victoria instantánea para empezar.',
     type: 'checkbox',
-    category: 'emotional-management',
-    reward: 'Cartógrafo Emocional'
-  },
-  {
-    id: 'm35',
-    title: 'MISIÓN 30 MINUTOS',
-    description: 'Caminar durante 30 minutos escuchando un podcast o música. Meta oculta: El movimiento físico es el antidepresivo natural más efectivo y accesible que existe.',
-    type: 'checkbox',
-    category: 'physical-wellbeing',
-    reward: 'Generador de Endorfinas'
+    category: 'generic',
+    reward: 'Iniciador de Victorias'
   }
 ];
-
-    

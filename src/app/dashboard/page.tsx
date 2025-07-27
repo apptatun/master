@@ -40,9 +40,14 @@ export default function DashboardPage() {
       setActiveMissionIndex(parseInt(savedIndex, 10));
     }
     
-    const filteredMissions = missions.filter(
-      (mission) => mission.category === category || mission.category === 'generic'
+    let filteredMissions = missions.filter(
+      (mission) => mission.category === category
     );
+
+    if (filteredMissions.length === 0) {
+      filteredMissions = missions.filter((mission) => mission.category === 'generic');
+    }
+
     setUserMissions(filteredMissions);
 
     setWindowSize({ width: window.innerWidth, height: window.innerHeight });
@@ -69,10 +74,10 @@ export default function DashboardPage() {
       title: (
         <div className="flex items-center">
           <Check className="mr-2 h-5 w-5 text-green-500" />
-          <span className="font-bold text-lg">¡Victoria Desbloqueada!</span>
+          <span className="font-bold text-lg">¡Desafío Superado!</span>
         </div>
       ),
-      description: <div className="text-base">¡Seguí así! Cada paso es un triunfo.</div>
+      description: <div className="text-base">¡Seguí así! Un paso a la vez.</div>
     });
   };
   
