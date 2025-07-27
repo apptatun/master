@@ -16,14 +16,14 @@ const paths: {
 }[] = [
     {
         icon: <Home className="w-12 h-12 mb-4 text-accent" />,
-        title: "Modo Guarida",
-        description: "Primero dominá tu territorio. Acciones dentro de casa, tu zona segura.",
+        title: "Adentro",
+        description: "Empezá con algo tranquilo en tu espacio seguro.",
         path: 'guarida'
     },
     {
         icon: <Globe className="w-12 h-12 mb-4 text-accent" />,
-        title: "Modo Explorador",
-        description: "Conquistá el mundo exterior. Misiones fuera de casa, para expandir tu zona.",
+        title: "Afuera",
+        description: "Salí a explorar un poco, sin presiones.",
         path: 'explorador'
     }
 ]
@@ -50,10 +50,10 @@ export default function SetupPage() {
         </div>
         <div className="text-center">
             <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
-              ¿Por dónde empezamos tu entrenamiento?
+              ¿Querés hacer algo adentro o afuera hoy?
             </h1>
             <p className="mt-4 text-xl text-muted-foreground md:text-2xl">
-              Elegí tu campo de batalla. Podés cambiar cuando quieras.
+              Elegí una opción para ver tu primera misión. Sin presión.
             </p>
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 {paths.map((p, index) => (

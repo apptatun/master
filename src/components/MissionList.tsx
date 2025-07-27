@@ -85,7 +85,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   Si te sentís con energía, podés ir por el siguiente. Si no, ¡lo de hoy ya es una victoria enorme!
                 </p>
                 <Button onClick={onNextMission} size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
-                  ¡Vamos por el siguiente!
+                  Siguiente Misión
                   <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
               </div>
@@ -113,7 +113,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
     return (
       <>
         <p className="text-muted-foreground mb-6 text-lg">
-          Un paso a la vez. Concentrate en esto. Vos podés.
+          Te sugerimos empezar por acá. Un paso a la vez. Concentrate solo en esto. Vos podés.
         </p>
         <div className="space-y-6">
           {missions.map((mission) => {
@@ -142,7 +142,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                         {mission.type === 'interactive' && (
                            <Button onClick={() => handleOpenModal(mission)} size="lg" className="text-base px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90 sm:col-span-2">
-                              Ver cómo se hace
+                              Empezar Guía Paso a Paso
                               <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </Button>
                         )}
@@ -156,7 +156,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                             Pedir Ayuda
                         </Button>
                         <Button variant="outline" onClick={onNextMission}>
-                            Saltar por ahora
+                            Ver otra misión
                             <SkipForward className="ml-2 h-4 w-4"/>
                         </Button>
                       </div>
@@ -175,7 +175,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
       <CardHeader>
         <CardTitle className="flex items-center font-headline text-4xl">
           <Gamepad2 className="mr-3 h-8 w-8 text-accent" />
-          Tu Aventura de Hoy
+          Tu Próximo Paso
         </CardTitle>
       </CardHeader>
       <CardContent>
