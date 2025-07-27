@@ -305,6 +305,44 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'organizing',
     reward: 'Operario de Saneamiento Élite',
+  },
+  {
+    id: 'm19',
+    title: 'OPERACIÓN BUS-ALPHA',
+    description: 'Sube al transporte público en una hora de poco tráfico. Meta oculta: Dominar una ruta de transporte público te da autonomía y expande tu mapa mental de la ciudad.',
+    type: 'interactive',
+    category: 'going-out',
+    reward: 'Mapa de rutas seguras',
+    steps: [
+      {
+        title: 'Paso 1: Planificar la Ruta',
+        description: 'Usa una app de mapas para ver qué bus te sirve y dónde está la parada. Elige una hora de poco tráfico (media mañana o media tarde).'
+      },
+      {
+        title: 'Paso 2: Preparar lo Necesario',
+        description: 'Ten a mano tu tarjeta de transporte con saldo. Si no tienes, es una buena oportunidad para gestionar la tuya.'
+      },
+      {
+        title: 'Paso 3: La Parada',
+        description: 'Camina hasta la parada sin apuro. Puedes escuchar música para relajarte.'
+      },
+      {
+        title: 'Paso 4: La Señal Universal',
+        description: 'Cuando veas que tu bus se acerca, extiende el brazo. Así es como el conductor sabe que debe parar.'
+      },
+      {
+        title: 'Paso 5: Subir y Pagar',
+        description: 'Sube con calma. Apoya tu tarjeta en la máquina lectora y busca un asiento. No es necesario hablar.'
+      },
+      {
+        title: 'Paso 6: El Viaje',
+        description: 'Mira por la ventana y disfruta del paisaje urbano. Tu misión es solo viajar unas pocas paradas.'
+      },
+      {
+        title: 'Paso 7: Bajar con Éxito',
+        description: 'Toca el timbre un poco antes de tu parada de destino. Baja con calma. ¡Misión cumplida! Has conquistado el transporte público.'
+      }
+    ]
   }
 ];
 
