@@ -2,10 +2,9 @@
 
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Sparkles, Gamepad2, PartyPopper, ArrowRight, Check, Rocket, SkipForward, MessageCircleQuestion, ClipboardCheck } from 'lucide-react';
+import { Sparkles, Gamepad2, PartyPopper, ArrowRight, Check, Rocket, SkipForward, MessageCircleQuestion, ClipboardCheck, ArrowLeft } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { Badge } from './ui/badge';
@@ -19,11 +18,13 @@ interface MissionListProps {
   completedMissions: string[];
   onCompleteMission: (missionId: string) => void;
   onNextMission: () => void;
+  onPreviousMission: () => void;
   isCurrentMissionCompleted: boolean;
   allMissionsCompleted: boolean;
+  canGoBack: boolean;
 }
 
-export function MissionList({ missions, completedMissions, onCompleteMission, onNextMission, isCurrentMissionCompleted, allMissionsCompleted }: MissionListProps) {
+export function MissionList({ missions, completedMissions, onCompleteMission, onNextMission, onPreviousMission, isCurrentMissionCompleted, allMissionsCompleted, canGoBack }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [isHelpModalOpen, setIsHelpModalOpen] = useState(false);
   const { toast } = useToast();
@@ -146,7 +147,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                       </div>
                     )}
                     {!isCompleted && (
-                        <div className="grid grid-cols-2 gap-3 pt-2">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
                              <Button variant="outline" onClick={() => setIsHelpModalOpen(true)}>
                                 <MessageCircleQuestion className="mr-2 h-4 w-4"/>
                                 Pedir Ayuda
@@ -157,6 +158,12 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                             </Button>
                         </div>
                     )}
+                     {canGoBack && !isCompleted && (
+                         <Button variant="ghost" onClick={onPreviousMission} className="mt-2">
+                            <ArrowLeft className="mr-2 h-4 w-4"/>
+                            Anterior
+                        </Button>
+                     )}
                 </CardFooter>
               </Card>
             );

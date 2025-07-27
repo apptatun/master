@@ -73,6 +73,12 @@ export default function DashboardPage() {
        setActiveMissionIndex(activeMissionIndex + 1);
     }
   };
+  
+  const handlePreviousMission = () => {
+    if(activeMissionIndex > 0) {
+      setActiveMissionIndex(activeMissionIndex - 1);
+    }
+  }
 
 
   if (!isMounted) {
@@ -94,8 +100,10 @@ export default function DashboardPage() {
               completedMissions={completedMissions}
               onCompleteMission={handleCompleteMission}
               onNextMission={handleNextMission}
+              onPreviousMission={handlePreviousMission}
               isCurrentMissionCompleted={isCurrentMissionCompleted}
               allMissionsCompleted={upcomingMissions.length === 0}
+              canGoBack={activeMissionIndex > 0}
             />
             {remainingMissions.length > 0 && (
               <UpcomingMissions missions={remainingMissions} />
