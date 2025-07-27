@@ -192,11 +192,11 @@ export const missions: Mission[] = [
   },
     {
     id: 'm11',
-    title: 'Misión Supermercado (10 min)',
-    description: 'Ve al súper a comprar UNA sola cosa. Meta oculta: Completar una transacción de bajo riesgo aumenta tu confianza para futuras interacciones.',
+    title: 'EXPEDICIÓN KIOSCO',
+    description: 'Comprar 1 producto sin voz temblorosa. Meta oculta: Completar una transacción de bajo riesgo aumenta tu confianza para futuras interacciones.',
     type: 'interactive',
     category: 'going-out',
-    reward: 'Explorador Urbano',
+    reward: 'Comerciante de Confianza',
     steps: [
         {
             title: 'Paso 1: El Objetivo',
@@ -307,3 +307,5 @@ export const missions: Mission[] = [
     reward: 'Operario de Saneamiento Élite',
   }
 ];
+
+    
