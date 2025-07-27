@@ -7,19 +7,28 @@ export default function Home() {
     <main className="flex min-h-screen w-full flex-col items-center justify-center bg-background p-4 text-center">
       <div className="max-w-3xl space-y-8">
         <div className="space-y-4">
-          <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
-            ¿Sentís que estás en pausa mientras el mundo gira?
+           <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
+            Puede que estés en esa etapa rara donde sos técnicamente un adulto… pero no te sentís como tal.
           </h1>
           <p className="text-xl text-muted-foreground md:text-2xl">
-            Llegaste acá porque estás cansado de sentir que todos avanzan y vos seguís en el mismo lugar. No vinimos a darte lecciones de Instagram. Vinimos porque querés cambiar, pero no sabés por dónde empezar sin que todo sea abrumador.
+           Quizás vivís con tus viejos, te cuesta arrancar, dormís hasta tarde, jugás hasta la madrugada, te tiemblan las manos a veces y no sabés bien qué hacer con tu vida.
+          </p>
+          <p className="text-xl font-bold text-foreground md:text-2xl">
+            No sos un vago. No sos un inútil. Solo estás trabado. Y eso le pasa a muchos más de los que pensás.
           </p>
         </div>
         <div className="space-y-4">
           <p className="text-xl text-muted-foreground md:text-2xl">
-            ¿La buena noticia? No necesitás una transformación épica. Necesitás romper el hielo. Necesitás una primera victoria, por pequeña que sea, que te recuerde que <span className="font-bold text-foreground">SÍ PODÉS</span>.
+            Acá no venimos a darte lecciones ni a decirte que "madures", ni a llenarte de boludeces motivacionales de Instagram. Vinimos porque sabemos que querés cambiar, pero honestamente no sabés ni por dónde empezar sin que todo se sienta abrumador.
+          </p>
+           <p className="text-xl text-muted-foreground md:text-2xl">
+            Es jodido cuando tus viejos te preguntan '¿y qué vas a hacer?' y vos mismo no tenés ni idea. Es jodido levantarse a la tarde y ya sentir que perdiste el día. Es jodido que te tiemblen las manos cuando tenés que hablar con alguien que no conocés. Pero ¿sabés qué? No sos el único. Solo que nadie habla de esto porque da vergüenza admitirlo.
           </p>
           <p className="text-xl text-muted-foreground md:text-2xl">
-            Te propongo algo: en vez de planear tu vida entera, arranquemos con algo tan simple que te va a dar risa. Algo que podés hacer HOY.
+            ¿La buena noticia? No necesitás una transformación épica de la noche a la mañana. Necesitás romper el hielo. Necesitás una primera victoria pequeña que te recuerde que las cosas pueden ser diferentes.
+          </p>
+           <p className="text-xl text-muted-foreground md:text-2xl">
+            No te vamos a pedir que cambies tu vida. Te vamos a pedir que hagas UNA cosa. Una sola. Y cuando la hagas, vas a entender por qué esto funciona. La primera misión no te la vamos a decir acá. Tenés que entrar para verla.
           </p>
         </div>
         <Link href="/setup">
