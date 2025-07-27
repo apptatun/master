@@ -10,7 +10,7 @@ import type { Path, SubCategory } from '@/lib/types';
 import { Suspense } from 'react';
 
 const pathOptions = {
-    guarida: [
+    'en-casa': [
         {
             icon: <CookingPot className="w-10 h-10 mb-4 text-accent" />,
             title: "Supervivencia Culinaria",
@@ -90,7 +90,7 @@ function PathPageContent() {
   }
   
   const options = pathOptions[mode];
-  const title = mode === 'guarida' ? 'Modo Guarida' : 'Modo Explorador';
+  const title = mode === 'en-casa' ? 'Modo en Casa' : 'Modo Explorador';
 
   const handleSelectCategory = (category: SubCategory) => {
     localStorage.setItem('missionPath', ''); // Clear path to prioritize category

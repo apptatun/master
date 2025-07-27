@@ -4,10 +4,10 @@ export interface Step {
   description?: string;
 }
 
-export type Path = 'guarida' | 'explorador';
+export type Path = 'en-casa' | 'explorador';
 
 export type SubCategory = 
-  // Guarida
+  // En Casa
   | 'supervivencia-culinaria'
   | 'rescate-de-territorio'
   | 'dominio-digital'
@@ -21,7 +21,7 @@ export type SubCategory =
   | 'aventuras-de-crecimiento';
 
 export const subCategoryMap: Record<Path, SubCategory[]> = {
-  guarida: [
+  'en-casa': [
     'rescate-de-territorio',
     'laboratorio-mental',
     'supervivencia-culinaria',

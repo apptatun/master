@@ -16,9 +16,9 @@ const paths: {
 }[] = [
     {
         icon: <Home className="w-12 h-12 mb-4 text-accent" />,
-        title: "Adentro",
+        title: "En casa",
         description: "Empezá con algo tranquilo en tu espacio seguro.",
-        path: 'guarida'
+        path: 'en-casa'
     },
     {
         icon: <Globe className="w-12 h-12 mb-4 text-accent" />,
