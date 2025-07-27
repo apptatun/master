@@ -32,7 +32,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
       <CardHeader>
         <CardTitle className="flex items-center font-headline text-4xl">
           <Gamepad2 className="mr-3 h-8 w-8 text-accent" />
-          Tu Próximo Desafío
+          El Paso de Hoy
         </CardTitle>
       </CardHeader>
       <CardContent>
