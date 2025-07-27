@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { MissionList } from '@/components/MissionList';
-import { NamingAssistant } from '@/components/NamingAssistant';
 import { Header } from '@/components/Header';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
@@ -67,18 +66,6 @@ export default function DashboardPage() {
       description: <div className="text-base">¡Seguí así! Un paso a la vez.</div>
     });
   };
-
-  const handleAddMission = (title: string, description: string) => {
-    const newMission: Mission = {
-        id: `custom-${new Date().getTime()}`,
-        title,
-        description,
-        points: 10,
-        type: 'checkbox',
-        category: 'generic'
-    };
-    setUserMissions(prevMissions => [newMission, ...prevMissions]);
-  };
   
   const handleNextMission = () => {
     const upcomingMissions = userMissions.filter(mission => !completedMissions.includes(mission.id));
@@ -101,8 +88,7 @@ export default function DashboardPage() {
     <div className="flex min-h-screen flex-col bg-background">
       <Header completedCount={completedMissions.length} />
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          <div className="lg:col-span-2 space-y-8">
+        <div className="space-y-8">
             <MissionList
               missions={currentMission}
               completedMissions={completedMissions}
@@ -114,10 +100,6 @@ export default function DashboardPage() {
             {remainingMissions.length > 0 && (
               <UpcomingMissions missions={remainingMissions} />
             )}
-          </div>
-          <div className="space-y-8">
-            <NamingAssistant onAddMission={handleAddMission} />
-          </div>
         </div>
       </main>
     </div>
