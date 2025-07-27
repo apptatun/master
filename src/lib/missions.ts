@@ -499,6 +499,110 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'advanced',
     reward: 'Resiliencia Nivel 2'
+  },
+  {
+    id: 'm29',
+    title: 'Huevo Frito para Dummies',
+    description: 'Cocina un huevo frito sin que se queme ni se rompa la yema. Meta oculta: Dominar una receta simple te da un rápido retorno de inversión en confianza culinaria.',
+    type: 'checkbox',
+    category: 'cooking',
+    reward: 'Artista de la Sartén'
+  },
+  {
+    id: 'm30',
+    title: 'OPERACIÓN FACTURA DIGITAL',
+    description: 'Paga una factura o servicio online por primera vez. Meta oculta: Tomar control de una pequeña responsabilidad financiera reduce la ansiedad sobre "el dinero" y te empodera.',
+    type: 'interactive',
+    category: 'financial',
+    reward: 'Controlador de Cuentas',
+    steps: [
+      {
+        title: 'Paso 1: La Factura',
+        description: 'Encontrá una factura que necesites pagar. Puede ser de tu celular, un servicio, etc. Buscá el código de pago electrónico o el código de barras.'
+      },
+      {
+        title: 'Paso 2: La App de Pago',
+        description: 'Abrí la app de tu banco o una billetera virtual (como Mercado Pago). Buscá la sección de "Pagar Servicios".'
+      },
+      {
+        title: 'Paso 3: Escanear o Ingresar',
+        description: 'La app te dará la opción de escanear el código de barras con tu cámara o de ingresar el número manualmente. Elegí la que te sea más fácil.'
+      },
+      {
+        title: 'Paso 4: Confirmar y Pagar',
+        description: 'La app reconocerá la factura y te mostrará el monto. Verificá que sea correcto y presioná "Pagar".'
+      },
+      {
+        title: 'Paso 5: ¡Deuda Aniquilada!',
+        description: '¡Felicitaciones! Acabás de resolver un trámite de adulto desde tu celular. Guardá el comprobante digital y disfrutá de tu nueva autonomía.'
+      }
+    ]
+  },
+  {
+    id: 'm31',
+    title: 'DIPLOMACIA DEL "NO"',
+    description: 'Decir "no" a un pequeño pedido o invitación sin sentirte culpable. Meta oculta: Aprender a poner límites es la habilidad de autocuidado más importante. Protege tu tiempo y energía.',
+    type: 'checkbox',
+    category: 'social',
+    reward: 'Guardián de tus Límites'
+  },
+  {
+    id: 'm32',
+    title: 'AVENTURA CINÉFILA SOLITARIA',
+    description: 'Ir al cine a ver una película solo. Meta oculta: Disfrutar de tu propia compañía en un espacio público es un superpoder que aniquila la dependencia y el "qué dirán".',
+    type: 'checkbox',
+    category: 'advanced',
+    reward: 'Explorador Cultural Independiente'
+  },
+  {
+    id: 'm33',
+    title: 'OPERACIÓN CV CERO',
+    description: 'Crear tu primer CV usando una plantilla simple. Meta oculta: Plasmar tus (pocas o muchas) experiencias en un documento te ayuda a ver tu propio valor y potencial.',
+    type: 'interactive',
+    category: 'career',
+    reward: 'Arquitecto de tu Futuro',
+    steps: [
+      {
+        title: 'Paso 1: Buscá una plantilla',
+        description: 'No empieces de cero. Entrá a Google Docs, Canva o Word y buscá "plantilla de CV para principiantes". Elegí la más limpia y simple.'
+      },
+      {
+        title: 'Paso 2: Datos de Contacto',
+        description: 'Rellená lo fácil: Tu nombre completo, un email (que suene profesional), tu número de teléfono y tu ciudad. No es necesaria la dirección exacta.'
+      },
+      {
+        title: 'Paso 3: El Resumen (Opcional pero potente)',
+        description: 'Escribí 2 o 3 líneas sobre vos. Ejemplo: "Estudiante proactivo con ganas de aprender sobre [área de interés]. Busco una primera oportunidad para aplicar mis habilidades de [menciona algo en lo que seas bueno, aunque sea un juego]".'
+      },
+      {
+        title: 'Paso 4: Experiencia (¡Todo cuenta!)',
+        description: '¿No tenés trabajo formal? No importa. Poné cualquier cosa: "Ayudante en el negocio familiar", "Administrador de un server de Discord", "Vendedor de artículos por internet". Lo que sea.'
+      },
+      {
+        title: 'Paso 5: Educación y Habilidades',
+        description: 'Poné tu nivel de estudios (secundario completo, etc.) y en habilidades, poné cosas reales: "Manejo de Office/Google Docs", "Inglés: Nivel Lectura", "Buena comunicación en entornos digitales".'
+      },
+      {
+        title: 'Paso 6: ¡Tenés un CV!',
+        description: 'Guardalo como PDF. No tiene que ser perfecto, solo existir. ¡Felicitaciones, acabás de crear una herramienta clave para tu futuro!'
+      }
+    ]
+  },
+  {
+    id: 'm34',
+    title: 'DETECTOR DE ANSIEDAD',
+    description: 'Identificar UNA situación o pensamiento que te genera ansiedad y anotarlo. Meta oculta: Nombrar a tu "monstruo" le quita poder. Lo que se puede nombrar, se puede manejar.',
+    type: 'checkbox',
+    category: 'emotional-management',
+    reward: 'Cartógrafo Emocional'
+  },
+  {
+    id: 'm35',
+    title: 'MISIÓN 30 MINUTOS',
+    description: 'Caminar durante 30 minutos escuchando un podcast o música. Meta oculta: El movimiento físico es el antidepresivo natural más efectivo y accesible que existe.',
+    type: 'checkbox',
+    category: 'physical-wellbeing',
+    reward: 'Generador de Endorfinas'
   }
 ];
 

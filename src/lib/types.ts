@@ -18,7 +18,10 @@ export interface Mission {
     | 'minimal-organization'
     | 'emotional-management'
     | 'digital'
-    | 'advanced';
+    | 'advanced'
+    | 'financial'
+    | 'career'
+    | 'physical-wellbeing';
   steps?: Step[];
   reward?: string;
 }
