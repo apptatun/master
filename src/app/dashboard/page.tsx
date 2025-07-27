@@ -61,6 +61,18 @@ export default function DashboardPage() {
     });
   };
 
+  const handleAddMission = (title: string, description: string) => {
+    const newMission: Mission = {
+        id: `custom-${new Date().getTime()}`,
+        title,
+        description,
+        points: 10,
+        type: 'checkbox',
+        category: 'generic'
+    };
+    setUserMissions(prevMissions => [newMission, ...prevMissions]);
+  };
+
   if (!isMounted) {
     return null; // or a loading spinner
   }
@@ -82,7 +94,7 @@ export default function DashboardPage() {
             />
           </div>
           <div className="space-y-8">
-            <NamingAssistant />
+            <NamingAssistant onAddMission={handleAddMission} />
           </div>
         </div>
       </main>

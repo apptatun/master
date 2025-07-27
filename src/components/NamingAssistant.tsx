@@ -8,12 +8,18 @@ import { getSuggestedNames } from '@/app/actions';
 import { Wand2, Loader2, Info, PlusCircle } from 'lucide-react';
 import { Alert, AlertDescription, AlertTitle } from './ui/alert';
 import { Badge } from './ui/badge';
+import { cn } from '@/lib/utils';
 
-export function NamingAssistant() {
+interface NamingAssistantProps {
+    onAddMission: (title: string, description: string) => void;
+}
+
+export function NamingAssistant({ onAddMission }: NamingAssistantProps) {
   const [hints, setHints] = useState('');
   const [names, setNames] = useState<string[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [selectedName, setSelectedName] = useState<string | null>(null);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -24,6 +30,7 @@ export function NamingAssistant() {
     setLoading(true);
     setError(null);
     setNames([]);
+    setSelectedName(null);
 
     const result = await getSuggestedNames({ hints });
     
@@ -40,6 +47,16 @@ export function NamingAssistant() {
     setLoading(false);
   };
   
+  const handleAddCustomMission = () => {
+    if (selectedName && hints) {
+        onAddMission(selectedName, hints);
+        // Reset form
+        setHints('');
+        setNames([]);
+        setSelectedName(null);
+    }
+  }
+
   const exampleHints = ['limpiar mi pieza', 'hacer una llamada', 'comprar pan'];
 
   return (
@@ -93,17 +110,25 @@ export function NamingAssistant() {
 
         {names.length > 0 && (
           <div className="mt-6">
-            <h4 className="font-bold mb-3 text-lg">Nombres sugeridos para tu desafío:</h4>
+            <h4 className="font-bold mb-3 text-lg">Seleccioná un nombre para tu desafío:</h4>
             <div className="flex flex-wrap gap-2">
               {names.map((name, index) => (
-                <Badge key={index} variant="secondary" className="text-lg px-4 py-1">
+                <Badge 
+                    key={index} 
+                    variant={selectedName === name ? 'default' : 'secondary'}
+                    className={cn(
+                        "text-lg px-4 py-1 cursor-pointer transition-all",
+                        selectedName === name ? 'bg-accent text-accent-foreground' : 'hover:bg-secondary/80'
+                    )}
+                    onClick={() => setSelectedName(name)}
+                >
                   {name}
                 </Badge>
               ))}
             </div>
-            <Button className="w-full mt-4 text-base" disabled>
+            <Button className="w-full mt-4 text-base" disabled={!selectedName} onClick={handleAddCustomMission}>
                 <PlusCircle className="mr-2 h-4 w-4" />
-                Añadir como nuevo desafío (Próximamente)
+                Añadir como nuevo desafío
             </Button>
           </div>
         )}
