@@ -76,7 +76,7 @@ export default function SetupPage() {
               ¿Por dónde empezamos?
             </h1>
             <p className="mt-4 text-xl text-muted-foreground md:text-2xl">
-              Elegí una categoría para personalizar tu arranque. Esto nos ayuda a sugerirte los primeros desafíos.
+              Sabemos que moverse cuesta. Pero vas a poder. Elegí lo que más te resuene hoy.
             </p>
             <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {options.map(option => (
