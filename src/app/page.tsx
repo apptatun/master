@@ -32,9 +32,8 @@ export default function Home() {
           </p>
         </div>
         <Link href="/setup">
-          <Button size="lg" className="group bg-accent text-accent-foreground hover:bg-accent/90 text-lg">
-            OK, me intriga. ¿Cuál es el primer desafío?
-            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+          <Button size="lg" className="group bg-accent text-accent-foreground hover:bg-accent/90 text-lg rounded-full font-sans font-bold h-14 px-10">
+            OK, me intriga. ¿Cuál es la primera misión?
           </Button>
         </Link>
       </div>
