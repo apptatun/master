@@ -125,8 +125,11 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   <CardTitle className="font-headline text-4xl sm:text-5xl font-bold text-foreground pt-2 pb-4">{mission.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4 px-6 pb-4">
+                  
+                  <p className="text-lg text-muted-foreground">{mission.description}</p>
+                  
                   {mission.type === 'checkbox' && mission.steps && (
-                    <div className="space-y-3 text-lg text-muted-foreground">
+                    <div className="space-y-3 text-lg text-muted-foreground pt-4">
                       <ol className="list-decimal list-inside space-y-2">
                         {mission.steps.map((step, index) => (
                           <li key={index}>{step.title}</li>
@@ -134,7 +137,6 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                       </ol>
                     </div>
                   )}
-                  {mission.type === 'interactive' && <p className="text-lg text-muted-foreground">{mission.description}</p>}
                   
                   {mission.why && (
                       <div className="pt-4 mt-4 border-t">

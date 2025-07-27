@@ -7,10 +7,11 @@ export const missions: Mission[] = [
   {
     id: 'm1',
     title: 'Misión: Activar la Hornalla (3 min)',
-    description: 'Activa la zona de cocción para hervir agua. Meta oculta: Dominar una herramienta básica te da una sensación de control sobre tu entorno.',
+    description: 'Activa la zona de cocción para hervir agua.',
     type: 'interactive',
     category: 'supervivencia-culinaria',
     reward: 'Alquimista Nivel 1',
+    why: 'Dominar una herramienta básica te da una sensación de control sobre tu entorno.',
     steps: [
       {
         title: 'Paso 1: Pedir ayuda es de cracks. ¡Y es obligatorio si no estás seguro!',
@@ -45,10 +46,11 @@ export const missions: Mission[] = [
   {
     id: 'm2',
     title: 'Arroz sin engrudo (20 min)',
-    description: 'Prepara tu primer arroz. Meta oculta: Aprender a preparar un alimento básico te da independencia y te conecta con un ritual universal.',
+    description: 'Prepara tu primer arroz.',
     type: 'interactive',
     category: 'supervivencia-culinaria',
     reward: 'Maestro del Grano',
+    why: 'Aprender a preparar un alimento básico te da independencia y te conecta con un ritual universal.',
     steps: [
         {
             title: 'Paso 1: Medir el arroz',
@@ -79,10 +81,11 @@ export const missions: Mission[] = [
   {
     id: 'm10',
     title: 'Mate para Principiantes (5 min)',
-    description: 'Prepara tu primer mate. Meta oculta: Participar en un ritual cultural te conecta con otros y te ofrece un momento de pausa y reflexión.',
+    description: 'Prepara tu primer mate.',
     type: 'interactive',
     category: 'supervivencia-culinaria',
     reward: 'Cebador de la Calma',
+    why: 'Participar en un ritual cultural te conecta con otros y te ofrece un momento de pausa y reflexión.',
     steps: [
         {
             title: 'Paso 1: Calentar el agua',
