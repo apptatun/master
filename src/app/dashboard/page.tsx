@@ -9,6 +9,7 @@ import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
 import { Check } from 'lucide-react';
 import type { Mission } from '@/lib/types';
+import { UpcomingMissions } from '@/components/UpcomingMissions';
 
 export default function DashboardPage() {
   const [completedMissions, setCompletedMissions] = useState<string[]>([]);
@@ -79,19 +80,23 @@ export default function DashboardPage() {
   
   const upcomingMissions = userMissions.filter(mission => !completedMissions.includes(mission.id));
   const nextMission = upcomingMissions.length > 0 ? [upcomingMissions[0]] : [];
+  const remainingMissions = upcomingMissions.slice(1);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <Header completedCount={completedMissions.length} />
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-2 space-y-8">
             <MissionList
               missions={nextMission}
               completedMissions={completedMissions}
               onCompleteMission={handleCompleteMission}
               allMissionsCompleted={upcomingMissions.length === 0}
             />
+            {remainingMissions.length > 0 && (
+              <UpcomingMissions missions={remainingMissions} />
+            )}
           </div>
           <div className="space-y-8">
             <NamingAssistant onAddMission={handleAddMission} />
