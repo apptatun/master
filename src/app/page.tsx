@@ -22,7 +22,7 @@ export default function Home() {
             Te propongo algo: en vez de planear tu vida entera, arranquemos con algo tan simple que te va a dar risa. Algo que podés hacer HOY.
           </p>
         </div>
-        <Link href="/dashboard">
+        <Link href="/setup">
           <Button size="lg" className="group bg-accent text-accent-foreground hover:bg-accent/90 text-lg">
             OK, me intriga. ¿Cuál es el primer desafío?
             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
