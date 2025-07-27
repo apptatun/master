@@ -16,7 +16,7 @@ interface InteractiveGuideModalProps {
   mission: Mission;
   isOpen: boolean;
   onClose: () => void;
-  onComplete: (missionId: string, points: number, rewardTitle: string) => void;
+  onComplete: () => void;
 }
 
 export function InteractiveGuideModal({
@@ -42,7 +42,7 @@ export function InteractiveGuideModal({
   };
 
   const handleComplete = () => {
-    onComplete(mission.id, mission.points, mission.rewardTitle);
+    onComplete();
     onClose();
     setTimeout(() => setCurrentStep(0), 300); // Reset for next time
   };

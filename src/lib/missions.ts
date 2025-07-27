@@ -6,7 +6,6 @@ export const missions: Mission[] = [
     title: 'Operación Hornalla',
     description: 'Activa la zona de cocción. Objetivo: hervir agua. Riesgo: bajo.',
     points: 10,
-    rewardTitle: 'Ingeniero Termodinámico Lv.1',
     type: 'interactive',
     steps: [
       {
@@ -40,7 +39,6 @@ export const missions: Mission[] = [
     title: 'Arroz sin engrudo',
     description: 'Prepara tu primer arroz. ¡Conviértete en el maestro del grano! 🍚',
     points: 15,
-    rewardTitle: 'Maestro Arrocero',
     type: 'checkbox',
   },
   {
@@ -48,7 +46,6 @@ export const missions: Mission[] = [
     title: 'Ninja de la limpieza',
     description: 'Misión stealth: elimina 5 \'enemigos mugre\' del fregadero. ✨',
     points: 10,
-    rewardTitle: 'Guardián del Fregadero',
     type: 'checkbox',
   },
   {
@@ -56,7 +53,6 @@ export const missions: Mission[] = [
     title: 'Protocolo Lavarropas',
     description: 'Inicia un ciclo de lavado. ¡Ropa fresca, vida organizada! 👕',
     points: 20,
-    rewardTitle: 'Técnico Textil',
     type: 'checkbox',
   },
   {
@@ -64,7 +60,6 @@ export const missions: Mission[] = [
     title: 'Despertador Motivador',
     description: 'Gánale a la mañana. Levántate antes de las 11 AM. ☀️',
     points: 5,
-    rewardTitle: 'Madrugador Principiante',
     type: 'checkbox',
   },
   {
@@ -72,20 +67,6 @@ export const missions: Mission[] = [
     title: 'Embajador de la Hidratación',
     description: 'Bebe un vaso de agua al despertar. ¡Un comienzo épico para tu día! 💦',
     points: 5,
-    rewardTitle: 'Hydro Homie',
     type: 'checkbox',
   },
-];
-
-export const titles = [
-  'Novato con Potencial',
-  'Ingeniero Termodinámico Lv.1',
-  'Guardián del Fregadero',
-  'Maestro Arrocero',
-  'Técnico Textil',
-  'Madrugador Principiante',
-  'Hydro Homie',
-  'Explorador Urbano',
-  'Héroe de la Rutina',
-  'Campeón del Momentum',
 ];

@@ -8,7 +8,6 @@ export interface Mission {
   title: string;
   description: string;
   points: number;
-  rewardTitle: string;
   type: 'checkbox' | 'interactive';
   steps?: Step[];
 }

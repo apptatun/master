@@ -5,16 +5,15 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Sparkles, Gamepad2, PartyPopper, ArrowRight } from 'lucide-react';
+import { Sparkles, Gamepad2, PartyPopper, ArrowRight, Check } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { Badge } from './ui/badge';
-import { Separator } from './ui/separator';
 
 interface MissionListProps {
   missions: Mission[];
   completedMissions: string[];
-  onCompleteMission: (missionId: string, points: number, rewardTitle: string) => void;
+  onCompleteMission: (missionId: string) => void;
   allMissionsCompleted: boolean;
 }
 
@@ -58,7 +57,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
                   <Card key={mission.id} className={cn('transition-all', isCompleted ? 'bg-primary/30 border-primary/50' : 'bg-card')}>
                     <CardHeader>
                       <CardTitle className="text-2xl font-bold text-foreground">{mission.title}</CardTitle>
-                      <p className={cn('text-lg text-muted-foreground pt-1', isCompleted && 'line-through')}>
+                      <p className={cn('text-lg text-muted-foreground pt-1')}>
                         {mission.description}
                       </p>
                     </CardHeader>
@@ -81,7 +80,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
                             checked={isCompleted}
                             onCheckedChange={(checked) => {
                               if (checked) {
-                                onCompleteMission(mission.id, mission.points, mission.rewardTitle);
+                                onCompleteMission(mission.id);
                               }
                             }}
                             disabled={isCompleted}
@@ -92,7 +91,8 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
                        )}
                        {isCompleted && (
                           <div className="flex items-center space-x-2 text-lg font-bold text-green-600">
-                             <span>¡Superado!</span>
+                            <Check className="h-6 w-6" />
+                            <span>¡Superado!</span>
                           </div>
                        )}
                     </CardFooter>
@@ -108,7 +108,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
           mission={selectedMission}
           isOpen={!!selectedMission}
           onClose={handleCloseModal}
-          onComplete={onCompleteMission}
+          onComplete={() => onCompleteMission(selectedMission.id)}
         />
       )}
     </Card>
