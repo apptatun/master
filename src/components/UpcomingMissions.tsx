@@ -25,7 +25,7 @@ export function UpcomingMissions({ missions }: UpcomingMissionsProps) {
       </CardHeader>
       <CardContent>
          <p className="text-muted-foreground mb-6 text-lg">
-            Acá podés espiar los siguientes pasos. No te abrumes, solo están acá para que sepas que la aventura continúa.
+            Estos son los siguientes pasos en tu camino. No tienes que pensar en ellos ahora, solo saber que la aventura continúa.
           </p>
         <Accordion type="single" collapsible className="w-full">
             {missions.map(mission => (
