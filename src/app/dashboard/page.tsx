@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { MissionList } from '@/components/MissionList';
 import { Journal } from '@/components/Journal';
 import { NamingAssistant } from '@/components/NamingAssistant';
@@ -8,19 +9,35 @@ import { Header } from '@/components/Header';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
 import { Check } from 'lucide-react';
+import type { Mission } from '@/lib/types';
 
 export default function DashboardPage() {
   const [completedMissions, setCompletedMissions] = useState<string[]>([]);
+  const [userMissions, setUserMissions] = useState<Mission[]>([]);
   const [isMounted, setIsMounted] = useState(false);
   const { toast } = useToast();
+  const router = useRouter();
 
   useEffect(() => {
     const savedCompleted = localStorage.getItem('completedMissions');
+    const category = localStorage.getItem('missionCategory') as Mission['category'] | null;
+
+    if (!category) {
+      router.push('/setup');
+      return;
+    }
+
     if (savedCompleted) {
       setCompletedMissions(JSON.parse(savedCompleted));
     }
+    
+    const filteredMissions = missions.filter(
+      (mission) => mission.category === category || mission.category === 'generic'
+    );
+    setUserMissions(filteredMissions);
+
     setIsMounted(true);
-  }, []);
+  }, [router]);
 
   useEffect(() => {
     if(isMounted) {
@@ -49,7 +66,7 @@ export default function DashboardPage() {
     return null; // or a loading spinner
   }
   
-  const upcomingMissions = missions.filter(mission => !completedMissions.includes(mission.id));
+  const upcomingMissions = userMissions.filter(mission => !completedMissions.includes(mission.id));
   const nextMission = upcomingMissions.length > 0 ? [upcomingMissions[0]] : [];
 
   return (

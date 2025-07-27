@@ -7,6 +7,7 @@ export const missions: Mission[] = [
     description: 'Activa la zona de cocción. Objetivo: hervir agua. Riesgo: bajo.',
     points: 10,
     type: 'interactive',
+    category: 'cooking',
     steps: [
       {
         title: 'Paso 1: Ubicar la hornalla',
@@ -40,6 +41,7 @@ export const missions: Mission[] = [
     description: 'Prepara tu primer arroz. ¡Conviértete en el maestro del grano! 🍚',
     points: 15,
     type: 'checkbox',
+    category: 'cooking',
   },
   {
     id: 'm3',
@@ -47,6 +49,7 @@ export const missions: Mission[] = [
     description: 'Misión stealth: elimina 5 \'enemigos mugre\' del fregadero. ✨',
     points: 10,
     type: 'checkbox',
+    category: 'organizing',
   },
   {
     id: 'm4',
@@ -54,6 +57,7 @@ export const missions: Mission[] = [
     description: 'Inicia un ciclo de lavado. ¡Ropa fresca, vida organizada! 👕',
     points: 20,
     type: 'checkbox',
+    category: 'organizing',
   },
   {
     id: 'm5',
@@ -61,6 +65,7 @@ export const missions: Mission[] = [
     description: 'Gánale a la mañana. Levántate antes de las 11 AM. ☀️',
     points: 5,
     type: 'checkbox',
+    category: 'generic',
   },
   {
     id: 'm6',
@@ -68,5 +73,22 @@ export const missions: Mission[] = [
     description: 'Bebe un vaso de agua al despertar. ¡Un comienzo épico para tu día! 💦',
     points: 5,
     type: 'checkbox',
+    category: 'generic',
+  },
+  {
+    id: 'm7',
+    title: 'Exploración Beta',
+    description: 'Pisa la calle como si fueras un NPC observando el mapa (hoodie permitido).',
+    points: 15,
+    type: 'checkbox',
+    category: 'going-out',
+  },
+  {
+    id: 'm8',
+    title: 'Protocolo de Saludo',
+    description: 'Practica un saludo simple con un empleado de una tienda. Un "buen día" es suficiente.',
+    points: 10,
+    type: 'checkbox',
+    category: 'social',
   },
 ];
