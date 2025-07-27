@@ -3,7 +3,7 @@ import { Mission } from './types';
 export const missions: Mission[] = [
   {
     id: 'm1',
-    title: 'Operación Hornalla',
+    title: 'Protocolo Hornalla',
     description: 'Activa la zona de cocción. Objetivo: hervir agua. Riesgo: bajo.',
     points: 10,
     type: 'interactive',
