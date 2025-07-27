@@ -453,31 +453,31 @@ export const missions: Mission[] = [
     category: 'primeros-pasos',
     reward: 'Comerciante de Confianza',
     steps: [
-        {
-            title: 'Paso 1: El Objetivo',
-            description: 'Define qué vas a comprar. Una sola cosa. ¿Pan? ¿Leche? ¿Algo para tomar? Tener un objetivo claro reduce la incertidumbre.'
-        },
-        {
-            title: 'Paso 2: La Preparación',
-            description: 'Agarra tu billetera/plata, llaves y celular. Revisa si tienes una bolsa reutilizable. Ponte auriculares si te ayuda a reducir el estrés del ambiente.'
-        },
-        {
-            title: 'Paso 3: La Entrada',
-            description: 'Camina hacia el lugar. Al entrar, respira hondo. Tu única misión es encontrar tu objetivo. Ignora el resto. No tienes que saludar a nadie si no quieres.'
-        },
-        {
-            title: 'Paso 4: La Búsqueda',
-            description: 'Dirígete a la sección donde está tu producto. Si no sabes dónde está, camina por los pasillos hasta encontrarlo. Concéntrate en las etiquetas.'
-        },
-        {
-            title: 'Paso 5: La Caja',
-            description: 'Una vez que tengas tu producto, ve a la caja. Coloca el item en el mostrador. El cajero te dirá el precio. Paga. No necesitas hablar más de lo necesario.'
-        },
-        {
-            title: 'Paso 6: ¡Escape Exitoso!',
-            description: '¡Lo lograste! Saliste de la tienda con tu objetivo cumplido. Te enfrentaste al mundo y ganaste. ¡Excelente trabajo!'
-        }
-    ]
+      {
+        title: 'Paso 1: El Objetivo',
+        description: 'Vamos a definir qué vas a comprar. Una sola cosa simple. ¿Una gaseosa? ¿Unas galletitas? Tener un objetivo claro reduce la incertidumbre. Pensalo y cuando estés listo, seguimos.',
+      },
+      {
+        title: 'Paso 2: La Preparación',
+        description: 'Ok, ahora lo básico para salir al mundo: agarrá tu billetera o el medio de pago, las llaves y tu celular.\n\nUn truco: si te ayuda a bajar la ansiedad, ponete auriculares. No hace falta ni que pongas música, a veces solo tenerlos puestos actúa como un escudo social. ¿Todo listo?',
+      },
+      {
+        title: 'Paso 3: La Entrada Triunfal (a tu ritmo)',
+        description: 'Caminá hacia el kiosco. Al llegar a la puerta, respira hondo. Tu única misión ahora es encontrar tu objetivo. Ignorá todo lo demás. No tenés que saludar si no querés, solo entrá.',
+      },
+      {
+        title: 'Paso 4: Modo Búsqueda',
+        description: 'Una vez adentro, activate en "modo búsqueda". Recorré el lugar con la vista hasta encontrar tu producto. Concéntrate solo en las etiquetas y los estantes. Ya casi lo tenés.',
+      },
+      {
+        title: 'Paso 5: La Transacción (¡El Final Boss!)',
+        description: 'Andá a la caja. Poné el producto en el mostrador. La persona te va a decir el precio. Vos solo tenés que pagar. No es necesario decir nada más que "gracias" si te sentís cómodo. Es un intercambio, no una audición.',
+      },
+      {
+        title: 'Paso 6: ¡Escape Exitoso!',
+        description: '¡Lo lograste! Saliste con tu botín. Te enfrentaste al mundo exterior en una misión comercial y ganaste. Tomate un segundo para sentir esta victoria. ¡Excelente trabajo!',
+      },
+    ],
   },
   {
     id: 'm19',

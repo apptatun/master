@@ -32,6 +32,8 @@ export function InteractiveGuideModal({
   const handleNext = () => {
     if (!isLastStep) {
       setCurrentStep(currentStep + 1);
+    } else {
+      handleComplete();
     }
   };
 
@@ -58,7 +60,7 @@ export function InteractiveGuideModal({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
-      <DialogContent className="sm:max-w-[525px] bg-card">
+      <DialogContent className="sm:max-w-[525px] bg-card flex flex-col max-h-[90vh]">
         <DialogHeader>
           <DialogTitle className="font-headline text-3xl">{mission.title}</DialogTitle>
           <div className='pt-2'>
@@ -70,30 +72,24 @@ export function InteractiveGuideModal({
             </p>
           </div>
         </DialogHeader>
-        <div className="my-4 min-h-[150px] space-y-3">
+        <div className="my-4 flex-grow space-y-3 overflow-y-auto px-1">
           <p className="font-bold text-xl text-foreground">{steps[currentStep]?.title}</p>
-          <p className="text-lg text-muted-foreground">{steps[currentStep]?.description}</p>
+          <p className="text-lg text-muted-foreground whitespace-pre-line">{steps[currentStep]?.description}</p>
         </div>
-        <DialogFooter className="flex-col sm:flex-col sm:space-x-0 gap-2">
+        <DialogFooter className="flex-col sm:flex-col sm:space-x-0 gap-2 mt-auto">
             <div className="flex w-full justify-between items-center flex-wrap gap-2">
-                <Button variant="ghost" onClick={handlePrevious} disabled={currentStep === 0} className="text-base">
+                 <Button variant="ghost" onClick={handlePrevious} disabled={currentStep === 0} className="text-base">
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Anterior
                 </Button>
-                 {isLastStep ? (
-                    <Button onClick={handleComplete} className="bg-accent text-accent-foreground hover:bg-accent/90 text-base">
-                        <Check className="mr-2 h-4 w-4" />
-                        ¡Misión Conquistada!
-                    </Button>
-                ) : (
-                    <Button onClick={handleNext} className="text-base">
-                        Siguiente
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                    </Button>
-                )}
+                <Button onClick={handleNext} className="bg-accent text-accent-foreground hover:bg-accent/90 text-base">
+                    {isLastStep ? '¡Misión Conquistada!' : 'Listo, ¿qué sigue?'}
+                    {!isLastStep && <ArrowRight className="ml-2 h-4 w-4" />}
+                    {isLastStep && <Check className="ml-2 h-4 w-4" />}
+                </Button>
             </div>
             <Button variant="outline" onClick={handleComplete} className="w-full text-base">
-                Ya sé cómo seguir (Marcar como conquistada)
+                Ya sé cómo seguir (Saltar guía y conquistar)
                 <Forward className="ml-2 h-4 w-4" />
             </Button>
         </DialogFooter>
