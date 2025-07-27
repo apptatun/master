@@ -61,9 +61,16 @@ export function InteractiveGuideModal({
       <DialogContent className="sm:max-w-[525px] bg-card">
         <DialogHeader>
           <DialogTitle className="font-headline text-3xl">{mission.title}</DialogTitle>
+          <div className='pt-2'>
+            <p className="text-muted-foreground text-base">
+                Acá no se trata de “saber” o “no saber”. Se trata de empezar a hacer, con calma y dignidad.
+            </p>
+            <p className="text-muted-foreground text-base mt-2">
+                Nadie nace sabiendo, y esto no es un examen. Podés saltear los pasos que ya conozcas.
+            </p>
+          </div>
         </DialogHeader>
         <div className="my-4 min-h-[150px] space-y-3">
-            <p className="text-muted-foreground text-base">Nadie nace sabiendo. Si ya dominás un paso, podés saltarlo. Esto no es un examen.</p>
           <p className="font-bold text-xl text-foreground">{steps[currentStep]?.title}</p>
           <p className="text-lg text-muted-foreground">{steps[currentStep]?.description}</p>
         </div>
@@ -76,7 +83,7 @@ export function InteractiveGuideModal({
                  {isLastStep ? (
                     <Button onClick={handleComplete} className="bg-accent text-accent-foreground hover:bg-accent/90 text-base">
                         <Check className="mr-2 h-4 w-4" />
-                        ¡Misión cumplida!
+                        ¡Desafío Superado!
                     </Button>
                 ) : (
                     <Button onClick={handleNext} className="text-base">
@@ -87,7 +94,7 @@ export function InteractiveGuideModal({
             </div>
             {!isLastStep && (
                  <Button variant="outline" onClick={handleComplete} className="w-full text-base">
-                     Ya sé cómo hacerlo (Completar Misión)
+                     Ya sé cómo hacerlo (Completar Desafío)
                     <Forward className="ml-2 h-4 w-4" />
                 </Button>
             )}

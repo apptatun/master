@@ -18,7 +18,7 @@ export function NamingAssistant() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!hints.trim()) {
-      setError('Por favor, ingresa algunas pistas sobre tu misión.');
+      setError('Por favor, ingresa algunas pistas sobre tu desafío.');
       return;
     }
     setLoading(true);
@@ -47,7 +47,7 @@ export function NamingAssistant() {
       <CardHeader>
         <CardTitle className="flex items-center font-headline text-3xl">
           <Wand2 className="mr-3 h-7 w-7 text-accent" />
-          Creador de Misiones
+          Creador de Desafíos
         </CardTitle>
         <CardDescription className="text-lg">
           ¿Tenés un objetivo en mente? Describilo acá y dale un nombre épico para empezar.
@@ -56,7 +56,7 @@ export function NamingAssistant() {
       <CardContent>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <label htmlFor="hints-input" className="text-base font-medium">Describí tu misión personal</label>
+            <label htmlFor="hints-input" className="text-base font-medium">Describí tu desafío personal</label>
             <Input
               id="hints-input"
               value={hints}
@@ -93,7 +93,7 @@ export function NamingAssistant() {
 
         {names.length > 0 && (
           <div className="mt-6">
-            <h4 className="font-bold mb-3 text-lg">Nombres sugeridos para tu misión:</h4>
+            <h4 className="font-bold mb-3 text-lg">Nombres sugeridos para tu desafío:</h4>
             <div className="flex flex-wrap gap-2">
               {names.map((name, index) => (
                 <Badge key={index} variant="secondary" className="text-lg px-4 py-1">
@@ -103,7 +103,7 @@ export function NamingAssistant() {
             </div>
             <Button className="w-full mt-4 text-base" disabled>
                 <PlusCircle className="mr-2 h-4 w-4" />
-                Añadir como nueva misión (Próximamente)
+                Añadir como nuevo desafío (Próximamente)
             </Button>
           </div>
         )}

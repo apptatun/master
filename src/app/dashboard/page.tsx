@@ -59,7 +59,7 @@ export default function DashboardPage() {
     }
 
     toast({
-      title: '¡Misión Completada!',
+      title: '¡Desafío Superado!',
       description: (
         <div className="flex flex-col text-base">
           <span>+{missionPoints} puntos!</span>

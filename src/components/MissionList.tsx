@@ -32,7 +32,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
       <CardHeader>
         <CardTitle className="flex items-center font-headline text-4xl">
           <Gamepad2 className="mr-3 h-8 w-8 text-accent" />
-          Tu Próxima Misión
+          Tu Próximo Desafío
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -41,7 +41,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
             <PartyPopper className="mx-auto h-16 w-16 text-accent mb-4" />
             <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
             <p className="text-lg text-muted-foreground mt-2">
-              Completaste todas las misiones disponibles. ¡Tomate un momento para celebrar tu increíble progreso! Pronto habrá nuevos desafíos para vos.
+              Completaste todos los desafíos disponibles. ¡Tomate un momento para celebrar tu increíble progreso! Pronto habrá nuevos retos para vos.
             </p>
           </div>
         ) : (
