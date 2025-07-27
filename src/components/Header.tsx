@@ -9,7 +9,7 @@ export function Header({ completedCount }: HeaderProps) {
   return (
     <header className="sticky top-0 z-10 w-full border-b bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link href="/">
+        <Link href="/setup">
           <h1 className="font-headline text-4xl font-bold text-foreground sm:text-5xl cursor-pointer hover:opacity-80 transition-opacity">
             CAMINO
           </h1>
