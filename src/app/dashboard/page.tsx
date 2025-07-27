@@ -50,8 +50,13 @@ export default function DashboardPage() {
     setCompletedMissions(newCompleted);
     setPoints(newPoints);
 
-    const newTitle = rewardTitle !== currentTitle ? rewardTitle : titles[Math.min(titles.indexOf(currentTitle) + 1, titles.length - 1)];
-    setCurrentTitle(newTitle);
+    const currentTitleIndex = titles.indexOf(currentTitle);
+    const rewardTitleIndex = titles.indexOf(rewardTitle);
+    
+    let newTitle = currentTitle;
+    if (rewardTitleIndex > currentTitleIndex) {
+        newTitle = rewardTitle;
+    }
 
     toast({
       title: '¡Misión Completada!',
@@ -67,6 +72,10 @@ export default function DashboardPage() {
         </div>
       ),
     });
+
+    if (newTitle !== currentTitle) {
+      setCurrentTitle(newTitle);
+    }
   };
 
   if (!isMounted) {
@@ -75,6 +84,9 @@ export default function DashboardPage() {
   
   const totalPossiblePoints = missions.reduce((sum, mission) => sum + mission.points, 0);
 
+  const upcomingMissions = missions.filter(mission => !completedMissions.includes(mission.id));
+  const nextMission = upcomingMissions.length > 0 ? [upcomingMissions[0]] : [];
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
       <Header title={currentTitle} points={points} totalPoints={totalPossiblePoints} />
@@ -82,9 +94,10 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2">
             <MissionList
-              missions={missions}
+              missions={nextMission}
               completedMissions={completedMissions}
               onCompleteMission={handleCompleteMission}
+              allMissionsCompleted={upcomingMissions.length === 0}
             />
           </div>
           <div className="space-y-8">

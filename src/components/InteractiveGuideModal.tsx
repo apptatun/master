@@ -52,6 +52,10 @@ export function InteractiveGuideModal({
     setTimeout(() => setCurrentStep(0), 300); // Reset for next time
   }
 
+  if (!steps || steps.length === 0) {
+    return null;
+  }
+
   return (
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-[525px] bg-card">
@@ -71,7 +75,7 @@ export function InteractiveGuideModal({
                  {isLastStep ? (
                     <Button onClick={handleComplete} className="bg-accent text-accent-foreground hover:bg-accent/90 text-base">
                         <Check className="mr-2 h-4 w-4" />
-                        Marcar como Completado
+                        ¡Lo logré!
                     </Button>
                 ) : (
                     <Button onClick={handleNext} className="text-base">
@@ -82,7 +86,7 @@ export function InteractiveGuideModal({
             </div>
             {!isLastStep && (
                  <Button variant="outline" onClick={handleComplete} className="w-full text-base">
-                     Saltar Guía y Completar
+                     Ya sé cómo hacerlo (Completar)
                     <Forward className="ml-2 h-4 w-4" />
                 </Button>
             )}
