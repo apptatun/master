@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Rocket, Check, Bot, Sparkles, Trophy } from 'lucide-react';
+import { Rocket, Check, Bot, Sparkles, Trophy, Coffee } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { AiAssistantModal } from './AiAssistantModal';
@@ -27,6 +27,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
   const [isAssistantModalOpen, setIsAssistantModalOpen] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [showRejectionMessage, setShowRejectionMessage] = useState(false);
+  const [userChoseToRest, setUserChoseToRest] = useState(false);
 
 
   const handleOpenModal = (mission: Mission) => {
@@ -40,6 +41,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
   const handleCompleteMission = (missionId: string) => {
     onCompleteMission(missionId);
     setShowFeedback(true);
+    setUserChoseToRest(false); // Reset rest state when a new mission is completed
     setTimeout(() => {
       setShowFeedback(false);
     }, 4000); // Show feedback for 4 seconds
@@ -47,6 +49,15 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
   
   const handleDeclineMission = () => {
     setShowRejectionMessage(true);
+  }
+
+  const handleChooseRest = () => {
+    setUserChoseToRest(true);
+  }
+
+  const handleChooseNext = () => {
+    setUserChoseToRest(false);
+    onNextMission();
   }
   
   const currentMissionForReward = missions[0];
@@ -80,6 +91,18 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
         )
     }
 
+    if (userChoseToRest) {
+      return (
+        <div className="text-center p-6 bg-card rounded-lg border">
+            <Coffee className="mx-auto h-12 w-12 text-accent mb-4" />
+            <h3 className="text-2xl font-bold text-foreground">¡Genial!</h3>
+            <p className="text-lg text-muted-foreground mt-2">
+              A veces, la mayor victoria es saber cuándo parar. <br/> Nos vemos la próxima.
+            </p>
+          </div>
+      )
+    }
+
     if (isCurrentMissionCompleted) {
         return (
              <div className="mt-8 text-center p-6 bg-card rounded-lg border">
@@ -91,13 +114,18 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                       <p>Logro Desbloqueado: <span className="font-extrabold">{currentMissionForReward.reward}</span></p>
                     </div>
                   )}
-                <p className="text-lg text-muted-foreground mt-2">
-                  Ya diste un gran paso hoy. Recordá, esto es a tu ritmo. <br/> 
+                <p className="text-lg text-muted-foreground mt-2 mb-6">
+                  Ya diste un gran paso hoy. Recordá, esto es a tu ritmo. <br /> 
                   Si te sentís con energía, podés ir por el siguiente. Si no, ¡lo de hoy ya es una victoria enorme!
                 </p>
-                <Button onClick={onNextMission} size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
-                  Lo hice. ¿Qué sigue?
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button onClick={handleChooseNext} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
+                        Listo para otra misión
+                    </Button>
+                    <Button onClick={handleChooseRest} size="lg" variant="outline" className="text-lg">
+                        Por hoy es suficiente
+                    </Button>
+                </div>
               </div>
         )
     }
@@ -127,8 +155,8 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   <p className="text-xl text-muted-foreground">{mission.description}</p>
                   
                   {mission.type === 'checkbox' && mission.steps && (
-                    <div className="space-y-3 text-xl text-muted-foreground pt-4">
-                      <ol className="list-decimal list-inside space-y-2">
+                    <div className="space-y-3 pt-4">
+                      <ol className="list-decimal list-inside space-y-2 text-xl text-muted-foreground">
                         {mission.steps.map((step, index) => (
                           <li key={index}>{step.title}</li>
                         ))}
@@ -143,13 +171,13 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                       </div>
                   )}
                 </CardContent>
-                <CardFooter className="flex flex-col items-stretch gap-3 bg-foreground/5 py-5 px-6">
+                <CardFooter className="flex flex-col items-stretch gap-4 bg-foreground/5 py-5 px-6">
                     {mission.type === 'interactive' && (
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <Button onClick={() => handleOpenModal(mission)} size="lg" className="text-lg px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
-                            Ver cómo se hace
-                          </Button>
+                           <Button onClick={() => handleOpenModal(mission)} size="lg" className="w-full text-lg px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
+                              Ver cómo se hace
+                           </Button>
                         </TooltipTrigger>
                         <TooltipContent>
                           <p>Vas a ver una mini instrucción simple. Tranquilo, es rápido.</p>
@@ -157,7 +185,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                       </Tooltip>
                     )}
                     {mission.type === 'checkbox' && (
-                      <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="text-lg px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
+                      <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="w-full text-lg px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
                         <Check className="mr-2 h-5 w-5" /> ¡Misión Conquistada!
                       </Button>
                     )}
