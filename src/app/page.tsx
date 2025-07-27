@@ -29,7 +29,7 @@ export default function Home() {
             ¿La buena noticia? No necesitás una transformación épica de la noche a la mañana. Necesitás romper el hielo. Necesitás una primera victoria pequeña que te recuerde que las cosas pueden ser diferentes.
           </p>
            <p className="text-xl text-muted-foreground md:text-2xl">
-            No te vamos a pedir que cambies tu vida. Te vamos a pedir que hagas UNA cosa. Una sola. Y cuando la hagas, vas a entender por qué esto funciona. La primera misión no te la vamos a decir acá. Tenés que entrar para verla.
+            No te vamos a pedir que cambies tu vida. Te invitamos a que pruebes UNA cosa. Una sola. Y cuando la vivas, vas a entender por qué esto funciona. La primera misión no te la vamos a contar acá. Tenés que entrar para descubrirla.
           </p>
         </div>
         <Link href="/setup">

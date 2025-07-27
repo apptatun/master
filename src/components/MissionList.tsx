@@ -37,7 +37,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
   };
 
   const currentMissionForHelp = missions[0];
-  const helpMessage = `Hola, ¿me podrías dar una mano con esto? Estoy intentando hacer algo nuevo y una ayuda me vendría genial. La misión es: "${currentMissionForHelp?.title}". ¡Gracias!`;
+  const helpMessage = `Hola, ¿me podrías dar una mano con esto? Estoy intentando algo nuevo y una ayuda me vendría genial. La misión es: "${currentMissionForHelp?.title}". ¡Gracias!`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(helpMessage);
@@ -60,7 +60,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
           <PartyPopper className="mx-auto h-16 w-16 text-accent mb-4" />
           <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
           <p className="text-lg text-muted-foreground mt-2">
-            Completaste todos los desafíos disponibles. ¡Tomate un momento para celebrar tu increíble progreso!
+            Conquistaste todos los desafíos disponibles. ¡Tomate un momento para celebrar tu increíble progreso!
           </p>
            <Link href="/setup">
               <Button size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
@@ -95,7 +95,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
           <PartyPopper className="mx-auto h-16 w-16 text-accent mb-4" />
           <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
           <p className="text-lg text-muted-foreground mt-2">
-            Completaste todos los desafíos disponibles. ¡Tomate un momento para celebrar tu increíble progreso!
+            Conquistaste todos los desafíos disponibles. ¡Tomate un momento para celebrar tu increíble progreso!
           </p>
            <Link href="/setup">
               <Button size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
@@ -125,7 +125,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                    {mission.reward && (
                     <div className="flex items-center text-sm font-bold text-accent-foreground/80 pt-2">
                       <Trophy className="mr-2 h-5 w-5 text-accent" />
-                      Logro: {mission.reward}
+                      Logro Desbloqueado: {mission.reward}
                     </div>
                   )}
                 </CardHeader>
@@ -138,13 +138,13 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   )}
                     {mission.type === 'checkbox' && (
                       <Button onClick={() => onCompleteMission(mission.id)} size="lg" disabled={isCompleted} className="text-base px-4 py-6">
-                         <Check className="mr-2 h-5 w-5" /> ¡Hecho!
+                         <Check className="mr-2 h-5 w-5" /> ¡Misión Conquistada!
                       </Button>
                     )}
                     {isCompleted && (
                       <div className="flex items-center justify-center space-x-2 text-lg font-bold text-green-600 p-4 rounded-md bg-green-500/10">
                         <Check className="h-6 w-6" />
-                        <span>¡Superado!</span>
+                        <span>¡Conquistado!</span>
                       </div>
                     )}
                     {!isCompleted && (
@@ -162,7 +162,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                      {canGoBack && !isCompleted && (
                          <Button variant="ghost" onClick={onPreviousMission} className="mt-2">
                             <ArrowLeft className="mr-2 h-4 w-4"/>
-                            Anterior
+                            Misión anterior
                         </Button>
                      )}
                 </CardFooter>
@@ -179,7 +179,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
       <CardHeader>
         <CardTitle className="flex items-center font-headline text-4xl">
           <Gamepad2 className="mr-3 h-8 w-8 text-accent" />
-          El Paso de Hoy
+          Tu Aventura de Hoy
         </CardTitle>
       </CardHeader>
       <CardContent>
@@ -196,9 +196,9 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
       <Dialog open={isHelpModalOpen} onOpenChange={setIsHelpModalOpen}>
         <DialogContent className="sm:max-w-[425px]">
             <DialogHeader>
-            <DialogTitle className="font-headline text-3xl">Pedir ayuda es un paso valiente</DialogTitle>
+            <DialogTitle className="font-headline text-3xl">Pedir ayuda es un movimiento inteligente</DialogTitle>
             <DialogDescription className="text-base pt-2 text-muted-foreground">
-                A veces, lo más difícil es dar el primer paso. Copia este mensaje y envíalo a alguien de confianza. No estás solo.
+                A veces, lo más difícil es dar el primer paso. Copiá este mensaje y envíalo a alguien de confianza. No estás solo en esta aventura.
             </DialogDescription>
             </DialogHeader>
             <div className="my-4 p-4 border rounded-lg bg-muted/50">

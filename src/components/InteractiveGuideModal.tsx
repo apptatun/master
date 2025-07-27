@@ -63,10 +63,10 @@ export function InteractiveGuideModal({
           <DialogTitle className="font-headline text-3xl">{mission.title}</DialogTitle>
           <div className='pt-2'>
             <p className="text-muted-foreground text-base">
-                Esto es una guía, no un examen. El objetivo es que te animes a hacer, con calma y a tu ritmo.
+                Esto es una guía, no un examen. El objetivo es que te animes a explorar, con calma y a tu ritmo.
             </p>
             <p className="text-muted-foreground text-base mt-2">
-                Nadie nace sabiendo. Podés saltear los pasos que ya conozcas o pedir ayuda si la necesitás. ¡Empecemos!
+                Nadie nace sabiendo. Podés saltear los pasos que ya conozcas o pedir una mano si la necesitás. ¡Empecemos la aventura!
             </p>
           </div>
         </DialogHeader>
@@ -83,7 +83,7 @@ export function InteractiveGuideModal({
                  {isLastStep ? (
                     <Button onClick={handleComplete} className="bg-accent text-accent-foreground hover:bg-accent/90 text-base">
                         <Check className="mr-2 h-4 w-4" />
-                        ¡Desafío Superado!
+                        ¡Misión Conquistada!
                     </Button>
                 ) : (
                     <Button onClick={handleNext} className="text-base">
@@ -94,7 +94,7 @@ export function InteractiveGuideModal({
             </div>
             {!isLastStep && (
                  <Button variant="outline" onClick={handleComplete} className="w-full text-base">
-                     Ya sé cómo hacerlo (Completar Desafío)
+                     Ya sé cómo seguir (Marcar como conquistada)
                     <Forward className="ml-2 h-4 w-4" />
                 </Button>
             )}

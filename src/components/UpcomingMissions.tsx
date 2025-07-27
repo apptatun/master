@@ -20,12 +20,12 @@ export function UpcomingMissions({ missions }: UpcomingMissionsProps) {
       <CardHeader>
         <CardTitle className="flex items-center font-headline text-3xl">
           <ListTodo className="mr-3 h-7 w-7 text-accent/80" />
-          Próximos Desafíos
+          Próximas Aventuras
         </CardTitle>
       </CardHeader>
       <CardContent>
          <p className="text-muted-foreground mb-6 text-lg">
-            Acá están tus siguientes pasos. No te abrumes, solo están acá para que sepas que existen.
+            Acá podés espiar los siguientes pasos. No te abrumes, solo están acá para que sepas que la aventura continúa.
           </p>
         <Accordion type="single" collapsible className="w-full">
             {missions.map(mission => (
@@ -38,7 +38,7 @@ export function UpcomingMissions({ missions }: UpcomingMissionsProps) {
                         {mission.reward && (
                           <div className="flex items-center text-sm font-bold text-accent-foreground/80">
                             <Trophy className="mr-2 h-5 w-5 text-accent" />
-                            Logro: {mission.reward}
+                            Logro a Desbloquear: {mission.reward}
                           </div>
                         )}
                     </AccordionContent>
