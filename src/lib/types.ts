@@ -16,7 +16,9 @@ export interface Mission {
     | 'generic' 
     | 'personal-care'
     | 'minimal-organization'
-    | 'emotional-management';
+    | 'emotional-management'
+    | 'digital'
+    | 'advanced';
   steps?: Step[];
   reward?: string;
 }

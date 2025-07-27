@@ -373,6 +373,132 @@ export const missions: Mission[] = [
         description: 'Llegaste. No solo al consultorio, sino a un nuevo nivel de autonomía. ¡Excelente trabajo de navegación!'
       }
     ]
+  },
+  {
+    id: 'm21',
+    title: 'OPERACIÓN LLAMADA FRÍA',
+    description: 'Pedir un turno médico por teléfono. Meta oculta: Superar la barrera de una llamada te entrena para interacciones más complejas y te da control sobre tu salud.',
+    type: 'interactive',
+    category: 'social',
+    reward: 'Maestro de la Comunicación Directa',
+    steps: [
+      {
+        title: 'Paso 1: Prepara la información',
+        description: 'Tené a mano tu DNI y los datos de tu obra social o prepaga. Anotá el nombre del médico o la especialidad que necesitas.'
+      },
+      {
+        title: 'Paso 2: El Guión Anti-pánico',
+        description: 'No tenés que improvisar. Usá este guión: "Hola, buen día. Quería pedir un turno con el/la doctor/a [Nombre del Médico] por [tu obra social/prepaga]". ¡Listo! Eso es todo lo que necesitás para empezar.'
+      },
+      {
+        title: 'Paso 3: Respirá y Marcá',
+        description: 'Busca el número, respira hondo y llamá. Recordá que la persona del otro lado hace esto todo el día. No estás molestando, estás gestionando tu salud.'
+      },
+      {
+        title: 'Paso 4: La Conversación',
+        description: 'Lee tu guión. Te van a pedir tus datos y te darán opciones de fechas. Tené a mano dónde anotar. Si no entendés algo, está bien pedir que te lo repitan.'
+      },
+      {
+        title: 'Paso 5: ¡Turno Conquistado!',
+        description: '¡Lo hiciste! Anotá bien el día, la hora y la dirección. Acabás de dar un paso gigante para tu bienestar. ¡Felicitaciones!'
+      }
+    ]
+  },
+  {
+    id: 'm22',
+    title: 'MISIÓN EMAIL FANTASMA',
+    description: 'Enviar una consulta a un servicio técnico o administrativo. Meta oculta: Usar la comunicación escrita te permite pensar y editar, eliminando la presión de la respuesta inmediata.',
+    type: 'interactive',
+    category: 'digital',
+    reward: 'Diplomático Digital',
+    steps: [
+      {
+        title: 'Paso 1: Identifica el Asunto',
+        description: 'Sé claro y conciso. Por ejemplo: "Consulta sobre [tu producto/servicio]" o "Problema con [número de pedido]".'
+      },
+      {
+        title: 'Paso 2: La Plantilla Anti-Pánico',
+        description: 'Copia y pega esto: "Estimados, [Nombre de la empresa]. Les escribo para consultar sobre [tu problema o pregunta de forma simple]. Mi número de cliente/pedido es [si aplica]. Agradezco su ayuda. Saludos, [Tu Nombre]".'
+      },
+      {
+        title: 'Paso 3: Revisa y Envía',
+        description: 'Lee el email una vez más para asegurarte de que está claro. No tiene que ser perfecto. Dale al botón de Enviar. ¡Ya está fuera de tu cabeza!'
+      },
+      {
+        title: 'Paso 4: ¡Mensaje Enviado!',
+        description: '¡Misión cumplida! Delegaste el problema. Ahora la respuesta está en su cancha. Diste un paso importante para resolver algo que te trababa.'
+      }
+    ]
+  },
+  {
+    id: 'm23',
+    title: 'HACKEO FINANCIERO',
+    description: 'Revisar tu saldo bancario online. Meta oculta: Mirar tus finanzas de frente, aunque sea por 5 segundos, disminuye el poder que la incertidumbre tiene sobre vos.',
+    type: 'checkbox',
+    category: 'digital',
+    reward: 'Auditor de Recursos'
+  },
+  {
+    id: 'm24',
+    title: 'OPERACIÓN TORBELLINO',
+    description: 'Ducha express de 5 minutos usando un timer. Meta oculta: Completar una tarea básica con un límite de tiempo te energiza y te da una sensación de eficiencia.',
+    type: 'checkbox',
+    category: 'personal-care',
+    reward: 'Hidronauta Certificado'
+  },
+  {
+    id: 'm25',
+    title: 'PROTOCOLO MICRO-PIRÁMIDE',
+    description: 'Ingerir 1 fruta y 1 vaso de agua. Meta oculta: Es el combo de energía y cuidado más simple y efectivo que existe. Le estás dando a tu cuerpo combustible de calidad.',
+    type: 'checkbox',
+    category: 'personal-care',
+    reward: 'Ingeniero Celular'
+  },
+  {
+    id: 'm26',
+    title: 'MISIÓN GROUNDING TÁCTICO',
+    description: 'Nombrar 5 sonidos que oyes y 3 colores que ves. Meta oculta: Este ejercicio te saca de tu cabeza y te ancla en el presente, cortando de raíz el espiral de ansiedad.',
+    type: 'interactive',
+    category: 'emotional-management',
+    reward: 'Ancla Sensorial',
+    steps: [
+      {
+        title: 'Paso 1: Hacé una pausa',
+        description: 'No importa dónde estés. Simplemente detente por un momento. No necesitas cerrar los ojos.'
+      },
+      {
+        title: 'Paso 2: Escuchá',
+        description: 'Concentrate en tu oído. Identificá cinco sonidos distintos. El teclado, un auto afuera, tu propia respiración, un pájaro, el zumbido de la heladera. Nombralos en tu mente.'
+      },
+      {
+        title: 'Paso 3: Mirá',
+        description: 'Ahora, usá tu vista. Encontrá tres colores diferentes a tu alrededor. El azul de la pantalla, el negro de tu silla, el blanco de la pared. Nombralos.'
+      },
+      {
+        title: 'Paso 4: Respirá',
+        description: 'Tomá una respiración profunda y sentí cómo tus pies tocan el suelo o tu cuerpo se apoya en la silla. Ya está.'
+      },
+      {
+        title: 'Paso 5: ¡Anclado!',
+        description: 'Acabás de usar una técnica poderosa para calmar tu sistema nervioso. Es una herramienta que ahora tenés para siempre. ¡Victoria!'
+      }
+    ]
+  },
+  {
+    id: 'm27',
+    title: 'OPERACIÓN MURO DE LAMENTOS',
+    description: 'Escribir una única preocupación en un papel y romperlo. Meta oculta: Externalizar un pensamiento le quita poder y el acto físico de destruirlo ofrece un cierre simbólico.',
+    type: 'checkbox',
+    category: 'emotional-management',
+    reward: 'Liberador de Carga Mental'
+  },
+  {
+    id: 'm28',
+    title: 'OPERACIÓN PHOENIX',
+    description: 'Reintentar una misión que salteaste o sentiste que te costó. Meta oculta: La resiliencia no es no fallar, es volver a intentarlo. Esto fortalece tu auto-confianza más que 10 éxitos seguidos.',
+    type: 'checkbox',
+    category: 'advanced',
+    reward: 'Resiliencia Nivel 2'
   }
 ];
 
