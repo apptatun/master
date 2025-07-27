@@ -29,13 +29,13 @@ export function MissionList({ missions, completedMissions, onCompleteMission }: 
   return (
     <Card>
       <CardHeader>
-        <CardTitle className="flex items-center font-headline text-2xl">
-          <Gamepad2 className="mr-2 h-6 w-6 text-accent" />
+        <CardTitle className="flex items-center font-headline text-3xl">
+          <Gamepad2 className="mr-3 h-7 w-7 text-accent" />
           Misiones
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <p className="text-muted-foreground mb-4">
+        <p className="text-muted-foreground mb-4 text-base">
           Empecemos con algo chico. Cada misión completada te da puntos y te
           acerca a tu próximo título.
         </p>
@@ -62,23 +62,23 @@ export function MissionList({ missions, completedMissions, onCompleteMission }: 
                       }}
                       disabled={isCompleted}
                       aria-label={`Marcar ${mission.title} como completada`}
-                      className="mt-1"
+                      className="mt-1 h-5 w-5"
                     />
                   )}
                   <div className="space-y-1">
                     <label
                       htmlFor={mission.id}
                       className={cn(
-                        'font-bold text-foreground',
+                        'font-bold text-lg text-foreground',
                         isCompleted && 'line-through text-muted-foreground'
                       )}
                     >
                       {mission.title}
                     </label>
-                    <p className={cn('text-sm text-muted-foreground', isCompleted && 'line-through')}>
+                    <p className={cn('text-base text-muted-foreground', isCompleted && 'line-through')}>
                       {mission.description}
                     </p>
-                    <p className="text-sm font-bold text-accent">
+                    <p className="text-base font-bold text-accent">
                       <Sparkles className="inline-block mr-1 h-4 w-4" />
                       {mission.points} Puntos
                     </p>

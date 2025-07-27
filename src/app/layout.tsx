@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'Momentum',
+  title: 'CAMINO',
   description: 'De a poco. A tu ritmo. Pero arrancá.',
 };
 
