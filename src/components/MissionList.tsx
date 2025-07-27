@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, Compass, Bot, Trophy } from 'lucide-react';
+import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, Compass, Bot, Trophy, Smile } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -26,6 +26,8 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [isAssistantModalOpen, setIsAssistantModalOpen] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [showRejectionMessage, setShowRejectionMessage] = useState(false);
+
 
   const handleOpenModal = (mission: Mission) => {
     setSelectedMission(mission);
@@ -42,6 +44,10 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
       setShowFeedback(false);
     }, 4000); // Show feedback for 4 seconds
   };
+  
+  const handleDeclineMission = () => {
+    setShowRejectionMessage(true);
+  }
   
   const missionPath = typeof window !== 'undefined' ? localStorage.getItem('missionPath') : 'guarida';
 
@@ -66,6 +72,19 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
     
     if (showFeedback) {
       return <EmojiFeedback onFeedback={() => setShowFeedback(false)} />;
+    }
+
+    if (showRejectionMessage) {
+        return (
+             <div className="text-center p-6 bg-card rounded-lg border">
+                <Smile className="mx-auto h-12 w-12 text-accent mb-4" />
+                <h3 className="text-2xl font-bold text-foreground">Está bien.</h3>
+                <p className="text-lg text-muted-foreground mt-2">
+                  No tenés que estar siempre al 100%. <br/>
+                  Esto va a seguir acá para cuando quieras volver. Sin presiones.
+                </p>
+              </div>
+        )
     }
 
     if (isCurrentMissionCompleted) {
@@ -149,8 +168,8 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                             <Bot className="mr-2 h-4 w-4"/>
                             ¿Necesitás una mano?
                         </Button>
-                        <Button variant="ghost" onClick={onNextMission}>
-                            Saltar por ahora
+                        <Button variant="ghost" onClick={handleDeclineMission}>
+                            ❌ No hoy, gracias
                         </Button>
                       </div>
                     )}
