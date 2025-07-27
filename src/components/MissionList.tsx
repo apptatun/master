@@ -4,10 +4,9 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Sparkles, Gamepad2, PartyPopper, ArrowRight, Check, Rocket, SkipForward, MessageCircleQuestion, ClipboardCheck, ArrowLeft } from 'lucide-react';
+import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, SkipForward, MessageCircleQuestion, ClipboardCheck, ArrowLeft } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import { Badge } from './ui/badge';
 import Link from 'next/link';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from './ui/dialog';
 import { useToast } from '@/hooks/use-toast';
@@ -64,7 +63,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
             Completaste todos los desafíos disponibles. ¡Tomate un momento para celebrar tu increíble progreso!
           </p>
            <Link href="/setup">
-              <Button size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90">
+              <Button size="lg" className="mt-6 text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
                 Elegir otro camino
                 <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
               </Button>
@@ -119,10 +118,6 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
             return (
               <Card key={mission.id} className={cn('transition-all', isCompleted ? 'bg-primary/30 border-primary/50' : 'bg-card')}>
                 <CardHeader>
-                   <Badge variant="secondary" className="text-lg font-bold px-4 py-1 self-start mb-2">
-                      <Sparkles className="inline-block mr-2 h-5 w-5 text-accent" />
-                      {mission.points} Puntos
-                    </Badge>
                   <CardTitle className="text-2xl font-bold text-foreground">{mission.title}</CardTitle>
                   <p className={cn('text-lg text-muted-foreground pt-1')}>
                     {mission.description}
@@ -204,7 +199,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                 <p className="text-base text-muted-foreground">{helpMessage}</p>
             </div>
             <DialogFooter>
-            <Button onClick={copyToClipboard} className="w-full text-base bg-accent hover:bg-accent/90">
+            <Button onClick={copyToClipboard} className="w-full text-base bg-accent hover:bg-accent/90 text-accent-foreground">
                 <ClipboardCheck className="mr-2 h-4 w-4" />
                 Copiar Mensaje
             </Button>

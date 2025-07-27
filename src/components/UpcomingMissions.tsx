@@ -7,9 +7,8 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { ListTodo, Sparkles } from 'lucide-react';
+import { ListTodo } from 'lucide-react';
 import type { Mission } from '@/lib/types';
-import { Badge } from './ui/badge';
 
 interface UpcomingMissionsProps {
   missions: Mission[];
@@ -36,10 +35,6 @@ export function UpcomingMissions({ missions }: UpcomingMissionsProps) {
                     </AccordionTrigger>
                     <AccordionContent className='pt-2'>
                         <p className='text-lg text-muted-foreground mb-4'>{mission.description}</p>
-                        <Badge variant="secondary" className="text-base font-bold px-3 py-1">
-                          <Sparkles className="inline-block mr-2 h-4 w-4 text-accent" />
-                          {mission.points} Puntos
-                       </Badge>
                     </AccordionContent>
                 </AccordionItem>
             ))}

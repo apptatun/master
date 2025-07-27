@@ -92,7 +92,7 @@ export default function DashboardPage() {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <Header completedCount={completedMissions.length} />
+      <Header />
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8">
         <div className="space-y-8">
             <MissionList
