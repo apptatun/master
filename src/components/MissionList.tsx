@@ -8,6 +8,7 @@ import { InteractiveGuideModal } from './InteractiveGuideModal';
 import { Sparkles, Gamepad2, PartyPopper } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
+import { Badge } from './ui/badge';
 
 interface MissionListProps {
   missions: Mission[];
@@ -60,23 +61,8 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
                       isCompleted ? 'bg-primary/30 border-primary/50' : 'bg-card'
                     )}
                   >
-                    <div className="flex items-start space-x-4">
-                      {mission.type === 'checkbox' && (
-                        <Checkbox
-                          id={mission.id}
-                          checked={isCompleted}
-                          onCheckedChange={(checked) => {
-                            if (checked) {
-                              onCompleteMission(mission.id, mission.points, mission.rewardTitle);
-                            }
-                          }}
-                          disabled={isCompleted}
-                          aria-label={`Marcar ${mission.title} como completada`}
-                          className="mt-1 h-6 w-6"
-                        />
-                      )}
-                      <div className="space-y-1">
-                        <label
+                    <div className="flex-grow space-y-1">
+                       <label
                           htmlFor={mission.id}
                           className={cn(
                             'font-bold text-xl text-foreground',
@@ -88,17 +74,33 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
                         <p className={cn('text-lg text-muted-foreground', isCompleted && 'line-through')}>
                           {mission.description}
                         </p>
-                        <p className="text-lg font-bold text-accent pt-1">
-                          <Sparkles className="inline-block mr-1 h-5 w-5" />
-                          {mission.points} Puntos
-                        </p>
-                      </div>
                     </div>
-                    {mission.type === 'interactive' && !isCompleted && (
-                      <Button onClick={() => handleOpenModal(mission)} size="sm" className="text-base px-4 py-2 self-center ml-4">
-                        Iniciar Protocolo
-                      </Button>
-                    )}
+
+                    <div className="flex flex-col items-end space-y-2 ml-4">
+                       <Badge variant="secondary" className="text-base px-3 py-1">
+                          <Sparkles className="inline-block mr-1.5 h-4 w-4" />
+                          {mission.points} Puntos
+                       </Badge>
+                       {mission.type === 'interactive' && !isCompleted && (
+                        <Button onClick={() => handleOpenModal(mission)} size="sm" className="text-base px-4 py-2">
+                          Iniciar Protocolo
+                        </Button>
+                      )}
+                       {mission.type === 'checkbox' && (
+                         <Checkbox
+                          id={mission.id}
+                          checked={isCompleted}
+                          onCheckedChange={(checked) => {
+                            if (checked) {
+                              onCompleteMission(mission.id, mission.points, mission.rewardTitle);
+                            }
+                          }}
+                          disabled={isCompleted}
+                          aria-label={`Marcar ${mission.title} como completada`}
+                          className="h-7 w-7"
+                        />
+                       )}
+                    </div>
                   </div>
                 );
               })}
