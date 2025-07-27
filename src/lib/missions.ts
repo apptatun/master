@@ -3,8 +3,8 @@ import { Mission } from './types';
 export const missions: Mission[] = [
   {
     id: 'm1',
-    title: 'Misión: Activar la Hornalla',
-    description: 'Activa la zona de cocción. Objetivo: hervir agua. Riesgo: bajo.',
+    title: 'Misión: Activar la Hornalla (3 min)',
+    description: 'Activa la zona de cocción. Objetivo: hervir agua. Riesgo: bajo, con precaución.',
     type: 'interactive',
     category: 'cooking',
     reward: 'Alquimista Nivel 1',
@@ -41,7 +41,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm2',
-    title: 'Arroz sin engrudo',
+    title: 'Arroz sin engrudo (20 min)',
     description: 'Prepara tu primer arroz. ¡Conviértete en el maestro del grano! 🍚',
     type: 'interactive',
     category: 'cooking',
@@ -75,7 +75,7 @@ export const missions: Mission[] = [
   },
    {
     id: 'm10',
-    title: 'Mate para Principiantes',
+    title: 'Mate para Principiantes (5 min)',
     description: 'Prepara tu primer mate. Un ritual de calma y compañía. 🧉',
     type: 'interactive',
     category: 'cooking',
@@ -109,15 +109,15 @@ export const missions: Mission[] = [
   },
   {
     id: 'm3',
-    title: 'Ninja de la limpieza',
-    description: 'Misión stealth: elimina 5 \'enemigos mugre\' del fregadero. ✨',
+    title: 'Ninja del Fregadero (5 min)',
+    description: 'Misión stealth: elimina 5 \'enemigos mugre\' del fregadero. Sin piedad. ✨',
     type: 'checkbox',
     category: 'organizing',
     reward: 'Exterminador de Caos',
   },
   {
     id: 'm4',
-    title: 'Misión: Lavarropas',
+    title: 'Misión: Lavarropas (5 min)',
     description: 'Inicia un ciclo de lavado. ¡Ropa fresca, vida organizada! 👕',
     type: 'interactive',
     category: 'organizing',
@@ -151,7 +151,7 @@ export const missions: Mission[] = [
   },
    {
     id: 'm9',
-    title: 'Operación "Cama Cero"',
+    title: 'Operación "Cama Cero" (2 min)',
     description: 'Tu primera misión del día: estirar las sábanas. Una cama hecha es un cuarto que ya se ve mejor.',
     type: 'checkbox',
     category: 'organizing',
@@ -159,7 +159,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm14',
-    title: 'Foco de Orden',
+    title: 'Foco de Orden (7 min)',
     description: 'Elegí UNA sola cosa de tu cuarto y ordenala (la silla con ropa, el escritorio, una pila de libros). Solo una.',
     type: 'checkbox',
     category: 'minimal-organization',
@@ -167,7 +167,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm5',
-    title: 'Gánale al Snooze',
+    title: 'Gánale al Snooze (1 min)',
     description: 'Primer objetivo del día: levantate. ¿El segundo? Hidratarte. Un vaso de agua al despertar es una victoria fácil. ☀️',
     type: 'checkbox',
     category: 'personal-care',
@@ -175,7 +175,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm6',
-    title: 'Embajador de la Hidratación',
+    title: 'Embajador de la Hidratación (1 min)',
     description: 'Bebe un vaso de agua al despertar. ¡Un comienzo épico para tu día! 💦',
     type: 'checkbox',
     category: 'personal-care',
@@ -183,7 +183,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm7',
-    title: 'Exploración Beta',
+    title: 'Exploración Beta (5 min)',
     description: 'Pisa la calle como si fueras un NPC observando el mapa (hoodie permitido).',
     type: 'checkbox',
     category: 'going-out',
@@ -191,7 +191,7 @@ export const missions: Mission[] = [
   },
     {
     id: 'm11',
-    title: 'Misión Supermercado',
+    title: 'Misión Supermercado (10 min)',
     description: 'Ve al supermercado o almacén más cercano a comprar UNA cosa. Solo una. Pan, galletitas, lo que sea. El objetivo es entrar y salir.',
     type: 'interactive',
     category: 'going-out',
@@ -225,7 +225,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm8',
-    title: 'Misión: Saludo Social',
+    title: 'Misión: Saludo Social (1 min)',
     description: 'Practica un saludo simple con un empleado de una tienda. Un "buen día" es suficiente.',
     type: 'checkbox',
     category: 'social',
@@ -233,7 +233,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm15',
-    title: 'Reactivar Contacto',
+    title: 'Reactivar Contacto (2 min)',
     description: 'Mandale un mensaje simple como "Hola, ¿cómo estás?" a una persona de confianza. Sin presión por responder.',
     type: 'checkbox',
     category: 'social',
@@ -241,7 +241,7 @@ export const missions: Mission[] = [
   },
    {
     id: 'm12',
-    title: 'Guardián del Esmalte',
+    title: 'Guardián del Esmalte (3 min)',
     description: 'Cepíllate los dientes. No tienen que quedar perfectos. Solo tienes que hacerlo.',
     type: 'checkbox',
     category: 'personal-care',
@@ -249,7 +249,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm13',
-    title: 'Uniforme de Entrecasa',
+    title: 'Uniforme de Entrecasa (2 min)',
     description: 'Ponte ropa limpia, aunque no vayas a salir. Es para vos.',
     type: 'checkbox',
     category: 'personal-care',
