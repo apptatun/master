@@ -119,12 +119,11 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
         <div className="space-y-6">
           {missions.map((mission) => {
             return (
-              <Card key={mission.id} className={cn('transition-all border-0 shadow-none')}>
+              <Card key={mission.id} className={cn('transition-all border-0 shadow-none bg-card/80')}>
                 <CardHeader>
                   <CardTitle className="font-headline text-4xl sm:text-5xl font-bold text-foreground pt-2 pb-4">{mission.title}</CardTitle>
                 </CardHeader>
                 <CardContent className="space-y-4 px-6 pb-4">
-                  
                   <p className="text-lg text-muted-foreground">{mission.description}</p>
                   
                   {mission.type === 'checkbox' && mission.steps && (
@@ -147,29 +146,32 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                 <CardFooter className="flex flex-col items-stretch gap-3 bg-foreground/5 py-4 px-6">
                     <div className="flex flex-col gap-3 pt-2">
                         {mission.type === 'interactive' && (
-                        <Tooltip>
+                          <Tooltip>
                             <TooltipTrigger asChild>
-                                <Button onClick={() => handleOpenModal(mission)} size="lg" className="text-base px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
+                              <Button onClick={() => handleOpenModal(mission)} size="lg" className="text-lg px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
                                 Ver cómo se hace
-                            </Button>
+                              </Button>
                             </TooltipTrigger>
                             <TooltipContent>
-                            <p>Vas a ver una mini instrucción simple. Tranquilo, es rápido.</p>
+                              <p>Vas a ver una mini instrucción simple. Tranquilo, es rápido.</p>
                             </TooltipContent>
-                        </Tooltip>
+                          </Tooltip>
                         )}
                         {mission.type === 'checkbox' && (
-                        <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="text-base px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
+                          <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="text-lg px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
                             <Check className="mr-2 h-5 w-5" /> ¡Misión Conquistada!
-                        </Button>
+                          </Button>
                         )}
-                        <Button variant="outline" onClick={() => setIsAssistantModalOpen(true)}>
-                            <Bot className="mr-2 h-4 w-4"/>
-                            ¿Necesitás una mano?
-                        </Button>
-                        <Button variant="ghost" onClick={handleDeclineMission}>
-                            ❌ No hoy, gracias
-                        </Button>
+                        
+                        <div className="flex justify-between items-center gap-2 mt-2">
+                            <Button variant="ghost" onClick={() => setIsAssistantModalOpen(true)} className="text-muted-foreground">
+                                <Bot className="mr-2 h-4 w-4"/>
+                                Necesito una mano
+                            </Button>
+                            <Button variant="ghost" onClick={handleDeclineMission} className="text-muted-foreground">
+                                No hoy, gracias
+                            </Button>
+                        </div>
                     </div>
                 </CardFooter>
               </Card>
@@ -181,7 +183,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
   };
 
   return (
-    <Card className="bg-card/50 border-0 shadow-none">
+    <Card className="bg-transparent border-0 shadow-none">
       <CardContent className="p-0">
         {renderContent()}
       </CardContent>
