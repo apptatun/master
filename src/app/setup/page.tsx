@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { CookingPot, Home, Users, MessageSquareHeart, HelpCircle, ArrowRight, ArrowLeft, HeartPulse } from 'lucide-react';
+import { CookingPot, Home, Users, MessageSquareHeart, HelpCircle, ArrowLeft, HeartPulse } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 
 type Category = Mission['category'];
@@ -52,6 +52,10 @@ export default function SetupPage() {
   const router = useRouter();
 
   const handleSelectCategory = (category: Category) => {
+    // Clear previous progress when selecting a new path
+    localStorage.removeItem('completedMissions');
+    localStorage.removeItem('activeMissionIndex');
+    
     localStorage.setItem('missionCategory', category);
     router.push('/dashboard');
   };
