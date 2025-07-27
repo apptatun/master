@@ -106,8 +106,7 @@ export default function DashboardPage() {
     if(activeMissionIndex < upcomingMissions.length - 1) {
        setActiveMissionIndex(activeMissionIndex + 1);
     } else {
-        // If it's the last mission, we should reflect that all are completed
-        // This is handled by the `allMissionsCompleted` prop now
+        // This case is now handled by allMissionsCompleted
     }
   };
   
