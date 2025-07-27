@@ -343,6 +343,36 @@ export const missions: Mission[] = [
         description: 'Toca el timbre un poco antes de tu parada de destino. Baja con calma. ¡Misión cumplida! Has conquistado el transporte público.'
       }
     ]
+  },
+  {
+    id: 'm20',
+    title: 'MISIÓN COORDENADAS MÉDICAS',
+    description: 'Llegar a un consultorio usando GPS. Meta oculta: Aprender a confiar en una herramienta te quita la presión de tener que "saber" todo y reduce la ansiedad de perderte.',
+    type: 'interactive',
+    category: 'going-out',
+    reward: 'Explorador Urbano Avanzado',
+    steps: [
+      {
+        title: 'Paso 1: El Destino',
+        description: 'Tené a mano la dirección exacta del consultorio. Abrí tu app de mapas preferida (Google Maps, Waze, etc.) e introducila.'
+      },
+      {
+        title: 'Paso 2: Iniciar la Navegación',
+        description: 'La app te mostrará una ruta. Dale al botón de "Iniciar" o "Ir". Si te ofrece rutas alternativas, elegí la que te parezca más sencilla.'
+      },
+      {
+        title: 'Paso 3: Seguir las Indicaciones',
+        description: 'Confiá en la voz o en el mapa. No tenés que memorizar nada, solo seguir la siguiente indicación. Si te equivocás, la app recalculará automáticamente. ¡No hay error posible!'
+      },
+      {
+        title: 'Paso 4: La Llegada',
+        description: 'La app te avisará cuando estés cerca. Prestá atención a los números de las calles o a los nombres de los edificios para encontrar el lugar exacto.'
+      },
+      {
+        title: 'Paso 5: ¡Destino Conquistado!',
+        description: 'Llegaste. No solo al consultorio, sino a un nuevo nivel de autonomía. ¡Excelente trabajo de navegación!'
+      }
+    ]
   }
 ];
 
