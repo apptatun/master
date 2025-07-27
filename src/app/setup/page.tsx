@@ -1,9 +1,10 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { CookingPot, Home, Users, MessageSquareHeart, HelpCircle, ArrowRight } from 'lucide-react';
+import { CookingPot, Home, Users, MessageSquareHeart, HelpCircle, ArrowRight, ArrowLeft } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 
 type Category = Mission['category'];
@@ -51,29 +52,39 @@ export default function SetupPage() {
 
   return (
     <main className="flex min-h-screen w-full flex-col items-center justify-center bg-background p-4">
-      <div className="max-w-4xl text-center">
-        <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
-          ¿Por dónde empezamos?
-        </h1>
-        <p className="mt-4 text-xl text-muted-foreground md:text-2xl">
-          Elegí una categoría para personalizar tu arranque. Esto nos ayuda a sugerirte los primeros desafíos.
-        </p>
-        <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {options.map(option => (
-            <Card 
-              key={option.title} 
-              onClick={() => handleSelectCategory(option.category)}
-              className="h-full transform cursor-pointer text-left transition-transform duration-300 hover:scale-105 hover:shadow-2xl flex flex-col"
-            >
-                <CardHeader>
-                    {option.icon}
-                    <CardTitle className="text-2xl font-bold">{option.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                    <CardDescription className="text-lg">{option.description}</CardDescription>
-                </CardContent>
-            </Card>
-          ))}
+      <div className="max-w-4xl w-full">
+         <div className="text-left mb-8">
+            <Link href="/">
+                <Button variant="ghost">
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Volver a la explicación
+                </Button>
+            </Link>
+        </div>
+        <div className="text-center">
+            <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
+              ¿Por dónde empezamos?
+            </h1>
+            <p className="mt-4 text-xl text-muted-foreground md:text-2xl">
+              Elegí una categoría para personalizar tu arranque. Esto nos ayuda a sugerirte los primeros desafíos.
+            </p>
+            <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {options.map(option => (
+                <Card 
+                  key={option.title} 
+                  onClick={() => handleSelectCategory(option.category)}
+                  className="h-full transform cursor-pointer text-left transition-transform duration-300 hover:scale-105 hover:shadow-2xl flex flex-col"
+                >
+                    <CardHeader>
+                        {option.icon}
+                        <CardTitle className="text-2xl font-bold">{option.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="flex-grow">
+                        <CardDescription className="text-lg">{option.description}</CardDescription>
+                    </CardContent>
+                </Card>
+              ))}
+            </div>
         </div>
       </div>
     </main>
