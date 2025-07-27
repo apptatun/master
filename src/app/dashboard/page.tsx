@@ -15,12 +15,14 @@ export default function DashboardPage() {
   const [completedMissions, setCompletedMissions] = useState<string[]>([]);
   const [userMissions, setUserMissions] = useState<Mission[]>([]);
   const [isMounted, setIsMounted] = useState(false);
+  const [activeMissionIndex, setActiveMissionIndex] = useState(0);
   const { toast } = useToast();
   const router = useRouter();
 
   useEffect(() => {
     const savedCompleted = localStorage.getItem('completedMissions');
     const category = localStorage.getItem('missionCategory') as Mission['category'] | null;
+    const savedIndex = localStorage.getItem('activeMissionIndex');
 
     if (!category) {
       router.push('/setup');
@@ -29,6 +31,9 @@ export default function DashboardPage() {
 
     if (savedCompleted) {
       setCompletedMissions(JSON.parse(savedCompleted));
+    }
+     if (savedIndex) {
+      setActiveMissionIndex(parseInt(savedIndex, 10));
     }
     
     const filteredMissions = missions.filter(
@@ -42,8 +47,9 @@ export default function DashboardPage() {
   useEffect(() => {
     if(isMounted) {
         localStorage.setItem('completedMissions', JSON.stringify(completedMissions));
+        localStorage.setItem('activeMissionIndex', activeMissionIndex.toString());
     }
-  }, [completedMissions, isMounted]);
+  }, [completedMissions, activeMissionIndex, isMounted]);
 
   const handleCompleteMission = (missionId: string) => {
     if (completedMissions.includes(missionId)) return;
@@ -73,14 +79,23 @@ export default function DashboardPage() {
     };
     setUserMissions(prevMissions => [newMission, ...prevMissions]);
   };
+  
+  const handleNextMission = () => {
+    const upcomingMissions = userMissions.filter(mission => !completedMissions.includes(mission.id));
+    if(activeMissionIndex < upcomingMissions.length -1) {
+       setActiveMissionIndex(activeMissionIndex + 1);
+    }
+  };
+
 
   if (!isMounted) {
     return null; // or a loading spinner
   }
   
   const upcomingMissions = userMissions.filter(mission => !completedMissions.includes(mission.id));
-  const nextMission = upcomingMissions.length > 0 ? [upcomingMissions[0]] : [];
-  const remainingMissions = upcomingMissions.slice(1);
+  const currentMission = upcomingMissions.length > activeMissionIndex ? [upcomingMissions[activeMissionIndex]] : [];
+  const isCurrentMissionCompleted = currentMission.length > 0 && completedMissions.includes(currentMission[0].id);
+  const remainingMissions = upcomingMissions.slice(activeMissionIndex + 1);
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
@@ -89,9 +104,11 @@ export default function DashboardPage() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2 space-y-8">
             <MissionList
-              missions={nextMission}
+              missions={currentMission}
               completedMissions={completedMissions}
               onCompleteMission={handleCompleteMission}
+              onNextMission={handleNextMission}
+              isCurrentMissionCompleted={isCurrentMissionCompleted}
               allMissionsCompleted={upcomingMissions.length === 0}
             />
             {remainingMissions.length > 0 && (

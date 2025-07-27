@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { Checkbox } from '@/components/ui/checkbox';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Sparkles, Gamepad2, PartyPopper, ArrowRight, Check } from 'lucide-react';
+import { Sparkles, Gamepad2, PartyPopper, ArrowRight, Check, Rocket } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { Badge } from './ui/badge';
@@ -14,10 +14,12 @@ interface MissionListProps {
   missions: Mission[];
   completedMissions: string[];
   onCompleteMission: (missionId: string) => void;
+  onNextMission: () => void;
+  isCurrentMissionCompleted: boolean;
   allMissionsCompleted: boolean;
 }
 
-export function MissionList({ missions, completedMissions, onCompleteMission, allMissionsCompleted }: MissionListProps) {
+export function MissionList({ missions, completedMissions, onCompleteMission, onNextMission, isCurrentMissionCompleted, allMissionsCompleted }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
 
   const handleOpenModal = (mission: Mission) => {
@@ -100,6 +102,19 @@ export function MissionList({ missions, completedMissions, onCompleteMission, al
                 );
               })}
             </div>
+             {isCurrentMissionCompleted && !allMissionsCompleted && (
+              <div className="mt-8 text-center p-6 bg-card rounded-lg border">
+                <h3 className="text-2xl font-bold text-foreground">¡Muy bien hecho!</h3>
+                <p className="text-lg text-muted-foreground mt-2">
+                  Ya diste un gran paso hoy. Recordá, esto es a tu ritmo. <br/> 
+                  Si te sentís con energía, podés ir por el siguiente. Si no, ¡lo de hoy ya es una victoria enorme!
+                </p>
+                <Button onClick={onNextMission} size="lg" className="mt-6 text-lg group">
+                  <Rocket className="mr-2 h-5 w-5 transition-transform group-hover:rotate-12" />
+                  Siguiente Desafío
+                </Button>
+              </div>
+            )}
           </>
         )}
       </CardContent>
