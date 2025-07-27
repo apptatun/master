@@ -41,9 +41,9 @@ const options: { icon: JSX.Element; title: string; description: string; category
         category: 'social'
     },
      {
-        icon: <HelpCircle className="w-10 h-10 mb-4 text-accent" />,
-        title: "No sé, necesito ayuda",
-        description: "Te damos un punto de partida simple y genérico.",
+        icon: <HelpCircle className="w-10 h-10 mb-4 text-muted-foreground" />,
+        title: "No sé por dónde empezar",
+        description: "Te damos un punto de partida simple y genérico para romper el hielo.",
         category: 'generic'
     }
 ]
