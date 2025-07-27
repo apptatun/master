@@ -18,13 +18,11 @@ interface MissionListProps {
   completedMissions: string[];
   onCompleteMission: (missionId: string) => void;
   onNextMission: () => void;
-  onPreviousMission: () => void;
   isCurrentMissionCompleted: boolean;
   allMissionsCompleted: boolean;
-  canGoBack: boolean;
 }
 
-export function MissionList({ missions, completedMissions, onCompleteMission, onNextMission, onPreviousMission, isCurrentMissionCompleted, allMissionsCompleted, canGoBack }: MissionListProps) {
+export function MissionList({ missions, completedMissions, onCompleteMission, onNextMission, isCurrentMissionCompleted, allMissionsCompleted }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [isAssistantModalOpen, setIsAssistantModalOpen] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);

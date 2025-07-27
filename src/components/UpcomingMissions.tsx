@@ -1,51 +1,56 @@
 
 'use client';
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from '@/components/ui/accordion';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { ListTodo, Trophy } from 'lucide-react';
-import type { Mission } from '@/lib/types';
+import { ListTodo, Trophy, Compass, ArrowRight } from 'lucide-react';
+import type { Mission, Path } from '@/lib/types';
+import { Button } from './ui/button';
+import Link from 'next/link';
 
 interface UpcomingMissionsProps {
   missions: Mission[];
+  currentPath: Path | null;
 }
 
-export function UpcomingMissions({ missions }: UpcomingMissionsProps) {
+export function UpcomingMissions({ missions, currentPath }: UpcomingMissionsProps) {
+  if (missions.length === 0) {
+    return null;
+  }
+  const nextMission = missions[0];
+
   return (
     <Card className="bg-card/50">
       <CardHeader>
         <CardTitle className="flex items-center font-headline text-3xl">
           <ListTodo className="mr-3 h-7 w-7 text-accent/80" />
-          Próximas Aventuras
+          Próxima Aventura Sugerida
         </CardTitle>
       </CardHeader>
       <CardContent>
          <p className="text-muted-foreground mb-6 text-lg">
-            Estos son los siguientes pasos en tu camino. No tienes que pensar en ellos ahora, solo saber que la aventura continúa.
-          </p>
-        <Accordion type="single" collapsible className="w-full">
-            {missions.map(mission => (
-                <AccordionItem value={mission.id} key={mission.id}>
-                    <AccordionTrigger className='text-xl font-bold text-foreground hover:no-underline'>
-                        {mission.title}
-                    </AccordionTrigger>
-                    <AccordionContent className='pt-2'>
-                        <p className='text-lg text-muted-foreground mb-4'>{mission.description}</p>
-                        {mission.reward && (
-                          <div className="flex items-center text-sm font-bold text-accent-foreground/80">
-                            <Trophy className="mr-2 h-5 w-5 text-accent" />
-                            Logro a Desbloquear: {mission.reward}
-                          </div>
-                        )}
-                    </AccordionContent>
-                </AccordionItem>
-            ))}
-        </Accordion>
+           Cuando te sientas listo, este podría ser tu siguiente paso. Sin apuro.
+         </p>
+        <div className="p-4 border rounded-lg bg-background/50 space-y-3">
+          <h4 className='text-xl font-bold text-foreground'>{nextMission.title}</h4>
+          <p className='text-lg text-muted-foreground'>{nextMission.description}</p>
+          {nextMission.reward && (
+            <div className="flex items-center text-sm font-bold text-accent-foreground/80">
+              <Trophy className="mr-2 h-5 w-5 text-accent" />
+              Logro a Desbloquear: {nextMission.reward}
+            </div>
+          )}
+        </div>
+        <div className="mt-6 flex flex-col sm:flex-row items-center gap-4">
+          <p className="text-muted-foreground text-base flex-grow">¿No te convence? No pasa nada.</p>
+           {currentPath && (
+             <Link href={`/path?mode=${currentPath}`}>
+                <Button variant="outline">
+                    <Compass className="mr-2 h-4 w-4" />
+                    Ver otras opciones
+                </Button>
+            </Link>
+           )}
+        </div>
       </CardContent>
     </Card>
   );

@@ -132,13 +132,11 @@ export default function DashboardPage() {
               completedMissions={completedMissions}
               onCompleteMission={handleCompleteMission}
               onNextMission={handleNextMission}
-              onPreviousMission={handlePreviousMission}
               isCurrentMissionCompleted={isCurrentMissionCompleted}
               allMissionsCompleted={upcomingMissions.length === 0}
-              canGoBack={activeMissionIndex > 0}
             />
             {remainingMissions.length > 0 && (
-              <UpcomingMissions missions={remainingMissions} />
+              <UpcomingMissions missions={remainingMissions} currentPath={currentPath} />
             )}
         </div>
       </main>
