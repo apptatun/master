@@ -1,3 +1,4 @@
+
 import { Mission } from './types';
 
 export const missions: Mission[] = [
@@ -262,5 +263,39 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'personal-care',
     reward: 'Guardián del Ritmo Circadiano',
+  },
+  {
+    id: 'm17',
+    title: 'MISIÓN LÍNEA BLANCA',
+    description: 'Descongelar el freezer sin causar una inundación. Meta oculta: Enfrentar una tarea doméstica grande te demuestra que podés manejar proyectos más complejos de lo que creés.',
+    type: 'interactive',
+    category: 'organizing',
+    reward: 'Domador de Escarcha',
+    steps: [
+      {
+        title: 'Paso 1: Seguridad y Preparación',
+        description: 'Desenchufa el freezer. ¡No te saltes este paso! Coloca toallas o trapos viejos alrededor para absorber el agua que caerá.',
+      },
+      {
+        title: 'Paso 2: Vaciar la Fortaleza',
+        description: 'Saca toda la comida. Lo que sirva, ponelo en una heladerita portátil o en el refrigerador. Lo que no, a la basura.',
+      },
+      {
+        title: 'Paso 3: El Deshielo (Sé Paciente)',
+        description: 'Deja la puerta abierta y que la naturaleza haga su trabajo. Para acelerar, puedes poner recipientes con agua caliente adentro (¡nunca uses un cuchillo o secador de pelo!).',
+      },
+      {
+        title: 'Paso 4: Limpieza Final',
+        description: 'Una vez que todo el hielo se haya derretido, limpia el interior con un trapo con agua y un poco de vinagre o bicarbonato. Sécalo bien.',
+      },
+      {
+        title: 'Paso 5: Reactivación',
+        description: 'Vuelve a enchufar el freezer. Espera unos 15-20 minutos a que empiece a enfriar antes de volver a guardar la comida.',
+      },
+      {
+        title: 'Paso 6: ¡Victoria Ártica!',
+        description: '¡Lo lograste! Venciste al gigante de hielo. Ahora tu freezer es más eficiente y vos demostraste una paciencia de monje tibetano.',
+      },
+    ],
   }
 ];
