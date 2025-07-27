@@ -9,7 +9,6 @@ import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
 import { Check } from 'lucide-react';
 import type { Mission, Path } from '@/lib/types';
-import { UpcomingMissions } from '@/components/UpcomingMissions';
 import Confetti from 'react-confetti';
 import { subCategoryMap } from '@/lib/types';
 
@@ -119,8 +118,7 @@ export default function DashboardPage() {
   const upcomingMissions = userMissions.filter(mission => !completedMissions.includes(mission.id));
   const currentMission = upcomingMissions.length > activeMissionIndex ? [upcomingMissions[activeMissionIndex]] : [];
   const isCurrentMissionCompleted = currentMission.length > 0 && completedMissions.includes(currentMission[0].id);
-  const remainingMissions = upcomingMissions.slice(activeMissionIndex + 1);
-
+  
   return (
     <div className="flex min-h-screen flex-col bg-background">
       {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} />}
@@ -135,9 +133,6 @@ export default function DashboardPage() {
               isCurrentMissionCompleted={isCurrentMissionCompleted}
               allMissionsCompleted={upcomingMissions.length === 0}
             />
-            {remainingMissions.length > 0 && (
-              <UpcomingMissions missions={remainingMissions} currentPath={currentPath} />
-            )}
         </div>
       </main>
     </div>

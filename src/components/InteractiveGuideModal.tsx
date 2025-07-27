@@ -9,7 +9,7 @@ import {
   DialogFooter,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, ArrowRight, Check, Forward } from 'lucide-react';
+import { ArrowLeft, Check } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 
 interface InteractiveGuideModalProps {
@@ -63,12 +63,9 @@ export function InteractiveGuideModal({
       <DialogContent className="sm:max-w-[525px] bg-card flex flex-col max-h-[90vh]">
         <DialogHeader>
           <DialogTitle className="font-headline text-3xl">{mission.title}</DialogTitle>
-          <div className='pt-2'>
+           <div className='pt-2'>
             <p className="text-muted-foreground text-base">
                 Esto es una guía, no un examen. El objetivo es que te animes a explorar, con calma y a tu ritmo.
-            </p>
-            <p className="text-muted-foreground text-base mt-2">
-                Nadie nace sabiendo. Podés saltear los pasos que ya conozcas o pedir una mano si la necesitás. ¡Empecemos la aventura!
             </p>
           </div>
         </DialogHeader>
@@ -82,15 +79,13 @@ export function InteractiveGuideModal({
                     <ArrowLeft className="mr-2 h-4 w-4" />
                     Anterior
                 </Button>
-                <Button onClick={handleNext} className="bg-accent text-accent-foreground hover:bg-accent/90 text-base">
+                <Button onClick={handleNext} className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-6 py-6">
                     {isLastStep ? '¡Misión Conquistada!' : 'Listo, ¿qué sigue?'}
-                    {!isLastStep && <ArrowRight className="ml-2 h-4 w-4" />}
-                    {isLastStep && <Check className="ml-2 h-4 w-4" />}
+                    {isLastStep && <Check className="ml-2 h-5 w-5" />}
                 </Button>
             </div>
             <Button variant="outline" onClick={handleComplete} className="w-full text-base">
-                Ya sé cómo seguir (Saltar guía y conquistar)
-                <Forward className="ml-2 h-4 w-4" />
+                Ya sé cómo seguir (Saltar y conquistar)
             </Button>
         </DialogFooter>
       </DialogContent>

@@ -50,6 +50,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
   }
   
   const missionPath = typeof window !== 'undefined' ? localStorage.getItem('missionPath') : 'guarida';
+  const currentMissionForReward = missions[0];
 
   const renderContent = () => {
     if (allMissionsCompleted) {
@@ -92,6 +93,12 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
              <div className="mt-8 text-center p-6 bg-card rounded-lg border">
                 <Rocket className="mx-auto h-12 w-12 text-accent mb-4" />
                 <h3 className="text-2xl font-bold text-foreground">¡Muy bien hecho!</h3>
+                {currentMissionForReward?.reward && (
+                    <div className="flex items-center justify-center text-lg font-bold text-accent-foreground/80 pt-2 bg-accent/20 p-3 rounded-md my-4">
+                      <Trophy className="mr-2 h-5 w-5 text-accent" />
+                      <p>Logro Desbloqueado: <span className="font-extrabold">{currentMissionForReward.reward}</span></p>
+                    </div>
+                  )}
                 <p className="text-lg text-muted-foreground mt-2">
                   Ya diste un gran paso hoy. Recordá, esto es a tu ritmo. <br/> 
                   Si te sentís con energía, podés ir por el siguiente. Si no, ¡lo de hoy ya es una victoria enorme!
@@ -124,26 +131,17 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
 
     return (
       <>
-        <div className="text-center mb-6">
-            <p className="text-xl text-muted-foreground">Te sugerimos empezar por acá. Un paso a la vez.</p>
-            <p className="font-bold text-2xl text-foreground">Concentrate solo en esto. Vos podés.</p>
-        </div>
         <div className="space-y-6">
           {missions.map((mission) => {
             const isCompleted = completedMissions.includes(mission.id);
             return (
-              <Card key={mission.id} className={cn('transition-all border-2', isCompleted ? 'border-green-500/50 bg-green-500/5' : 'border-transparent')}>
+              <Card key={mission.id} className={cn('transition-all border-2 border-transparent')}>
                 <CardHeader>
-                  <CardTitle className="text-2xl font-bold text-foreground">{mission.title}</CardTitle>
+                  <p className="text-xl text-muted-foreground">Te sugerimos empezar por acá.</p>
+                  <CardTitle className="font-headline text-4xl sm:text-5xl font-bold text-foreground pt-2 pb-4">{mission.title}</CardTitle>
                   <p className={cn('text-lg text-muted-foreground pt-1')}>
                     {mission.description}
                   </p>
-                   {mission.reward && (
-                    <div className="flex items-center text-sm font-bold text-accent-foreground/80 pt-2">
-                      <Trophy className="mr-2 h-5 w-5 text-accent" />
-                      Logro Desbloqueado: {mission.reward}
-                    </div>
-                  )}
                 </CardHeader>
                 <CardFooter className="flex flex-col items-stretch gap-3 bg-background/50 py-4 px-6">
                     {isCompleted ? (
@@ -160,7 +158,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                           </Button>
                         )}
                         {mission.type === 'checkbox' && (
-                          <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="text-base px-4 py-6">
+                          <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="text-base px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
                             <Check className="mr-2 h-5 w-5" /> ¡Misión Conquistada!
                           </Button>
                         )}
@@ -184,13 +182,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
 
   return (
     <Card className="bg-card/50">
-      <CardHeader>
-        <CardTitle className="flex items-center font-headline text-4xl">
-          <Gamepad2 className="mr-3 h-8 w-8 text-accent" />
-          Tu Próximo Paso
-        </CardTitle>
-      </CardHeader>
-      <CardContent>
+      <CardContent className="p-4 sm:p-6">
         {renderContent()}
       </CardContent>
       {selectedMission && (
