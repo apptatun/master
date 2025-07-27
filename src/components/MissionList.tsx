@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, SkipForward, MessageCircleQuestion, ClipboardCheck, ArrowLeft } from 'lucide-react';
+import { Gamepad2, PartyPopper, ArrowRight, Check, Rocket, SkipForward, MessageCircleQuestion, ClipboardCheck, ArrowLeft, Trophy } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
@@ -71,7 +71,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
         </div>
       );
     }
-
+    
     if (isCurrentMissionCompleted) {
         return (
              <div className="mt-8 text-center p-6 bg-card rounded-lg border">
@@ -88,7 +88,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
               </div>
         )
     }
-    
+
     if (missions.length === 0 && !allMissionsCompleted) {
         return (
         <div className="text-center p-8">
@@ -122,6 +122,12 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   <p className={cn('text-lg text-muted-foreground pt-1')}>
                     {mission.description}
                   </p>
+                   {mission.reward && (
+                    <div className="flex items-center text-sm font-bold text-accent-foreground/80 pt-2">
+                      <Trophy className="mr-2 h-5 w-5 text-accent" />
+                      Logro: {mission.reward}
+                    </div>
+                  )}
                 </CardHeader>
                 <CardFooter className="flex flex-col items-stretch gap-3 bg-background/50 py-4 px-6">
                     {mission.type === 'interactive' && !isCompleted && (

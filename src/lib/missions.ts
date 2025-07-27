@@ -7,6 +7,7 @@ export const missions: Mission[] = [
     description: 'Activa la zona de cocción. Objetivo: hervir agua. Riesgo: bajo.',
     type: 'interactive',
     category: 'cooking',
+    reward: 'Alquimista Nivel 1',
     steps: [
       {
         title: 'Paso 1: Pedir ayuda es de cracks. ¡Y es obligatorio si no estás seguro!',
@@ -44,6 +45,7 @@ export const missions: Mission[] = [
     description: 'Prepara tu primer arroz. ¡Conviértete en el maestro del grano! 🍚',
     type: 'interactive',
     category: 'cooking',
+    reward: 'Maestro del Grano',
     steps: [
         {
             title: 'Paso 1: Medir el arroz',
@@ -77,6 +79,7 @@ export const missions: Mission[] = [
     description: 'Prepara tu primer mate. Un ritual de calma y compañía. 🧉',
     type: 'interactive',
     category: 'cooking',
+    reward: 'Cebador de la Calma',
     steps: [
         {
             title: 'Paso 1: Calentar el agua',
@@ -110,6 +113,7 @@ export const missions: Mission[] = [
     description: 'Misión stealth: elimina 5 \'enemigos mugre\' del fregadero. ✨',
     type: 'checkbox',
     category: 'organizing',
+    reward: 'Exterminador de Caos',
   },
   {
     id: 'm4',
@@ -117,6 +121,7 @@ export const missions: Mission[] = [
     description: 'Inicia un ciclo de lavado. ¡Ropa fresca, vida organizada! 👕',
     type: 'interactive',
     category: 'organizing',
+    reward: 'Domador de Textiles',
     steps: [
         {
             title: 'Paso 1: Separar la ropa',
@@ -150,6 +155,7 @@ export const missions: Mission[] = [
     description: 'Tu primera misión del día: estirar las sábanas. Una cama hecha es un cuarto que ya se ve mejor.',
     type: 'checkbox',
     category: 'organizing',
+    reward: 'Guardián del Orden',
   },
   {
     id: 'm14',
@@ -157,6 +163,7 @@ export const missions: Mission[] = [
     description: 'Elegí UNA sola cosa de tu cuarto y ordenala (la silla con ropa, el escritorio, una pila de libros). Solo una.',
     type: 'checkbox',
     category: 'minimal-organization',
+    reward: 'Clarividente Espacial',
   },
   {
     id: 'm5',
@@ -164,6 +171,7 @@ export const missions: Mission[] = [
     description: 'Primer objetivo del día: levantate. ¿El segundo? Hidratarte. Un vaso de agua al despertar es una victoria fácil. ☀️',
     type: 'checkbox',
     category: 'personal-care',
+    reward: 'Conquistador del Alba',
   },
   {
     id: 'm6',
@@ -171,6 +179,7 @@ export const missions: Mission[] = [
     description: 'Bebe un vaso de agua al despertar. ¡Un comienzo épico para tu día! 💦',
     type: 'checkbox',
     category: 'personal-care',
+    reward: 'Ingeniero de Bienestar',
   },
   {
     id: 'm7',
@@ -178,6 +187,7 @@ export const missions: Mission[] = [
     description: 'Pisa la calle como si fueras un NPC observando el mapa (hoodie permitido).',
     type: 'checkbox',
     category: 'going-out',
+    reward: 'Cartógrafo de lo Cotidiano',
   },
     {
     id: 'm11',
@@ -185,6 +195,7 @@ export const missions: Mission[] = [
     description: 'Ve al supermercado o almacén más cercano a comprar UNA cosa. Solo una. Pan, galletitas, lo que sea. El objetivo es entrar y salir.',
     type: 'interactive',
     category: 'going-out',
+    reward: 'Explorador Urbano',
     steps: [
         {
             title: 'Paso 1: El Objetivo',
@@ -218,6 +229,7 @@ export const missions: Mission[] = [
     description: 'Practica un saludo simple con un empleado de una tienda. Un "buen día" es suficiente.',
     type: 'checkbox',
     category: 'social',
+    reward: 'Diplomático Novato',
   },
   {
     id: 'm15',
@@ -225,19 +237,22 @@ export const missions: Mission[] = [
     description: 'Mandale un mensaje simple como "Hola, ¿cómo estás?" a una persona de confianza. Sin presión por responder.',
     type: 'checkbox',
     category: 'social',
+    reward: 'Emisario Silencioso',
   },
    {
     id: 'm12',
     title: 'Guardián del Esmalte',
     description: 'Cepíllate los dientes. No tienen que quedar perfectos. Solo tienes que hacerlo.',
     type: 'checkbox',
-    category: 'personal-care'
+    category: 'personal-care',
+    reward: 'Paladín de la Sonrisa',
   },
   {
     id: 'm13',
     title: 'Uniforme de Entrecasa',
     description: 'Ponte ropa limpia, aunque no vayas a salir. Es para vos.',
     type: 'checkbox',
-    category: 'personal-care'
+    category: 'personal-care',
+    reward: 'Comandante del Confort',
   }
 ];

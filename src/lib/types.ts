@@ -18,6 +18,7 @@ export interface Mission {
     | 'minimal-organization'
     | 'emotional-management';
   steps?: Step[];
+  reward?: string;
 }
 
     
