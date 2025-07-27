@@ -297,5 +297,13 @@ export const missions: Mission[] = [
         description: '¡Lo lograste! Venciste al gigante de hielo. Ahora tu freezer es más eficiente y vos demostraste una paciencia de monje tibetano.',
       },
     ],
+  },
+  {
+    id: 'm18',
+    title: 'PROTOCOLO CUBO BASURA',
+    description: 'Saca los residuos sin posponer. Meta oculta: Completar una tarea rutinaria de inmediato rompe el ciclo de la procrastinación y libera espacio mental.',
+    type: 'checkbox',
+    category: 'organizing',
+    reward: 'Operario de Saneamiento Élite',
   }
 ];
