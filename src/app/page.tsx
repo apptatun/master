@@ -11,7 +11,7 @@ export default function Home() {
             Puede que estés en esa etapa rara donde sos técnicamente un adulto… pero no te sentís como tal.
           </h1>
           <p className="text-xl text-muted-foreground md:text-2xl">
-           Quizás vivís con tus viejos, te cuesta arrancar, dormís hasta tarde, jugás hasta la madrugada, te tiemblan las manos a veces y no sabés bien qué hacer con tu vida.
+           Quizás vivís con tus viejos, te cuesta arrancar, dormís hasta tarde, jugás hasta la madrugada, sentís una bola de ansiedad en el pecho a veces y no sabés bien qué hacer con tu vida.
           </p>
           <p className="text-xl font-bold text-foreground md:text-2xl">
             No sos un vago. No sos un inútil. Solo estás trabado. Y eso le pasa a muchos más de los que pensás.
@@ -22,7 +22,7 @@ export default function Home() {
             Acá no venimos a darte lecciones ni a decirte que "madures", ni a llenarte de boludeces motivacionales de Instagram. Vinimos porque sabemos que querés cambiar, pero honestamente no sabés ni por dónde empezar sin que todo se sienta abrumador.
           </p>
            <p className="text-xl text-muted-foreground md:text-2xl">
-            Es jodido cuando tus viejos te preguntan '¿y qué vas a hacer?' y vos mismo no tenés ni idea. Es jodido levantarse a la tarde y ya sentir que perdiste el día. Es jodido que te tiemblen las manos cuando tenés que hablar con alguien que no conocés. Pero ¿sabés qué? No sos el único. Solo que nadie habla de esto porque da vergüenza admitirlo.
+            Es jodido cuando tus viejos te preguntan '¿y qué vas a hacer?' y vos mismo no tenés ni idea. Es jodido levantarse a la tarde y ya sentir que perdiste el día. Es jodido sentir que el corazón te va a mil cuando tenés que hablar con alguien que no conocés. Pero ¿sabés qué? No sos el único. Solo que nadie habla de esto porque da vergüenza admitirlo.
           </p>
           <p className="text-xl text-muted-foreground md:text-2xl">
             ¿La buena noticia? No necesitás una transformación épica de la noche a la mañana. Necesitás romper el hielo. Necesitás una primera victoria pequeña que te recuerde que las cosas pueden ser diferentes.
