@@ -190,7 +190,7 @@ export const missions: Mission[] = [
     category: 'going-out',
     reward: 'Cartógrafo de lo Cotidiano',
   },
-    {
+  {
     id: 'm11',
     title: 'EXPEDICIÓN KIOSCO',
     description: 'Comprar 1 producto sin voz temblorosa. Meta oculta: Completar una transacción de bajo riesgo aumenta tu confianza para futuras interacciones.',
@@ -226,11 +226,11 @@ export const missions: Mission[] = [
   },
   {
     id: 'm8',
-    title: 'Misión: Saludo Social (1 min)',
-    description: 'Di "buen día" o "gracias". Meta oculta: Esta micro-interacción activa las neuronas espejo y te recuerda que eres parte de una comunidad.',
+    title: 'PROTOCOLO SALUDO VOCAL',
+    description: 'Decir "buen día" o "gracias". Meta oculta: Esta micro-interacción activa las neuronas espejo y te recuerda que eres parte de una comunidad.',
     type: 'checkbox',
     category: 'social',
-    reward: 'Diplomático Novato',
+    reward: 'Emisario Diplomático Iniciado',
   },
   {
     id: 'm15',
