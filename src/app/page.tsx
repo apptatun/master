@@ -19,12 +19,12 @@ export default function Home() {
             ¿La buena noticia? No necesitás una transformación épica. Necesitás romper el hielo. Necesitás una primera victoria, por pequeña que sea, que te recuerde que <span className="font-bold text-foreground">SÍ PODÉS</span>.
           </p>
           <p className="text-xl text-muted-foreground md:text-2xl">
-           Te propongo algo: en vez de planear tu vida entera, arranquemos con algo tan simple que te va a dar risa. Algo que podés hacer HOY.
+            Te propongo algo: en vez de planear tu vida entera, arranquemos con algo tan simple que te va a dar risa. Algo que podés hacer HOY.
           </p>
         </div>
         <Link href="/dashboard">
           <Button size="lg" className="group bg-accent text-accent-foreground hover:bg-accent/90 text-lg">
-            OK, me intriga. ¿Cuál es la primera misión?
+            OK, me intriga. ¿Cuál es el primer desafío?
             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
           </Button>
         </Link>
