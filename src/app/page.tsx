@@ -16,7 +16,7 @@ export default function Home() {
        <Carousel className="w-full max-w-3xl">
         <CarouselContent>
           <CarouselItem>
-            <div className="max-w-3xl space-y-6 px-4 sm:px-8">
+            <div className="max-w-3xl space-y-6 flex flex-col items-center justify-center h-full min-h-[50vh] px-4 sm:px-8">
               <div className="space-y-4">
                  <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
                   Hola,
@@ -28,7 +28,15 @@ export default function Home() {
                   No sos un vago. No sos un inútil. Solo estás trabado. Y eso le pasa a muchos más de los que pensás.
                 </p>
               </div>
+               <div className="pt-10 flex justify-center items-center text-muted-foreground">
+                  <ArrowRight className="h-5 w-5 animate-pulse" />
+                  <p className="text-sm ml-2">Desliza para continuar</p>
+               </div>
+            </div>
+          </CarouselItem>
 
+          <CarouselItem>
+            <div className="max-w-3xl space-y-6 flex flex-col items-center justify-center h-full min-h-[50vh] px-4 sm:px-8">
               <div className="space-y-4 text-left">
                 <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl text-center">
                   15 días para romper el ciclo del "mañana empiezo".
@@ -66,8 +74,9 @@ export default function Home() {
                </div>
             </div>
           </CarouselItem>
+          
           <CarouselItem>
-            <div className="max-w-3xl space-y-6 flex flex-col items-center justify-center h-full pt-10 px-4 sm:px-8">
+            <div className="max-w-3xl space-y-6 flex flex-col items-center justify-center h-full min-h-[50vh] px-4 sm:px-8">
                <div className="space-y-4">
                   <p className="text-lg text-muted-foreground md:text-xl">
                     Cada día vas a tener <span className="font-bold text-foreground">UNA tarea simple.</span> No es una lista de pendientes, es una micro-victoria diseñada para darte un golpe de energía y confianza.
