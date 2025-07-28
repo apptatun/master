@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState } from 'react';
@@ -62,7 +63,7 @@ export function InteractiveGuideModal({
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-[525px] bg-card flex flex-col max-h-[90vh]">
         <DialogHeader>
-          <DialogTitle className="font-headline text-3xl">{mission.title}</DialogTitle>
+          <DialogTitle className="font-headline text-2xl sm:text-3xl">{mission.title}</DialogTitle>
            <div className='pt-2'>
             <p className="text-muted-foreground text-base">
                 Esto es una guía, no un examen. El objetivo es que te animes a explorar, con calma y a tu ritmo.

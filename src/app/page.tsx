@@ -9,15 +9,15 @@ export default function Home() {
       <div className="max-w-3xl space-y-8">
         
         <div className="space-y-4">
-          <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
+          <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
             15 días para romper el ciclo del "mañana empiezo".
           </h1>
-          <p className="text-xl text-muted-foreground md:text-2xl pt-4">
+          <p className="text-lg text-muted-foreground md:text-xl pt-4">
             En ese tiempo no vas a cambiar tu vida entera, pero SÍ vas a:
           </p>
         </div>
 
-        <ul className="space-y-3 text-left text-xl text-foreground md:text-2xl max-w-2xl mx-auto">
+        <ul className="space-y-3 text-left text-lg text-foreground md:text-xl max-w-2xl mx-auto">
           <li className="flex items-start">
             <CheckCircle className="mr-3 mt-1 h-6 w-6 flex-shrink-0 text-accent" />
             <span>Romper la inercia y empezar a hacer algo</span>
@@ -33,12 +33,12 @@ export default function Home() {
         </ul>
 
         <div className="space-y-4 pt-4">
-          <h2 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl">
+          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
             Lo que realmente cambia en 15 días:
           </h2>
         </div>
 
-         <ul className="space-y-3 text-left text-xl text-muted-foreground md:text-2xl max-w-2xl mx-auto">
+         <ul className="space-y-3 text-left text-lg text-muted-foreground md:text-xl max-w-2xl mx-auto">
           <li className="flex items-start">
             <CheckCircle className="mr-3 mt-1 h-6 w-6 flex-shrink-0 text-primary/80" />
             <span>Tu rutina de sueño mejora (y los que te rodean lo van a notar)</span>
@@ -58,16 +58,16 @@ export default function Home() {
         </ul>
 
         <div className="space-y-4 pt-4">
-          <p className="text-xl text-muted-foreground md:text-2xl">
+          <p className="text-lg text-muted-foreground md:text-xl">
             No es una transformación épica. Es momentum: pasar de estar parado a moverte, aunque sea lento.
           </p>
-          <p className="text-xl font-bold text-foreground md:text-2xl">
+          <p className="text-lg font-bold text-foreground md:text-xl">
             Bonus: cuando empieces a moverte, el ambiente en casa puede mejorar también.
           </p>
-           <p className="text-xl font-bold text-foreground md:text-2xl">
+           <p className="text-lg font-bold text-foreground md:text-xl">
             Cambios pequeños, reales. Lo que necesitás para creer que podés ir por más.
           </p>
-           <p className="text-xl font-bold text-foreground md:text-2xl pt-2">
+           <p className="text-lg font-bold text-foreground md:text-xl pt-2">
             Arrancamos desde tu cuarto. Sin salir de casa. Sin presión.
           </p>
         </div>

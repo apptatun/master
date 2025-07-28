@@ -167,24 +167,24 @@ export default function DashboardPage() {
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
         <div className="space-y-6 text-center">
             <div>
-                 <div className="flex items-center justify-center gap-4 mb-4">
+                 <div className="flex items-center justify-center gap-2 sm:gap-4 mb-4">
                     <Button onClick={handlePreviousDay} variant="ghost" size="icon" disabled={currentDayIndex === 0}>
                         <ArrowLeft className="h-6 w-6" />
                     </Button>
-                    <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl min-w-[280px]">
+                    <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight text-foreground min-w-[240px] sm:min-w-[280px]">
                         Día {currentDayIndex + 1} de 15
                     </h1>
                     <Button onClick={handleNextDay} variant="ghost" size="icon" disabled={!canGoToNextDay || currentDayIndex >= dailyMissionPlan.length - 1}>
                         <ArrowRight className="h-6 w-6" />
                     </Button>
                 </div>
-                <p className="mt-4 text-xl text-muted-foreground md:text-2xl max-w-3xl mx-auto">
+                <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
                     Cada día vas a tener UNA tarea simple. Si no te sale, no pasa nada: podés repetirla mañana o tomarte el tiempo que necesites. <br/>
                     <span className="font-bold text-foreground">Lo importante no es la velocidad, sino que sigas adelante.</span>
                 </p>
             </div>
             <div className="border-t pt-8">
-                <p className="text-2xl font-bold text-foreground mb-4">Hoy arrancamos con esto:</p>
+                <p className="text-xl sm:text-2xl font-bold text-foreground mb-4">Hoy arrancamos con esto:</p>
                  {currentMission ? (
                     <MissionList
                         missions={[currentMission]}

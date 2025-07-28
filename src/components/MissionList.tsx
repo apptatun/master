@@ -110,20 +110,20 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
         <div className="space-y-6">
             <Card key={mission.id} className={cn('transition-all border-2 bg-card shadow-xl rounded-2xl', isCurrentMissionCompleted && 'border-green-500/50 opacity-80')}>
                 {isCurrentMissionCompleted && (
-                    <div className="absolute top-4 right-4 flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-base font-bold z-10">
+                    <div className="absolute top-4 right-4 flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm sm:text-base font-bold z-10">
                         <CircleCheck className="h-5 w-5"/>
                         <span>Completado</span>
                     </div>
                 )}
               <CardHeader>
-                <CardTitle className="font-headline text-4xl sm:text-5xl font-bold text-foreground pt-2 pb-4">{mission.title}</CardTitle>
+                <CardTitle className="font-headline text-3xl sm:text-4xl font-bold text-foreground pt-2 pb-4">{mission.title}</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4 px-6 pb-4">
-                <p className="text-xl text-muted-foreground">{mission.description}</p>
+                <p className="text-lg sm:text-xl text-muted-foreground">{mission.description}</p>
                 
                 {mission.type === 'checkbox' && mission.steps && (
                   <div className="space-y-3 pt-4">
-                    <ol className="list-decimal list-inside space-y-2 text-xl text-muted-foreground">
+                    <ol className="list-decimal list-inside space-y-2 text-lg sm:text-xl text-muted-foreground">
                       {mission.steps.map((step, index) => (
                         <li key={index}>{step.title}</li>
                       ))}
@@ -133,8 +133,8 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                 
                 {mission.why && (
                     <div className="pt-4 mt-4 border-t">
-                        <p className="font-bold text-foreground text-xl">¿Por qué esto?</p>
-                        <p className="text-lg text-muted-foreground">{mission.why}</p>
+                        <p className="font-bold text-foreground text-lg sm:text-xl">¿Por qué esto?</p>
+                        <p className="text-base sm:text-lg text-muted-foreground">{mission.why}</p>
                     </div>
                 )}
               </CardContent>
@@ -180,11 +180,11 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
 
              {isCurrentMissionCompleted && (
                  <div className="mt-8 text-center p-6 bg-card rounded-lg border">
-                    <p className="text-xl text-muted-foreground mt-2 mb-6">
+                    <p className="text-lg sm:text-xl text-muted-foreground mt-2 mb-6">
                       Listo. Ya está hecho. Te vemos mañana para la siguiente.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button onClick={onAdvanceToNextDay} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground" disabled={allMissionsCompleted}>
+                        <Button onClick={onAdvanceToNextDay} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground" disabled={!isCurrentMissionCompleted || allMissionsCompleted}>
                             Ir al Día {currentDay + 1}
                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Button>

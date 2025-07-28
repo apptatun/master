@@ -56,7 +56,7 @@ export function AiAssistantModal({
     <Dialog open={isOpen} onOpenChange={handleClose}>
       <DialogContent className="sm:max-w-[525px] bg-card flex flex-col max-h-[90vh]">
         <DialogHeader>
-          <DialogTitle className="font-headline text-3xl flex items-center">
+          <DialogTitle className="font-headline text-2xl sm:text-3xl flex items-center">
             <Bot className="mr-3 h-8 w-8 text-accent" />
             Asistente de Acción
           </DialogTitle>
