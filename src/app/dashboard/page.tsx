@@ -7,9 +7,10 @@ import { MissionList } from '@/components/MissionList';
 import { DashboardHeader } from '@/components/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
-import { Check } from 'lucide-react';
+import { Check, ArrowLeft, ArrowRight } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import Confetti from 'react-confetti';
+import { Button } from '@/components/ui/button';
 
 // For now, we define a fixed 15-day mission plan here.
 // Later, this could be more dynamic.
@@ -115,12 +116,24 @@ export default function DashboardPage() {
     });
   };
   
-  const handleNextMission = () => {
+  const handleAdvanceToNextDay = () => {
     if (currentDayIndex < dailyMissionPlan.length - 1) {
       setCurrentDayIndex(currentDayIndex + 1);
     }
     setUserChoseToRest(false);
     setRestDate(null);
+  };
+
+  const handleNextDay = () => {
+    if (currentDayIndex < dailyMissionPlan.length - 1) {
+        setCurrentDayIndex(currentDayIndex + 1);
+    }
+  };
+
+  const handlePreviousDay = () => {
+    if (currentDayIndex > 0) {
+        setCurrentDayIndex(currentDayIndex - 1);
+    }
   };
   
   const handleRest = () => {
@@ -142,6 +155,8 @@ export default function DashboardPage() {
   const currentMission = missions.find(m => m.id === missionIdForToday);
   const isCurrentMissionCompleted = currentMission ? completedMissions.includes(currentMission.id) : false;
   
+  const canGoToNextDay = isCurrentMissionCompleted && currentDayIndex < completedMissions.length;
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
       {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} />}
@@ -149,9 +164,17 @@ export default function DashboardPage() {
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
         <div className="space-y-6 text-center">
             <div>
-                <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
-                    Día {currentDayIndex + 1} de 15
-                </h1>
+                 <div className="flex items-center justify-center gap-4 mb-4">
+                    <Button onClick={handlePreviousDay} variant="ghost" size="icon" disabled={currentDayIndex === 0}>
+                        <ArrowLeft className="h-6 w-6" />
+                    </Button>
+                    <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl min-w-[280px]">
+                        Día {currentDayIndex + 1} de 15
+                    </h1>
+                    <Button onClick={handleNextDay} variant="ghost" size="icon" disabled={!canGoToNextDay || currentDayIndex >= dailyMissionPlan.length - 1}>
+                        <ArrowRight className="h-6 w-6" />
+                    </Button>
+                </div>
                 <p className="mt-4 text-xl text-muted-foreground md:text-2xl max-w-3xl mx-auto">
                     Cada día vas a tener UNA tarea simple. Si no te sale, no pasa nada: podés repetirla mañana o tomarte el tiempo que necesites. <br/>
                     <span className="font-bold text-foreground">Lo importante no es la velocidad, sino que sigas adelante.</span>
@@ -164,7 +187,7 @@ export default function DashboardPage() {
                         missions={[currentMission]}
                         completedMissions={completedMissions}
                         onCompleteMission={handleCompleteMission}
-                        onNextMission={handleNextMission}
+                        onAdvanceToNextDay={handleAdvanceToNextDay}
                         isCurrentMissionCompleted={isCurrentMissionCompleted}
                         onRest={handleRest}
                         userChoseToRest={userChoseToRest}

@@ -17,7 +17,7 @@ interface MissionListProps {
   missions: Mission[];
   completedMissions: string[];
   onCompleteMission: (missionId: string) => void;
-  onNextMission: () => void;
+  onAdvanceToNextDay: () => void;
   onRest: () => void;
   onResume: () => void;
   isCurrentMissionCompleted: boolean;
@@ -26,7 +26,7 @@ interface MissionListProps {
   currentDay: number;
 }
 
-export function MissionList({ missions, completedMissions, onCompleteMission, onNextMission, onRest, onResume, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
+export function MissionList({ missions, completedMissions, onCompleteMission, onAdvanceToNextDay, onRest, onResume, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [isAssistantModalOpen, setIsAssistantModalOpen] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
@@ -112,7 +112,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   Listo. Ya está hecho. Te vemos mañana para la siguiente.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button onClick={onNextMission} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
+                    <Button onClick={onAdvanceToNextDay} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground" disabled={currentDay > completedMissions.length}>
                         Ir al Día {currentDay + 1}
                         <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Button>
