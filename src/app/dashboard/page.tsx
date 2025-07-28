@@ -87,7 +87,7 @@ export default function DashboardPage() {
       title: (
         <div className="flex items-center">
           <Check className="mr-2 h-5 w-5 text-green-500" />
-          <span className="font-bold text-lg">Misión Completada</span>
+          <span className="font-bold text-lg">Acción Completada</span>
         </div>
       ),
       description: <div className="text-base">Un paso a la vez.</div>
@@ -121,7 +121,7 @@ export default function DashboardPage() {
         <div className="space-y-6 text-center">
             <div>
                 <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
-                    Día {currentDayIndex + 1} de 15 — Tu Misión
+                    Día {currentDayIndex + 1} de 15 — Tu Acción
                 </h1>
                 <p className="mt-4 text-xl text-muted-foreground md:text-2xl max-w-3xl mx-auto">
                     Cada día vas a tener UNA tarea simple. Si no te sale, no pasa nada: podés repetirla mañana o tomarte el tiempo que necesites. <br/>
@@ -142,7 +142,7 @@ export default function DashboardPage() {
                         allMissionsCompleted={currentDayIndex >= dailyMissionPlan.length - 1 && isCurrentMissionCompleted}
                     />
                  ) : (
-                    <p>No se encontró la misión para hoy.</p>
+                    <p>No se encontró la acción para hoy.</p>
                  )}
             </div>
         </div>

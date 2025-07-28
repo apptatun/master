@@ -1,7 +1,7 @@
 
 'use server';
 /**
- * @fileOverview Un asistente de IA para ayudar a los usuarios a superar bloqueos en las misiones.
+ * @fileOverview Un asistente de IA para ayudar a los usuarios a superar bloqueos en las acciones.
  *
  * - getAssistantResponse - Una función que genera una respuesta de ayuda empática.
  * - AssistantInput - El tipo de entrada para la función del asistente.
@@ -11,7 +11,7 @@ import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
 const AssistantInputSchema = z.object({
-  missionTitle: z.string().describe('El título de la misión en la que el usuario está trabajando.'),
+  missionTitle: z.string().describe('El título de la acción en la que el usuario está trabajando.'),
   userQuery: z
     .string()
     .describe(
@@ -31,7 +31,7 @@ export async function getAssistantResponse(input: AssistantInput): Promise<strin
       const {text} = await ai.generate({
         prompt: `Sos un asistente empático y un coach motivacional llamado "CAMINO". Tu objetivo es ayudar a un joven que se siente trabado a superar un pequeño desafío. El tono debe ser cercano, comprensivo y nunca juzgar. Usá un lenguaje coloquial argentino.
 
-      La misión actual del usuario es: "${input.missionTitle}"
+      La acción actual del usuario es: "${input.missionTitle}"
       La consulta o sentimiento del usuario es: "${input.userQuery}"
 
       Tu tarea es responder de una manera que:
@@ -43,7 +43,7 @@ export async function getAssistantResponse(input: AssistantInput): Promise<strin
       Ejemplo de respuesta:
       "¡Frená un poco! Es súper normal sentirse así. Que la cabeza se te llene de 'y si...' es un clásico. No estás solo en esto.
       
-      ¿Qué te parece si probamos algo mínimo? Ni siquiera pienses en la misión entera. Solo concentrate en el primer, primerísimo paso. Si la misión es 'llamar a un lugar', el primer paso es solo encontrar el número de teléfono. Nada más.
+      ¿Qué te parece si probamos algo mínimo? Ni siquiera pienses en la acción entera. Solo concentrate en el primer, primerísimo paso. Si la acción es 'llamar a un lugar', el primer paso es solo encontrar el número de teléfono. Nada más.
       
       Acordate, esto no es una carrera. Es solo dar un pasito chiquito. Vos podés. ¡Acá estoy para bancarte!"`,
         config: {

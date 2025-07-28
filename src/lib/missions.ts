@@ -6,7 +6,7 @@ export const missions: Mission[] = [
   // Supervivencia Culinaria
   {
     id: 'm1',
-    title: 'Misión: Activar la Hornalla (3 min)',
+    title: 'Acción: Activar la Hornalla (3 min)',
     description: 'Activa la zona de cocción para hervir agua.',
     type: 'interactive',
     category: 'supervivencia-culinaria',
@@ -15,7 +15,7 @@ export const missions: Mission[] = [
     steps: [
       {
         title: 'Paso 1: Pedir ayuda es de cracks. ¡Y es obligatorio si no estás seguro!',
-        description: 'Esta misión involucra fuego y gas. La seguridad no es negociable. Si es tu primera vez, no estás 100% seguro o te da un mínimo de ansiedad, es fundamental que pidas ayuda a un adulto. No es una opción, es el paso más inteligente y valiente que podés dar. Demostrar que te cuidás es una victoria enorme.',
+        description: 'Esta acción involucra fuego y gas. La seguridad no es negociable. Si es tu primera vez, no estás 100% seguro o te da un mínimo de ansiedad, es fundamental que pidas ayuda a un adulto. No es una opción, es el paso más inteligente y valiente que podés dar. Demostrar que te cuidás es una victoria enorme.',
       },
       {
         title: 'Paso 2: Ubicar la hornalla',
@@ -149,7 +149,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm4',
-    title: 'Misión: Lavarropas (5 min)',
+    title: 'Acción: Lavarropas (5 min)',
     description: 'Inicia un ciclo de lavado.',
     type: 'interactive',
     category: 'rescate-de-territorio',
@@ -178,7 +178,7 @@ export const missions: Mission[] = [
         },
         {
             title: 'Paso 6: Ciclo completado',
-            description: '¡Misión cumplida! Tu ropa está limpia gracias a vos. El siguiente paso es colgarla, pero eso es otra misión. ¡Disfrutá tu victoria!'
+            description: '¡Acción cumplida! Tu ropa está limpia gracias a vos. El siguiente paso es colgarla, pero eso es otra acción. ¡Disfrutá tu victoria!'
         }
     ]
   },
@@ -215,7 +215,7 @@ export const missions: Mission[] = [
   },
    {
     id: 'm17',
-    title: 'MISIÓN LÍNEA BLANCA',
+    title: 'ACCIÓN LÍNEA BLANCA',
     description: 'Descongelar el freezer sin causar una inundación.',
     type: 'interactive',
     category: 'rescate-de-territorio',
@@ -260,13 +260,13 @@ export const missions: Mission[] = [
         { title: 'Atá la bolsa de basura actual.'},
         { title: 'Sacala del tacho.'},
         { title: 'Llevala al contenedor de la calle.'},
-        { title: 'Poné una bolsa nueva en el tacho. ¡Misión cumplida!'}
+        { title: 'Poné una bolsa nueva en el tacho. ¡Acción cumplida!'}
     ]
   },
   {
     id: 'm36',
     title: 'Ritual de Inicio (5 min)',
-    description: 'Tu primera misión tiene dos partes para transformar tu espacio y tu energía.',
+    description: 'Tu primera acción tiene dos partes para transformar tu espacio y tu energía.',
     type: 'checkbox',
     category: 'rescate-de-territorio',
     reward: 'Maestro del Amanecer',
@@ -280,7 +280,7 @@ export const missions: Mission[] = [
   // Dominio Digital
   {
     id: 'm22',
-    title: 'MISIÓN EMAIL FANTASMA',
+    title: 'ACCIÓN EMAIL FANTASMA',
     description: 'Enviar una consulta a un servicio técnico o administrativo.',
     type: 'interactive',
     category: 'dominio-digital',
@@ -301,7 +301,7 @@ export const missions: Mission[] = [
       },
       {
         title: 'Paso 4: ¡Mensaje Enviado!',
-        description: '¡Misión cumplida! Delegaste el problema. Ahora la respuesta está en su cancha. Diste un paso importante para resolver algo que te trababa.'
+        description: '¡Acción cumplida! Delegaste el problema. Ahora la respuesta está en su cancha. Diste un paso importante para resolver algo que te trababa.'
       }
     ]
   },
@@ -496,7 +496,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm26',
-    title: 'MISIÓN GROUNDING TÁCTICO',
+    title: 'ACCIÓN GROUNDING TÁCTICO',
     description: 'Nombrar 5 sonidos que oyes y 3 colores que ves.',
     type: 'interactive',
     category: 'laboratorio-mental',
@@ -557,7 +557,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm35',
-    title: 'MISIÓN 30 MINUTOS',
+    title: 'ACCIÓN 30 MINUTOS',
     description: 'Caminar durante 30 minutos escuchando un podcast o música.',
     type: 'checkbox',
     category: 'laboratorio-mental',
@@ -619,7 +619,7 @@ export const missions: Mission[] = [
       },
       {
         title: 'Paso 6: ¡Escape Exitoso!',
-        description: '¡Lo lograste! Saliste con tu botín. Te enfrentaste al mundo exterior en una misión comercial y ganaste. Tomate un segundo para sentir esta victoria. ¡Excelente trabajo!',
+        description: '¡Lo lograste! Saliste con tu botín. Te enfrentaste al mundo exterior en una acción comercial y ganaste. Tomate un segundo para sentir esta victoria. ¡Excelente trabajo!',
       },
     ],
   },
@@ -658,13 +658,13 @@ export const missions: Mission[] = [
       },
       {
         title: 'Paso 7: Bajar con Éxito',
-        description: 'Toca el timbre un poco antes de tu parada de destino. Baja con calma. ¡Misión cumplida! Has conquistado el transporte público.'
+        description: 'Toca el timbre un poco antes de tu parada de destino. Baja con calma. ¡Acción cumplida! Has conquistado el transporte público.'
       }
     ]
   },
   {
     id: 'm20',
-    title: 'MISIÓN COORDENADAS MÉDICAS',
+    title: 'ACCIÓN COORDENADAS MÉDICAS',
     description: 'Llegar a un consultorio usando GPS.',
     type: 'interactive',
     category: 'primeros-pasos',
@@ -775,13 +775,13 @@ export const missions: Mission[] = [
   {
     id: 'm28',
     title: 'OPERACIÓN PHOENIX',
-    description: 'Reintentar una misión que salteaste o sentiste que te costó.',
+    description: 'Reintentar una acción que salteaste o sentiste que te costó.',
     type: 'checkbox',
     category: 'aventuras-de-crecimiento',
     reward: 'Resiliencia Nivel 2',
     why: 'La resiliencia no es no fallar, es volver a intentarlo. Esto fortalece tu auto-confianza más que 10 éxitos seguidos.',
     steps: [
-        { title: 'Recordá una misión que hayas evitado con "No hoy, gracias".'},
+        { title: 'Recordá una acción que hayas evitado con "No hoy, gracias".'},
         { title: 'Leela de nuevo. ¿Te sentís un 1% más preparado hoy?'},
         { title: 'Intentá solo el primer paso. Si sale bien, seguí. Si no, no pasa nada.'},
         { title: 'Cualquier avance, por mínimo que sea, es un éxito.'}
@@ -806,7 +806,7 @@ export const missions: Mission[] = [
   // Generic - Fallback
   {
     id: 'g1',
-    title: 'Misión Sorpresa: Romper el Hielo',
+    title: 'Acción Sorpresa: Romper el Hielo',
     description: 'Bebe un vaso de agua ahora mismo.',
     type: 'checkbox',
     category: 'generic',

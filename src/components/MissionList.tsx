@@ -94,7 +94,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
       return (
         <div className="text-center p-8">
             <p className="text-lg text-muted-foreground mt-2">
-                Cargando misión...
+                Cargando acción...
             </p>
         </div>
       );
@@ -104,7 +104,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
         return (
              <div className="mt-8 text-center p-6 bg-card rounded-lg border">
                 <Rocket className="mx-auto h-12 w-12 text-accent mb-4" />
-                <h3 className="text-2xl font-bold text-foreground">Misión de hoy: Completa</h3>
+                <h3 className="text-2xl font-bold text-foreground">Acción de hoy: Completa</h3>
                 {currentMissionForReward?.reward && (
                     <div className="flex items-center justify-center text-lg font-bold text-accent-foreground/80 pt-2 bg-accent/20 p-3 rounded-md my-4">
                       <Trophy className="mr-2 h-5 w-5 text-accent" />
@@ -112,11 +112,11 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                     </div>
                   )}
                 <p className="text-lg text-muted-foreground mt-2 mb-6">
-                  Listo. Ya está hecho. Cuando quieras, avanzá a la siguiente o tomate un descanso.<br/> Vos decidís.
+                  Listo. Ya está hecho. Te vemos mañana para la siguiente.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button onClick={onNextMission} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
-                        Siguiente Misión
+                        Siguiente Acción
                     </Button>
                     <Button onClick={onRest} size="lg" variant="outline" className="text-lg">
                         Por hoy es suficiente
@@ -168,7 +168,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   )}
                   {mission.type === 'checkbox' && (
                     <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="w-full text-lg px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
-                      <Check className="mr-2 h-5 w-5" /> ¡Misión Conquistada!
+                      <Check className="mr-2 h-5 w-5" /> ¡Acción Conquistada!
                     </Button>
                   )}
                   
