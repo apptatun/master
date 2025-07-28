@@ -164,32 +164,32 @@ export const missions: Mission[] = [
   // Rescate de Territorio
   {
     id: 'm3_v2',
-    title: 'OPERACIÓN SUMIDERO LIMPIO (5 min)',
-    description: 'Una secuencia para recuperar un punto clave de tu cocina y generar una victoria rápida.',
+    title: 'OPERACIÓN "ESPEJO LÍQUIDO"',
+    description: 'Tomar control de un pequeño fragmento de tu entorno, realizando una micro-limpieza que genere una victoria visual y reduzca la ansiedad.',
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Ver la pileta más limpia cambia la sensación general del lugar. Es un impacto visual inmediato que le demuestra a tu cerebro que podés generar orden a partir del caos, un pequeño pero poderoso acto de control.',
-    reward: 'Guardián del Orden',
+    reward: 'GUARDIÁN DEL FREGADERO LV.1',
     steps: [
         {
-            title: 'PASO 1: SELECCIONAR OBJETIVOS',
-            description: 'Elige solo 3 cosas de la pileta. No más. Pueden ser platos, vasos, cubiertos, lo que sea. El objetivo es limitado y alcanzable.\n¿Hay muchas cosas y te abruma? [AYUDA EXTRA]: "No mires la montaña. Solo elige los 3 objetos más fáciles o los que más te molesten. Ignora el resto por ahora."',
+            title: 'IDENTIFICAR TUS "OBJETIVOS PRIORITARIOS" (3 PLATOS/UTENSILIOS CUALESQUIERA)',
+            description: 'No mires el resto del fregadero, solo concéntrate en esos 3. ¿Los tienes claramente identificados?\n[AYUDA EXTRA]: "Solo 3. Los que estén más accesibles. No necesitas un arsenal, solo un foco láser."',
         },
         {
-            title: 'PASO 2: PREPARAR EL EQUIPAMIENTO',
-            description: 'Agarra una esponja y detergente. Asegúrate de tener un lugar donde poner las cosas limpias para que se sequen.\n¿No hay esponja/detergente? [SOLUCIÓN]: "Usa tus manos y agua caliente. No buscamos la perfección, sino la acción. Quitar los restos de comida ya es una victoria."',
+            title: 'REUNIR TU "KIT DE LIMPIEZA" (ESPONJA, DETERGENTE, AGUA)',
+            description: '¿Tienes todo a mano antes de empezar la operación?\n[SOLUCIÓN]: "Organiza tu estación de trabajo primero. Un \'arsenal\' a mano facilita el ataque."',
         },
         {
-            title: 'PASO 3: EJECUTAR LA LIMPIEZA',
-            description: 'Lava los 3 objetos seleccionados. Concéntrate en uno a la vez. Jabón, fregar, enjuagar. Repite. Siente el agua en tus manos.\n¿Te da asco? [AYUDA EXTRA]: "Si tienes guantes, úsalos. Si no, recuerda que es temporal y que estás creando un espacio más limpio y saludable para ti."',
+            title: 'EJECUTAR LA "TÉCNICA DE REFLEJO" (LAVAR CADA UNO CON CONCENTRACIÓN)',
+            description: 'Siente el agua, el jabón, la textura del objeto. No es una tarea, es un micro-ritual de limpieza consciente.',
         },
         {
-            title: 'PASO 4: FASE DE SECADO Y REORGANIZACIÓN',
-            description: 'Coloca los 3 objetos limpios en el escurridor o sécalos con un repasador. Si puedes, guárdalos en su lugar.\n¿No tienes repasador seco? [SOLUCIÓN]: "Déjalos secar al aire. Ya hiciste la parte más difícil. La misión está cumplida."',
+            title: 'ASEGURAR EL "ÁREA DE SECADO" (COLOCARLOS EN EL SECAPLATOS/SECADORA)',
+            description: 'Verifica que no queden rastros de "enemigo mugre". La misión se cumple al verlos limpios y en su lugar.',
         },
         {
-            title: 'PASO 5: INSPECCIÓN FINAL',
-            description: 'Mira la pileta. Hay 3 cosas menos. Observa ese pequeño cambio que TÚ generaste. Disfruta de esa mini-victoria. ¡Buen trabajo!',
+            title: 'INSPECCIÓN FINAL',
+            description: 'Observa la diferencia. Disfruta de la mini-victoria. ¡Buen trabajo!',
         }
     ]
   },
@@ -310,28 +310,32 @@ export const missions: Mission[] = [
   },
   {
     id: 'm36',
-    title: 'Ritual de Inicio (7 min)',
-    description: 'Una secuencia de tres tareas para empezar el día con intención y demostrarte que podés tomar el control desde el primer momento.',
+    title: 'PROTOCOLO "DESPERTAR CON PROPÓSITO"',
+    description: 'Iniciar el día con una micro-victoria consciente, sentando las bases de la proactividad y el control personal.',
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Hacer estas tres cosas a propósito, incluso si ya las hacés, establece un tono de intención para tu día. Es una forma de decir "yo controlo el inicio de mi día". Es una victoria triple antes de empezar.',
-    reward: 'Arquitecto/a Matutino/a',
+    reward: 'PIONERO DEL ALBA LV.1',
     steps: [
       {
-        title: 'PASO 1: CONECTAR CON EL EXTERIOR',
-        description: 'Acércate a una ventana, corre la cortina y ábrela si es posible. Deja que entre la luz y el aire. Tu misión es simplemente observar el exterior por 10 segundos.\n¿Te cuesta? [AYUDA EXTRA]: "No tienes que salir. Solo conectar visualmente. Es un recordatorio de que el mundo sigue ahí fuera y tú eres parte de él."'
+        title: 'DESACTIVAR LA ALARMA Y PONER AMBOS PIES EN EL PISO',
+        description: 'No pienses, solo reacciona al sonido. ¿Lo hiciste al primer intento?\n[SOLUCIÓN]: "No importa. Intenta concentrarte en el sonido y la sensación de tus pies en el suelo. Cada intento cuenta."'
       },
       {
-        title: 'PASO 2: ORDENAR TU ESPACIO DE DESCANSO',
-        description: 'Haz la cama. No tiene que quedar perfecta como de hotel. Solo estira la sábana de arriba y el acolchado. El objetivo es transformar el espacio de "dormir" a "vivir".\n¿Sientes que no tiene sentido? [SOLUCIÓN]: "Piensa en esto como cerrar una puerta. La puerta del descanso se cierra, y ahora abres la del día. Es un acto simbólico de progreso."'
+        title: 'DIRIGIRTE AL "PUNTO DE HIDRATACIÓN" (VASO DE AGUA CERCA)',
+        description: '¿Tu vaso de agua estaba listo desde anoche?\n[AYUDA EXTRA]: "Prepara un vaso de agua junto a tu cama cada noche. Es tu primer combustible táctico para mañana, un micro-paso que facilita la misión."'
       },
       {
-        title: 'PASO 3: CUIDADO PERSONAL BÁSICO',
-        description: 'Ve al baño, lávate la cara con agua y cepíllate los dientes. Es un acto fundamental de respeto y cuidado hacia ti mismo.\n¿Te falta energía? [AYUDA EXTRA]: "No pienses en la secuencia entera. Solo enfócate en el primer movimiento: levantarte para ir al baño. El resto vendrá solo."'
+        title: 'BEBER EL AGUA LENTAMENTE, SINTIENDO LA HIDRATACIÓN',
+        description: 'Concéntrate en la sensación del agua al entrar en tu cuerpo. Este es tu ritual personal de inicio de operación.'
+      },
+      {
+        title: 'NOMBRAR MENTALMENTE 1 COSA POR LA QUE ESTÉS AGRADECIDO HOY (LA QUE SEA)',
+        description: 'Puede ser algo simple: la almohada, el silencio, la música que escuchaste. Sin juicio, solo observación.'
       },
       {
         title: 'INSPECCIÓN FINAL',
-        description: '¡Misión cumplida! Has completado tres actos de autoafirmación. Tu día no empezó por accidente, empezó porque tú lo decidiste. Siente esa pequeña pero poderosa sensación de control.'
+        description: '¡Misión cumplida! Tu día no empezó por accidente, empezó porque tú lo decidiste. Siente esa pequeña pero poderosa sensación de control.'
       }
     ]
   },
@@ -922,7 +926,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm40',
-    title: 'OPERACIÓN "HORIZONTE CERO" (2 min)',
+    title: 'OPERACIÓN "HORIZONTE CERO"',
     description: 'Reconectar con el exterior sin presión, gestionando la ansiedad de salir.',
     type: 'interactive',
     category: 'primeros-pasos',
@@ -948,7 +952,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm41',
-    title: 'PROTOCOLO "ACTIVACIÓN MATUTINA" (3 min)',
+    title: 'PROTOCOLO "ACTIVACIÓN MATUTINA"',
     description: 'Establecer un micro-hábito de autocuidado para iniciar el día.',
     type: 'interactive',
     category: 'laboratorio-mental',
@@ -974,7 +978,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm42',
-    title: 'DESAFÍO "MICRO-INTERACCIÓN" (1 min)',
+    title: 'DESAFÍO "MICRO-INTERACCIÓN"',
     description: 'Realizar una interacción social mínima y controlada para reducir la ansiedad.',
     type: 'interactive',
     category: 'interacciones-humanas',
@@ -1000,7 +1004,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm43',
-    title: 'OPERACIÓN "RINCÓN DE CONQUISTA" (5 min)',
+    title: 'OPERACIÓN "RINCÓN DE CONQUISTA"',
     description: 'Organizar un espacio personal muy pequeño para sentir control sobre el entorno.',
     type: 'interactive',
     category: 'rescate-de-territorio',
@@ -1016,7 +1020,7 @@ export const missions: Mission[] = [
         },
         {
             title: 'DECIDIR EL DESTINO DE CADA UNO (GUARDAR/TIRAR/REUBICAR)',
-            description: '[AYUDA EXTRA]: "Si no lo usaste en 6 meses y no tiene valor sentimental, considera una "caja de decisión" para revisar en 1 mes."'
+            description: '[AYUDA EXTRA]: "Si no lo usaste en 6 meses y no tiene valor sentimental, considera una \'caja de decisión\' para revisar en 1 mes."'
         },
         {
             title: 'COLOCAR UNO DE ESOS 3 OBJETOS EN SU LUGAR DEFINITIVO O EN SU NUEVO DESTINO',
@@ -1026,7 +1030,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm44',
-    title: 'PROTOCOLO "GESTIÓN DE ENERGÍA" (90 seg)',
+    title: 'PROTOCOLO "GESTIÓN DE ENERGÍA"',
     description: 'Interrumpir una actividad prolongada (como juegos o redes) con una pausa activa para recargar la atención y evitar la pasividad.',
     type: 'interactive',
     category: 'laboratorio-mental',
