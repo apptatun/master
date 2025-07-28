@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Rocket, Check, Bot, Sparkles, Trophy, Coffee } from 'lucide-react';
+import { Rocket, Check, Bot, Sparkles, Trophy, Coffee, Play } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { AiAssistantModal } from './AiAssistantModal';
@@ -19,12 +19,13 @@ interface MissionListProps {
   onCompleteMission: (missionId: string) => void;
   onNextMission: () => void;
   onRest: () => void;
+  onResume: () => void;
   isCurrentMissionCompleted: boolean;
   allMissionsCompleted: boolean;
   userChoseToRest: boolean;
 }
 
-export function MissionList({ missions, completedMissions, onCompleteMission, onNextMission, onRest, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest }: MissionListProps) {
+export function MissionList({ missions, completedMissions, onCompleteMission, onNextMission, onRest, onResume, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [isAssistantModalOpen, setIsAssistantModalOpen] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
@@ -64,9 +65,13 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
         <div className="text-center p-6 bg-card rounded-lg border">
             <Coffee className="mx-auto h-12 w-12 text-accent mb-4" />
             <h3 className="text-2xl font-bold text-foreground">Descanso merecido.</h3>
-            <p className="text-lg text-muted-foreground mt-2">
+            <p className="text-lg text-muted-foreground mt-2 mb-6">
               A veces, la mayor victoria es saber cuándo parar. <br/> Nos vemos la próxima.
             </p>
+            <Button onClick={onResume} variant="outline" className="text-lg">
+                <Play className="mr-2 h-4 w-4" />
+                Volver a la acción
+            </Button>
           </div>
       )
     }

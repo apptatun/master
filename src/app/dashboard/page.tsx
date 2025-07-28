@@ -39,6 +39,7 @@ export default function DashboardPage() {
   const [showConfetti, setShowConfetti] = useState(false);
   const [windowSize, setWindowSize] = useState<{ width: number, height: number }>({ width: 0, height: 0 });
   const [userChoseToRest, setUserChoseToRest] = useState(false);
+  const [restDate, setRestDate] = useState<string | null>(null);
 
   const { toast } = useToast();
 
@@ -62,6 +63,19 @@ export default function DashboardPage() {
         localStorage.setItem('completedMissions', '[]');
         localStorage.setItem('currentDayIndex', '0');
     }
+
+    const savedRestDate = localStorage.getItem('restDate');
+    if (savedRestDate) {
+        const today = new Date().toISOString().split('T')[0];
+        if (savedRestDate < today) {
+            setUserChoseToRest(false);
+            localStorage.removeItem('restDate');
+            setRestDate(null);
+        } else {
+            setUserChoseToRest(true);
+            setRestDate(savedRestDate);
+        }
+    }
     
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -70,8 +84,13 @@ export default function DashboardPage() {
     if(isMounted) {
         localStorage.setItem('completedMissions', JSON.stringify(completedMissions));
         localStorage.setItem('currentDayIndex', currentDayIndex.toString());
+        if (restDate) {
+            localStorage.setItem('restDate', restDate);
+        } else {
+            localStorage.removeItem('restDate');
+        }
     }
-  }, [completedMissions, currentDayIndex, isMounted]);
+  }, [completedMissions, currentDayIndex, restDate, isMounted]);
 
   const handleCompleteMission = (missionId: string) => {
     if (completedMissions.includes(missionId)) return;
@@ -79,6 +98,8 @@ export default function DashboardPage() {
     const newCompleted = [...completedMissions, missionId];
     setCompletedMissions(newCompleted);
     setUserChoseToRest(false);
+    setRestDate(null);
+
 
     setShowConfetti(true);
     setTimeout(() => setShowConfetti(false), 5000);
@@ -99,10 +120,18 @@ export default function DashboardPage() {
       setCurrentDayIndex(currentDayIndex + 1);
     }
     setUserChoseToRest(false);
+    setRestDate(null);
   };
   
   const handleRest = () => {
+      const today = new Date().toISOString().split('T')[0];
       setUserChoseToRest(true);
+      setRestDate(today);
+  }
+
+  const handleResume = () => {
+    setUserChoseToRest(false);
+    setRestDate(null);
   }
 
   if (!isMounted) {
@@ -139,6 +168,7 @@ export default function DashboardPage() {
                         isCurrentMissionCompleted={isCurrentMissionCompleted}
                         onRest={handleRest}
                         userChoseToRest={userChoseToRest}
+                        onResume={handleResume}
                         allMissionsCompleted={currentDayIndex >= dailyMissionPlan.length - 1 && isCurrentMissionCompleted}
                     />
                  ) : (
