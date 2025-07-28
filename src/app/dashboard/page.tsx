@@ -21,13 +21,13 @@ const dailyMissionPlan: string[] = [
     'm7', // Día 5: Exploración Beta (5 min)
     'm8', // Día 6: PROTOCOLO SALUDO VOCAL
     'm13', // Día 7: Uniforme de Entrecasa (2 min)
-    'm1', // Día 8: Misión: Activar la Hornalla (3 min)
+    'm1', // Día 8: Acción: Activar la Hornalla (3 min)
     'm23', // Día 9: HACKEO FINANCIERO
     'm15', // Día 10: Reactivar Contacto (2 min)
     'm14', // Día 11: Foco de Orden (7 min)
     'm11', // Día 12: EXPEDICIÓN KIOSCO
     'm27', // Día 13: OPERACIÓN MURO DE LAMENTOS
-    'm4', // Día 14: Misión: Lavarropas (5 min)
+    'm4', // Día 14: Acción: Lavarropas (5 min)
     'm28' // Día 15: OPERACIÓN PHOENIX
 ];
 
