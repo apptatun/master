@@ -108,17 +108,19 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
     return (
       <TooltipProvider>
         <div className="space-y-6">
-            <Card key={mission.id} className={cn('transition-all border-2 bg-card shadow-xl rounded-2xl relative', isCurrentMissionCompleted && 'border-green-500/50 opacity-80')}>
-                {isCurrentMissionCompleted && (
-                    <div className="absolute top-4 right-4 flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-bold z-10">
-                        <CircleCheck className="h-5 w-5"/>
-                        <span>Completado</span>
-                    </div>
-                )}
+            <Card key={mission.id} className={cn('transition-all border-2 bg-card shadow-xl rounded-2xl', isCurrentMissionCompleted && 'border-green-500/50 opacity-80')}>
               <CardHeader className="p-6 pb-2">
-                <CardTitle className="font-headline text-3xl sm:text-4xl font-bold text-foreground">{mission.title}</CardTitle>
+                <div className="flex justify-between items-start gap-4">
+                  <CardTitle className="font-headline text-3xl sm:text-4xl font-bold text-foreground">{mission.title}</CardTitle>
+                  {isCurrentMissionCompleted && (
+                      <div className="flex-shrink-0 flex items-center gap-2 bg-green-100 text-green-800 px-2 sm:px-3 py-1 rounded-full text-sm font-bold z-10">
+                          <CircleCheck className="h-5 w-5"/>
+                          <span className="hidden sm:inline">Completado</span>
+                      </div>
+                  )}
+                </div>
               </CardHeader>
-              <CardContent className="space-y-2 px-6 pb-4 pt-2">
+              <CardContent className="space-y-1 px-6 pb-4 pt-2">
                 <p className="text-lg sm:text-xl text-muted-foreground leading-snug">{mission.description}</p>
                 
                 {mission.type === 'checkbox' && mission.steps && (
