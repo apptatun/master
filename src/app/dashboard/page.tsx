@@ -149,6 +149,20 @@ export default function DashboardPage() {
     setRestDate(null);
   }
 
+  const handleResetProgress = () => {
+    setCompletedMissions([]);
+    setCurrentDayIndex(0);
+    setRestDate(null);
+    setUserChoseToRest(false);
+    localStorage.removeItem('completedMissions');
+    localStorage.removeItem('currentDayIndex');
+    localStorage.removeItem('restDate');
+    toast({
+      title: 'Progreso Reiniciado',
+      description: 'Has vuelto al Día 1. ¡Una nueva oportunidad para empezar!',
+    });
+  };
+
   if (!isMounted) {
     return null;
   }
@@ -167,7 +181,7 @@ export default function DashboardPage() {
   return (
     <div className="flex min-h-screen flex-col bg-background">
       {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} />}
-      <DashboardHeader />
+      <DashboardHeader onResetProgress={handleResetProgress} />
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
         <div className="space-y-4 text-center">
             <div>
