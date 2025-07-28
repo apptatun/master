@@ -275,6 +275,37 @@ export const missions: Mission[] = [
         { title: 'Tarea 3: Lavate la cara y los dientes.' }
     ]
   },
+  {
+    id: 'm37',
+    title: 'Despeje Estratégico (10 min)',
+    description: 'Una secuencia para tomar control de tu entorno más inmediato.',
+    type: 'interactive',
+    category: 'rescate-de-territorio',
+    why: 'Cuando el entorno físico está desordenado, la mente puede sentirse igual. Ordenar un espacio, por pequeño que sea, es una victoria visible e inmediata. Es como limpiar el "campo de batalla" de tu día a día, y te demuestra que SÍ podés influir y cambiar tu ambiente, un acto poderoso contra la sensación de estar "trabado".',
+    reward: 'Arquitecto de Mini-Espacios Lv.1',
+    steps: [
+        {
+            title: 'IDENTIFICAR ZONA DE IMPACTO',
+            description: 'Elige un área pequeña y definida que te genere algo de resistencia o desorden (ej: tu mesa de noche, un sector de tu escritorio, la parte superior de un mueble pequeño).',
+        },
+        {
+            title: 'EVACUACIÓN TOTAL',
+            description: 'Retira completamente todos los objetos de la superficie elegida. Ponlos en un lugar temporal cercano (ej: el suelo al lado, otra silla).',
+        },
+        {
+            title: 'LIMPIAR LA SUPERFICIE',
+            description: 'Con un paño, toallita, o incluso un papel, limpia el polvo o la suciedad de la superficie recién despejada.',
+        },
+        {
+            title: 'CLASIFICAR OBJETOS (DECISIÓN CRÍTICA)',
+            description: 'Toma cada objeto que sacaste y decide: ¿Lo necesito o lo uso regularmente? ¿Me trae alegría o es funcional? Crea tres pilas: "Va de nuevo aquí", "Va a otro lado (guardar)", "Descartar/Donar".',
+        },
+        {
+            title: 'REORGANIZACIÓN ESTRATÉGICA',
+            description: 'Vuelve a colocar solo los objetos de la pila "Va de nuevo aquí" en el espacio ordenado. Lleva los objetos de la pila "Va a otro lado" a su lugar correcto. Deshazte inmediatamente de los objetos de la pila "Descartar/Donar".',
+        },
+    ]
+  },
   
   // Dominio Digital
   {
