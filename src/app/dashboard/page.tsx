@@ -109,10 +109,10 @@ export default function DashboardPage() {
       title: (
         <div className="flex items-center">
           <Check className="mr-2 h-5 w-5 text-green-500" />
-          <span className="font-bold text-lg">Acción Completada</span>
+          <span className="font-bold text-lg">Un paso más</span>
         </div>
       ),
-      description: <div className="text-base">Un paso a la vez.</div>
+      description: <div className="text-base">Un día a la vez.</div>
     });
   };
   
@@ -178,10 +178,6 @@ export default function DashboardPage() {
                         <ArrowRight className="h-6 w-6" />
                     </Button>
                 </div>
-                <p className="mt-4 text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-                    Cada día vas a tener UNA tarea simple. Si no te sale, no pasa nada: podés repetirla mañana o tomarte el tiempo que necesites. <br/>
-                    <span className="font-bold text-foreground">Lo importante no es la velocidad, sino que sigas adelante.</span>
-                </p>
             </div>
             <div className="border-t pt-8">
                 <p className="text-xl sm:text-2xl font-bold text-foreground mb-4">Hoy arrancamos con esto:</p>

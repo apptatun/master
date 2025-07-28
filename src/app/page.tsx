@@ -59,15 +59,9 @@ export default function Home() {
 
         <div className="space-y-4 pt-4">
           <p className="text-lg text-muted-foreground md:text-xl">
-            No es una transformación épica. Es momentum: pasar de estar parado a moverte, aunque sea lento.
+            Cada día vas a tener UNA tarea simple. Si no te sale, no pasa nada: podés repetirla mañana o tomarte el tiempo que necesites. <span className="font-bold text-foreground">Lo importante no es la velocidad, sino que sigas adelante.</span>
           </p>
-          <p className="text-lg font-bold text-foreground md:text-xl">
-            Bonus: cuando empieces a moverte, el ambiente en casa puede mejorar también.
-          </p>
-           <p className="text-lg font-bold text-foreground md:text-xl">
-            Cambios pequeños, reales. Lo que necesitás para creer que podés ir por más.
-          </p>
-           <p className="text-lg font-bold text-foreground md:text-xl pt-2">
+          <p className="text-lg font-bold text-foreground md:text-xl pt-2">
             Arrancamos desde tu cuarto. Sin salir de casa. Sin presión.
           </p>
         </div>
