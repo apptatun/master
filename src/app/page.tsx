@@ -6,9 +6,9 @@ import { ArrowRight, CheckCircle } from 'lucide-react';
 export default function Home() {
   return (
     <main className="flex min-h-screen w-full flex-col items-center justify-center bg-background p-4 text-center">
-      <div className="max-w-3xl space-y-8">
+      <div className="max-w-3xl space-y-6">
         
-        <div className="space-y-4">
+        <div className="space-y-2">
           <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
             15 días para romper el ciclo del "mañana empiezo".
           </h1>
@@ -17,7 +17,7 @@ export default function Home() {
           </p>
         </div>
 
-        <ul className="space-y-3 text-left text-base text-foreground md:text-lg max-w-2xl mx-auto">
+        <ul className="space-y-2 text-left text-base text-foreground md:text-lg max-w-2xl mx-auto">
           <li className="flex items-start">
             <CheckCircle className="mr-3 mt-1 h-6 w-6 flex-shrink-0 text-accent" />
             <span>Romper la inercia y empezar a hacer algo</span>
@@ -32,13 +32,13 @@ export default function Home() {
           </li>
         </ul>
 
-        <div className="space-y-4 pt-4">
-          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
+        <div className="space-y-2 pt-4">
+          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Lo que realmente cambia en 15 días:
           </h2>
         </div>
 
-         <ul className="space-y-3 text-left text-base text-muted-foreground md:text-lg max-w-2xl mx-auto">
+         <ul className="space-y-2 text-left text-base text-muted-foreground md:text-lg max-w-2xl mx-auto">
           <li className="flex items-start">
             <CheckCircle className="mr-3 mt-1 h-6 w-6 flex-shrink-0 text-primary/80" />
             <span>Tu rutina de sueño mejora (y los que te rodean lo van a notar)</span>
