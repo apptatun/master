@@ -16,20 +16,20 @@ import { Progress } from '@/components/ui/progress';
 // For now, we define a fixed 15-day mission plan here.
 // Later, this could be more dynamic.
 const dailyMissionPlan: string[] = [
-    'm1',    // Día 1: OPERACIÓN HORNALLA
+    'm36',   // Día 1: PROTOCOLO "DESPERTAR CON PROPÓSITO"
     'm3_v2', // Día 2: OPERACIÓN "ESPEJO LÍQUIDO"
     'm43',   // Día 3: OPERACIÓN "RINCÓN DE CONQUISTA"
     'm4',    // Día 4: OPERACIÓN LAVARROPAS
     'm39',   // Día 5: Guardián de la Vestimenta (20 min)
     'm8',    // Día 6: Di "buen día" o "gracias"
     'm13',   // Día 7: Ponte ropa limpia (2 min)
-    'm38',   // Día 8: Piloto de Abastecimiento (15 min)
+    'm1',    // Día 8: OPERACIÓN HORNALLA
     'm23',   // Día 9: Revisa tu saldo bancario
     'm15',   // Día 10: Reactivar Contacto (2 min)
     'm14',   // Día 11: Ordena un solo lugar (7 min)
     'm11',   // Día 12: Compra algo en el kiosco
     'm27',   // Día 13: Escribe una preocupación y rómpela
-    'm36',   // Día 14: PROTOCOLO "DESPERTAR CON PROPÓSITO"
+    'm38',   // Día 14: Piloto de Abastecimiento (15 min)
     'm28'    // Día 15: Reintenta una acción que te costó
 ];
 
