@@ -116,14 +116,14 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                     </div>
                 )}
               <CardHeader>
-                <CardTitle className="font-headline text-3xl sm:text-4xl font-bold text-foreground pt-2 pb-4">{mission.title}</CardTitle>
+                <CardTitle className="font-headline text-3xl sm:text-4xl font-bold text-foreground pt-2 pb-2">{mission.title}</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4 px-6 pb-4">
+              <CardContent className="space-y-2 px-6 pb-4">
                 <p className="text-lg sm:text-xl text-muted-foreground">{mission.description}</p>
                 
                 {mission.type === 'checkbox' && mission.steps && (
-                  <div className="space-y-3 pt-4">
-                    <ol className="list-decimal list-inside space-y-2 text-lg sm:text-xl text-muted-foreground">
+                  <div className="space-y-2 pt-2">
+                    <ol className="list-decimal list-inside space-y-1 text-lg sm:text-xl text-muted-foreground">
                       {mission.steps.map((step, index) => (
                         <li key={index}>{step.title}</li>
                       ))}
@@ -184,7 +184,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                       Listo. Ya está hecho. Te vemos mañana para la siguiente.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button onClick={onAdvanceToNextDay} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground" disabled={!isCurrentMissionCompleted || allMissionsCompleted}>
+                        <Button onClick={onAdvanceToNextDay} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground" disabled={allMissionsCompleted}>
                             Ir al Día {currentDay + 1}
                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Button>
