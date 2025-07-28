@@ -19,12 +19,6 @@ export function DashboardHeader({ path }: DashboardHeaderProps) {
             </h1>
           </div>
         </Link>
-        <div className="flex items-center gap-4">
-             <Button variant="ghost">
-                <Settings className="mr-2 h-4 w-4" />
-                Ajustes
-            </Button>
-        </div>
       </div>
     </header>
   );
