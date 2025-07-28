@@ -121,7 +121,7 @@ export default function DashboardPage() {
         <div className="space-y-6 text-center">
             <div>
                 <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl">
-                    Día {currentDayIndex + 1} de 15 — Tu Acción
+                    Día {currentDayIndex + 1} de 15
                 </h1>
                 <p className="mt-4 text-xl text-muted-foreground md:text-2xl max-w-3xl mx-auto">
                     Cada día vas a tener UNA tarea simple. Si no te sale, no pasa nada: podés repetirla mañana o tomarte el tiempo que necesites. <br/>
