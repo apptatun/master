@@ -891,6 +891,136 @@ export const missions: Mission[] = [
         { title: 'Disfrutá la película. ¡Felicitaciones por tu cita con vos mismo!'}
     ]
   },
+  {
+    id: 'm40',
+    title: 'OPERACIÓN "HORIZONTE CERO" (2 min)',
+    description: 'Reconectar con el exterior sin presión, gestionando la ansiedad de salir.',
+    type: 'interactive',
+    category: 'primeros-pasos',
+    reward: 'EXPLORADOR DE HORIZONTES LV.1',
+    steps: [
+        {
+            title: 'UBICAR TU PUNTO DE OBSERVACIÓN SEGURO (VENTANA/BALCÓN/PUERTA CON LUZ)',
+            description: '[AYUDA EXTRA]: "Encuentra el lugar más cercano donde veas el exterior, aunque sea una rendija."'
+        },
+        {
+            title: 'ABRIR O ACERCARTE LO SUFICIENTE PARA SENTIR EL AIRE/VER EL CIELO',
+            description: '[SOLUCIÓN]: "Abre un poco más o quédate un segundo más concentrado."'
+        },
+        {
+            title: 'IDENTIFICAR Y NOMBRAR MENTALMENTE 3 COSAS EN EL EXTERIOR (CUALQUIERA)',
+            description: 'Ej: un árbol, una nube, un auto rojo, una persona lejana. No hay juicio, solo observación.'
+        },
+        {
+            title: 'RESPIRAR PROFUNDO 3 VECES INHALANDO AIRE FRESCO',
+            description: 'Concéntrate en la sensación del aire al entrar y salir de tu cuerpo.'
+        }
+    ]
+  },
+  {
+    id: 'm41',
+    title: 'PROTOCOLO "ACTIVACIÓN MATUTINA" (3 min)',
+    description: 'Establecer un micro-hábito de autocuidado para iniciar el día.',
+    type: 'interactive',
+    category: 'laboratorio-mental',
+    reward: 'MAESTRO DESPERTADOR LV.1',
+    steps: [
+        {
+            title: 'PREPARAR TU "KIT DE DESPERTAR" (VASO DE AGUA AL LADO DE LA CAMA)',
+            description: '[AYUDA EXTRA]: "Hazlo ahora, es un paso clave para mañana. Pequeño esfuerzo, gran impacto."'
+        },
+        {
+            title: 'AL SONAR LA ALARMA, PONER UN PIE FUERA DE LA CAMA',
+            description: 'No pienses, solo reacciona al sonido.'
+        },
+        {
+            title: 'LEVANTARTE Y TOMAR EL VASO DE AGUA',
+            description: '[SOLUCIÓN]: "Intenta visualizarlo la noche anterior. Un pequeño truco."'
+        },
+        {
+            title: 'BEBER EL AGUA LENTAMENTE, SINTIENDO LA HIDRATACIÓN',
+            description: 'Conéctate con la sensación. Este es tu combustible.'
+        }
+    ]
+  },
+  {
+    id: 'm42',
+    title: 'DESAFÍO "MICRO-INTERACCIÓN" (1 min)',
+    description: 'Realizar una interacción social mínima y controlada para reducir la ansiedad.',
+    type: 'interactive',
+    category: 'interacciones-humanas',
+    reward: 'COMUNICADOR NÓVEL LV.1',
+    steps: [
+        {
+            title: 'ELEGIR UN "OBJETIVO SEGURO" (PERSONA CONFIABLE O CONOCIDA)',
+            description: '[AYUDA EXTRA]: "Piensa en un tendero, un vecino, alguien con quien no haya mucha presión."'
+        },
+        {
+            title: 'FORMULAR UNA PREGUNTA O SALUDO SIMPLE Y NEUTRAL',
+            description: 'Ej: "¿Cómo estás?", "¿Qué tal tu día?", "Hola." (Si es online: un emoji de saludo 👋).'
+        },
+        {
+            title: 'REALIZAR LA PREGUNTA/SALUDO (EN PERSONA: MIRADA BREVE, VOZ CLARA)',
+            description: 'Respira antes de hablar. Es solo un momento.'
+        },
+        {
+            title: 'ESCUCHAR LA RESPUESTA (NO ES NECESARIO EXTENDER LA CONVERSACIÓN)',
+            description: 'Tu objetivo era interactuar. Lo lograste.'
+        }
+    ]
+  },
+  {
+    id: 'm43',
+    title: 'OPERACIÓN "RINCÓN DE CONQUISTA" (5 min)',
+    description: 'Organizar un espacio personal muy pequeño para sentir control sobre el entorno.',
+    type: 'interactive',
+    category: 'rescate-de-territorio',
+    reward: 'ESTRATEGA DEL ESPACIO LV.1',
+    steps: [
+        {
+            title: 'ELEGIR UN ÁREA MINÚSCULA Y MUY ESPECÍFICA',
+            description: 'Ej: una esquina de tu mesa de noche, un solo cajón, un estante pequeño, el espacio debajo de tu cama.'
+        },
+        {
+            title: 'RETIRAR 3 OBJETOS CUALESQUIERA DE ESA ÁREA',
+            description: 'Solo 3. No más. No los juzgues, solo muévelos.'
+        },
+        {
+            title: 'DECIDIR EL DESTINO DE CADA UNO (GUARDAR/TIRAR/REUBICAR)',
+            description: '[AYUDA EXTRA]: "Si no lo usaste en 6 meses y no tiene valor sentimental, considera una "caja de decisión" para revisar en 1 mes."'
+        },
+        {
+            title: 'COLOCAR UNO DE ESOS 3 OBJETOS EN SU LUGAR DEFINITIVO O EN SU NUEVO DESTINO',
+            description: 'Solo uno. Siente la satisfacción de la decisión.'
+        }
+    ]
+  },
+  {
+    id: 'm44',
+    title: 'PROTOCOLO "GESTIÓN DE ENERGÍA" (90 seg)',
+    description: 'Interrumpir una actividad prolongada (como juegos o redes) con una pausa activa para recargar la atención y evitar la pasividad.',
+    type: 'interactive',
+    category: 'laboratorio-mental',
+    reward: 'CONTROLADOR DE FLUJO LV.1',
+    steps: [
+        {
+            title: 'IDENTIFICAR UNA ACTIVIDAD DE "ABSORCIÓN" QUE ESTÉS HACIENDO',
+            description: 'Ej: Jugar videojuegos, ver series, navegar en el móvil.'
+        },
+        {
+            title: 'PONER PAUSA AL JUEGO O SALIR DE LA APLICACIÓN (SÓLO POR 90 SEGUNDOS)',
+            description: 'Es una pausa táctica, no un adiós.'
+        },
+        {
+            title: 'REALIZAR UNA "ACCIÓN DE DESBLOQUEO" FÍSICA Y SIMPLE',
+            description: 'Ej: Levantarte y estirar los brazos, ir por un vaso de agua, mirar por la ventana 30 segundos, dar 5 pasos por la habitación.'
+        },
+        {
+            title: 'VOLVER A LA ACTIVIDAD SI LO DESEAS (O NO, LA ELECCIÓN ES TUYA)',
+            description: 'La misión está cumplida al haber tomado la pausa consciente.'
+        }
+    ]
+  },
   
   // Generic - Fallback
   {
