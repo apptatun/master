@@ -144,11 +144,11 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
               {!isCurrentMissionCompleted && (
                  <CardFooter className="flex flex-col items-stretch gap-3 bg-foreground/5 py-4 px-4 sm:py-5 sm:px-6">
                     {mission.type === 'interactive' && (
-                      <div className="flex flex-col sm:flex-row gap-3">
-                        <Button onClick={() => handleOpenModal(mission)} size="lg" className="flex-1 text-lg px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
+                      <div className="flex gap-3">
+                        <Button onClick={() => handleOpenModal(mission)} className="flex-1 group bg-accent text-accent-foreground hover:bg-accent/90">
                            Ver cómo se hace
                         </Button>
-                        <Button onClick={() => handleCompleteMission(mission.id)} size="lg" variant="outline" className="flex-1 text-lg px-4 py-6">
+                        <Button onClick={() => handleCompleteMission(mission.id)} variant="outline" className="flex-1">
                            Ya sé cómo seguir
                         </Button>
                       </div>
