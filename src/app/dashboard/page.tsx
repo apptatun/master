@@ -20,7 +20,7 @@ const dailyMissionPlan: string[] = [
     'm3_v2',// Día 2: Lava 3 platos (con opciones)
     'm37', // Día 3: Despeje Estratégico (10 min)
     'm38', // Día 4: Piloto de Abastecimiento (15 min)
-    'm7',  // Día 5: Sal a la puerta (5 min)
+    'm39',  // Día 5: Guardián de la Vestimenta (20 min)
     'm8',  // Día 6: Di "buen día" o "gracias"
     'm13', // Día 7: Ponte ropa limpia (2 min)
     'm1', // Día 8: Acción: Activar la Hornalla (3 min)

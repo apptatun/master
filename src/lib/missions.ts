@@ -140,23 +140,23 @@ export const missions: Mission[] = [
     steps: [
         {
             title: 'DEFINIR OBJETIVO NUTRICIONAL',
-            description: 'Elige un snack o comida sencilla que no requiera fuego, como: una manzana, un yogur, una tostada con algo, un sándwich simple.',
+            description: 'Elige un snack o comida sencilla que no requiera fuego, como: una manzana, un yogur, una tostada con algo, un sándwich simple.\n¿No se te ocurre nada? [AYUDA EXTRA]: "Piensa en lo más fácil y rápido que tengas a mano. Una fruta es un buen punto de partida."',
         },
         {
             title: 'INVENTARIO DE RECURSOS',
-            description: 'Identifica y reúne todos los ingredientes y los pocos utensilios necesarios (ej: si es una manzana, solo necesitas la manzana y quizá un cuchillo; si es un sándwich, pan, queso, jamón, un cuchillo y un plato).',
+            description: 'Identifica y reúne todos los ingredientes y los pocos utensilios necesarios (ej: si es una manzana, solo necesitas la manzana y quizá un cuchillo; si es un sándwich, pan, queso, jamón, un cuchillo y un plato).\n¿No encuentras algo? [SOLUCIÓN]: "No busques la perfección. Usa lo que tengas. Si te falta algo, elige otra opción de snack."',
         },
         {
             title: 'PROTOCOLO DE PREPARACIÓN (MÉTODO SIMPLE)',
-            description: 'Prepara tu snack/comida siguiendo los pasos básicos:\n- Si es fruta: lava y corta (o come directo).\n- Si es tostada: tuesta el pan, unta algo.\n- Si es sándwich: pon los ingredientes entre panes.',
+            description: 'Prepara tu snack/comida siguiendo los pasos básicos:\n- Si es fruta: lava y corta (o come directo).\n- Si es tostada: tuesta el pan, unta algo.\n- Si es sándwich: pon los ingredientes entre panes.\n¿Te sientes nervioso con el cuchillo? [AYUDA EXTRA]: "Si es necesario, puedes saltar el paso de cortar y elegir algo que no lo necesite. Tu seguridad es lo primero."',
         },
         {
             title: 'CONSUMO CONSCIENTE',
-            description: 'Siéntate en un lugar tranquilo (tu habitación, el sillón). Disfruta tu creación. Presta atención a los sabores, las texturas y cómo te sientes al nutrirte.',
+            description: 'Siéntate en un lugar tranquilo (tu habitación, el sillón). Disfruta tu creación. Presta atención a los sabores, las texturas y cómo te sientes al nutrirte.\n¿Te cuesta concentrarte? [AYUDA EXTRA]: "No es un examen. Simplemente mastica lentamente y nota el sabor. Es un momento solo para ti."',
         },
         {
             title: 'LOGÍSTICA DE LIMPIEZA',
-            description: 'Lava el plato y/o utensilio que usaste inmediatamente después de terminar de comer. Sécalo y guárdalo.',
+            description: 'Lava el plato y/o utensilio que usaste inmediatamente después de terminar de comer. Sécalo y guárdalo.\n¿Te da pereza? [AYN]: "Un minuto ahora te ahorra un dolor de cabeza después. Es parte de la victoria. ¡No dejes cabos sueltos!"',
         },
     ]
   },
@@ -317,23 +317,54 @@ export const missions: Mission[] = [
     steps: [
         {
             title: 'IDENTIFICAR ZONA DE IMPACTO',
-            description: 'Elige un área pequeña y definida que te genere algo de resistencia o desorden (ej: tu mesa de noche, un sector de tu escritorio, la parte superior de un mueble pequeño).',
+            description: 'Elige un área pequeña y definida que te genere algo de resistencia o desorden (ej: tu mesa de noche, un sector de tu escritorio, la parte superior de un mueble pequeño).\nSi no sabes → [AYUDA EXTRA]: "No busques el caos total. Apunta a un \'mini-territorio\' que te parezca manejable. La victoria en lo pequeño suma."',
         },
         {
             title: 'EVACUACIÓN TOTAL',
-            description: 'Retira completamente todos los objetos de la superficie elegida. Ponlos en un lugar temporal cercano (ej: el suelo al lado, otra silla).',
+            description: 'Retira completamente todos los objetos de la superficie elegida. Ponlos en un lugar temporal cercano (ej: el suelo al lado, otra silla).\n¿Cuesta sacarlo todo? [SOLUCIÓN]: "No pienses, solo saca. Es una evacuación temporal. Volverá lo que sea esencial."',
         },
         {
             title: 'LIMPIAR LA SUPERFICIE',
-            description: 'Con un paño, toallita, o incluso un papel, limpia el polvo o la suciedad de la superficie recién despejada.',
+            description: 'Con un paño, toallita, o incluso un papel, limpia el polvo o la suciedad de la superficie recién despejada.\n¿Sin paño? [AYUDA EXTRA]: "Usa un trozo de papel de cocina o un calcetín viejo. La perfección no es el objetivo, la acción sí."',
         },
         {
             title: 'CLASIFICAR OBJETOS (DECISIÓN CRÍTICA)',
-            description: 'Toma cada objeto que sacaste y decide: ¿Lo necesito o lo uso regularmente? ¿Me trae alegría o es funcional? Crea tres pilas: "Va de nuevo aquí", "Va a otro lado (guardar)", "Descartar/Donar".',
+            description: 'Toma cada objeto que sacaste y decide: ¿Lo necesito o lo uso regularmente? ¿Me trae alegría o es funcional? Crea tres pilas: "Va de nuevo aquí", "Va a otro lado (guardar)", "Descartar/Donar".\n¿Dudas mucho? [PELIGRO/SOLUCIÓN]: "Si lo dudas, probablemente no lo necesitas. Sé brutalmente honesto contigo mismo. Menos es más en este ritual."',
         },
         {
             title: 'REORGANIZACIÓN ESTRATÉGICA',
-            description: 'Vuelve a colocar solo los objetos de la pila "Va de nuevo aquí" en el espacio ordenado. Lleva los objetos de la pila "Va a otro lado" a su lugar correcto. Deshazte inmediatamente de los objetos de la pila "Descartar/Donar".',
+            description: 'Vuelve a colocar solo los objetos de la pila "Va de nuevo aquí" en el espacio ordenado. Lleva los objetos de la pila "Va a otro lado" a su lugar correcto. Deshazte inmediatamente de los objetos de la pila "Descartar/Donar".\n¿Te sientes abrumado por la pila de \'Descartar\'? [AYUDA EXTRA]: "Solo déjala junto al tacho de basura o la puerta. El simple hecho de separarlos ya es una victoria. Mañana te encargas de la \'eliminación final\'."',
+        },
+    ]
+  },
+  {
+    id: 'm39',
+    title: 'GUARDIÁN DE LA VESTIMENTA (20 min)',
+    description: 'Una secuencia para organizar un área clave de tu autonomía personal.',
+    type: 'interactive',
+    category: 'rescate-de-territorio',
+    why: 'Organizar tu ropa o un cajón personal es un acto de empoderamiento y auto-organización. Te permite visualizar tus pertenencias, tomar decisiones sobre ellas y mantener un orden que reduce el estrés diario y la "pasividad". Es un entrenamiento para la toma de decisiones y la auto-organización, habilidades vitales para la independencia. Cada prenda que doblas y guardas en su lugar es un pequeño paso hacia un "yo" más capaz y en control.',
+    reward: 'Estratega Textil Lv.1',
+    steps: [
+        {
+            title: 'DELIMITAR ZONA DE ORDEN',
+            description: 'Selecciona un cajón (de ropa interior, remeras, etc.), una pila de ropa suelta o una sección pequeña de tu armario. No intentes ordenar todo el armario de golpe.\n¿Cuesta elegir? [AYUDA EXTRA]: "Empieza por el cajón que más uses o que más \'ruido\' visual te genere. Una \'mini-batalla\' para ganar la \'guerra del orden\'."',
+        },
+        {
+            title: 'EVACUACIÓN TOTAL',
+            description: 'Saca absolutamente todo el contenido y ponlo en una superficie plana y limpia (tu cama, una mesa). Deja el cajón/espacio completamente vacío.\n¿Te sientes abrumado? [SOLUCIÓN]: "No mires la pila, concéntrate en el espacio vacío que acabas de crear. ¡Eso es un lienzo en blanco para tu éxito!"',
+        },
+        {
+            title: 'DECISIÓN CRÍTICA (PRENDA POR PRENDA)',
+            description: 'Toma cada prenda/objeto. Pregúntate: "¿Lo usé en los últimos 6 meses? ¿Me queda bien? ¿Me sirve? ¿Me gusta?"\nCrea tres pilas en tu superficie: "Guardar aquí", "Reubicar", "Descartar".\n¿Dudas en descartar? [PELIGRO/SOLUCIÓN]: "Si dudas más de 5 segundos, probablemente no lo necesitas. La regla de los 6 meses es tu aliada. Sé honesto contigo mismo."',
+        },
+        {
+            title: 'LIMPIEZA DE BASE',
+            description: 'Con un paño, toallita, o un papel, limpia el interior del cajón o el espacio vacío que has delimitado.\n¿No tienes productos de limpieza? [AYUDA EXTRA]: "Con un trapo húmedo es suficiente. El objetivo es eliminar el polvo y la suciedad superficial. ¡Un lienzo limpio para tu obra maestra!"',
+        },
+        {
+            title: 'REORGANIZACIÓN ESTRATÉGICA',
+            description: 'Vuelve a colocar solo los ítems de la pila "Guardar aquí". Dóblalos o acomódalos de forma lógica para ti (por color, tipo de prenda).\nLleva los objetos de la pila "Reubicar" a su lugar correcto (al cesto de ropa sucia, a otro cajón, etc.).\nDeshazte inmediatamente de los objetos de la pila "Descartar".\n¿Te cuesta doblar? [AYUDA EXTRA]: "No necesitas ser un experto. Un doblez simple y apilado es suficiente. La clave es que no formen un caos visual."',
         },
     ]
   },
