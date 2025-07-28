@@ -129,6 +129,37 @@ export const missions: Mission[] = [
       { title: 'Sácalo con una espátula. ¡Listo!' }
     ]
   },
+  {
+    id: 'm38',
+    title: 'PILOTO DE ABASTECIMIENTO (15 min)',
+    description: 'Un paso esencial para cuidar tu energía y autonomía. Prepara un snack simple, cómelo y limpia lo que usaste.',
+    type: 'interactive',
+    category: 'supervivencia-culinaria',
+    why: 'Tomar control de tu alimentación, aunque sea con algo mínimo, es un acto de auto-cuidado fundamental. Te demuestra que sos capaz de proveer para vos mismo y nutrirte intencionalmente, rompiendo el ciclo de la pasividad.',
+    reward: 'Chef de Autonomía Lv.1',
+    steps: [
+        {
+            title: 'DEFINIR OBJETIVO NUTRICIONAL',
+            description: 'Elige un snack o comida sencilla que no requiera fuego, como: una manzana, un yogur, una tostada con algo, un sándwich simple.',
+        },
+        {
+            title: 'INVENTARIO DE RECURSOS',
+            description: 'Identifica y reúne todos los ingredientes y los pocos utensilios necesarios (ej: si es una manzana, solo necesitas la manzana y quizá un cuchillo; si es un sándwich, pan, queso, jamón, un cuchillo y un plato).',
+        },
+        {
+            title: 'PROTOCOLO DE PREPARACIÓN (MÉTODO SIMPLE)',
+            description: 'Prepara tu snack/comida siguiendo los pasos básicos:\n- Si es fruta: lava y corta (o come directo).\n- Si es tostada: tuesta el pan, unta algo.\n- Si es sándwich: pon los ingredientes entre panes.',
+        },
+        {
+            title: 'CONSUMO CONSCIENTE',
+            description: 'Siéntate en un lugar tranquilo (tu habitación, el sillón). Disfruta tu creación. Presta atención a los sabores, las texturas y cómo te sientes al nutrirte.',
+        },
+        {
+            title: 'LOGÍSTICA DE LIMPIEZA',
+            description: 'Lava el plato y/o utensilio que usaste inmediatamente después de terminar de comer. Sécalo y guárdalo.',
+        },
+    ]
+  },
   
   // Rescate de Territorio
   {
