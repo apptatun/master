@@ -179,12 +179,12 @@ export default function DashboardPage() {
 
 
   return (
-    <div className="flex min-h-screen flex-col bg-background">
+    <div className="flex h-screen flex-col bg-background">
       {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} />}
       <DashboardHeader onResetProgress={handleResetProgress} />
-      <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
+      <main className="flex-1 overflow-y-auto container mx-auto p-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="space-y-4 text-center">
-            <div>
+            <div className="pt-2">
                  <div className="flex items-center justify-center gap-2 sm:gap-4 mb-2">
                     <Button onClick={handlePreviousDay} variant="ghost" size="icon" disabled={currentDayIndex === 0}>
                         <ArrowLeft className="h-6 w-6" />
@@ -198,7 +198,7 @@ export default function DashboardPage() {
                 </div>
                  <Progress value={progressPercentage} className="w-full max-w-sm mx-auto" />
             </div>
-            <div className="border-t pt-8">
+            <div className="border-t pt-4 sm:pt-8">
                  {currentMission ? (
                     <MissionList
                         missions={[currentMission]}

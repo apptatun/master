@@ -15,7 +15,7 @@ export function DashboardHeader({ onResetProgress }: DashboardHeaderProps) {
   return (
     <>
         <header className="sticky top-0 z-10 w-full border-b bg-background/80 backdrop-blur-sm">
-        <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto flex h-16 sm:h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
             <Link href="/">
             <div className="cursor-pointer hover:opacity-80 transition-opacity">
                 <h1 className="font-headline text-2xl font-bold text-foreground sm:text-3xl">

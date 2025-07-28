@@ -110,9 +110,9 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
       <TooltipProvider>
         <div className="space-y-6">
             <Card key={mission.id} className={cn('transition-all border-2 bg-card shadow-xl rounded-2xl', isCurrentMissionCompleted && 'border-green-500/50 opacity-80')}>
-              <CardHeader className="p-6 pb-2">
+              <CardHeader className="p-4 sm:p-6 pb-2">
                 <div className="flex justify-between items-start gap-4">
-                  <CardTitle className="font-headline text-3xl sm:text-4xl font-bold text-foreground">{mission.title}</CardTitle>
+                  <CardTitle className="font-headline text-2xl sm:text-4xl font-bold text-foreground">{mission.title}</CardTitle>
                   {isCurrentMissionCompleted && (
                       <div className="flex-shrink-0 flex items-center gap-2 bg-green-100 text-green-800 px-2 sm:px-3 py-1 rounded-full text-sm font-bold z-10">
                           <CircleCheck className="h-5 w-5"/>
@@ -121,12 +121,12 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   )}
                 </div>
               </CardHeader>
-              <CardContent className="space-y-1 px-6 pb-4 pt-2">
-                <p className="text-lg sm:text-xl text-muted-foreground leading-snug">{mission.description}</p>
+              <CardContent className="space-y-1 px-4 sm:px-6 pb-4 pt-2">
+                <p className="text-base sm:text-xl text-muted-foreground leading-snug">{mission.description}</p>
                 
                 {mission.type === 'checkbox' && mission.steps && (
                   <div className="space-y-1 pt-2">
-                    <ol className="list-decimal list-inside space-y-1 text-lg sm:text-xl text-muted-foreground leading-snug">
+                    <ol className="list-decimal list-inside space-y-1 text-base sm:text-xl text-muted-foreground leading-snug">
                       {mission.steps.map((step, index) => (
                         <li key={index}>{step.title}</li>
                       ))}
@@ -136,13 +136,13 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                 
                 {mission.why && (
                     <div className="pt-3 mt-4 border-t">
-                        <p className="font-bold text-foreground text-lg sm:text-xl">¿Por qué esto?</p>
+                        <p className="font-bold text-foreground text-base sm:text-xl">¿Por qué esto?</p>
                         <p className="text-base sm:text-lg text-muted-foreground leading-snug">{mission.why}</p>
                     </div>
                 )}
               </CardContent>
               {!isCurrentMissionCompleted && (
-                 <CardFooter className="flex flex-col items-stretch gap-4 bg-foreground/5 py-5 px-6">
+                 <CardFooter className="flex flex-col items-stretch gap-4 bg-foreground/5 py-4 px-4 sm:py-5 sm:px-6">
                     {mission.type === 'interactive' && (
                       <Tooltip>
                         <TooltipTrigger asChild>
@@ -182,8 +182,8 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
             </Card>
 
              {isCurrentMissionCompleted && !showFeedback && (
-                 <div className="mt-8 text-center p-6 bg-card rounded-lg border">
-                    <p className="text-lg sm:text-xl text-muted-foreground mt-2 mb-6">
+                 <div className="mt-8 text-center p-4 sm:p-6 bg-card rounded-lg border">
+                    <p className="text-base sm:text-xl text-muted-foreground mt-2 mb-6">
                       Listo. Ya está hecho. Te vemos mañana para la siguiente.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
