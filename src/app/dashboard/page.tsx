@@ -11,6 +11,7 @@ import { Check, ArrowLeft, ArrowRight, Trophy } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import Confetti from 'react-confetti';
 import { Button } from '@/components/ui/button';
+import { Progress } from '@/components/ui/progress';
 
 // For now, we define a fixed 15-day mission plan here.
 // Later, this could be more dynamic.
@@ -159,6 +160,8 @@ export default function DashboardPage() {
   // The user can go to the next day if the next day is within the range of completed actions, or it's the very next one.
   const maxUnlockedDay = completedMissions.length;
   const canGoToNextDay = currentDayIndex < maxUnlockedDay;
+  
+  const progressPercentage = (currentDayIndex / (dailyMissionPlan.length -1) ) * 100;
 
 
   return (
@@ -166,19 +169,20 @@ export default function DashboardPage() {
       {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} />}
       <DashboardHeader />
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
-        <div className="space-y-6 text-center">
+        <div className="space-y-4 text-center">
             <div>
-                 <div className="flex items-center justify-center gap-2 sm:gap-4 mb-4">
+                 <div className="flex items-center justify-center gap-2 sm:gap-4 mb-2">
                     <Button onClick={handlePreviousDay} variant="ghost" size="icon" disabled={currentDayIndex === 0}>
                         <ArrowLeft className="h-6 w-6" />
                     </Button>
-                    <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground min-w-[200px] sm:min-w-[280px]">
-                        Día {currentDayIndex + 1} de 15
+                    <h1 className="font-headline text-2xl sm:text-3xl font-bold tracking-tight text-foreground min-w-[200px] sm:min-w-[280px]">
+                        Día {currentDayIndex + 1} de {dailyMissionPlan.length}
                     </h1>
                     <Button onClick={handleNextDay} variant="ghost" size="icon" disabled={!canGoToNextDay || currentDayIndex >= dailyMissionPlan.length - 1}>
                         <ArrowRight className="h-6 w-6" />
                     </Button>
                 </div>
+                 <Progress value={progressPercentage} className="w-full max-w-sm mx-auto" />
             </div>
             <div className="border-t pt-8">
                  {currentMission ? (
