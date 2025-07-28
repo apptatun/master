@@ -18,7 +18,7 @@ export default function Home() {
           <CarouselItem>
             <div className="max-w-3xl space-y-4 px-4 sm:px-8">
               <div className="space-y-2">
-                <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl">
+                <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
                   15 días para romper el ciclo del "mañana empiezo".
                 </h1>
                 <p className="text-lg text-muted-foreground md:text-xl pt-4">
