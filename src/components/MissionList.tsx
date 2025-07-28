@@ -154,7 +154,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                     )}
                     {mission.type === 'checkbox' && (
                       <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="w-full text-lg px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
-                        <Check className="mr-2 h-5 w-5" /> ¡Acción Conquistada!
+                        <Check className="mr-2 h-5 w-5" /> Listo, ¡Un paso más!
                       </Button>
                     )}
                     
@@ -184,7 +184,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                       Listo. Ya está hecho. Te vemos mañana para la siguiente.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button onClick={onAdvanceToNextDay} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground" disabled={!isCurrentMissionCompleted || allMissionsCompleted}>
+                        <Button onClick={onAdvanceToNextDay} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground" disabled={allMissionsCompleted}>
                             Ir al Día {currentDay + 1}
                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Button>
