@@ -255,14 +255,15 @@ export const missions: Mission[] = [
   },
   {
     id: 'm36',
-    title: 'Ritual de Inicio (5 min)',
-    description: 'Tu primera acción tiene dos partes para transformar tu espacio y tu energía.',
+    title: 'Tu Ritual de Inicio (7 min)',
+    description: 'Una secuencia de tres tareas para empezar el día con intención.',
     type: 'checkbox',
     category: 'rescate-de-territorio',
-    why: 'Un gesto doble que tiene un impacto visual y simbólico inmediato. Ordenar tu cama te prepara para el día, y abrir las ventanas renueva el aire y tu mente. Es una victoria rápida y potente.',
+    why: 'Hacer estas tres cosas a propósito, incluso si ya las hacés, establece un tono de intención para tu día. Es una forma de decir "yo controlo el inicio de mi día". Es una victoria triple antes de empezar.',
     steps: [
-        { title: 'Hacé tu cama (no tiene que quedar perfecta).' },
-        { title: 'Abrí las cortinas y, si podés, las ventanas por 10 minutos.' }
+        { title: 'Abrí la ventana y corré la cortina.' },
+        { title: 'Hacé la cama (no tiene que quedar perfecta, solo estirada).' },
+        { title: 'Lavate la cara y los dientes.' }
     ]
   },
   
