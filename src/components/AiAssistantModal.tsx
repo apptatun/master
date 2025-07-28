@@ -58,7 +58,7 @@ export function AiAssistantModal({
         <DialogHeader>
           <DialogTitle className="font-headline text-3xl flex items-center">
             <Bot className="mr-3 h-8 w-8 text-accent" />
-            Tu Asistente de Acción
+            Asistente de Acción
           </DialogTitle>
           <DialogDescription className="text-base pt-2 text-muted-foreground">
             A veces, lo más difícil es dar el primer paso. Contame qué te está trabando o cómo te sentís. No estás solo en esto.

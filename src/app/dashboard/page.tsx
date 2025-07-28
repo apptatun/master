@@ -15,20 +15,20 @@ import Confetti from 'react-confetti';
 // Later, this could be more dynamic.
 const dailyMissionPlan: string[] = [
     'm36', // Día 1: Ritual de Inicio (5 min)
-    'm6', // Día 2: Embajador de la Hidratación (1 min)
-    'm3', // Día 3: Ninja del Fregadero (5 min)
-    'm12', // Día 4: Guardián del Esmalte (3 min)
-    'm7', // Día 5: Exploración Beta (5 min)
-    'm8', // Día 6: PROTOCOLO SALUDO VOCAL
-    'm13', // Día 7: Uniforme de Entrecasa (2 min)
+    'm6',  // Día 2: Bebe un vaso de agua (1 min)
+    'm3',  // Día 3: Lava 5 platos o cubiertos (5 min)
+    'm12', // Día 4: Cepíllate los dientes (3 min)
+    'm7',  // Día 5: Sal a la puerta (5 min)
+    'm8',  // Día 6: Di "buen día" o "gracias"
+    'm13', // Día 7: Ponte ropa limpia (2 min)
     'm1', // Día 8: Acción: Activar la Hornalla (3 min)
-    'm23', // Día 9: HACKEO FINANCIERO
+    'm23', // Día 9: Revisa tu saldo bancario
     'm15', // Día 10: Reactivar Contacto (2 min)
-    'm14', // Día 11: Foco de Orden (7 min)
-    'm11', // Día 12: EXPEDICIÓN KIOSCO
-    'm27', // Día 13: OPERACIÓN MURO DE LAMENTOS
+    'm14', // Día 11: Ordena un solo lugar (7 min)
+    'm11', // Día 12: Compra algo en el kiosco
+    'm27', // Día 13: Escribe una preocupación y rómpela
     'm4', // Día 14: Acción: Lavarropas (5 min)
-    'm28' // Día 15: OPERACIÓN PHOENIX
+    'm28' // Día 15: Reintenta una acción que te costó
 ];
 
 

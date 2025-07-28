@@ -80,7 +80,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm10',
-    title: 'Mate para Principiantes (5 min)',
+    title: 'Prepara tu primer mate (5 min)',
     description: 'Prepara tu primer mate.',
     type: 'interactive',
     category: 'supervivencia-culinaria',
@@ -115,7 +115,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm29',
-    title: 'Huevo Frito para Dummies',
+    title: 'Cocina un huevo frito (5 min)',
     description: 'Cocina un huevo frito sin que se queme ni se rompa la yema.',
     type: 'checkbox',
     category: 'supervivencia-culinaria',
@@ -133,7 +133,7 @@ export const missions: Mission[] = [
   // Rescate de Territorio
   {
     id: 'm3',
-    title: 'Ninja del Fregadero (5 min)',
+    title: 'Lava 5 platos o cubiertos (5 min)',
     description: 'Elimina 5 platos, vasos o cubiertos sucios.',
     type: 'checkbox',
     category: 'rescate-de-territorio',
@@ -184,7 +184,7 @@ export const missions: Mission[] = [
   },
    {
     id: 'm9',
-    title: 'Operación "Cama Cero" (2 min)',
+    title: 'Hacé tu cama (2 min)',
     description: 'Estira las sábanas.',
     type: 'checkbox',
     category: 'rescate-de-territorio',
@@ -199,7 +199,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm14',
-    title: 'Foco de Orden (7 min)',
+    title: 'Ordena un solo lugar (7 min)',
     description: 'Elegí UNA sola cosa y ordenala (la silla con ropa, el escritorio).',
     type: 'checkbox',
     category: 'rescate-de-territorio',
@@ -215,7 +215,7 @@ export const missions: Mission[] = [
   },
    {
     id: 'm17',
-    title: 'ACCIÓN LÍNEA BLANCA',
+    title: 'Descongela el freezer',
     description: 'Descongelar el freezer sin causar una inundación.',
     type: 'interactive',
     category: 'rescate-de-territorio',
@@ -250,7 +250,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm18',
-    title: 'PROTOCOLO CUBO BASURA',
+    title: 'Saca la basura',
     description: 'Saca los residuos sin posponer.',
     type: 'checkbox',
     category: 'rescate-de-territorio',
@@ -280,7 +280,7 @@ export const missions: Mission[] = [
   // Dominio Digital
   {
     id: 'm22',
-    title: 'ACCIÓN EMAIL FANTASMA',
+    title: 'Envía un email de consulta',
     description: 'Enviar una consulta a un servicio técnico o administrativo.',
     type: 'interactive',
     category: 'dominio-digital',
@@ -307,7 +307,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm33',
-    title: 'OPERACIÓN CV CERO',
+    title: 'Crea tu primer CV',
     description: 'Crear tu primer CV usando una plantilla simple.',
     type: 'interactive',
     category: 'dominio-digital',
@@ -344,7 +344,7 @@ export const missions: Mission[] = [
   // Finanzas Ninja
   {
     id: 'm23',
-    title: 'HACKEO FINANCIERO',
+    title: 'Revisa tu saldo bancario',
     description: 'Revisar tu saldo bancario online.',
     type: 'checkbox',
     category: 'finanzas-ninja',
@@ -359,7 +359,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm30',
-    title: 'OPERACIÓN FACTURA DIGITAL',
+    title: 'Paga una factura online',
     description: 'Paga una factura o servicio online por primera vez.',
     type: 'interactive',
     category: 'finanzas-ninja',
@@ -392,7 +392,7 @@ export const missions: Mission[] = [
   // Laboratorio Mental
   {
     id: 'm5',
-    title: 'Gánale al Snooze (1 min)',
+    title: 'Levántate e hidrátate (1 min)',
     description: 'Levantate e hidrátate.',
     type: 'checkbox',
     category: 'laboratorio-mental',
@@ -407,7 +407,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm6',
-    title: 'Embajador de la Hidratación (1 min)',
+    title: 'Bebe un vaso de agua (1 min)',
     description: 'Bebe un vaso de agua al despertar.',
     type: 'checkbox',
     category: 'laboratorio-mental',
@@ -421,7 +421,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm12',
-    title: 'Guardián del Esmalte (3 min)',
+    title: 'Cepíllate los dientes (3 min)',
     description: 'Cepíllate los dientes.',
     type: 'checkbox',
     category: 'laboratorio-mental',
@@ -436,7 +436,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm13',
-    title: 'Uniforme de Entrecasa (2 min)',
+    title: 'Ponte ropa limpia (2 min)',
     description: 'Ponte ropa limpia, aunque no salgas.',
     type: 'checkbox',
     category: 'laboratorio-mental',
@@ -451,7 +451,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm16',
-    title: 'Operación Hibernación: Apagar pantallas 1h antes de dormir',
+    title: 'Apaga pantallas 1h antes de dormir',
     description: 'Desconéctate para conectar con tu descanso.',
     type: 'checkbox',
     category: 'laboratorio-mental',
@@ -466,7 +466,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm24',
-    title: 'OPERACIÓN TORBELLINO',
+    title: 'Ducha express de 5 minutos',
     description: 'Ducha express de 5 minutos usando un timer.',
     type: 'checkbox',
     category: 'laboratorio-mental',
@@ -481,7 +481,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm25',
-    title: 'PROTOCOLO MICRO-PIRÁMIDE',
+    title: 'Come 1 fruta y 1 vaso de agua',
     description: 'Ingerir 1 fruta y 1 vaso de agua.',
     type: 'checkbox',
     category: 'laboratorio-mental',
@@ -496,7 +496,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm26',
-    title: 'ACCIÓN GROUNDING TÁCTICO',
+    title: 'Ejercicio de anclaje (5 sonidos, 3 colores)',
     description: 'Nombrar 5 sonidos que oyes y 3 colores que ves.',
     type: 'interactive',
     category: 'laboratorio-mental',
@@ -527,7 +527,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm27',
-    title: 'OPERACIÓN MURO DE LAMENTOS',
+    title: 'Escribe una preocupación y rómpela',
     description: 'Escribir una única preocupación en un papel y romperlo.',
     type: 'checkbox',
     category: 'laboratorio-mental',
@@ -542,7 +542,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm34',
-    title: 'DETECTOR DE ANSIEDAD',
+    title: 'Detecta un disparador de ansiedad',
     description: 'Identificar UNA situación o pensamiento que te genera ansiedad y anotarlo.',
     type: 'checkbox',
     category: 'laboratorio-mental',
@@ -557,7 +557,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm35',
-    title: 'ACCIÓN 30 MINUTOS',
+    title: 'Caminá 30 minutos',
     description: 'Caminar durante 30 minutos escuchando un podcast o música.',
     type: 'checkbox',
     category: 'laboratorio-mental',
@@ -575,7 +575,7 @@ export const missions: Mission[] = [
   // Primeros Pasos
   {
     id: 'm7',
-    title: 'Exploración Beta (5 min)',
+    title: 'Sal a la puerta (5 min)',
     description: 'Pisa la calle solo para observar.',
     type: 'checkbox',
     category: 'primeros-pasos',
@@ -590,7 +590,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm11',
-    title: 'EXPEDICIÓN KIOSCO',
+    title: 'Compra algo en el kiosco',
     description: 'Comprar 1 producto sin voz temblorosa.',
     type: 'interactive',
     category: 'primeros-pasos',
@@ -625,7 +625,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm19',
-    title: 'OPERACIÓN BUS-ALPHA',
+    title: 'Toma un transporte público',
     description: 'Sube al transporte público en una hora de poco tráfico.',
     type: 'interactive',
     category: 'primeros-pasos',
@@ -664,7 +664,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm20',
-    title: 'ACCIÓN COORDENADAS MÉDICAS',
+    title: 'Llega a un lugar usando GPS',
     description: 'Llegar a un consultorio usando GPS.',
     type: 'interactive',
     category: 'primeros-pasos',
@@ -697,7 +697,7 @@ export const missions: Mission[] = [
   // Interacciones Humanas
   {
     id: 'm8',
-    title: 'PROTOCOLO SALUDO VOCAL',
+    title: 'Di "buen día" o "gracias"',
     description: 'Decir "buen día" o "gracias".',
     type: 'checkbox',
     category: 'interacciones-humanas',
@@ -726,7 +726,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm21',
-    title: 'OPERACIÓN LLAMADA FRÍA',
+    title: 'Pide un turno médico por teléfono',
     description: 'Pedir un turno médico por teléfono.',
     type: 'interactive',
     category: 'interacciones-humanas',
@@ -757,7 +757,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm31',
-    title: 'DIPLOMACIA DEL "NO"',
+    title: 'Di "no" a algo pequeño',
     description: 'Decir "no" a un pequeño pedido o invitación sin sentirte culpable.',
     type: 'checkbox',
     category: 'interacciones-humanas',
@@ -774,7 +774,7 @@ export const missions: Mission[] = [
   // Aventuras de Crecimiento
   {
     id: 'm28',
-    title: 'OPERACIÓN PHOENIX',
+    title: 'Reintenta una acción que te costó',
     description: 'Reintentar una acción que salteaste o sentiste que te costó.',
     type: 'checkbox',
     category: 'aventuras-de-crecimiento',
@@ -789,7 +789,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm32',
-    title: 'AVENTURA CINÉFILA SOLITARIA',
+    title: 'Ve al cine solo',
     description: 'Ir al cine a ver una película solo.',
     type: 'checkbox',
     category: 'aventuras-de-crecimiento',
