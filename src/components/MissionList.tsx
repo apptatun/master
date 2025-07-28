@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Rocket, Check, Bot, Sparkles, Trophy, Coffee, Play } from 'lucide-react';
+import { Rocket, Check, Bot, Sparkles, Trophy, Coffee, Play, ArrowRight } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { AiAssistantModal } from './AiAssistantModal';
@@ -23,9 +23,10 @@ interface MissionListProps {
   isCurrentMissionCompleted: boolean;
   allMissionsCompleted: boolean;
   userChoseToRest: boolean;
+  currentDay: number;
 }
 
-export function MissionList({ missions, completedMissions, onCompleteMission, onNextMission, onRest, onResume, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest }: MissionListProps) {
+export function MissionList({ missions, completedMissions, onCompleteMission, onNextMission, onRest, onResume, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [isAssistantModalOpen, setIsAssistantModalOpen] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
@@ -107,13 +108,13 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
         return (
              <div className="mt-8 text-center p-6 bg-card rounded-lg border">
                 <Rocket className="mx-auto h-12 w-12 text-accent mb-4" />
-                <h3 className="text-2xl font-bold text-foreground">Acción de hoy: Completa</h3>
-                <p className="text-lg text-muted-foreground mt-2 mb-6">
+                <p className="text-xl text-muted-foreground mt-2 mb-6">
                   Listo. Ya está hecho. Te vemos mañana para la siguiente.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button onClick={onNextMission} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
-                        Siguiente Acción
+                        Ir al Día {currentDay + 1}
+                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Button>
                     <Button onClick={onRest} size="lg" variant="outline" className="text-lg">
                         Por hoy es suficiente

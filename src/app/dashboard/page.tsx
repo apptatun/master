@@ -170,6 +170,7 @@ export default function DashboardPage() {
                         userChoseToRest={userChoseToRest}
                         onResume={handleResume}
                         allMissionsCompleted={currentDayIndex >= dailyMissionPlan.length - 1 && isCurrentMissionCompleted}
+                        currentDay={currentDayIndex + 1}
                     />
                  ) : (
                     <p>No se encontró la acción para hoy.</p>
