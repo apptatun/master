@@ -164,17 +164,33 @@ export const missions: Mission[] = [
   // Rescate de Territorio
   {
     id: 'm3_v2',
-    title: '🧼 Lava 3 platos',
-    description: 'Elegí una de estas tareas simples:',
-    type: 'checkbox',
+    title: 'OPERACIÓN SUMIDERO LIMPIO (5 min)',
+    description: 'Una secuencia para recuperar un punto clave de tu cocina y generar una victoria rápida.',
+    type: 'interactive',
     category: 'rescate-de-territorio',
-    why: 'Porque ayer arrancaste con vos, hoy te metés un poco con el entorno. Ver la pileta más limpia cambia la sensación general del lugar. Te da una mínima estructura sin exigirte demasiado.',
+    why: 'Ver la pileta más limpia cambia la sensación general del lugar. Es un impacto visual inmediato que le demuestra a tu cerebro que podés generar orden a partir del caos, un pequeño pero poderoso acto de control.',
     reward: 'Guardián del Orden',
     steps: [
-        { title: 'Opción principal: Lavá 3 cosas de la pileta (platos, vasos, cubiertos, lo que haya).' },
-        { title: 'Alternativa 1 (si no hay nada para lavar): Limpiá la bacha o la mesada.' },
-        { title: 'Alternativa 2 (si no hay nada para lavar): Secá la pileta con un repasador o papel.' },
-        { title: 'Alternativa 3 (si no hay nada para lavar): Ordená un poco lo que esté limpio (cubiertos, vasos, platos).' }
+        {
+            title: 'PASO 1: SELECCIONAR OBJETIVOS',
+            description: 'Elige solo 3 cosas de la pileta. No más. Pueden ser platos, vasos, cubiertos, lo que sea. El objetivo es limitado y alcanzable.\n¿Hay muchas cosas y te abruma? [AYUDA EXTRA]: "No mires la montaña. Solo elige los 3 objetos más fáciles o los que más te molesten. Ignora el resto por ahora."',
+        },
+        {
+            title: 'PASO 2: PREPARAR EL EQUIPAMIENTO',
+            description: 'Agarra una esponja y detergente. Asegúrate de tener un lugar donde poner las cosas limpias para que se sequen.\n¿No hay esponja/detergente? [SOLUCIÓN]: "Usa tus manos y agua caliente. No buscamos la perfección, sino la acción. Quitar los restos de comida ya es una victoria."',
+        },
+        {
+            title: 'PASO 3: EJECUTAR LA LIMPIEZA',
+            description: 'Lava los 3 objetos seleccionados. Concéntrate en uno a la vez. Jabón, fregar, enjuagar. Repite. Siente el agua en tus manos.\n¿Te da asco? [AYUDA EXTRA]: "Si tienes guantes, úsalos. Si no, recuerda que es temporal y que estás creando un espacio más limpio y saludable para ti."',
+        },
+        {
+            title: 'PASO 4: FASE DE SECADO Y REORGANIZACIÓN',
+            description: 'Coloca los 3 objetos limpios en el escurridor o sécalos con un repasador. Si puedes, guárdalos en su lugar.\n¿No tienes repasador seco? [SOLUCIÓN]: "Déjalos secar al aire. Ya hiciste la parte más difícil. La misión está cumplida."',
+        },
+        {
+            title: 'PASO 5: INSPECCIÓN FINAL',
+            description: 'Mira la pileta. Hay 3 cosas menos. Observa ese pequeño cambio que TÚ generaste. Disfruta de esa mini-victoria. ¡Buen trabajo!',
+        }
     ]
   },
   {
@@ -294,22 +310,35 @@ export const missions: Mission[] = [
   },
   {
     id: 'm36',
-    title: 'Tu Ritual de Inicio (7 min)',
-    description: 'Una secuencia de tres tareas para empezar el día con intención.',
-    type: 'checkbox',
+    title: 'Ritual de Inicio (7 min)',
+    description: 'Una secuencia de tres tareas para empezar el día con intención y demostrarte que podés tomar el control desde el primer momento.',
+    type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Hacer estas tres cosas a propósito, incluso si ya las hacés, establece un tono de intención para tu día. Es una forma de decir "yo controlo el inicio de mi día". Es una victoria triple antes de empezar.',
     reward: 'Arquitecto/a Matutino/a',
     steps: [
-        { title: 'Tarea 1: Abrí la ventana y corré la cortina.' },
-        { title: 'Tarea 2: Hacé la cama (no tiene que quedar perfecta, solo estirada).' },
-        { title: 'Tarea 3: Lavate la cara y los dientes.' }
+      {
+        title: 'PASO 1: CONECTAR CON EL EXTERIOR',
+        description: 'Acércate a una ventana, corre la cortina y ábrela si es posible. Deja que entre la luz y el aire. Tu misión es simplemente observar el exterior por 10 segundos.\n¿Te cuesta? [AYUDA EXTRA]: "No tienes que salir. Solo conectar visualmente. Es un recordatorio de que el mundo sigue ahí fuera y tú eres parte de él."'
+      },
+      {
+        title: 'PASO 2: ORDENAR TU ESPACIO DE DESCANSO',
+        description: 'Haz la cama. No tiene que quedar perfecta como de hotel. Solo estira la sábana de arriba y el acolchado. El objetivo es transformar el espacio de "dormir" a "vivir".\n¿Sientes que no tiene sentido? [SOLUCIÓN]: "Piensa en esto como cerrar una puerta. La puerta del descanso se cierra, y ahora abres la del día. Es un acto simbólico de progreso."'
+      },
+      {
+        title: 'PASO 3: CUIDADO PERSONAL BÁSICO',
+        description: 'Ve al baño, lávate la cara con agua y cepíllate los dientes. Es un acto fundamental de respeto y cuidado hacia ti mismo.\n¿Te falta energía? [AYUDA EXTRA]: "No pienses en la secuencia entera. Solo enfócate en el primer movimiento: levantarte para ir al baño. El resto vendrá solo."'
+      },
+      {
+        title: 'INSPECCIÓN FINAL',
+        description: '¡Misión cumplida! Has completado tres actos de autoafirmación. Tu día no empezó por accidente, empezó porque tú lo decidiste. Siente esa pequeña pero poderosa sensación de control.'
+      }
     ]
   },
   {
     id: 'm37',
     title: 'Despeje Estratégico (10 min)',
-    description: 'Una secuencia para tomar control de tu entorno más inmediato.',
+    description: 'Una secuencia para tomar control de tu entorno más inmediato y despejar tu mente.',
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Cuando el entorno físico está desordenado, la mente puede sentirse igual. Ordenar un espacio, por pequeño que sea, es una victoria visible e inmediata. Es como limpiar el "campo de batalla" de tu día a día, y te demuestra que SÍ podés influir y cambiar tu ambiente, un acto poderoso contra la sensación de estar "trabado".',
