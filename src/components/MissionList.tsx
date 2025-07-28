@@ -115,17 +115,17 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                         <span>Completado</span>
                     </div>
                 )}
-              <CardHeader>
-                <CardTitle className="font-headline text-3xl sm:text-4xl font-bold text-foreground pt-2 pb-0">{mission.title}</CardTitle>
+              <CardHeader className="p-6 pb-2">
+                <CardTitle className="font-headline text-3xl sm:text-4xl font-bold text-foreground">{mission.title}</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-3 px-6 pb-4">
+              <CardContent className="space-y-2 px-6 pb-4 pt-2">
                 <p className="text-lg sm:text-xl text-muted-foreground leading-snug">{mission.description}</p>
                 
                 {mission.type === 'checkbox' && mission.steps && (
                   <div className="space-y-1 pt-2">
-                    <ol className="list-decimal list-inside space-y-1 text-lg sm:text-xl text-muted-foreground">
+                    <ol className="list-decimal list-inside space-y-1 text-lg sm:text-xl text-muted-foreground leading-snug">
                       {mission.steps.map((step, index) => (
-                        <li key={index} className="leading-snug">{step.title}</li>
+                        <li key={index}>{step.title}</li>
                       ))}
                     </ol>
                   </div>
