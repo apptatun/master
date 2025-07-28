@@ -142,18 +142,16 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                 )}
               </CardContent>
               {!isCurrentMissionCompleted && (
-                 <CardFooter className="flex flex-col items-stretch gap-4 bg-foreground/5 py-4 px-4 sm:py-5 sm:px-6">
+                 <CardFooter className="flex flex-col items-stretch gap-3 bg-foreground/5 py-4 px-4 sm:py-5 sm:px-6">
                     {mission.type === 'interactive' && (
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                           <Button onClick={() => handleOpenModal(mission)} size="lg" className="w-full text-lg px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
-                              Ver cómo se hace
-                           </Button>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Vas a ver una mini instrucción simple. Tranquilo, es rápido.</p>
-                        </TooltipContent>
-                      </Tooltip>
+                      <div className="flex flex-col sm:flex-row gap-3">
+                        <Button onClick={() => handleOpenModal(mission)} size="lg" className="flex-1 text-lg px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
+                           Ver cómo se hace
+                        </Button>
+                        <Button onClick={() => handleCompleteMission(mission.id)} size="lg" variant="outline" className="flex-1 text-lg px-4 py-6">
+                           Ya sé cómo seguir
+                        </Button>
+                      </div>
                     )}
                     {mission.type === 'checkbox' && (
                       <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="w-full text-lg px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
