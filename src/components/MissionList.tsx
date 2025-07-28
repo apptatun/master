@@ -18,17 +18,17 @@ interface MissionListProps {
   completedMissions: string[];
   onCompleteMission: (missionId: string) => void;
   onNextMission: () => void;
+  onRest: () => void;
   isCurrentMissionCompleted: boolean;
   allMissionsCompleted: boolean;
+  userChoseToRest: boolean;
 }
 
-export function MissionList({ missions, completedMissions, onCompleteMission, onNextMission, isCurrentMissionCompleted, allMissionsCompleted }: MissionListProps) {
+export function MissionList({ missions, completedMissions, onCompleteMission, onNextMission, onRest, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [isAssistantModalOpen, setIsAssistantModalOpen] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [showRejectionMessage, setShowRejectionMessage] = useState(false);
-  const [userChoseToRest, setUserChoseToRest] = useState(false);
-
 
   const handleOpenModal = (mission: Mission) => {
     setSelectedMission(mission);
@@ -40,22 +40,10 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
 
   const handleCompleteMission = (missionId: string) => {
     onCompleteMission(missionId);
-    setShowFeedback(false);
-    setUserChoseToRest(false); 
   };
   
   const handleDeclineMission = () => {
     setShowRejectionMessage(true);
-  }
-
-  const handleChooseRest = () => {
-    setUserChoseToRest(true);
-  }
-
-  const handleChooseNext = () => {
-    setUserChoseToRest(false);
-    setShowFeedback(false); 
-    onNextMission();
   }
   
   const currentMissionForReward = missions[0];
@@ -67,10 +55,22 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
           <Trophy className="mx-auto h-16 w-16 text-accent mb-4" />
           <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
           <p className="text-lg text-muted-foreground mt-2">
-            Conquistaste todos los desafíos disponibles en este camino. ¡Tomate un momento para celebrar tu increíble progreso!
+            ¡Conquistaste el desafío de 15 días! Este es un logro inmenso. Tomate un momento para celebrar todo tu increíble progreso.
           </p>
         </div>
       );
+    }
+
+    if (userChoseToRest) {
+      return (
+        <div className="text-center p-6 bg-card rounded-lg border">
+            <Coffee className="mx-auto h-12 w-12 text-accent mb-4" />
+            <h3 className="text-2xl font-bold text-foreground">¡Genial!</h3>
+            <p className="text-lg text-muted-foreground mt-2">
+              A veces, la mayor victoria es saber cuándo parar. <br/> Nos vemos la próxima.
+            </p>
+          </div>
+      )
     }
     
     if (showFeedback) {
@@ -88,28 +88,14 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
               </div>
         )
     }
-
-    if (userChoseToRest) {
-      return (
-        <div className="text-center p-6 bg-card rounded-lg border">
-            <Coffee className="mx-auto h-12 w-12 text-accent mb-4" />
-            <h3 className="text-2xl font-bold text-foreground">¡Genial!</h3>
-            <p className="text-lg text-muted-foreground mt-2">
-              A veces, la mayor victoria es saber cuándo parar. <br/> Nos vemos la próxima.
-            </p>
-          </div>
-      )
-    }
     
     const mission = missions[0];
     if (!mission) {
       return (
         <div className="text-center p-8">
-          <Trophy className="mx-auto h-16 w-16 text-accent mb-4" />
-          <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
-          <p className="text-lg text-muted-foreground mt-2">
-            Conquistaste todos los desafíos de esta categoría. ¡Tomate un momento para celebrar tu progreso!
-          </p>
+            <p className="text-lg text-muted-foreground mt-2">
+                Cargando misión...
+            </p>
         </div>
       );
     }
@@ -130,10 +116,10 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                   Si te sentís con energía, podés ir por el siguiente. Si no, ¡lo de hoy ya es una victoria enorme!
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button onClick={handleChooseNext} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
-                        Listo para otra misión
+                    <Button onClick={onNextMission} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
+                        Listo para el Día Siguiente
                     </Button>
-                    <Button onClick={handleChooseRest} size="lg" variant="outline" className="text-lg">
+                    <Button onClick={onRest} size="lg" variant="outline" className="text-lg">
                         Por hoy es suficiente
                     </Button>
                 </div>

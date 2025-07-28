@@ -72,7 +72,7 @@ export default function Home() {
           </p>
         </div>
 
-        <Link href="/setup">
+        <Link href="/dashboard">
           <Button size="lg" className="group bg-accent text-accent-foreground hover:bg-accent/90 text-lg rounded-full font-sans font-bold h-14 px-10">
             OK, estoy listo para empezar
           </Button>
