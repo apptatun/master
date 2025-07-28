@@ -42,6 +42,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
 
   const handleCompleteMission = (missionId: string) => {
     onCompleteMission(missionId);
+    setShowFeedback(true);
   };
   
   const handleDeclineMission = () => {
@@ -79,7 +80,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
       )
     }
     
-    if (showFeedback) {
+    if (showFeedback && isCurrentMissionCompleted) {
       return <EmojiFeedback onFeedback={() => setShowFeedback(false)} />;
     }
 
@@ -180,7 +181,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
               )}
             </Card>
 
-             {isCurrentMissionCompleted && (
+             {isCurrentMissionCompleted && !showFeedback && (
                  <div className="mt-8 text-center p-6 bg-card rounded-lg border">
                     <p className="text-lg sm:text-xl text-muted-foreground mt-2 mb-6">
                       Listo. Ya está hecho. Te vemos mañana para la siguiente.
