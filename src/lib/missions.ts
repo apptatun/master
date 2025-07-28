@@ -169,11 +169,11 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Ver la pileta más limpia cambia la sensación general del lugar. Es un impacto visual inmediato que le demuestra a tu cerebro que podés generar orden a partir del caos, un pequeño pero poderoso acto de control.',
-    reward: 'GUARDIÁN DEL FREGADERO LV.1',
+    reward: 'GUARDIÁN DE LA PILETA LV.1',
     steps: [
         {
             title: 'IDENTIFICAR TUS "OBJETIVOS PRIORITARIOS" (3 PLATOS/UTENSILIOS CUALESQUIERA)',
-            description: 'No mires el resto del fregadero, solo concéntrate en esos 3. ¿Los tienes claramente identificados?\n[AYUDA EXTRA]: "Solo 3. Los que estén más accesibles. No necesitas un arsenal, solo un foco láser."',
+            description: 'No mires el resto de la pileta, solo concéntrate en esos 3. ¿Los tienes claramente identificados?\n[AYUDA EXTRA]: "Solo 3. Los que estén más accesibles. No necesitas un arsenal, solo un foco láser."',
         },
         {
             title: 'REUNIR TU "KIT DE LIMPIEZA" (ESPONJA, DETERGENTE, AGUA)',
@@ -806,7 +806,7 @@ export const missions: Mission[] = [
         description: 'Confiá en la voz o en el mapa. No tenés que memorizar nada, solo seguir la siguiente indicación. Si te equivocás, la app recalculará automáticamente. ¡No hay error posible!'
       },
       {
-        title: 'Paso 4: La Llegada',
+        title: 'Paso 4: La La Llegada',
         description: 'La app te avisará cuando estés cerca. Prestá atención a los números de las calles o a los nombres de los edificios para encontrar el lugar exacto.'
       },
       {
