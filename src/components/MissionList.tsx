@@ -55,7 +55,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
       return (
         <div className="text-center p-8">
           <Trophy className="mx-auto h-16 w-16 text-accent mb-4" />
-          <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
+          <h3 className="text-2xl sm:text-3xl font-bold text-foreground">¡Felicitaciones!</h3>
           <p className="text-lg text-muted-foreground mt-2">
             ¡Conquistaste el desafío de 15 días! Este es un logro inmenso. Tomate un momento para celebrar todo tu increíble progreso.
           </p>
@@ -67,7 +67,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
       return (
         <div className="text-center p-6 bg-card rounded-lg border">
             <Coffee className="mx-auto h-12 w-12 text-accent mb-4" />
-            <h3 className="text-2xl font-bold text-foreground">Descanso merecido.</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold text-foreground">Descanso merecido.</h3>
             <p className="text-lg text-muted-foreground mt-2 mb-6">
               A veces, la mayor victoria es saber cuándo parar. <br/> Nos vemos la próxima.
             </p>
@@ -87,7 +87,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
         return (
              <div className="text-center p-6 bg-card rounded-lg border">
                 <Sparkles className="mx-auto h-12 w-12 text-accent mb-4" />
-                <h3 className="text-2xl font-bold text-foreground">Está bien.</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold text-foreground">Está bien.</h3>
                 <p className="text-lg text-muted-foreground mt-2">
                  A veces decir que no también es avanzar. <br/> Volvé cuando te sientas con ganas.
                 </p>
@@ -108,33 +108,33 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
     return (
       <TooltipProvider>
         <div className="space-y-6">
-            <Card key={mission.id} className={cn('transition-all border-2 bg-card shadow-xl rounded-2xl', isCurrentMissionCompleted && 'border-green-500/50 opacity-80')}>
+            <Card key={mission.id} className={cn('transition-all border-2 bg-card shadow-xl rounded-2xl relative', isCurrentMissionCompleted && 'border-green-500/50 opacity-80')}>
                 {isCurrentMissionCompleted && (
-                    <div className="absolute top-4 right-4 flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm sm:text-base font-bold z-10">
+                    <div className="absolute top-4 right-4 flex items-center gap-2 bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm font-bold z-10">
                         <CircleCheck className="h-5 w-5"/>
                         <span>Completado</span>
                     </div>
                 )}
               <CardHeader>
-                <CardTitle className="font-headline text-3xl sm:text-4xl font-bold text-foreground pt-2 pb-2">{mission.title}</CardTitle>
+                <CardTitle className="font-headline text-3xl sm:text-4xl font-bold text-foreground pt-2 pb-0">{mission.title}</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-2 px-6 pb-4">
-                <p className="text-lg sm:text-xl text-muted-foreground">{mission.description}</p>
+              <CardContent className="space-y-3 px-6 pb-4">
+                <p className="text-lg sm:text-xl text-muted-foreground leading-snug">{mission.description}</p>
                 
                 {mission.type === 'checkbox' && mission.steps && (
-                  <div className="space-y-2 pt-2">
+                  <div className="space-y-1 pt-2">
                     <ol className="list-decimal list-inside space-y-1 text-lg sm:text-xl text-muted-foreground">
                       {mission.steps.map((step, index) => (
-                        <li key={index}>{step.title}</li>
+                        <li key={index} className="leading-snug">{step.title}</li>
                       ))}
                     </ol>
                   </div>
                 )}
                 
                 {mission.why && (
-                    <div className="pt-4 mt-4 border-t">
+                    <div className="pt-3 mt-4 border-t">
                         <p className="font-bold text-foreground text-lg sm:text-xl">¿Por qué esto?</p>
-                        <p className="text-base sm:text-lg text-muted-foreground">{mission.why}</p>
+                        <p className="text-base sm:text-lg text-muted-foreground leading-snug">{mission.why}</p>
                     </div>
                 )}
               </CardContent>
