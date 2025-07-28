@@ -66,7 +66,7 @@ export function InteractiveGuideModal({
           <DialogTitle className="font-headline text-2xl sm:text-3xl">{mission.title}</DialogTitle>
            <div className='pt-2'>
             <p className="text-muted-foreground text-base">
-                Esto es una guía, no un examen. El objetivo es que te animes a explorar, con calma y a tu ritmo.
+                ¿Ya sabés hacer esto? Perfecto. Podés saltear los pasos que quieras. Pero si no estás 100% seguro, te acompaño sin juzgarte. Nadie nace sabiendo, y esto no es un examen.
             </p>
           </div>
         </DialogHeader>
