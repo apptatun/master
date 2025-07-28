@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { Button } from './ui/button';
 import type { Path } from '@/lib/types';
-import { Compass, Trophy, Settings } from 'lucide-react';
+import { Compass, Settings } from 'lucide-react';
 
 interface DashboardHeaderProps {
     path: Path | null; // Path is kept for potential future use
@@ -20,10 +20,6 @@ export function DashboardHeader({ path }: DashboardHeaderProps) {
           </div>
         </Link>
         <div className="flex items-center gap-4">
-            <Button variant="ghost">
-                <Trophy className="mr-2 h-4 w-4" />
-                Mis Logros
-            </Button>
              <Button variant="ghost">
                 <Settings className="mr-2 h-4 w-4" />
                 Ajustes

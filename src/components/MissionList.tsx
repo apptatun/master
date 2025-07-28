@@ -46,8 +46,6 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
     setShowRejectionMessage(true);
   }
   
-  const currentMissionForReward = missions[0];
-
   const renderContent = () => {
     if (allMissionsCompleted) {
       return (
@@ -105,12 +103,6 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
              <div className="mt-8 text-center p-6 bg-card rounded-lg border">
                 <Rocket className="mx-auto h-12 w-12 text-accent mb-4" />
                 <h3 className="text-2xl font-bold text-foreground">Acción de hoy: Completa</h3>
-                {currentMissionForReward?.reward && (
-                    <div className="flex items-center justify-center text-lg font-bold text-accent-foreground/80 pt-2 bg-accent/20 p-3 rounded-md my-4">
-                      <Trophy className="mr-2 h-5 w-5 text-accent" />
-                      <p>Logro Desbloqueado: <span className="font-extrabold">{currentMissionForReward.reward}</span></p>
-                    </div>
-                  )}
                 <p className="text-lg text-muted-foreground mt-2 mb-6">
                   Listo. Ya está hecho. Te vemos mañana para la siguiente.
                 </p>
