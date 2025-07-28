@@ -15,10 +15,10 @@ import { Button } from '@/components/ui/button';
 // For now, we define a fixed 15-day mission plan here.
 // Later, this could be more dynamic.
 const dailyMissionPlan: string[] = [
-    'm36', // Día 1: Ritual de Inicio (5 min)
-    'm6',  // Día 2: Bebe un vaso de agua (1 min)
-    'm3',  // Día 3: Lava 5 platos o cubiertos (5 min)
-    'm12', // Día 4: Cepíllate los dientes (3 min)
+    'm36', // Día 1: Ritual de Inicio (3 tareas)
+    'm3_v2',// Día 2: Lava 3 platos (con opciones)
+    'm12', // Día 3: Cepíllate los dientes (3 min)
+    'm6',  // Día 4: Bebe un vaso de agua (1 min)
     'm7',  // Día 5: Sal a la puerta (5 min)
     'm8',  // Día 6: Di "buen día" o "gracias"
     'm13', // Día 7: Ponte ropa limpia (2 min)

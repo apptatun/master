@@ -128,18 +128,17 @@ export const missions: Mission[] = [
   
   // Rescate de Territorio
   {
-    id: 'm3',
-    title: 'Lava 5 platos o cubiertos (5 min)',
-    description: 'Elimina 5 platos, vasos o cubiertos sucios.',
+    id: 'm3_v2',
+    title: '🧼 Lava 3 platos',
+    description: 'Elegí una de estas tareas simples:',
     type: 'checkbox',
     category: 'rescate-de-territorio',
-    why: 'Conquistar un pequeño foco de caos reduce la carga visual y mental, liberando energía.',
+    why: 'Porque ayer arrancaste con vos, hoy te metés un poco con el entorno. Ver la pileta más limpia cambia la sensación general del lugar. Te da una mínima estructura sin exigirte demasiado.',
     steps: [
-        { title: 'Juntá 5 cosas sucias de la cocina.' },
-        { title: 'Poné agua tibia y una gota de detergente en la esponja.' },
-        { title: 'Restregá uno por uno, sin apuro.' },
-        { title: 'Enjuagálos bien con agua.' },
-        { title: 'Ponelos a secar. ¡Sentí el poder del orden!' }
+        { title: 'Opción principal: Lavá 3 cosas de la pileta (platos, vasos, cubiertos, lo que haya).' },
+        { title: 'Alternativa 1 (si no hay nada para lavar): Limpiá la bacha o la mesada.' },
+        { title: 'Alternativa 2 (si no hay nada para lavar): Secá la pileta con un repasador o papel.' },
+        { title: 'Alternativa 3 (si no hay nada para lavar): Ordená un poco lo que esté limpio (cubiertos, vasos, platos).' }
     ]
   },
   {
@@ -261,9 +260,9 @@ export const missions: Mission[] = [
     category: 'rescate-de-territorio',
     why: 'Hacer estas tres cosas a propósito, incluso si ya las hacés, establece un tono de intención para tu día. Es una forma de decir "yo controlo el inicio de mi día". Es una victoria triple antes de empezar.',
     steps: [
-        { title: 'Abrí la ventana y corré la cortina.' },
-        { title: 'Hacé la cama (no tiene que quedar perfecta, solo estirada).' },
-        { title: 'Lavate la cara y los dientes.' }
+        { title: 'Tarea 1: Abrí la ventana y corré la cortina.' },
+        { title: 'Tarea 2: Hacé la cama (no tiene que quedar perfecta, solo estirada).' },
+        { title: 'Tarea 3: Lavate la cara y los dientes.' }
     ]
   },
   
