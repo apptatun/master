@@ -14,7 +14,7 @@ import Confetti from 'react-confetti';
 // For now, we define a fixed 15-day mission plan here.
 // Later, this could be more dynamic.
 const dailyMissionPlan: string[] = [
-    'm9', // Día 1: Operación "Cama Cero" (2 min)
+    'm36', // Día 1: Ritual de Inicio (5 min)
     'm6', // Día 2: Embajador de la Hidratación (1 min)
     'm3', // Día 3: Ninja del Fregadero (5 min)
     'm12', // Día 4: Guardián del Esmalte (3 min)

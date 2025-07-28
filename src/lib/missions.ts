@@ -2,7 +2,7 @@
 import { Mission } from './types';
 
 export const missions: Mission[] = [
-  // MODO GUARIDA
+  // MODO EN CASA
   // Supervivencia Culinaria
   {
     id: 'm1',
@@ -261,6 +261,19 @@ export const missions: Mission[] = [
         { title: 'Sacala del tacho.'},
         { title: 'Llevala al contenedor de la calle.'},
         { title: 'Poné una bolsa nueva en el tacho. ¡Misión cumplida!'}
+    ]
+  },
+  {
+    id: 'm36',
+    title: 'Ritual de Inicio (5 min)',
+    description: 'Tu primera misión tiene dos partes para transformar tu espacio y tu energía.',
+    type: 'checkbox',
+    category: 'rescate-de-territorio',
+    reward: 'Maestro del Amanecer',
+    why: 'Un gesto doble que tiene un impacto visual y simbólico inmediato. Ordenar tu cama te prepara para el día, y abrir las ventanas renueva el aire y tu mente. Es una victoria rápida y potente.',
+    steps: [
+        { title: 'Hacé tu cama (no tiene que quedar perfecta).' },
+        { title: 'Abrí las cortinas y, si podés, las ventanas por 10 minutos.' }
     ]
   },
   
