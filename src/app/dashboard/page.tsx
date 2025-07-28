@@ -17,13 +17,13 @@ import { Progress } from '@/components/ui/progress';
 // Later, this could be more dynamic.
 const dailyMissionPlan: string[] = [
     'm1',    // Día 1: OPERACIÓN HORNALLA
-    'm4',    // Día 2: OPERACIÓN LAVARROPAS
+    'm3_v2', // Día 2: OPERACIÓN "ESPEJO LÍQUIDO"
     'm43',   // Día 3: OPERACIÓN "RINCÓN DE CONQUISTA"
-    'm38',   // Día 4: Piloto de Abastecimiento (15 min)
+    'm4',    // Día 4: OPERACIÓN LAVARROPAS
     'm39',   // Día 5: Guardián de la Vestimenta (20 min)
     'm8',    // Día 6: Di "buen día" o "gracias"
     'm13',   // Día 7: Ponte ropa limpia (2 min)
-    'm3_v2', // Día 8: OPERACIÓN "ESPEJO LÍQUIDO"
+    'm38',   // Día 8: Piloto de Abastecimiento (15 min)
     'm23',   // Día 9: Revisa tu saldo bancario
     'm15',   // Día 10: Reactivar Contacto (2 min)
     'm14',   // Día 11: Ordena un solo lugar (7 min)
