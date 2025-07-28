@@ -6,40 +6,32 @@ export const missions: Mission[] = [
   // Supervivencia Culinaria
   {
     id: 'm1',
-    title: 'Activar la Hornalla (3 min)',
-    description: 'Activa la zona de cocción para hervir agua.',
+    title: 'OPERACIÓN HORNALLA (4 min)',
+    description: 'Misión de activación de zona de cocción. Objetivo: hervir agua en una olla de forma segura.',
     type: 'interactive',
     category: 'supervivencia-culinaria',
-    why: 'Dominar una herramienta básica te da una sensación de control sobre tu entorno.',
-    reward: 'Maestro del Fuego Controlado',
+    why: 'Cada uno viene con su historia. Tal vez ya usaste la cocina mil veces. Tal vez nunca prendiste una hornalla porque no te dejaron, o te dio miedo. Todo está bien. Acá no se trata de “saber” o “no saber”. Se trata de empezar a hacer, con calma y dignidad.',
+    reward: 'Ingeniero Termodinámico LV.1',
     steps: [
       {
-        title: 'Paso 1: Pedir ayuda es de cracks. ¡Y es obligatorio si no estás seguro!',
-        description: 'Esta acción involucra fuego y gas. La seguridad no es negociable. Si es tu primera vez, no estás 100% seguro o te da un mínimo de ansiedad, es fundamental que pidas ayuda a un adulto. No es una opción, es el paso más inteligente y valiente que podés dar. Demostrar que te cuidás es una victoria enorme.',
+        title: 'Paso 1: UBICAR HORNALLA ESTABLE',
+        description: 'La seguridad es clave. Pide ayuda si no estás 100% seguro. Elige una hornalla, preferentemente una de las de atrás. Son las más estables.',
       },
       {
-        title: 'Paso 2: Ubicar la hornalla',
-        description: 'Busca los círculos de metal en tu cocina. La más estable y segura suele ser una de las de atrás. Elige una.',
+        title: 'Paso 2: GIRAR PERILLA',
+        description: 'Para encender, usualmente debes presionar la perilla hacia adentro y luego girarla en sentido anti-horario. Si no gira, no fuerces y pide ayuda.',
       },
       {
-        title: 'Paso 3: La perilla',
-        description: 'Cada hornalla tiene una perilla. Para encenderla, a menudo tenés que presionar hacia adentro y luego girar hacia la izquierda (anti-horario).',
+        title: 'Paso 3: ACCIONAR ENCENDEDOR',
+        description: 'Si es automático, oirás un "click-click-click" y verás la llama. Si es manual, acerca con mucho cuidado un fósforo o encendedor. Si te da miedo, aborta la misión y pide ayuda a un adulto.',
       },
       {
-        title: 'Paso 4: El fuego',
-        description: 'Si tu cocina tiene encendedor automático, oirás un "click-click-click" y verás la llama. Si es manual, acerca un fósforo o encendedor con cuidado.',
+        title: 'Paso 4: AJUSTAR LLAMA',
+        description: 'Una llama azul es óptima. Si es amarilla o naranja, podría haber un problema. Apaga todo, ventila y avisa a un adulto. Si la llama es azul, ajústala a un nivel medio.',
       },
       {
-        title: 'Paso 5: La llama ideal',
-        description: 'Una llama azul es perfecta. Si es amarilla o naranja, podría haber un problema. En ese caso, apaga todo y ventila. Si todo está bien, ponla a fuego medio.',
-      },
-      {
-        title: 'Paso 6: La olla',
-        description: 'Llena una olla con agua (no hasta el borde, deja espacio). Colócala con cuidado sobre la hornalla encendida.',
-      },
-      {
-        title: 'Paso 7: ¡Felicitaciones!',
-        description: 'Lo lograste. Has completado la guía. Ya diste un paso clave para dominar la cocina.',
+        title: 'Paso 5: COLOCAR OLLA CON AGUA',
+        description: 'Llena una olla con agua (dejando 1/4 de espacio libre) y colócala con cuidado sobre la hornalla encendida. ¡Misión cumplida! Has dominado el fuego.',
       },
     ],
   },
@@ -195,36 +187,32 @@ export const missions: Mission[] = [
   },
   {
     id: 'm4',
-    title: 'Lavarropas (5 min)',
-    description: 'Inicia un ciclo de lavado.',
+    title: 'OPERACIÓN LAVARROPAS (10 min)',
+    description: 'Protocolo de Higiene Textil. Objetivo: poner una tanda de ropa en el lavarropas y dejarla lista para tender.',
     type: 'interactive',
     category: 'rescate-de-territorio',
-    why: 'Automatizar una tarea de cuidado personal te libera energía mental para otras cosas.',
-    reward: 'Domador de Textiles',
+    why: 'Este es un paso fundamental para tu autonomía. Puede que siempre lo haya hecho alguien más, o que te parezca una tarea complicada. Estamos acá para desglosarlo y que lo hagas a tu ritmo.',
+    reward: 'Maestro Lavandero LV.1',
     steps: [
         {
-            title: 'Paso 1: Separar la ropa',
-            description: 'Reúne tu ropa sucia. Separa la ropa blanca o de colores claros de la ropa de color oscuro. Esto evita que se manche.'
+            title: 'Paso 1: Recopilar Suministros',
+            description: 'Reúne tu ropa sucia en una canasta o bolsa. Ten a mano el detergente. Si vas a separar por color, hazlo ahora (blancos por un lado, colores por otro).'
         },
         {
-            title: 'Paso 2: Cargar el lavarropas',
-            description: 'Abre la puerta del lavarropas y mete un grupo de ropa (blanca o de color). No lo llenes a tope, deja espacio para que el agua y el jabón circulen.'
+            title: 'Paso 2: Cargar el Lavarropas',
+            description: 'Abre la puerta del lavarropas. Introduce la ropa sin apretarla demasiado. Debe quedar espacio para que el agua circule libremente.'
         },
         {
-            title: 'Paso 3: El jabón',
-            description: 'Busca el cajón del lavarropas. Usualmente tiene compartimentos. Vierte el jabón líquido o en polvo en el compartimento más grande. Si usas suavizante, va en el compartimento más pequeño con el símbolo de una flor.'
+            title: 'Paso 3: Añadir Detergente',
+            description: 'Busca el cajoncito o compartimento para el detergente. Vierte una dosis mínima (generalmente una tapa es suficiente). Menos es más para evitar exceso de espuma.'
         },
         {
-            title: 'Paso 4: Elegir el programa',
-            description: 'Cierra la puerta. Gira la perilla o presiona los botones para elegir un programa. Un "lavado diario" o "algodón" suele funcionar para casi todo. Asegúrate que la temperatura esté en "frío" o "30°" para no dañar la ropa.'
+            title: 'Paso 4: Seleccionar Ciclo',
+            description: 'Cierra la puerta. Elige un ciclo de lavado simple. Las opciones "Normal", "Diario" o "Rápido" son ideales. Asegúrate de que la temperatura sea fría (o 30°) para no dañar la ropa.'
         },
         {
-            title: 'Paso 5: Iniciar',
-            description: 'Presiona el botón de "Inicio" o "Play". ¡Y ya está! La máquina hará el resto. Volvé cuando termine el ciclo.'
-        },
-        {
-            title: 'Paso 6: Ciclo completado',
-            description: '¡Acción cumplida! Tu ropa está limpia gracias a vos. El siguiente paso es colgarla, pero eso es otra acción. ¡Disfrutá tu victoria!'
+            title: 'Paso 5: Iniciar el Ciclo',
+            description: 'Presiona el botón de "Inicio". Oirás cómo empieza a llenarse de agua. ¡La máquina hará el resto! Tu misión de preparación ha terminado con éxito.'
         }
     ]
   },
