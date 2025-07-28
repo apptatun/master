@@ -6,8 +6,8 @@ export const missions: Mission[] = [
   // Supervivencia Culinaria
   {
     id: 'm1',
-    title: 'OPERACIÓN HORNALLA (4 min)',
-    description: 'Misión de activación de zona de cocción. Objetivo: hervir agua en una olla de forma segura.',
+    title: 'OPERACIÓN HORNALLA',
+    description: 'Misión de Activación de Zona de Cocción. Objetivo: hervir agua en una olla de forma segura.',
     type: 'interactive',
     category: 'supervivencia-culinaria',
     why: 'Cada uno viene con su historia. Tal vez ya usaste la cocina mil veces. Tal vez nunca prendiste una hornalla porque no te dejaron, o te dio miedo. Todo está bien. Acá no se trata de “saber” o “no saber”. Se trata de empezar a hacer, con calma y dignidad.',
@@ -15,23 +15,23 @@ export const missions: Mission[] = [
     steps: [
       {
         title: 'Paso 1: UBICAR HORNALLA ESTABLE',
-        description: 'La seguridad es clave. Pide ayuda si no estás 100% seguro. Elige una hornalla, preferentemente una de las de atrás. Son las más estables.',
+        description: 'La seguridad es clave. Elige una hornalla, preferentemente una de las de atrás. Son las más seguras. Si no estás 100% seguro, pide ayuda.',
       },
       {
         title: 'Paso 2: GIRAR PERILLA',
-        description: 'Para encender, usualmente debes presionar la perilla hacia adentro y luego girarla en sentido anti-horario. Si no gira, no fuerces y pide ayuda.',
+        description: 'Para encender, usualmente debes presionar la perilla hacia adentro y luego girarla en sentido anti-horario. Si no gira, no fuerces y aborta la misión.',
       },
       {
         title: 'Paso 3: ACCIONAR ENCENDEDOR',
-        description: 'Si es automático, oirás un "click-click-click" y verás la llama. Si es manual, acerca con mucho cuidado un fósforo o encendedor. Si te da miedo, aborta la misión y pide ayuda a un adulto.',
+        description: 'Si es automático, oirás un "click-click-click" y verás la llama. Si es manual, acerca con mucho cuidado un fósforo o encendedor. Si te da miedo, pide ayuda a un adulto.',
       },
       {
         title: 'Paso 4: AJUSTAR LLAMA',
-        description: 'Una llama azul es óptima. Si es amarilla o naranja, podría haber un problema. Apaga todo, ventila y avisa a un adulto. Si la llama es azul, ajústala a un nivel medio.',
+        description: 'Una llama azul es óptima. Si es amarilla o naranja, podría haber un problema (PELIGRO). Apaga todo, ventila y avisa a un adulto. Si es azul, ajústala a un nivel medio.',
       },
       {
         title: 'Paso 5: COLOCAR OLLA CON AGUA',
-        description: 'Llena una olla con agua (dejando 1/4 de espacio libre) y colócala con cuidado sobre la hornalla encendida. ¡Misión cumplida! Has dominado el fuego.',
+        description: 'Llena una olla con agua (dejando 3/4 de espacio libre) y colócala con cuidado sobre la hornalla encendida. ¡Misión cumplida! Has dominado el fuego.',
       },
     ],
   },
@@ -187,7 +187,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm4',
-    title: 'OPERACIÓN LAVARROPAS (10 min)',
+    title: 'OPERACIÓN LAVARROPAS',
     description: 'Protocolo de Higiene Textil. Objetivo: poner una tanda de ropa en el lavarropas y dejarla lista para tender.',
     type: 'interactive',
     category: 'rescate-de-territorio',
@@ -195,24 +195,24 @@ export const missions: Mission[] = [
     reward: 'Maestro Lavandero LV.1',
     steps: [
         {
-            title: 'Paso 1: Recopilar Suministros',
-            description: 'Reúne tu ropa sucia en una canasta o bolsa. Ten a mano el detergente. Si vas a separar por color, hazlo ahora (blancos por un lado, colores por otro).'
+            title: 'Paso 1: RECOPILAR SUMINISTROS',
+            description: 'Reúne tu ropa sucia en una canasta o bolsa. Ten a mano el detergente. Si vas a separar por color (opcional), hazlo ahora.'
         },
         {
-            title: 'Paso 2: Cargar el Lavarropas',
-            description: 'Abre la puerta del lavarropas. Introduce la ropa sin apretarla demasiado. Debe quedar espacio para que el agua circule libremente.'
+            title: 'Paso 2: CARGAR EL LAVARROPAS',
+            description: 'Abre la puerta del lavarropas. Introduce la ropa sin apretarla demasiado. Debe quedar espacio para que el agua circule.'
         },
         {
-            title: 'Paso 3: Añadir Detergente',
-            description: 'Busca el cajoncito o compartimento para el detergente. Vierte una dosis mínima (generalmente una tapa es suficiente). Menos es más para evitar exceso de espuma.'
+            title: 'Paso 3: AÑADIR DETERGENTE',
+            description: 'Busca el compartimento para el detergente. Vierte una dosis mínima (una tapa suele ser suficiente). Menos es más.'
         },
         {
-            title: 'Paso 4: Seleccionar Ciclo',
-            description: 'Cierra la puerta. Elige un ciclo de lavado simple. Las opciones "Normal", "Diario" o "Rápido" son ideales. Asegúrate de que la temperatura sea fría (o 30°) para no dañar la ropa.'
+            title: 'Paso 4: SELECCIONAR CICLO',
+            description: 'Cierra la puerta. Elige un ciclo simple como "Normal", "Diario" o "Rápido". Usa temperatura fría (o 30°) para no dañar la ropa.'
         },
         {
-            title: 'Paso 5: Iniciar el Ciclo',
-            description: 'Presiona el botón de "Inicio". Oirás cómo empieza a llenarse de agua. ¡La máquina hará el resto! Tu misión de preparación ha terminado con éxito.'
+            title: 'Paso 5: INICIAR EL CICLO',
+            description: 'Presiona el botón de "Inicio". Oirás cómo empieza a llenarse de agua. ¡La máquina hará el resto! Tu misión ha terminado con éxito.'
         }
     ]
   },
