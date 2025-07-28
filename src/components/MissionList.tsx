@@ -177,9 +177,16 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                           <Bot className="mr-2 h-4 w-4"/>
                           Necesito una mano
                       </Button>
-                      <Button variant="ghost" onClick={handleDeclineMission} className="text-muted-foreground text-base">
-                          No hoy, gracias
-                      </Button>
+                       <Tooltip>
+                          <TooltipTrigger asChild>
+                            <Button variant="ghost" onClick={handleDeclineMission} className="text-muted-foreground text-base">
+                                No hoy, gracias
+                            </Button>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Podés retomarlo mañana. No pasa nada.</p>
+                          </TooltipContent>
+                        </Tooltip>
                   </div>
               </CardFooter>
             </Card>
