@@ -12,9 +12,6 @@ export default function Home() {
           <h1 className="font-headline text-5xl font-bold tracking-tight text-foreground sm:text-6xl md:text-7xl">
             15 días para romper el ciclo del "mañana empiezo".
           </h1>
-          <p className="text-xl text-muted-foreground md:text-2xl">
-            Sin falsas promesas ni transformaciones mágicas.
-          </p>
           <p className="text-xl text-muted-foreground md:text-2xl pt-4">
             En ese tiempo no vas a cambiar tu vida entera, pero SÍ vas a:
           </p>
