@@ -100,7 +100,20 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
           </div>
       )
     }
-
+    
+    const mission = missions[0];
+    if (!mission) {
+      return (
+        <div className="text-center p-8">
+          <Trophy className="mx-auto h-16 w-16 text-accent mb-4" />
+          <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
+          <p className="text-lg text-muted-foreground mt-2">
+            Conquistaste todos los desafíos de esta categoría. ¡Tomate un momento para celebrar tu progreso!
+          </p>
+        </div>
+      );
+    }
+    
     if (isCurrentMissionCompleted) {
         return (
              <div className="mt-8 text-center p-6 bg-card rounded-lg border">
@@ -128,79 +141,63 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
         )
     }
 
-    if (missions.length === 0 && !allMissionsCompleted) {
-        return (
-        <div className="text-center p-8">
-          <Trophy className="mx-auto h-16 w-16 text-accent mb-4" />
-          <h3 className="text-2xl font-bold text-foreground">¡Felicitaciones!</h3>
-          <p className="text-lg text-muted-foreground mt-2">
-            Conquistaste todos los desafíos de esta categoría. ¡Tomate un momento para celebrar tu progreso!
-          </p>
-        </div>
-      );
-    }
-
     return (
       <TooltipProvider>
         <div className="space-y-6">
-          {missions.map((mission) => {
-            return (
-              <Card key={mission.id} className={cn('transition-all border-2 border-transparent bg-card shadow-xl rounded-2xl')}>
-                <CardHeader>
-                  <CardTitle className="font-headline text-4xl sm:text-5xl font-bold text-foreground pt-2 pb-4">{mission.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4 px-6 pb-4">
-                  <p className="text-xl text-muted-foreground">{mission.description}</p>
-                  
-                  {mission.type === 'checkbox' && mission.steps && (
-                    <div className="space-y-3 pt-4">
-                      <ol className="list-decimal list-inside space-y-2 text-xl text-muted-foreground">
-                        {mission.steps.map((step, index) => (
-                          <li key={index}>{step.title}</li>
-                        ))}
-                      </ol>
+            <Card key={mission.id} className={cn('transition-all border-2 border-transparent bg-card shadow-xl rounded-2xl')}>
+              <CardHeader>
+                <CardTitle className="font-headline text-4xl sm:text-5xl font-bold text-foreground pt-2 pb-4">{mission.title}</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4 px-6 pb-4">
+                <p className="text-xl text-muted-foreground">{mission.description}</p>
+                
+                {mission.type === 'checkbox' && mission.steps && (
+                  <div className="space-y-3 pt-4">
+                    <ol className="list-decimal list-inside space-y-2 text-xl text-muted-foreground">
+                      {mission.steps.map((step, index) => (
+                        <li key={index}>{step.title}</li>
+                      ))}
+                    </ol>
+                  </div>
+                )}
+                
+                {mission.why && (
+                    <div className="pt-4 mt-4 border-t">
+                        <p className="font-bold text-foreground text-xl">¿Por qué esto?</p>
+                        <p className="text-muted-foreground text-lg">{mission.why}</p>
                     </div>
+                )}
+              </CardContent>
+              <CardFooter className="flex flex-col items-stretch gap-4 bg-foreground/5 py-5 px-6">
+                  {mission.type === 'interactive' && (
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                         <Button onClick={() => handleOpenModal(mission)} size="lg" className="w-full text-lg px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
+                            Ver cómo se hace
+                         </Button>
+                      </TooltipTrigger>
+                      <TooltipContent>
+                        <p>Vas a ver una mini instrucción simple. Tranquilo, es rápido.</p>
+                      </TooltipContent>
+                    </Tooltip>
+                  )}
+                  {mission.type === 'checkbox' && (
+                    <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="w-full text-lg px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
+                      <Check className="mr-2 h-5 w-5" /> ¡Misión Conquistada!
+                    </Button>
                   )}
                   
-                  {mission.why && (
-                      <div className="pt-4 mt-4 border-t">
-                          <p className="font-bold text-foreground text-xl">¿Por qué esto?</p>
-                          <p className="text-muted-foreground text-lg">{mission.why}</p>
-                      </div>
-                  )}
-                </CardContent>
-                <CardFooter className="flex flex-col items-stretch gap-4 bg-foreground/5 py-5 px-6">
-                    {mission.type === 'interactive' && (
-                      <Tooltip>
-                        <TooltipTrigger asChild>
-                           <Button onClick={() => handleOpenModal(mission)} size="lg" className="w-full text-lg px-4 py-6 group bg-accent text-accent-foreground hover:bg-accent/90">
-                              Ver cómo se hace
-                           </Button>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p>Vas a ver una mini instrucción simple. Tranquilo, es rápido.</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    )}
-                    {mission.type === 'checkbox' && (
-                      <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="w-full text-lg px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
-                        <Check className="mr-2 h-5 w-5" /> ¡Misión Conquistada!
+                  <div className="flex justify-between items-center gap-4 mt-2">
+                      <Button variant="ghost" onClick={() => setIsAssistantModalOpen(true)} className="text-muted-foreground text-base">
+                          <Bot className="mr-2 h-4 w-4"/>
+                          Necesito una mano
                       </Button>
-                    )}
-                    
-                    <div className="flex justify-between items-center gap-4 mt-2">
-                        <Button variant="ghost" onClick={() => setIsAssistantModalOpen(true)} className="text-muted-foreground text-base">
-                            <Bot className="mr-2 h-4 w-4"/>
-                            Necesito una mano
-                        </Button>
-                        <Button variant="ghost" onClick={handleDeclineMission} className="text-muted-foreground text-base">
-                            No hoy, gracias
-                        </Button>
-                    </div>
-                </CardFooter>
-              </Card>
-            );
-          })}
+                      <Button variant="ghost" onClick={handleDeclineMission} className="text-muted-foreground text-base">
+                          No hoy, gracias
+                      </Button>
+                  </div>
+              </CardFooter>
+            </Card>
         </div>
       </TooltipProvider>
     );

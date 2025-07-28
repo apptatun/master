@@ -102,11 +102,11 @@ export default function DashboardPage() {
   };
   
   const handleNextMission = () => {
+    const nextIndex = activeMissionIndex + 1;
     const upcomingMissions = userMissions.filter(mission => !completedMissions.includes(mission.id));
-    if(activeMissionIndex < upcomingMissions.length - 1) {
-       setActiveMissionIndex(activeMissionIndex + 1);
-    } else {
-        // This case is now handled by allMissionsCompleted
+    
+    if (nextIndex < userMissions.length) {
+      setActiveMissionIndex(nextIndex);
     }
   };
   
@@ -114,14 +114,15 @@ export default function DashboardPage() {
     return null;
   }
   
-  const upcomingMissions = userMissions.filter(mission => !completedMissions.includes(mission.id));
-  const activeMission = upcomingMissions.length > 0 ? upcomingMissions[activeMissionIndex] : null;
+  const activeMission = userMissions[activeMissionIndex];
   const currentMission = activeMission ? [activeMission] : [];
   const isCurrentMissionCompleted = activeMission ? completedMissions.includes(activeMission.id) : false;
-  const allMissionsCompleted = upcomingMissions.length === 0 && userMissions.length > 0;
-  
+
+  const allMissionsCompleted = userMissions.length > 0 && userMissions.every(m => completedMissions.includes(m.id));
+
   return (
     <div className="flex min-h-screen flex-col bg-background">
+      <h1 style={{color: 'red', fontSize: '2rem', textAlign: 'center', padding: '1rem', backgroundColor: 'black'}}>DEBUG: Dashboard Recargado</h1>
       {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} />}
       <DashboardHeader path={currentPath}/>
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
