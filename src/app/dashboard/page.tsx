@@ -155,12 +155,15 @@ export default function DashboardPage() {
   const currentMission = missions.find(m => m.id === missionIdForToday);
   const isCurrentMissionCompleted = currentMission ? completedMissions.includes(currentMission.id) : false;
   
-  const canGoToNextDay = isCurrentMissionCompleted && currentDayIndex < completedMissions.length;
+  // The user can go to the next day if the next day is within the range of completed actions, or it's the very next one.
+  const maxUnlockedDay = completedMissions.length;
+  const canGoToNextDay = currentDayIndex < maxUnlockedDay;
+
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
       {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} />}
-      <DashboardHeader path={null}/>
+      <DashboardHeader />
       <main className="flex-grow container mx-auto p-4 sm:p-6 lg:p-8 max-w-4xl">
         <div className="space-y-6 text-center">
             <div>
