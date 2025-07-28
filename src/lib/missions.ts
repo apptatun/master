@@ -11,6 +11,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'supervivencia-culinaria',
     why: 'Dominar una herramienta básica te da una sensación de control sobre tu entorno.',
+    reward: 'Maestro del Fuego Controlado',
     steps: [
       {
         title: 'Paso 1: Pedir ayuda es de cracks. ¡Y es obligatorio si no estás seguro!',
@@ -49,6 +50,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'supervivencia-culinaria',
     why: 'Aprender a preparar un alimento básico te da independencia y te conecta con un ritual universal.',
+    reward: 'Sobreviviente del Arroz',
     steps: [
         {
             title: 'Paso 1: Medir el arroz',
@@ -83,6 +85,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'supervivencia-culinaria',
     why: 'Participar en un ritual cultural te conecta con otros y te ofrece un momento de pausa y reflexión.',
+    reward: 'Cebador de Leyenda',
     steps: [
         {
             title: 'Paso 1: Calentar el agua',
@@ -117,6 +120,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'supervivencia-culinaria',
     why: 'Dominar una receta simple te da un rápido retorno de inversión en confianza culinaria.',
+    reward: 'Domador de Yemas',
     steps: [
       { title: 'Poné una sartén a fuego medio con un chorrito de aceite.' },
       { title: 'Rompé el huevo en un tazón pequeño primero (así no caen cáscaras).' },
@@ -134,6 +138,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'rescate-de-territorio',
     why: 'Porque ayer arrancaste con vos, hoy te metés un poco con el entorno. Ver la pileta más limpia cambia la sensación general del lugar. Te da una mínima estructura sin exigirte demasiado.',
+    reward: 'Guardián del Orden',
     steps: [
         { title: 'Opción principal: Lavá 3 cosas de la pileta (platos, vasos, cubiertos, lo que haya).' },
         { title: 'Alternativa 1 (si no hay nada para lavar): Limpiá la bacha o la mesada.' },
@@ -148,6 +153,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Automatizar una tarea de cuidado personal te libera energía mental para otras cosas.',
+    reward: 'Domador de Textiles',
     steps: [
         {
             title: 'Paso 1: Separar la ropa',
@@ -182,6 +188,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'rescate-de-territorio',
     why: 'Es una "victoria de 2 minutos" que le ordena a tu cerebro que el día ya empezó. Es el primer paso para tomar control.',
+    reward: 'Ingeniero/a de Camas',
     steps: [
         { title: 'Sacudí la almohada y ponela en la cabecera.'},
         { title: 'Tomá la sábana de arriba y estirala hasta cubrir la cama.'},
@@ -196,6 +203,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'rescate-de-territorio',
     why: 'Concentrarte en un solo punto de mejora evita que te sientas abrumado por el desorden general.',
+    reward: 'Exterminador/a de Caos',
      steps: [
         { title: 'Elegí un único lugar pequeño: una silla, una mesa, un estante.'},
         { title: 'Sacá todo de ahí.'},
@@ -245,6 +253,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'rescate-de-territorio',
     why: 'Completar una tarea rutinaria de inmediato rompe el ciclo de la procrastinación y libera espacio mental.',
+    reward: 'Expulsor de Residuos',
     steps: [
         { title: 'Atá la bolsa de basura actual.'},
         { title: 'Sacala del tacho.'},
@@ -259,6 +268,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'rescate-de-territorio',
     why: 'Hacer estas tres cosas a propósito, incluso si ya las hacés, establece un tono de intención para tu día. Es una forma de decir "yo controlo el inicio de mi día". Es una victoria triple antes de empezar.',
+    reward: 'Arquitecto/a Matutino/a',
     steps: [
         { title: 'Tarea 1: Abrí la ventana y corré la cortina.' },
         { title: 'Tarea 2: Hacé la cama (no tiene que quedar perfecta, solo estirada).' },
@@ -274,6 +284,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'dominio-digital',
     why: 'Usar la comunicación escrita te permite pensar y editar, eliminando la presión de la respuesta inmediata.',
+    reward: 'Embajador/a Digital',
     steps: [
       {
         title: 'Paso 1: Identifica el Asunto',
@@ -336,6 +347,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'finanzas-ninja',
     why: 'Mirar tus finanzas de frente, aunque sea por 5 segundos, disminuye el poder que la incertidumbre tiene sobre vos.',
+    reward: 'Vigilante Financiero',
     steps: [
         { title: 'Abrí la app de tu banco o la página web.'},
         { title: 'Ingresá con tu usuario y contraseña.'},
@@ -350,6 +362,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'finanzas-ninja',
     why: 'Tomar control de una pequeña responsabilidad financiera reduce la ansiedad sobre "el dinero" y te empodera.',
+    reward: 'Ninja de Pagos',
     steps: [
       {
         title: 'Paso 1: La Factura',
@@ -382,6 +395,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'laboratorio-mental',
     why: 'Romper el ciclo de postergación con una acción física simple entrena tu "músculo" de la voluntad.',
+    reward: 'Activador/a Corporal',
     steps: [
         { title: 'Cuando suene la alarma, sentate en la cama.'},
         { title: 'Poné los dos pies en el suelo.'},
@@ -396,6 +410,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'laboratorio-mental',
     why: 'Es la forma más rápida de reactivar tu cuerpo y mente después de horas de ayuno.',
+    reward: 'Maestro/a de la Hidratación',
     steps: [
         { title: 'Tené un vaso de agua al lado de tu cama desde la noche anterior.'},
         { title: 'Al despertar, antes de mirar el celular, tómalo.'},
@@ -409,6 +424,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'laboratorio-mental',
     why: 'Es un acto de autocuidado básico que envía una señal a tu cerebro de que mereces atención y limpieza.',
+    reward: 'Guardián de la Sonrisa',
     steps: [
         { title: 'Poné pasta en el cepillo.'},
         { title: 'Cepillá los dientes de arriba y abajo por fuera.'},
@@ -423,6 +439,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'laboratorio-mental',
     why: 'Cambiar el pijama por ropa te ayuda a diferenciar entre descanso y actividad, preparando tu mente para el día.',
+    reward: 'Estratega de Vestuario',
     steps: [
         { title: 'Sacate el pijama.'},
         { title: 'Elegí una remera y un pantalón limpios.'},
@@ -437,6 +454,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'laboratorio-mental',
     why: 'Regular tus ciclos de sueño es el hack de productividad más potente que existe.',
+    reward: 'Guardián del Sueño',
     steps: [
         { title: 'Poné una alarma 1 hora antes de tu hora de dormir habitual.'},
         { title: 'Cuando suene, dejá el celular, la compu o la tele.'},
@@ -451,6 +469,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'laboratorio-mental',
     why: 'Completar una tarea básica con un límite de tiempo te energiza y te da una sensación de eficiencia.',
+    reward: 'Velocista Acuático/a',
     steps: [
         { title: 'Poné un cronómetro de 5 minutos en tu celular.'},
         { title: 'Metete a la ducha y dale play.'},
@@ -465,6 +484,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'laboratorio-mental',
     why: 'Es el combo de energía y cuidado más simple y efectivo que existe. Le estás dando a tu cuerpo combustible de calidad.',
+    reward: 'Nutricionista de Combate',
     steps: [
         { title: 'Elegí cualquier fruta que tengas a mano.'},
         { title: 'Lavala bien.'},
@@ -479,6 +499,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Este ejercicio te saca de tu cabeza y te ancla en el presente, cortando de raíz el espiral de ansiedad.',
+    reward: 'Ancla Sensorial',
     steps: [
       {
         title: 'Paso 1: Hacé una pausa',
@@ -509,6 +530,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'laboratorio-mental',
     why: 'Externalizar un pensamiento le quita poder y el acto físico de destruirlo ofrece un cierre simbólico.',
+    reward: 'Destructor/a de Preocupaciones',
     steps: [
         { title: 'Tomá un papel y un lápiz.'},
         { title: 'Escribí una sola cosa que te esté preocupando mucho.'},
@@ -523,6 +545,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'laboratorio-mental',
     why: 'Nombrar a tu "monstruo" le quita poder. Lo que se puede nombrar, se puede manejar.',
+    reward: 'Detective Emocional',
     steps: [
         { title: 'Hacé una pausa y pensá: ¿qué te hizo sentir mal hoy o ayer?'},
         { title: 'Identificá una sola cosa. Sé específico. Ejemplo: "Pensar en llamar a X persona".'},
@@ -537,6 +560,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'laboratorio-mental',
     why: 'El movimiento físico es el antidepresivo natural más efectivo y accesible que existe.',
+    reward: 'Explorador/a Urbano/a',
     steps: [
         { title: 'Ponete zapatillas cómodas.'},
         { title: 'Elegí un podcast o una lista de música que te guste.'},
@@ -554,6 +578,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'primeros-pasos',
     why: 'Exponerte al entorno sin un objetivo reduce la ansiedad de "tener que hacer algo" afuera.',
+    reward: 'Vigilante de Vereda',
     steps: [
         { title: 'Salí a la puerta de tu casa.'},
         { title: 'Quedate ahí parado 1 minuto. Solo mirá a tu alrededor.'},
@@ -568,6 +593,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'primeros-pasos',
     why: 'Completar una transacción de bajo riesgo aumenta tu confianza para futuras interacciones.',
+    reward: 'Comerciante Intrépido/a',
     steps: [
       {
         title: 'Paso 1: El Objetivo',
@@ -672,6 +698,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'interacciones-humanas',
     why: 'Esta micro-interacción activa las neuronas espejo y te recuerda que eres parte de una comunidad.',
+    reward: 'Diplomático/a Social',
     steps: [
         { title: 'Al entrar a un negocio, decí "buen día" o "buenas tardes".'},
         { title: 'Cuando te den algo, decí "gracias".'},
@@ -685,6 +712,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'interacciones-humanas',
     why: 'Iniciar el contacto te pone en una posición activa en tus relaciones, en lugar de pasiva.',
+    reward: 'Reconector/a Social',
     steps: [
         { title: 'Elegí a un amigo o familiar con quien no hablás hace rato.'},
         { title: 'Abrí su chat.'},
@@ -699,6 +727,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'interacciones-humanas',
     why: 'Superar la barrera de una llamada te entrena para interacciones más complejas y te da control sobre tu salud.',
+    reward: 'Coordinador/a de Salud',
     steps: [
       {
         title: 'Paso 1: Prepara la información',
@@ -729,6 +758,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'interacciones-humanas',
     why: 'Aprender a poner límites es la habilidad de autocuidado más importante. Protege tu tiempo y energía.',
+    reward: 'Defensor/a de Límites',
     steps: [
         { title: 'La próxima vez que te pidan algo que no querés hacer, hacé una pausa.'},
         { title: 'Decí una frase amable pero firme. Ej: "Gracias por pensar en mí, pero hoy no puedo."'},
@@ -745,6 +775,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'aventuras-de-crecimiento',
     why: 'La resiliencia no es no fallar, es volver a intentarlo. Esto fortalece tu auto-confianza más que 10 éxitos seguidos.',
+    reward: 'Fénix Resiliente',
     steps: [
         { title: 'Recordá una acción que hayas evitado con "No hoy, gracias".'},
         { title: 'Leela de nuevo. ¿Te sentís un 1% más preparado hoy?'},
@@ -759,6 +790,7 @@ export const missions: Mission[] = [
     type: 'checkbox',
     category: 'aventuras-de-crecimiento',
     why: 'Disfrutar de tu propia compañía en un espacio público es un superpoder que aniquila la dependencia y el "qué dirán".',
+    reward: 'Cinéfilo/a Independiente',
     steps: [
         { title: 'Buscá la cartelera y elegí una película que VOS quieras ver.'},
         { title: 'Comprá la entrada online para evitar la fila.'},

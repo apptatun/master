@@ -7,7 +7,7 @@ import { MissionList } from '@/components/MissionList';
 import { DashboardHeader } from '@/components/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
-import { Check, ArrowLeft, ArrowRight } from 'lucide-react';
+import { Check, ArrowLeft, ArrowRight, Trophy } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import Confetti from 'react-confetti';
 import { Button } from '@/components/ui/button';
@@ -101,18 +101,19 @@ export default function DashboardPage() {
     setUserChoseToRest(false);
     setRestDate(null);
 
-
+    const mission = missions.find(m => m.id === missionId);
+    
     setShowConfetti(true);
     setTimeout(() => setShowConfetti(false), 5000);
 
     toast({
       title: (
         <div className="flex items-center">
-          <Check className="mr-2 h-5 w-5 text-green-500" />
-          <span className="font-bold text-lg">Un paso más</span>
+          <Trophy className="mr-2 h-5 w-5 text-yellow-400" />
+          <span className="font-bold text-lg">{mission?.reward ? 'Logro Desbloqueado' : 'Un paso más'}</span>
         </div>
       ),
-      description: <div className="text-base">Un día a la vez.</div>
+      description: <div className="text-base">{mission?.reward || 'Un día a la vez.'}</div>
     });
   };
   
@@ -171,7 +172,7 @@ export default function DashboardPage() {
                     <Button onClick={handlePreviousDay} variant="ghost" size="icon" disabled={currentDayIndex === 0}>
                         <ArrowLeft className="h-6 w-6" />
                     </Button>
-                    <h1 className="font-headline text-3xl sm:text-5xl font-bold tracking-tight text-foreground min-w-[200px] sm:min-w-[280px]">
+                    <h1 className="font-headline text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground min-w-[200px] sm:min-w-[280px]">
                         Día {currentDayIndex + 1} de 15
                     </h1>
                     <Button onClick={handleNextDay} variant="ghost" size="icon" disabled={!canGoToNextDay || currentDayIndex >= dailyMissionPlan.length - 1}>

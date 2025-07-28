@@ -61,4 +61,5 @@ export interface Mission {
     | SubCategory;
   steps?: Step[];
   why?: string;
+  reward?: string;
 }
