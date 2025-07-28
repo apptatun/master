@@ -65,7 +65,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
       return (
         <div className="text-center p-6 bg-card rounded-lg border">
             <Coffee className="mx-auto h-12 w-12 text-accent mb-4" />
-            <h3 className="text-2xl font-bold text-foreground">¡Genial!</h3>
+            <h3 className="text-2xl font-bold text-foreground">Descanso merecido.</h3>
             <p className="text-lg text-muted-foreground mt-2">
               A veces, la mayor victoria es saber cuándo parar. <br/> Nos vemos la próxima.
             </p>
@@ -104,7 +104,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
         return (
              <div className="mt-8 text-center p-6 bg-card rounded-lg border">
                 <Rocket className="mx-auto h-12 w-12 text-accent mb-4" />
-                <h3 className="text-2xl font-bold text-foreground">¡Muy bien hecho!</h3>
+                <h3 className="text-2xl font-bold text-foreground">Misión de hoy: Completa</h3>
                 {currentMissionForReward?.reward && (
                     <div className="flex items-center justify-center text-lg font-bold text-accent-foreground/80 pt-2 bg-accent/20 p-3 rounded-md my-4">
                       <Trophy className="mr-2 h-5 w-5 text-accent" />
@@ -112,12 +112,11 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                     </div>
                   )}
                 <p className="text-lg text-muted-foreground mt-2 mb-6">
-                  Ya diste un gran paso hoy. Recordá, esto es a tu ritmo. <br /> 
-                  Si te sentís con energía, podés ir por el siguiente. Si no, ¡lo de hoy ya es una victoria enorme!
+                  Listo. Ya está hecho. Cuando quieras, avanzá a la siguiente o tomate un descanso.<br/> Vos decidís.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                     <Button onClick={onNextMission} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground">
-                        Listo para el Día Siguiente
+                        Siguiente Misión
                     </Button>
                     <Button onClick={onRest} size="lg" variant="outline" className="text-lg">
                         Por hoy es suficiente
@@ -150,7 +149,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                 {mission.why && (
                     <div className="pt-4 mt-4 border-t">
                         <p className="font-bold text-foreground text-xl">¿Por qué esto?</p>
-                        <p className="text-muted-foreground text-lg">{mission.why}</p>
+                        <p className="text-lg text-muted-foreground">{mission.why}</p>
                     </div>
                 )}
               </CardContent>
