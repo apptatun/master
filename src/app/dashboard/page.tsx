@@ -180,7 +180,6 @@ export default function DashboardPage() {
                 </div>
             </div>
             <div className="border-t pt-8">
-                <p className="text-xl sm:text-2xl font-bold text-foreground mb-4">Hoy arrancamos con esto:</p>
                  {currentMission ? (
                     <MissionList
                         missions={[currentMission]}
