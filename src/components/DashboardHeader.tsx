@@ -1,7 +1,7 @@
 
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { Compass, Settings } from 'lucide-react';
+import { RotateCcw } from 'lucide-react';
 import { ResetProgressDialog } from './ResetProgressDialog';
 import { useState } from 'react';
 
@@ -25,7 +25,7 @@ export function DashboardHeader({ onResetProgress }: DashboardHeaderProps) {
             </Link>
             <div>
                 <Button variant="ghost" size="icon" onClick={() => setIsResetDialogOpen(true)}>
-                    <Settings className="h-6 w-6" />
+                    <RotateCcw className="h-6 w-6" />
                     <span className="sr-only">Reiniciar Progreso</span>
                 </Button>
             </div>
