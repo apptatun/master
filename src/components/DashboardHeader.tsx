@@ -9,7 +9,7 @@ export function DashboardHeader() {
       <div className="container mx-auto flex h-20 items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/">
           <div className="cursor-pointer hover:opacity-80 transition-opacity">
-            <h1 className="font-headline text-3xl font-bold text-foreground sm:text-4xl">
+            <h1 className="font-headline text-2xl font-bold text-foreground sm:text-3xl">
               CAMINO
             </h1>
           </div>

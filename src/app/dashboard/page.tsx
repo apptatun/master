@@ -171,7 +171,7 @@ export default function DashboardPage() {
                     <Button onClick={handlePreviousDay} variant="ghost" size="icon" disabled={currentDayIndex === 0}>
                         <ArrowLeft className="h-6 w-6" />
                     </Button>
-                    <h1 className="font-headline text-4xl sm:text-5xl font-bold tracking-tight text-foreground min-w-[240px] sm:min-w-[280px]">
+                    <h1 className="font-headline text-3xl sm:text-5xl font-bold tracking-tight text-foreground min-w-[200px] sm:min-w-[280px]">
                         Día {currentDayIndex + 1} de 15
                     </h1>
                     <Button onClick={handleNextDay} variant="ghost" size="icon" disabled={!canGoToNextDay || currentDayIndex >= dailyMissionPlan.length - 1}>
