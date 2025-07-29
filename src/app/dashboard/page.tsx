@@ -2,6 +2,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import { MissionList } from '@/components/MissionList';
 import { DashboardHeader } from '@/components/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
@@ -25,6 +26,7 @@ const TOTAL_DAYS = 15;
 
 
 export default function DashboardPage() {
+  const router = useRouter();
   const [completedMissions, setCompletedMissions] = useLocalStorage<string[]>('completedMissions', []);
   const [currentDayIndex, setCurrentDayIndex] = useLocalStorage<number>('currentDayIndex', 0);
   const [restDate, setRestDate] = useLocalStorage<string | null>('restDate', null);
@@ -53,56 +55,57 @@ export default function DashboardPage() {
     }
 
     if (dailyMissionPlan.length < TOTAL_DAYS) {
-        const userGoal = localStorage.getItem('userGoal') || 'energy';
-        const goalCategories = subCategoryMap[userGoal as keyof typeof subCategoryMap];
+        const userGoal = localStorage.getItem('userGoal');
         
-        // Prioritize missions from the selected goal
-        const potentialMissions = missions.filter(m => 
-            (goalCategories as string[]).includes(m.category) && 
-            !fixedMissionPlan.includes(m.id)
-        );
+        // The first 3 missions are always fixed
+        let newPlan = [...fixedMissionPlan];
 
-        // Get other missions as fallback
-        const fallbackMissions = missions.filter(m => 
-            !goalCategories.includes(m.category as any) &&
-            !fixedMissionPlan.includes(m.id) &&
-            m.category !== 'generic'
-        );
+        // If the user has completed the first 3 missions and selected a goal, generate the rest
+        if (completedMissions.length >= fixedMissionPlan.length && userGoal) {
+            const goalCategories = subCategoryMap[userGoal as keyof typeof subCategoryMap];
+            
+            const potentialMissions = missions.filter(m => 
+                (goalCategories as string[]).includes(m.category) && 
+                !newPlan.includes(m.id)
+            );
 
-        // Simple randomization for both lists
-        const shuffledPotential = [...potentialMissions].sort(() => 0.5 - Math.random());
-        const shuffledFallback = [...fallbackMissions].sort(() => 0.5 - Math.random());
+            const fallbackMissions = missions.filter(m => 
+                !goalCategories.includes(m.category as any) &&
+                !newPlan.includes(m.id) &&
+                m.category !== 'generic'
+            );
 
-        // Combine prioritized and fallback missions
-        const combinedMissions = [...shuffledPotential, ...shuffledFallback];
-        
-        const dynamicMissionIds = combinedMissions
-            .map(m => m.id)
-            .slice(0, TOTAL_DAYS - fixedMissionPlan.length);
+            const shuffledPotential = [...potentialMissions].sort(() => 0.5 - Math.random());
+            const shuffledFallback = [...fallbackMissions].sort(() => 0.5 - Math.random());
 
-        const fullPlan = [...fixedMissionPlan, ...dynamicMissionIds];
+            const combinedMissions = [...shuffledPotential, ...shuffledFallback];
+            
+            const dynamicMissionIds = combinedMissions
+                .map(m => m.id)
+                .slice(0, TOTAL_DAYS - newPlan.length);
+
+            newPlan = [...newPlan, ...dynamicMissionIds];
+        }
         
         // Ensure we have a fallback if missions run out
-        while (fullPlan.length < TOTAL_DAYS) {
-            const fallbackMission = missions.find(m => m.category === 'generic' && !fullPlan.includes(m.id));
+        while (newPlan.length < TOTAL_DAYS) {
+            const fallbackMission = missions.find(m => m.category === 'generic' && !newPlan.includes(m.id));
             if (fallbackMission) {
-                fullPlan.push(fallbackMission.id);
+                newPlan.push(fallbackMission.id);
             } else {
-                // If no generic missions are left, grab any mission not already in the plan
-                const anyOtherMission = missions.find(m => !fullPlan.includes(m.id));
+                const anyOtherMission = missions.find(m => !newPlan.includes(m.id));
                 if (anyOtherMission) {
-                    fullPlan.push(anyOtherMission.id);
+                    newPlan.push(anyOtherMission.id);
                 } else {
-                    break; // Avoid infinite loop if all missions have been used
+                    break; 
                 }
             }
         }
-        
-        setDailyMissionPlan(fullPlan);
+        setDailyMissionPlan(newPlan);
     }
     
 
-  }, []);
+  }, [completedMissions.length]);
 
   useEffect(() => {
     if (dailyMissionPlan.length > 0) {
@@ -164,14 +167,26 @@ export default function DashboardPage() {
 
 
   const handleCompleteMission = (missionId: string) => {
+    let newCompleted: string[];
     if (!completedMissions.includes(missionId)) {
-        const newCompleted = [...completedMissions, missionId];
+        newCompleted = [...completedMissions, missionId];
         setCompletedMissions(newCompleted);
+    } else {
+        newCompleted = [...completedMissions];
     }
     
+    // REDIRECTION LOGIC
+    const userHasCompletedFoundations = fixedMissionPlan.every(id => newCompleted.includes(id));
+    const userGoal = localStorage.getItem('userGoal');
+
+    if (userHasCompletedFoundations && !userGoal) {
+        router.push('/setup');
+        return; // Stop further execution to allow redirection
+    }
+
     setUserChoseToRest(false);
     setRestDate(null);
-    setIsAdaptiveMode(false); // Reset adaptive mode after completion
+    setIsAdaptiveMode(false);
 
     const mission = missions.find(m => m.id === missionId);
 

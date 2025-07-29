@@ -18,12 +18,11 @@ export default function Home() {
 
   useEffect(() => {
     const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding');
-    const userGoal = localStorage.getItem('userGoal');
-
-    if (hasSeenOnboarding && userGoal) {
+    
+    // If user has seen onboarding, they should go to the dashboard.
+    // The dashboard will handle the logic of where they are in the journey.
+    if (hasSeenOnboarding) {
       router.replace('/dashboard');
-    } else if (hasSeenOnboarding && !userGoal) {
-      router.replace('/setup');
     } else {
       setLoading(false);
     }
@@ -31,7 +30,7 @@ export default function Home() {
 
   const handleStart = () => {
     localStorage.setItem('hasSeenOnboarding', 'true');
-    router.push('/setup');
+    router.push('/dashboard');
   };
 
   if (loading) {
@@ -78,7 +77,7 @@ export default function Home() {
                   15 movidas que empiezan a cambiarlo todo.
                 </h2>
                 <p className="text-base text-muted-foreground md:text-lg text-center">
-                  No es un plan de 2 semanas, es una secuencia de victorias que te ayudarán a:
+                  No es un plan de 15 días, es una secuencia de victorias que te ayudarán a:
                 </p>
 
                 <ul className="space-y-3 text-base text-foreground md:text-lg max-w-2xl mx-auto pt-2">
