@@ -1051,6 +1051,52 @@ export const missions: Mission[] = [
         }
     ]
   },
+  {
+    id: 'm45',
+    title: 'Permiso para no saber',
+    description: 'Hoy no se trata de hacer, sino de explorar. Está bien no tener un plan. Vamos a buscar pistas sobre lo que te interesa, sin ninguna presión.',
+    type: 'interactive',
+    category: 'laboratorio-mental',
+    why: 'Validar la incertidumbre le quita poder a la angustia. Permitirte sentir curiosidad sin la presión de "encontrar tu pasión" es un acto radical de autocuidado.',
+    reward: 'Chispas de curiosidad',
+    steps: [
+        { 
+          title: 'Paso 1: Preparar tu herramienta',
+          description: 'Busca papel y lápiz, o abre una nota en tu celular. Este es tu laboratorio de ideas, no un examen.'
+        },
+        { 
+          title: 'Paso 2: Cazar curiosidades',
+          description: 'Piensa en 3 cosas que te hayan generado la más mínima curiosidad últimamente. Pueden ser raras, "tontas" o "inútiles". Anótalas. Ejemplos: ¿cómo funciona un motor?, ¿por qué ese edificio tiene esa forma?, la historia de una banda que escuchaste.'
+        },
+        { 
+          title: 'Paso 3: Observar sin juzgar',
+          description: 'Mira tu lista. No tienes que hacer nada con ella. El objetivo de hoy era solo encontrar esas chispas de interés. Lo lograste.'
+        },
+    ]
+  },
+  {
+    id: 'm46',
+    title: 'Inmersión Digital',
+    description: 'La curiosidad es un músculo. Hoy vamos a ejercitarlo de una forma segura y controlada, expandiendo un poco tu mundo sin salir de tu zona de confort.',
+    type: 'interactive',
+    category: 'aventuras-de-crecimiento',
+    why: 'Explorar activamente un tema de interés, por pequeño que sea, te reconecta con el placer de aprender y te demuestra que puedes dirigir tu propia atención hacia algo nuevo.',
+    reward: 'Nuevos conocimientos',
+    steps: [
+        { 
+          title: 'Paso 1: Elige tu aventura',
+          description: 'Toma la lista de curiosidades que hiciste en la misión anterior (o elige un tema nuevo ahora). Selecciona uno, el que te parezca más fácil o interesante hoy.'
+        },
+        { 
+          title: 'Paso 2: Sumérgete (por poco tiempo)',
+          description: 'Abre YouTube o un buscador. Busca un video corto (5-10 min) o un artículo sobre ese tema. Pon un temporizador si te ayuda a no sentir que es una tarea infinita.'
+        },
+        { 
+          title: 'Paso 3: Reflexión final',
+          description: '¿Qué sentiste? ¿Interés? ¿Aburrimiento? ¿Te surgieron más preguntas? No hay respuesta correcta. El objetivo era solo explorar lo desconocido, y eso ya lo hiciste. ¡Un paso más!'
+        },
+    ]
+  },
   
   // Generic - Fallback
   {
@@ -1068,3 +1114,4 @@ export const missions: Mission[] = [
     ]
   }
 ];
+

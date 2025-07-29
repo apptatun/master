@@ -28,8 +28,8 @@ const dailyMissionPlan: string[] = [
     'm15',   // Día 10: Reactivar Contacto (2 min)
     'm14',   // Día 11: Ordena un solo lugar (7 min)
     'm11',   // Día 12: Compra algo en el kiosco
-    'm27',   // Día 13: Escribe una preocupación y rómpela
-    'm38',   // Día 14: Piloto de Abastecimiento (15 min)
+    'm45',   // Día 13: Permiso para no saber
+    'm46',   // Día 14: Inmersión Digital
     'm28'    // Día 15: Reintenta una acción que te costó
 ];
 
@@ -287,4 +287,5 @@ export default function DashboardPage() {
     </div>
   );
 }
+
 
