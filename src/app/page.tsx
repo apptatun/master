@@ -1,16 +1,48 @@
 
-import Link from 'next/link';
+'use client';
+
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, CheckCircle } from 'lucide-react';
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
+import { Skeleton } from '@/components/ui/skeleton';
 
 export default function Home() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding');
+    if (hasSeenOnboarding) {
+      router.replace('/dashboard');
+    } else {
+      setLoading(false);
+    }
+  }, [router]);
+
+  const handleStart = () => {
+    localStorage.setItem('hasSeenOnboarding', 'true');
+    router.push('/dashboard');
+  };
+
+  if (loading) {
+    return (
+       <div className="flex min-h-screen w-full flex-col items-center justify-center bg-background p-4 text-center">
+         <div className="max-w-3xl space-y-6 flex flex-col items-center justify-center h-full min-h-[50vh] px-4 sm:px-8">
+            <Skeleton className="h-12 w-48" />
+            <Skeleton className="h-6 w-full max-w-lg mt-4" />
+            <Skeleton className="h-6 w-full max-w-md mt-2" />
+            <Skeleton className="h-14 w-64 rounded-full mt-10" />
+         </div>
+       </div>
+    )
+  }
+
   return (
     <main className="flex min-h-screen w-full flex-col items-center justify-center bg-background p-4 text-center">
        <Carousel className="w-full max-w-3xl">
@@ -89,11 +121,13 @@ export default function Home() {
                   </p>
                 </div>
 
-                <Link href="/dashboard">
-                  <Button size="lg" className="group bg-accent text-accent-foreground hover:bg-accent/90 text-base sm:text-lg rounded-full font-sans font-bold h-14 px-10 mt-8">
-                    OK, me intriga. ¿Cuál es la primera misión?
-                  </Button>
-                </Link>
+                <Button 
+                  size="lg" 
+                  className="group bg-accent text-accent-foreground hover:bg-accent/90 text-base sm:text-lg rounded-full font-sans font-bold h-14 px-10 mt-8"
+                  onClick={handleStart}
+                >
+                  OK, me intriga. ¿Cuál es la primera misión?
+                </Button>
             </div>
           </CarouselItem>
         </CarouselContent>
