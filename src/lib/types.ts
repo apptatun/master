@@ -4,7 +4,7 @@ export interface Step {
   description?: string;
 }
 
-export type Goal = 'energy' | 'space' | 'social';
+export type Goal = 'energy' | 'space' | 'social' | 'general';
 
 export type SubCategory = 
   // 'energy' goal
@@ -19,7 +19,7 @@ export type SubCategory =
   | 'finanzas-ninja'
   | 'aventuras-de-crecimiento';
 
-export const subCategoryMap: Record<Goal, SubCategory[]> = {
+export const subCategoryMap: Record<Exclude<Goal, 'general'>, SubCategory[]> = {
   'energy': [
     'laboratorio-mental',
     'supervivencia-culinaria',

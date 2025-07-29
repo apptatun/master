@@ -57,37 +57,43 @@ export default function DashboardPage() {
     if (dailyMissionPlan.length < TOTAL_DAYS) {
         const userGoal = localStorage.getItem('userGoal');
         
-        // The first 3 missions are always fixed
         let newPlan = [...fixedMissionPlan];
 
-        // If the user has completed the first 3 missions and selected a goal, generate the rest
         if (completedMissions.length >= fixedMissionPlan.length && userGoal) {
-            const goalCategories = subCategoryMap[userGoal as keyof typeof subCategoryMap];
+            let potentialMissions: Mission[];
             
-            const potentialMissions = missions.filter(m => 
-                (goalCategories as string[]).includes(m.category) && 
-                !newPlan.includes(m.id)
-            );
+            if (userGoal === 'general') {
+                // General path: mix of all categories
+                potentialMissions = missions.filter(m => 
+                    !newPlan.includes(m.id) && m.category !== 'generic'
+                );
+            } else {
+                // Goal-specific path
+                const goalCategories = subCategoryMap[userGoal as keyof typeof subCategoryMap];
+                
+                potentialMissions = missions.filter(m => 
+                    (goalCategories as string[]).includes(m.category) && 
+                    !newPlan.includes(m.id)
+                );
 
-            const fallbackMissions = missions.filter(m => 
-                !goalCategories.includes(m.category as any) &&
-                !newPlan.includes(m.id) &&
-                m.category !== 'generic'
-            );
-
-            const shuffledPotential = [...potentialMissions].sort(() => 0.5 - Math.random());
-            const shuffledFallback = [...fallbackMissions].sort(() => 0.5 - Math.random());
-
-            const combinedMissions = [...shuffledPotential, ...shuffledFallback];
+                const fallbackMissions = missions.filter(m => 
+                    !goalCategories.includes(m.category as any) &&
+                    !newPlan.includes(m.id) &&
+                    m.category !== 'generic'
+                );
+                
+                potentialMissions = [...potentialMissions, ...fallbackMissions];
+            }
             
-            const dynamicMissionIds = combinedMissions
+            const shuffledMissions = [...potentialMissions].sort(() => 0.5 - Math.random());
+            
+            const dynamicMissionIds = shuffledMissions
                 .map(m => m.id)
                 .slice(0, TOTAL_DAYS - newPlan.length);
 
             newPlan = [...newPlan, ...dynamicMissionIds];
         }
         
-        // Ensure we have a fallback if missions run out
         while (newPlan.length < TOTAL_DAYS) {
             const fallbackMission = missions.find(m => m.category === 'generic' && !newPlan.includes(m.id));
             if (fallbackMission) {
@@ -135,7 +141,7 @@ export default function DashboardPage() {
       );
 
       const needsIntervention =
-        lastThreeFeedbacks.length >= 2 && totalStressScore >= 4;
+        lastThreeFeedbacks.length >= 3 && totalStressScore >= 4;
 
       const currentPlanMissionId = dailyMissionPlan[currentDayIndex];
 

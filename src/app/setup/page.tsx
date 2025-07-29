@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Zap, Home, Users, ArrowRight } from 'lucide-react';
+import { Zap, Home, Users, ArrowRight, Shuffle } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { Header } from '@/components/Header';
 
@@ -95,6 +95,25 @@ export default function SetupPage() {
               </motion.div>
             ))}
           </motion.div>
+
+          <motion.div
+            className="mt-12"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1, duration: 0.5 }}
+          >
+            <p className="text-muted-foreground mb-4">¿No te decides?</p>
+            <Button
+              variant="outline"
+              size="lg"
+              className="text-lg"
+              onClick={() => handleSelectGoal('general')}
+            >
+              <Shuffle className="mr-2 h-5 w-5" />
+              Sorpréndeme con un camino equilibrado
+            </Button>
+          </motion.div>
+
         </div>
       </main>
     </div>
