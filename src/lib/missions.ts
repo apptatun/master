@@ -6,7 +6,7 @@ export const missions: Mission[] = [
   // Supervivencia Culinaria
   {
     id: 'm1',
-    title: 'OPERACIÓN HORNALLA',
+    title: 'Encender la hornalla',
     description: 'Misión de Activación de Zona de Cocción. Objetivo: hervir agua en una olla de forma segura.',
     type: 'interactive',
     category: 'supervivencia-culinaria',
@@ -123,7 +123,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm38',
-    title: 'PILOTO DE ABASTECIMIENTO (15 min)',
+    title: 'Piloto de abastecimiento (15 min)',
     description: 'Un paso esencial para cuidar tu energía y autonomía. Prepara un snack simple, cómelo y limpia lo que usaste.',
     type: 'interactive',
     category: 'supervivencia-culinaria',
@@ -156,7 +156,7 @@ export const missions: Mission[] = [
   // Rescate de Territorio
   {
     id: 'm3_v2',
-    title: 'OPERACIÓN "ESPEJO LÍQUIDO"',
+    title: 'Limpieza "Espejo Líquido"',
     description: 'Tomar control de un pequeño fragmento de tu entorno, realizando una micro-limpieza que genere una victoria visual y reduzca la ansiedad.',
     type: 'interactive',
     category: 'rescate-de-territorio',
@@ -188,7 +188,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm4',
-    title: 'OPERACIÓN LAVARROPAS',
+    title: 'Poner a lavar la ropa',
     description: 'Protocolo de Higiene Textil. Objetivo: poner una tanda de ropa en el lavarropas y dejarla lista para tender.',
     type: 'interactive',
     category: 'rescate-de-territorio',
@@ -255,7 +255,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Enfrentar una tarea doméstica grande te demuestra que podés manejar proyectos más complejos de lo que creés.',
-    reward: 'Un rincón en orden',
+    reward: 'Freezer como nuevo',
     steps: [
       {
         title: 'Paso 1: Seguridad y Preparación',
@@ -300,7 +300,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm36',
-    title: 'PROTOCOLO "DESPERTAR CON PROPÓSITO"',
+    title: 'Despertar con propósito',
     description: 'Iniciar el día con una micro-victoria consciente, sentando las bases de la proactividad y el control personal.',
     type: 'interactive',
     category: 'rescate-de-territorio',
@@ -362,7 +362,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm39',
-    title: 'GUARDIÁN DE LA VESTIMENTA (20 min)',
+    title: 'Guardián de la vestimenta (20 min)',
     description: 'Una secuencia para organizar un área clave de tu autonomía personal.',
     type: 'interactive',
     category: 'rescate-de-territorio',
@@ -427,7 +427,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'dominio-digital',
     why: 'Plasmar tus (pocas o muchas) experiencias en un documento te ayuda a ver tu propio valor y potencial.',
-    reward: 'Consulta enviada',
+    reward: 'CV listo para la acción',
     steps: [
       {
         title: 'Paso 1: Buscá una plantilla',
@@ -749,7 +749,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'primeros-pasos',
     why: 'Dominar una ruta de transporte público te da autonomía y expande tu mapa mental de la ciudad.',
-    reward: 'Misión de abastecimiento',
+    reward: 'Transporte dominado',
     steps: [
       {
         title: 'Paso 1: Planificar la Ruta',
@@ -788,7 +788,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'primeros-pasos',
     why: 'Aprender a confiar en una herramienta te quita la presión de tener que "saber" todo y reduce la ansiedad de perderte.',
-    reward: 'Misión de abastecimiento',
+    reward: 'Navegación exitosa',
     steps: [
       {
         title: 'Paso 1: El Destino',
@@ -923,7 +923,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm40',
-    title: 'OPERACIÓN "HORIZONTE CERO"',
+    title: 'Horizonte Cero',
     description: 'Reconectar con el exterior sin presión, gestionando la ansiedad de salir.',
     type: 'interactive',
     category: 'primeros-pasos',
@@ -949,7 +949,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm41',
-    title: 'PROTOCOLO "ACTIVACIÓN MATUTINA"',
+    title: 'Activación matutina',
     description: 'Establecer un micro-hábito de autocuidado para iniciar el día.',
     type: 'interactive',
     category: 'laboratorio-mental',
@@ -975,7 +975,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm42',
-    title: 'DESAFÍO "MICRO-INTERACCIÓN"',
+    title: 'Desafío de micro-interacción',
     description: 'Realizar una interacción social mínima y controlada para reducir la ansiedad.',
     type: 'interactive',
     category: 'interacciones-humanas',
@@ -1001,7 +1001,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm43',
-    title: 'OPERACIÓN "RINCÓN DE CONQUISTA"',
+    title: 'Rincón de conquista',
     description: 'Organizar un espacio personal muy pequeño para sentir control sobre el entorno.',
     type: 'interactive',
     category: 'rescate-de-territorio',
@@ -1027,7 +1027,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm44',
-    title: 'PROTOCOLO "GESTIÓN DE ENERGÍA"',
+    title: 'Gestión de energía',
     description: 'Interrumpir una actividad prolongada (como juegos o redes) con una pausa activa para recargar la atención y evitar la pasividad.',
     type: 'interactive',
     category: 'laboratorio-mental',
@@ -1114,4 +1114,3 @@ export const missions: Mission[] = [
     ]
   }
 ];
-

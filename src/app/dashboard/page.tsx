@@ -9,7 +9,6 @@ import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
 import { Check, ArrowLeft, ArrowRight, Trophy, Sparkles } from 'lucide-react';
 import type { Mission, FeedbackEntry } from '@/lib/types';
-import Confetti from 'react-confetti';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -38,8 +37,6 @@ export default function DashboardPage() {
   const [completedMissions, setCompletedMissions] = useState<string[]>([]);
   const [isMounted, setIsMounted] = useState(false);
   const [currentDayIndex, setCurrentDayIndex] = useState(0);
-  const [showConfetti, setShowConfetti] = useState(false);
-  const [windowSize, setWindowSize] = useState<{ width: number, height: number }>({ width: 0, height: 0 });
   const [userChoseToRest, setUserChoseToRest] = useState(false);
   const [restDate, setRestDate] = useState<string | null>(null);
   const [activeMissionId, setActiveMissionId] = useState<string | null>(null);
@@ -50,11 +47,6 @@ export default function DashboardPage() {
 
   useEffect(() => {
     setIsMounted(true);
-    const handleResize = () => {
-      setWindowSize({ width: window.innerWidth, height: window.innerHeight });
-    };
-    window.addEventListener('resize', handleResize);
-    handleResize();
 
     const savedCompleted = localStorage.getItem('completedMissions');
     if (savedCompleted) {
@@ -90,7 +82,6 @@ export default function DashboardPage() {
         setFeedbackHistory(JSON.parse(savedFeedback));
     }
     
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   useEffect(() => {
@@ -136,9 +127,6 @@ export default function DashboardPage() {
     setRestDate(null);
 
     const mission = missions.find(m => m.id === missionId);
-    
-    setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 5000);
 
     toast({
       title: (
@@ -229,7 +217,6 @@ export default function DashboardPage() {
 
   return (
     <div className="flex h-screen flex-col bg-background">
-      {showConfetti && <Confetti width={windowSize.width} height={windowSize.height} recycle={false} />}
       <DashboardHeader onResetProgress={handleResetProgress} />
       <main className="flex-1 overflow-y-auto container mx-auto p-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="space-y-4 text-center">
@@ -287,5 +274,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-
