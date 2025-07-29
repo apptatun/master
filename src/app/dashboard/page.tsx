@@ -47,6 +47,14 @@ export default function DashboardPage() {
   useEffect(() => {
     setIsMounted(true);
     
+    const userHasCompletedFoundations = fixedMissionPlan.every(id => completedMissions.includes(id));
+    const userGoal = localStorage.getItem('userGoal');
+
+    if (userHasCompletedFoundations && !userGoal) {
+        router.push('/setup');
+        return;
+    }
+
     if (restDate) {
         const today = new Date().toISOString().split('T')[0];
         if (restDate < today) {
@@ -62,11 +70,11 @@ export default function DashboardPage() {
     }
     
 
-  }, [completedMissions.length]);
+  }, [completedMissions.length, router]);
 
   useEffect(() => {
     // This effect runs when the plan is generated or the user goal changes.
-    if (dailyMissionPlan.length === TOTAL_DAYS && !activeMissionId) {
+    if (dailyMissionPlan.length > 0 && !activeMissionId) {
        setActiveMissionId(dailyMissionPlan[currentDayIndex]);
     }
   }, [dailyMissionPlan, currentDayIndex, activeMissionId]);
@@ -76,8 +84,10 @@ export default function DashboardPage() {
     const userGoal = localStorage.getItem('userGoal');
     let newPlan = [...fixedMissionPlan];
 
+    // If the foundational missions are done but there's no goal, don't proceed.
+    // The main useEffect will handle redirection.
     if (completedMissions.length >= fixedMissionPlan.length && !userGoal) {
-        // Don't generate the rest of the plan until a goal is set.
+        setDailyMissionPlan(newPlan);
         return;
     }
 
@@ -114,19 +124,14 @@ export default function DashboardPage() {
         newPlan = [...newPlan, ...dynamicMissionIds];
     }
     
-    // Fallback to fill up any remaining slots
-    while (newPlan.length < TOTAL_DAYS) {
-        const fallbackMission = missions.find(m => m.category === 'generic' && !newPlan.includes(m.id));
-        if (fallbackMission) {
-            newPlan.push(fallbackMission.id);
-        } else {
-            const anyOtherMission = missions.find(m => !newPlan.includes(m.id));
-            if (anyOtherMission) {
-                newPlan.push(anyOtherMission.id);
-            } else {
-                break; // No more missions to add
-            }
-        }
+    // Fallback to fill up any remaining slots to prevent empty days
+    if (newPlan.length < TOTAL_DAYS) {
+        const existingIds = new Set(newPlan);
+        const fallbackMissions = missions
+            .filter(m => !existingIds.has(m.id))
+            .map(m => m.id);
+        
+        newPlan.push(...fallbackMissions.slice(0, TOTAL_DAYS - newPlan.length));
     }
     setDailyMissionPlan(newPlan);
   }
@@ -323,7 +328,11 @@ export default function DashboardPage() {
 
 
   if (!isMounted || !activeMissionId) {
-    return null;
+    return (
+        <div className="flex items-center justify-center h-screen">
+             <p>Cargando tu camino...</p>
+        </div>
+    );
   }
   
   const currentMission = missions.find(m => m.id === activeMissionId);
@@ -339,8 +348,6 @@ export default function DashboardPage() {
         feedbackHistory={feedbackHistory} 
         missions={missions}
         onSaveFeedback={handleSaveFeedback}
-        isRescueBoxOpen={isRescueBoxOpen}
-        setIsRescueBoxOpen={setIsRescueBoxOpen}
       />
       <main className="flex-1 overflow-y-auto container mx-auto p-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="space-y-4 text-center">
@@ -420,6 +427,12 @@ export default function DashboardPage() {
             </div>
         </div>
       </main>
+      <RescueBoxDialog
+        isOpen={isRescueBoxOpen}
+        onClose={() => setIsRescueBoxOpen(false)}
+      />
     </div>
   );
 }
+
+    

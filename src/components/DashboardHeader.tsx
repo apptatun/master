@@ -9,7 +9,6 @@ import { useState } from 'react';
 import { ResponseArmoryDialog } from './ResponseArmoryDialog';
 import { BitacoraDialog } from './BitacoraDialog';
 import type { FeedbackEntry, Mission } from '@/lib/types';
-import { RescueBoxDialog } from './RescueBoxDialog';
 
 
 interface DashboardHeaderProps {
@@ -17,8 +16,6 @@ interface DashboardHeaderProps {
     feedbackHistory: FeedbackEntry[];
     missions: Mission[];
     onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void;
-    isRescueBoxOpen: boolean;
-    setIsRescueBoxOpen: (isOpen: boolean) => void;
 }
 
 export function DashboardHeader({ 
@@ -26,8 +23,6 @@ export function DashboardHeader({
     feedbackHistory, 
     missions, 
     onSaveFeedback, 
-    isRescueBoxOpen,
-    setIsRescueBoxOpen
 }: DashboardHeaderProps) {
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const [isArmoryOpen, setIsArmoryOpen] = useState(false);
@@ -77,10 +72,8 @@ export function DashboardHeader({
             feedbackHistory={feedbackHistory}
             missions={missions}
         />
-        <RescueBoxDialog
-            isOpen={isRescueBoxOpen}
-            onClose={() => setIsRescueBoxOpen(false)}
-        />
     </>
   );
 }
+
+    
