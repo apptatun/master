@@ -18,8 +18,12 @@ export default function Home() {
 
   useEffect(() => {
     const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding');
-    if (hasSeenOnboarding) {
+    const userGoal = localStorage.getItem('userGoal');
+
+    if (hasSeenOnboarding && userGoal) {
       router.replace('/dashboard');
+    } else if (hasSeenOnboarding && !userGoal) {
+      router.replace('/setup');
     } else {
       setLoading(false);
     }
@@ -27,7 +31,7 @@ export default function Home() {
 
   const handleStart = () => {
     localStorage.setItem('hasSeenOnboarding', 'true');
-    router.push('/dashboard');
+    router.push('/setup');
   };
 
   if (loading) {
