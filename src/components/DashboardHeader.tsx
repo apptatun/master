@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { RotateCcw, Shield, BookOpen, HeartPulse } from 'lucide-react';
+import { RotateCcw, Shield, BookOpen } from 'lucide-react';
 import { ResetProgressDialog } from './ResetProgressDialog';
 import { useState } from 'react';
 import { ResponseArmoryDialog } from './ResponseArmoryDialog';
@@ -45,10 +45,6 @@ export function DashboardHeader({
             </div>
             </Link>
             <div className="flex items-center gap-1 sm:gap-2">
-                <Button variant="ghost" size="icon" onClick={() => setIsRescueBoxOpen(true)}>
-                    <HeartPulse className="h-6 w-6" />
-                    <span className="sr-only">Caja de Rescate</span>
-                </Button>
                 <Button variant="ghost" size="icon" onClick={() => setIsBitacoraOpen(true)}>
                     <BookOpen className="h-6 w-6" />
                     <span className="sr-only">Mi Bitácora</span>
