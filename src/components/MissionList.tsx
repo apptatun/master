@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
 import { Rocket, Check, Bot, Sparkles, Trophy, Coffee, Play, ArrowRight, CircleCheck, RefreshCw } from 'lucide-react';
-import type { Mission } from '@/lib/types';
+import type { Mission, FeedbackEntry, MissionFeedbackData } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { EmojiFeedback } from './EmojiFeedback';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -22,7 +22,7 @@ interface MissionListProps {
   onRest: () => void;
   onResume: () => void;
   onUseAlternative: (alternativeId: string) => void;
-  onSaveFeedback: (missionId: string, feeling: string) => void;
+  onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void;
   isCurrentMissionCompleted: boolean;
   allMissionsCompleted: boolean;
   userChoseToRest: boolean;
@@ -51,8 +51,14 @@ export function MissionList({ mission, completedMissions, onCompleteMission, onA
     setShowRejectionMessage(true);
   }
 
-  const handleFeedback = (feeling: string) => {
-    onSaveFeedback(mission.id, feeling);
+  const handleFeedback = (feeling: MissionFeedbackData['feeling']) => {
+    onSaveFeedback({
+      type: 'mission',
+      data: {
+        missionId: mission.id,
+        feeling,
+      },
+    });
     setShowFeedback(false);
   }
 

@@ -7,7 +7,7 @@ import { DashboardHeader } from '@/components/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
 import { ArrowLeft, ArrowRight, Sparkles, BrainCircuit } from 'lucide-react';
-import type { Mission, FeedbackEntry, SubCategory, ArmoryFeedbackEntry } from '@/lib/types';
+import type { Mission, FeedbackEntry } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -31,7 +31,6 @@ export default function DashboardPage() {
   const [restDate, setRestDate] = useState<string | null>(null);
   const [activeMissionId, setActiveMissionId] = useState<string | null>(null);
   const [feedbackHistory, setFeedbackHistory] = useState<FeedbackEntry[]>([]);
-  const [armoryFeedback, setArmoryFeedback] = useState<ArmoryFeedbackEntry[]>([]);
   const [isAdaptiveMode, setIsAdaptiveMode] = useState(false);
   const [dailyMissionPlan, setDailyMissionPlan] = useState<string[]>(fixedMissionPlan);
 
@@ -71,11 +70,6 @@ export default function DashboardPage() {
         setFeedbackHistory(JSON.parse(savedFeedback));
     }
     
-    const savedArmoryFeedback = localStorage.getItem('armoryFeedback');
-    if (savedArmoryFeedback) {
-        setArmoryFeedback(JSON.parse(savedArmoryFeedback));
-    }
-
     // Generate the dynamic part of the plan
     const userGoal = localStorage.getItem('userGoal') || 'energy';
     const goalCategories = subCategoryMap[userGoal as keyof typeof subCategoryMap];
@@ -113,9 +107,9 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (isMounted) {
-        // Adaptive Mode Logic
-        const lastTwoFeedbacks = feedbackHistory.slice(-2);
-        const needsIntervention = lastTwoFeedbacks.length === 2 && lastTwoFeedbacks.every(f => f.feeling === 'Mal');
+        const missionFeedback = feedbackHistory.filter(f => f.type === 'mission' && f.data.feeling === 'Mal');
+        const lastTwoFeedbacks = missionFeedback.slice(-2);
+        const needsIntervention = lastTwoFeedbacks.length === 2;
 
         if (needsIntervention) {
             setIsAdaptiveMode(true);
@@ -161,16 +155,7 @@ export default function DashboardPage() {
     }
   }, [feedbackHistory, isMounted]);
 
-  useEffect(() => {
-    if(isMounted) {
-        localStorage.setItem('armoryFeedback', JSON.stringify(armoryFeedback));
-    }
-  }, [armoryFeedback, isMounted]);
-
-
   const handleCompleteMission = (missionId: string) => {
-    // We always mark the *original* mission for the day as complete
-    // to advance progress, even if an adaptive one was shown.
     const originalMissionIdForDay = dailyMissionPlan[currentDayIndex];
     if (originalMissionIdForDay && !completedMissions.includes(originalMissionIdForDay)) {
         const newCompleted = [...completedMissions, originalMissionIdForDay];
@@ -194,27 +179,21 @@ export default function DashboardPage() {
     });
   };
 
-  const handleSaveFeedback = (missionId: string, feeling: string) => {
+  const handleSaveFeedback = (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => {
     const newFeedback: FeedbackEntry = {
-        missionId,
-        feeling,
-        date: new Date().toISOString(),
+      ...feedback,
+      id: new Date().toISOString() + Math.random(),
+      date: new Date().toISOString(),
     };
     setFeedbackHistory([...feedbackHistory, newFeedback]);
+
+    if (feedback.type === 'armory') {
+        toast({
+            title: 'Radar actualizado',
+            description: 'Tu experiencia ha sido registrada en la bitácora. ¡Buen trabajo!',
+        });
+    }
   };
-  
-  const handleSaveArmoryFeedback = (quote: string, feeling: string) => {
-    const newFeedback: ArmoryFeedbackEntry = {
-        quote,
-        feeling,
-        date: new Date().toISOString(),
-    };
-    setArmoryFeedback([...armoryFeedback, newFeedback]);
-    toast({
-        title: 'Radar actualizado',
-        description: 'Tu experiencia ha sido registrada en la bitácora. ¡Buen trabajo!',
-    })
-  }
   
   const handleAdvanceToNextDay = () => {
     if (currentDayIndex < dailyMissionPlan.length - 1) {
@@ -262,13 +241,11 @@ export default function DashboardPage() {
     setUserChoseToRest(false);
     setActiveMissionId(dailyMissionPlan[0]);
     setFeedbackHistory([]);
-    setArmoryFeedback([]);
     localStorage.removeItem('completedMissions');
     localStorage.removeItem('currentDayIndex');
     localStorage.removeItem('restDate');
     localStorage.removeItem('feedbackHistory');
     localStorage.removeItem('userGoal');
-    localStorage.removeItem('armoryFeedback');
     toast({
       title: 'Progreso Reiniciado',
       description: 'Has vuelto al Día 1. ¡Una nueva oportunidad para empezar!',
@@ -292,8 +269,7 @@ export default function DashboardPage() {
         onResetProgress={handleResetProgress} 
         feedbackHistory={feedbackHistory} 
         missions={missions}
-        armoryFeedback={armoryFeedback}
-        onSaveArmoryFeedback={handleSaveArmoryFeedback}
+        onSaveFeedback={handleSaveFeedback}
       />
       <main className="flex-1 overflow-y-auto container mx-auto p-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="space-y-4 text-center">

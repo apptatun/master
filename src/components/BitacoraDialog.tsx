@@ -10,11 +10,10 @@ import {
   DialogFooter,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
-import type { FeedbackEntry, Mission, ArmoryFeedbackEntry } from '@/lib/types';
+import type { FeedbackEntry, Mission } from '@/lib/types';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Shield, Trophy, Quote } from 'lucide-react';
 
@@ -24,7 +23,6 @@ interface BitacoraDialogProps {
   onClose: () => void;
   feedbackHistory: FeedbackEntry[];
   missions: Mission[];
-  armoryFeedback: ArmoryFeedbackEntry[];
 }
 
 const missionFeelingMap: { [key: string]: { emoji: string; color: string } } = {
@@ -41,7 +39,7 @@ const armoryFeelingMap: { [key: string]: { color: string } } = {
     'Frustrado/a': { color: 'bg-red-200 text-red-900' },
 };
 
-export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions, armoryFeedback }: BitacoraDialogProps) {
+export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: BitacoraDialogProps) {
 
   const getMissionTitle = (missionId: string) => {
     const mission = missions.find(m => m.id === missionId);
@@ -49,7 +47,9 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions, arm
   }
   
   const sortedHistory = [...feedbackHistory].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
-  const sortedArmoryHistory = [...armoryFeedback].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  
+  const missionHistory = sortedHistory.filter(e => e.type === 'mission');
+  const armoryHistory = sortedHistory.filter(e => e.type === 'armory');
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -76,19 +76,20 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions, arm
             <div className="flex-1 min-h-0 overflow-y-auto my-4 pr-4 -mr-4">
                 <TabsContent value="missions" className="h-full mt-0">
                     <div className="space-y-4">
-                        {sortedHistory.length > 0 ? sortedHistory.map((entry, index) => {
-                            const feelingInfo = missionFeelingMap[entry.feeling] || { emoji: '🤔', color: 'bg-gray-200 text-gray-900' };
+                        {missionHistory.length > 0 ? missionHistory.map((entry) => {
+                            if (entry.type !== 'mission') return null;
+                            const feelingInfo = missionFeelingMap[entry.data.feeling] || { emoji: '🤔', color: 'bg-gray-200 text-gray-900' };
                             return (
-                                <div key={`mission-${index}`} className="p-4 border rounded-lg bg-background/50 text-left flex items-start gap-4">
+                                <div key={entry.id} className="p-4 border rounded-lg bg-background/50 text-left flex items-start gap-4">
                                     <span className="text-2xl mt-1">{feelingInfo.emoji}</span>
                                     <div className='flex-grow'>
-                                        <p className="font-bold text-foreground text-lg">{getMissionTitle(entry.missionId)}</p>
+                                        <p className="font-bold text-foreground text-lg">{getMissionTitle(entry.data.missionId)}</p>
                                         <p className="text-sm text-muted-foreground">
                                             {format(new Date(entry.date), "d 'de' MMMM, yyyy 'a las' HH:mm", { locale: es })}
                                         </p>
                                     </div>
                                     <Badge variant="outline" className={`font-bold text-sm ${feelingInfo.color}`}>
-                                        {entry.feeling}
+                                        {entry.data.feeling}
                                     </Badge>
                                 </div>
                             )
@@ -103,20 +104,21 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions, arm
 
                 <TabsContent value="armory" className="h-full mt-0">
                      <div className="space-y-4">
-                        {sortedArmoryHistory.length > 0 ? sortedArmoryHistory.map((entry, index) => {
-                            const feelingInfo = armoryFeelingMap[entry.feeling] || { color: 'bg-gray-200 text-gray-900' };
+                        {armoryHistory.length > 0 ? armoryHistory.map((entry) => {
+                            if (entry.type !== 'armory') return null;
+                            const feelingInfo = armoryFeelingMap[entry.data.feeling] || { color: 'bg-gray-200 text-gray-900' };
                             return (
-                                <div key={`armory-${index}`} className="p-4 border rounded-lg bg-background/50 text-left flex flex-col gap-2">
+                                <div key={entry.id} className="p-4 border rounded-lg bg-background/50 text-left flex flex-col gap-2">
                                     <div className="flex items-start gap-3">
                                         <Quote className="h-5 w-5 text-muted-foreground mt-1 flex-shrink-0" />
-                                        <p className="font-bold text-foreground text-base flex-grow">"{entry.quote}"</p>
+                                        <p className="font-bold text-foreground text-base flex-grow">"{entry.data.quote}"</p>
                                     </div>
                                     <div className="flex items-center justify-between pl-8">
                                         <p className="text-sm text-muted-foreground">
                                             {format(new Date(entry.date), "d 'de' MMMM, yyyy 'a las' HH:mm", { locale: es })}
                                         </p>
                                          <Badge variant="outline" className={`font-bold text-sm ${feelingInfo.color}`}>
-                                            Me sentí: {entry.feeling}
+                                            Me sentí: {entry.data.feeling}
                                         </Badge>
                                     </div>
                                 </div>

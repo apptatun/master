@@ -64,15 +64,25 @@ export interface Mission {
   alternativeMissionId?: string;
 }
 
-export interface FeedbackEntry {
+// Unified Feedback System
+export interface MissionFeedbackData {
   missionId: string;
-  feeling: string;
-  date: string;
+  feeling: 'Mal' | 'Más o menos' | 'Un poco mejor';
 }
 
-export interface ArmoryFeedbackEntry {
+export interface ArmoryFeedbackData {
   quote: string;
-  feeling: string;
-  date: string;
+  feeling: 'Poderoso/a' | 'Aliviado/a' | 'Seguro/a' | 'Igual' | 'Frustrado/a';
 }
+
+export type FeedbackEntry = {
+  id: string;
+  date: string;
+} & ({
+  type: 'mission';
+  data: MissionFeedbackData;
+} | {
+  type: 'armory';
+  data: ArmoryFeedbackData;
+});
     

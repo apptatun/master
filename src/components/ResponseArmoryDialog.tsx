@@ -19,12 +19,12 @@ import {
 } from '@/components/ui/accordion';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Command, CommandGroup, CommandItem } from '@/components/ui/command';
-import { Check, ChevronsUpDown } from 'lucide-react';
+import type { FeedbackEntry, ArmoryFeedbackData } from '@/lib/types';
 
 interface ResponseArmoryDialogProps {
   isOpen: boolean;
   onClose: () => void;
-  onSaveFeedback: (quote: string, feeling: string) => void;
+  onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void;
 }
 
 const sections = [
@@ -134,15 +134,27 @@ const sections = [
 ];
 
 const armoryFeelings = [
-    { value: 'powerful', label: 'Poderoso/a' },
-    { value: 'relieved', label: 'Aliviado/a' },
-    { value: 'secure', label: 'Seguro/a' },
-    { value: 'neutral', label: 'Igual' },
-    { value: 'frustrated', label: 'Frustrado/a' },
-];
+    { value: 'Poderoso/a', label: 'Poderoso/a' },
+    { value: 'Aliviado/a', label: 'Aliviado/a' },
+    { value: 'Seguro/a', label: 'Seguro/a' },
+    { value: 'Igual', label: 'Igual' },
+    { value: 'Frustrado/a', label: 'Frustrado/a' },
+] as const;
 
-function ArmoryFeedbackSelector({ quote, onSaveFeedback }: { quote: string, onSaveFeedback: (quote: string, feeling: string) => void }) {
+
+function ArmoryFeedbackSelector({ quote, onSaveFeedback }: { quote: string, onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void }) {
     const [open, setOpen] = useState(false);
+
+    const handleSelect = (feeling: ArmoryFeedbackData['feeling']) => {
+        onSaveFeedback({
+            type: 'armory',
+            data: {
+                quote,
+                feeling
+            }
+        });
+        setOpen(false);
+    }
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
@@ -162,10 +174,7 @@ function ArmoryFeedbackSelector({ quote, onSaveFeedback }: { quote: string, onSa
                         {armoryFeelings.map((feeling) => (
                             <CommandItem
                                 key={feeling.value}
-                                onSelect={() => {
-                                    onSaveFeedback(quote, feeling.label);
-                                    setOpen(false);
-                                }}
+                                onSelect={() => handleSelect(feeling.label)}
                             >
                                 {feeling.label}
                             </CommandItem>

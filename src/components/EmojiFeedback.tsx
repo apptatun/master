@@ -4,21 +4,23 @@
 import { useState } from 'react';
 import { Button } from './ui/button';
 import { motion } from 'framer-motion';
+import { MissionFeedbackData } from '@/lib/types';
 
 interface EmojiFeedbackProps {
-    onFeedback: (feeling: string) => void;
+    onFeedback: (feeling: MissionFeedbackData['feeling']) => void;
 }
 
 const feelings = [
     { emoji: '😞', label: 'Mal' },
     { emoji: '😐', label: 'Más o menos' },
     { emoji: '😊', label: 'Un poco mejor' },
-];
+] as const;
+
 
 export function EmojiFeedback({ onFeedback }: EmojiFeedbackProps) {
     const [selected, setSelected] = useState<string | null>(null);
 
-    const handleSelect = (label: string) => {
+    const handleSelect = (label: MissionFeedbackData['feeling']) => {
         setSelected(label);
         setTimeout(() => onFeedback(label), 500);
     }

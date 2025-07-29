@@ -8,7 +8,7 @@ import { ResetProgressDialog } from './ResetProgressDialog';
 import { useState } from 'react';
 import { ResponseArmoryDialog } from './ResponseArmoryDialog';
 import { BitacoraDialog } from './BitacoraDialog';
-import type { FeedbackEntry, Mission, ArmoryFeedbackEntry } from '@/lib/types';
+import type { FeedbackEntry, Mission } from '@/lib/types';
 import { RescueBoxDialog } from './RescueBoxDialog';
 
 
@@ -16,11 +16,10 @@ interface DashboardHeaderProps {
     onResetProgress: () => void;
     feedbackHistory: FeedbackEntry[];
     missions: Mission[];
-    armoryFeedback: ArmoryFeedbackEntry[];
-    onSaveArmoryFeedback: (quote: string, feeling: string) => void;
+    onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void;
 }
 
-export function DashboardHeader({ onResetProgress, feedbackHistory, missions, armoryFeedback, onSaveArmoryFeedback }: DashboardHeaderProps) {
+export function DashboardHeader({ onResetProgress, feedbackHistory, missions, onSaveFeedback }: DashboardHeaderProps) {
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const [isArmoryOpen, setIsArmoryOpen] = useState(false);
   const [isBitacoraOpen, setIsBitacoraOpen] = useState(false);
@@ -65,14 +64,13 @@ export function DashboardHeader({ onResetProgress, feedbackHistory, missions, ar
         <ResponseArmoryDialog
             isOpen={isArmoryOpen}
             onClose={() => setIsArmoryOpen(false)}
-            onSaveFeedback={onSaveArmoryFeedback}
+            onSaveFeedback={onSaveFeedback}
         />
         <BitacoraDialog
             isOpen={isBitacoraOpen}
             onClose={() => setIsBitacoraOpen(false)}
             feedbackHistory={feedbackHistory}
             missions={missions}
-            armoryFeedback={armoryFeedback}
         />
         <RescueBoxDialog
             isOpen={isRescueBoxOpen}
