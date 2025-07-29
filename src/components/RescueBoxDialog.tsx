@@ -26,6 +26,8 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
   const handleNextStep = () => {
     setCurrentStep((prev) => (prev + 1) % groundingSteps.length);
   };
+
+  const CurrentIcon = groundingSteps[currentStep].icon;
     
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -61,7 +63,7 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
                     <div>
                         <p className="text-lg text-muted-foreground mb-6">Usa tus sentidos para volver al presente. Completa un paso a la vez.</p>
                         <div className="flex items-start gap-4 p-4 rounded-lg bg-secondary">
-                            <groundingSteps[currentStep].icon className="h-10 w-10 text-secondary-foreground mt-1 flex-shrink-0" />
+                            <CurrentIcon className="h-10 w-10 text-secondary-foreground mt-1 flex-shrink-0" />
                             <p className="text-xl text-secondary-foreground font-semibold text-left">
                                 {groundingSteps[currentStep].text}
                             </p>
