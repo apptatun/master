@@ -339,6 +339,8 @@ export default function DashboardPage() {
         feedbackHistory={feedbackHistory} 
         missions={missions}
         onSaveFeedback={handleSaveFeedback}
+        isRescueBoxOpen={isRescueBoxOpen}
+        setIsRescueBoxOpen={setIsRescueBoxOpen}
       />
       <main className="flex-1 overflow-y-auto container mx-auto p-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="space-y-4 text-center">
@@ -408,7 +410,7 @@ export default function DashboardPage() {
                         onUseAlternative={handleUseAlternative}
                         userChoseToRest={userChoseToRest}
                         onResume={handleResume}
-                        onSaveFeedback={handleSaveFeedback}
+                        onSaveFeedback={onSaveFeedback}
                         allMissionsCompleted={completedMissions.length >= TOTAL_DAYS}
                         currentDay={currentDayIndex + 1}
                     />

@@ -17,13 +17,21 @@ interface DashboardHeaderProps {
     feedbackHistory: FeedbackEntry[];
     missions: Mission[];
     onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void;
+    isRescueBoxOpen: boolean;
+    setIsRescueBoxOpen: (isOpen: boolean) => void;
 }
 
-export function DashboardHeader({ onResetProgress, feedbackHistory, missions, onSaveFeedback }: DashboardHeaderProps) {
+export function DashboardHeader({ 
+    onResetProgress, 
+    feedbackHistory, 
+    missions, 
+    onSaveFeedback, 
+    isRescueBoxOpen,
+    setIsRescueBoxOpen
+}: DashboardHeaderProps) {
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const [isArmoryOpen, setIsArmoryOpen] = useState(false);
   const [isBitacoraOpen, setIsBitacoraOpen] = useState(false);
-  const [isRescueBoxOpen, setIsRescueBoxOpen] = useState(false);
 
   return (
     <>
