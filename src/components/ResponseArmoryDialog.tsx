@@ -11,6 +11,12 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion';
 
 interface ResponseArmoryDialogProps {
   isOpen: boolean;
@@ -130,29 +136,33 @@ export function ResponseArmoryDialog({ isOpen, onClose }: ResponseArmoryDialogPr
         <DialogHeader>
           <DialogTitle className="font-headline text-2xl sm:text-3xl">Armería de Respuestas</DialogTitle>
           <DialogDescription className="text-base pt-2">
-            Herramientas para cuando te sentís presionado. No son para pelear, son para proteger tu proceso. Respuestas que podés usar frente a preguntas incómodas o juicios sobre tu momento de vida.
+            Herramientas para cuando te sentís presionado. No son para pelear, son para proteger tu proceso. Elige una categoría para ver las respuestas.
           </DialogDescription>
         </DialogHeader>
         
         <div className="flex-1 min-h-0 overflow-y-auto my-4">
             <ScrollArea className="h-full pr-4 -mr-4">
-                <div className="space-y-6">
+                 <Accordion type="single" collapsible className="w-full">
                     {sections.map(section => (
-                        <div key={section.title}>
-                            <h4 className="font-bold text-lg text-foreground mb-3">{section.title}</h4>
-                            <div className="space-y-4">
-                                {section.responses.map(response => (
-                                    <div key={response.quote} className="p-3 border rounded-lg bg-background/50 text-left">
-                                        <p className="font-bold text-foreground text-base">{response.quote}</p>
-                                        <p className="text-sm text-muted-foreground mt-1">Por qué funciona: {response.why}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        <AccordionItem value={section.title} key={section.title}>
+                            <AccordionTrigger className="font-bold text-lg text-foreground text-left hover:no-underline">
+                                {section.title}
+                            </AccordionTrigger>
+                            <AccordionContent>
+                                <div className="space-y-4 pt-2">
+                                    {section.responses.map(response => (
+                                        <div key={response.quote} className="p-3 border rounded-lg bg-background/50 text-left">
+                                            <p className="font-bold text-foreground text-base">{response.quote}</p>
+                                            <p className="text-sm text-muted-foreground mt-1">Por qué funciona: {response.why}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </AccordionContent>
+                        </AccordionItem>
                     ))}
-                    <div className="pt-4 mt-4 border-t text-center text-muted-foreground text-sm">
-                        <p>Estas frases no son máscaras. Son formas de cuidarte mientras te das el permiso de estar en proceso.</p>
-                    </div>
+                </Accordion>
+                 <div className="pt-6 mt-4 border-t text-center text-muted-foreground text-sm">
+                    <p>Estas frases no son máscaras. Son formas de cuidarte mientras te das el permiso de estar en proceso.</p>
                 </div>
             </ScrollArea>
         </div>
