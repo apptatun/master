@@ -13,8 +13,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
-import type { FeedbackEntry, Mission } from '@/lib/types';
-import { BookOpen, Trophy } from 'lucide-react';
+import type { FeedbackEntry, Mission, MissionFeedbackData } from '@/lib/types';
+import { BookOpen, Trophy, Sparkles } from 'lucide-react';
 
 
 interface BitacoraDialogProps {
@@ -24,10 +24,10 @@ interface BitacoraDialogProps {
   missions: Mission[];
 }
 
-const missionFeelingMap: { [key: string]: { emoji: string; color: string } } = {
-    'Mal': { emoji: '😞', color: 'bg-red-200 text-red-900' },
-    'Más o menos': { emoji: '😐', color: 'bg-yellow-200 text-yellow-900' },
-    'Un poco mejor': { emoji: '😊', color: 'bg-green-200 text-green-900' },
+const missionFeelingMap: { [key in MissionFeedbackData['feeling']]: { label: string; color: string; wisdom?: string } } = {
+    'Mal': { label: 'Día difícil', color: 'bg-red-200 text-red-900', wisdom: 'Pero lo hiciste. Y eso es lo que importa.' },
+    'Más o menos': { label: 'Paso a paso', color: 'bg-yellow-200 text-yellow-900' },
+    'Un poco mejor': { label: 'Buena señal', color: 'bg-green-200 text-green-900' },
 }
 
 export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: BitacoraDialogProps) {
@@ -50,7 +50,7 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
             <div>
               <DialogTitle className="font-headline text-2xl sm:text-3xl">Mi Diario de Movidas</DialogTitle>
               <DialogDescription className="text-base pt-1">
-                Tu registro de victorias. Úsalo como defensa contra la duda en los días difíciles.
+                Tu registro personal de victorias. Úsalo como tu defensa contra la duda en los días difíciles.
               </DialogDescription>
             </div>
           </div>
@@ -59,19 +59,26 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
         <div className="flex-1 min-h-0 overflow-y-auto my-4 pr-4 -mr-4">
             <div className="space-y-4">
                 {missionHistory.length > 0 ? missionHistory.map((entry) => {
-                    const feelingInfo = missionFeelingMap[entry.data.feeling] || { emoji: '🤔', color: 'bg-gray-200 text-gray-900' };
+                    const feelingInfo = missionFeelingMap[entry.data.feeling] || { label: 'Registrado', color: 'bg-gray-200 text-gray-900' };
                     return (
-                        <div key={entry.id} className="p-4 border rounded-lg bg-background/50 text-left flex items-start gap-4">
-                            <span className="text-2xl mt-1">{feelingInfo.emoji}</span>
-                            <div className='flex-grow'>
-                                <p className="font-bold text-foreground text-lg">{getMissionTitle(entry.data.missionId)}</p>
-                                <p className="text-sm text-muted-foreground">
-                                    {format(new Date(entry.date), "d 'de' MMMM, yyyy 'a las' HH:mm", { locale: es })}
-                                </p>
+                        <div key={entry.id} className="p-4 border rounded-lg bg-background/50 text-left flex flex-col gap-2">
+                            <div className="flex justify-between items-start gap-4">
+                                <p className="font-bold text-foreground text-lg flex-grow">{getMissionTitle(entry.data.missionId)}</p>
+                                <Badge variant="outline" className={`font-bold text-sm flex-shrink-0 ${feelingInfo.color}`}>
+                                    {feelingInfo.label}
+                                </Badge>
                             </div>
-                            <Badge variant="outline" className={`font-bold text-sm ${feelingInfo.color}`}>
-                                {entry.data.feeling}
-                            </Badge>
+                             <p className="text-sm text-muted-foreground">
+                                {format(new Date(entry.date), "d 'de' MMMM, yyyy 'a las' HH:mm", { locale: es })}
+                            </p>
+                            {feelingInfo.wisdom && (
+                                <div className="mt-2 pt-2 border-t border-dashed">
+                                    <p className="text-sm text-accent-foreground/80 italic flex items-center gap-2">
+                                        <Sparkles className="h-4 w-4 text-accent" />
+                                        {feelingInfo.wisdom}
+                                    </p>
+                                </div>
+                            )}
                         </div>
                     )
                 }) : (
