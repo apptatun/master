@@ -41,23 +41,7 @@ export interface Mission {
   title: string;
   description: string;
   type: 'checkbox' | 'interactive';
-  category: 
-    // Legacy categories - to be phased out
-    | 'cooking' 
-    | 'organizing' 
-    | 'social' 
-    | 'going-out' 
-    | 'generic' 
-    | 'personal-care'
-    | 'minimal-organization'
-    | 'emotional-management'
-    | 'digital'
-    | 'advanced'
-    | 'financial'
-    | 'career'
-    | 'physical-wellbeing'
-    // New structure
-    | SubCategory;
+  category: SubCategory | 'generic';
   steps?: Step[];
   why?: string;
   reward?: string;
