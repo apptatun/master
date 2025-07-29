@@ -77,7 +77,6 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
                 <TabsContent value="missions" className="h-full mt-0">
                     <div className="space-y-4">
                         {missionHistory.length > 0 ? missionHistory.map((entry) => {
-                            if (entry.type !== 'mission') return null;
                             const feelingInfo = missionFeelingMap[entry.data.feeling] || { emoji: '🤔', color: 'bg-gray-200 text-gray-900' };
                             return (
                                 <div key={entry.id} className="p-4 border rounded-lg bg-background/50 text-left flex items-start gap-4">
@@ -105,7 +104,6 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
                 <TabsContent value="armory" className="h-full mt-0">
                      <div className="space-y-4">
                         {armoryHistory.length > 0 ? armoryHistory.map((entry) => {
-                            if (entry.type !== 'armory') return null;
                             const feelingInfo = armoryFeelingMap[entry.data.feeling] || { color: 'bg-gray-200 text-gray-900' };
                             return (
                                 <div key={entry.id} className="p-4 border rounded-lg bg-background/50 text-left flex flex-col gap-2">
@@ -125,12 +123,18 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
                             )
                         }) : (
                             <div className="text-center text-muted-foreground py-10 px-4">
-                                <p className="font-bold text-lg text-foreground mb-2">¿Qué es esto?</p>
+                                <p className="font-bold text-lg text-foreground mb-2">Aquí no hay que hacer nada, solo observar.</p>
                                 <p>
-                                    Cada vez que uses una respuesta de la "Armería" y registres cómo te sentiste, aparecerá aquí.
+                                    Este es el resultado de tus acciones en la "Armería de Respuestas".
                                 </p>
-                                <p className="mt-2">
-                                    Con el tiempo, este radar te ayudará a ver qué "escudos" te dan más poder y cuáles necesitas ajustar. <span className="font-bold">Es tu herramienta para conocerte.</span>
+                                <ol className="list-decimal list-inside text-left mt-4 bg-background/50 p-4 rounded-lg text-foreground">
+                                    <li>Ve a la <span className="font-bold">Armería</span> (el ícono del escudo 🛡️).</li>
+                                    <li>Elige una frase que te sirva.</li>
+                                    <li>Haz clic en <span className="font-bold">"Lo usé, ¿cómo me sentí?"</span>.</li>
+                                    <li>Tu registro aparecerá aquí.</li>
+                                </ol>
+                                <p className="mt-4">
+                                    Con el tiempo, este radar te ayudará a ver qué "escudos" te dan más poder.
                                 </p>
                             </div>
                         )}
