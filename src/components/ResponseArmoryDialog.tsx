@@ -17,9 +17,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { Popover, PopoverContent, PopoverTrigger, PopoverPortal } from '@/components/ui/popover';
-import { Command, CommandGroup, CommandItem, CommandList } from '@/components/ui/command';
 import type { FeedbackEntry, ArmoryFeedbackData } from '@/lib/types';
+import { 
+  DropdownMenu, 
+  DropdownMenuContent, 
+  DropdownMenuItem, 
+  DropdownMenuTrigger 
+} from '@/components/ui/dropdown-menu';
+
 
 interface ResponseArmoryDialogProps {
   isOpen: boolean;
@@ -143,7 +148,6 @@ const armoryFeelings = [
 
 
 function ArmoryFeedbackSelector({ quote, onSaveFeedback }: { quote: string, onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void }) {
-    const [open, setOpen] = useState(false);
 
     const handleSelect = (feeling: ArmoryFeedbackData['feeling']) => {
         onSaveFeedback({
@@ -153,46 +157,35 @@ function ArmoryFeedbackSelector({ quote, onSaveFeedback }: { quote: string, onSa
                 feeling
             }
         });
-        setOpen(false);
     }
 
     return (
-        <Popover open={open} onOpenChange={setOpen}>
-            <PopoverTrigger asChild>
+        <DropdownMenu>
+            <DropdownMenuTrigger asChild>
                 <Button
                     variant="link"
-                    role="combobox"
-                    aria-expanded={open}
                     className="p-0 h-auto text-xs text-muted-foreground hover:text-accent"
                 >
                     Lo usé, ¿cómo me sentí?
                 </Button>
-            </PopoverTrigger>
-            <PopoverPortal>
-                <PopoverContent className="w-[200px] p-0">
-                    <Command>
-                        <CommandList>
-                            <CommandGroup>
-                                {armoryFeelings.map((feeling) => (
-                                    <CommandItem
-                                        key={feeling.value}
-                                        onSelect={() => handleSelect(feeling.label)}
-                                    >
-                                        {feeling.label}
-                                    </CommandItem>
-                                ))}
-                            </CommandGroup>
-                        </CommandList>
-                    </Command>
-                </PopoverContent>
-            </PopoverPortal>
-        </Popover>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent>
+                {armoryFeelings.map((feeling) => (
+                    <DropdownMenuItem
+                        key={feeling.value}
+                        onSelect={() => handleSelect(feeling.label)}
+                    >
+                        {feeling.label}
+                    </DropdownMenuItem>
+                ))}
+            </DropdownMenuContent>
+        </DropdownMenu>
     );
 }
 
 export function ResponseArmoryDialog({ isOpen, onClose, onSaveFeedback }: ResponseArmoryDialogProps) {
   return (
-    <Dialog open={isOpen} onOpenChange={onClose} modal={false}>
+    <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-xl bg-card flex flex-col max-h-[90vh]">
         <DialogHeader>
           <DialogTitle className="font-headline text-2xl sm:text-3xl">Armería de Respuestas</DialogTitle>
