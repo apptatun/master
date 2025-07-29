@@ -12,7 +12,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Ear, Eye, Hand, Quote } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const groundingSteps = [
     { icon: Eye, text: "Nombra 5 cosas que puedas ver a tu alrededor." },
@@ -20,8 +20,27 @@ const groundingSteps = [
     { icon: Ear, text: "Escucha 3 sonidos distintos (tu respiración, un ruido lejano, el silencio)." },
 ];
 
+const thoughtBank = [
+    'No tengo que tener todo resuelto hoy.',
+    'Está bien ir lento, siempre y cuando no me detenga.',
+    'Esto también va a pasar.',
+    'Mi valor no se mide por mi productividad.',
+];
+
 export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) {
   const [currentStep, setCurrentStep] = useState(0);
+  const [activeQuote, setActiveQuote] = useState('');
+
+  useEffect(() => {
+    if (isOpen) {
+        // Select a new random quote every time the dialog opens
+        const randomIndex = Math.floor(Math.random() * thoughtBank.length);
+        setActiveQuote(thoughtBank[randomIndex]);
+        // Reset the grounding exercise
+        setCurrentStep(0);
+    }
+  }, [isOpen]);
+
 
   const handleNextStep = () => {
     setCurrentStep((prev) => (prev + 1) % groundingSteps.length);
@@ -79,7 +98,7 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
               <div className="flex flex-col items-center justify-center text-center h-full p-8 border rounded-lg bg-background/50">
                   <Quote className="h-12 w-12 text-accent mb-4" />
                   <p className="text-3xl font-bold font-headline text-foreground leading-tight">
-                    No tengo que tener todo resuelto hoy.
+                    {activeQuote}
                   </p>
                   <p className="text-lg text-muted-foreground mt-4">Repítelo las veces que necesites. Es un permiso para estar en proceso.</p>
               </div>
