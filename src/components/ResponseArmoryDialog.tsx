@@ -11,7 +11,6 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 
 interface ResponseArmoryDialogProps {
   isOpen: boolean;
@@ -21,7 +20,6 @@ interface ResponseArmoryDialogProps {
 const sections = [
     {
         title: 'Para cuando te preguntan: "¿Qué estás haciendo con tu vida?"',
-        key: 'que-haces',
         responses: [
             {
                 quote: '“Estoy en un proceso de exploración para entender qué quiero hacer. Agradezco tu paciencia.”',
@@ -35,7 +33,6 @@ const sections = [
     },
     {
         title: 'Para cuando te dicen: "Tenés que hacer algo, no podés estar así"',
-        key: 'tenes-que-hacer',
         responses: [
             {
                 quote: '“Entiendo tu preocupación y te agradezco que te intereses. Estoy dando pasos chiquitos todos los días para construir una rutina, aunque tal vez no se note desde afuera.”',
@@ -49,7 +46,6 @@ const sections = [
     },
     {
         title: 'Para cuando te preguntan qué hiciste hoy:',
-        key: 'que-hiciste-hoy',
         responses: [
             {
                 quote: '“Hoy me enfoqué en organizar mi espacio para tener más claridad.”',
@@ -63,7 +59,6 @@ const sections = [
     },
     {
         title: 'Para cuando comparan con otros ("Mirá a tu primo...")',
-        key: 'comparaciones',
         responses: [
             {
                 quote: '“Cada persona tiene su propio ritmo y su propio camino. Yo estoy enfocado en el mío ahora.”',
@@ -77,7 +72,6 @@ const sections = [
     },
     {
         title: 'Para cuando juzgan tu ritmo:',
-        key: 'tu-ritmo',
         responses: [
             {
                 quote: '“Estoy honrando mi propio tempo. La consistencia, no la velocidad, es lo que construye cimientos sólidos.”',
@@ -87,7 +81,6 @@ const sections = [
     },
     {
         title: '💭 Banco de Pensamientos (Escudos para tu voz interior)',
-        key: 'banco-pensamientos',
         responses: [
             {
                 quote: '“No tengo que tener todo resuelto hoy.”',
@@ -109,7 +102,6 @@ const sections = [
     },
     {
         title: '🤖 Modo "Sigilo" (Respuestas de baja energía)',
-        key: 'modo-sigilo',
         responses: [
             {
                 quote: '“Estoy en una etapa de reinvención profesional. Gracias por preguntar.”',
@@ -142,21 +134,13 @@ export function ResponseArmoryDialog({ isOpen, onClose }: ResponseArmoryDialogPr
           </DialogDescription>
         </DialogHeader>
         
-        <Tabs defaultValue={sections[0].key} className="flex flex-col flex-1 min-h-0 pt-4">
-            <TabsList className="h-auto flex-wrap justify-start">
-                {sections.map(section => (
-                    <TabsTrigger key={section.key} value={section.key} className="text-xs sm:text-sm text-left">
-                        {section.title.split('(')[0]}
-                    </TabsTrigger>
-                ))}
-            </TabsList>
-
-            <div className="flex-1 min-h-0 overflow-y-auto mt-2">
-                <ScrollArea className="h-full pr-4 -mr-4">
+        <div className="flex-1 min-h-0 overflow-y-auto my-4">
+            <ScrollArea className="h-full pr-4 -mr-4">
+                <div className="space-y-6">
                     {sections.map(section => (
-                        <TabsContent key={section.key} value={section.key} className="mt-2">
+                        <div key={section.title}>
+                            <h4 className="font-bold text-lg text-foreground mb-3">{section.title}</h4>
                             <div className="space-y-4">
-                                <h4 className="font-bold text-lg text-foreground mb-3">{section.title}</h4>
                                 {section.responses.map(response => (
                                     <div key={response.quote} className="p-3 border rounded-lg bg-background/50 text-left">
                                         <p className="font-bold text-foreground text-base">{response.quote}</p>
@@ -164,14 +148,14 @@ export function ResponseArmoryDialog({ isOpen, onClose }: ResponseArmoryDialogPr
                                     </div>
                                 ))}
                             </div>
-                        </TabsContent>
+                        </div>
                     ))}
                     <div className="pt-4 mt-4 border-t text-center text-muted-foreground text-sm">
                         <p>Estas frases no son máscaras. Son formas de cuidarte mientras te das el permiso de estar en proceso.</p>
                     </div>
-                </ScrollArea>
-            </div>
-        </Tabs>
+                </div>
+            </ScrollArea>
+        </div>
 
         <DialogFooter className="mt-auto pt-4 border-t">
           <Button onClick={onClose} className="w-full sm:w-auto">Entendido</Button>
