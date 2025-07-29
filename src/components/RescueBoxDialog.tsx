@@ -11,8 +11,10 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Ear, Eye, Hand, Quote, Wind, Droplets, Smile, Shirt, Apple, ClipboardCheck } from 'lucide-react';
+import { Ear, Eye, Hand, Quote, Wind, Droplets, Smile, Shirt, Apple, Waves, Bath, HeartHandshake } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+
 
 const groundingSteps = [
     { icon: Eye, text: "Nombra 5 cosas que puedas ver a tu alrededor." },
@@ -28,11 +30,40 @@ const thoughtBank = [
 ];
 
 const autocuidadoItems = [
-    { icon: Droplets, text: 'Beber un vaso de agua' },
-    { icon: Smile, text: 'Cepillarse los dientes' },
-    { icon: Shirt, text: 'Ponerse ropa limpia' },
-    { icon: Apple, text: 'Comer una fruta o algo ligero' },
+    { 
+        icon: Droplets, 
+        title: '"Primer Sostén"',
+        description: 'Toma un vaso de agua fría. Siente cómo desciende. Cada trago es un sí a estar aquí.'
+    },
+    { 
+        icon: Shirt, 
+        title: '"Armadura Ligera"',
+        description: 'Ponte una prenda limpia que te abrace suave. Nota su textura. Es un escudo invisible contra el caos.'
+    },
+    { 
+        icon: Waves,
+        title: '"Purificación Simbólica"',
+        description: 'Moja tu rostro 3 veces. Imagina que lavas lo pesado. Seca suavemente, como si te cuidaras.'
+    },
 ];
+
+const autocuidadoProfundo = [
+     { 
+        icon: Bath, 
+        title: '"Renacer en 5 Minutos"',
+        description: 'Una ducha express. Deja que el agua se lleve lo que sobra. No te laves, déjate lavar.'
+    },
+    { 
+        icon: Apple, 
+        title: '"Ofrenda Vital"',
+        description: 'Come una fruta o algo ligero. Mastica lentamente. Honra su dulzura nutriendo tu cuerpo.'
+    },
+    { 
+        icon: Smile, 
+        title: '"Restaurar tu Sonrisa"',
+        description: 'Cepíllate los dientes. Es un gesto simple para recuperar la sensación de ser tú.'
+    },
+]
 
 export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) {
   const [currentStep, setCurrentStep] = useState(0);
@@ -61,7 +92,7 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
         <DialogHeader>
           <DialogTitle className="font-headline text-2xl sm:text-3xl">Caja de Rescate</DialogTitle>
           <DialogDescription className="text-base pt-2">
-            Herramientas de acción rápida para cuando todo abruma. Sin presión, solo una ayuda para volver a tu centro.
+            Herramientas para reconectar cuando la mente naufraga. Sin presión, solo un apoyo para volver a tu centro.
           </DialogDescription>
         </DialogHeader>
 
@@ -70,7 +101,7 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
             <TabsTrigger value="respiracion"><Wind className="h-4 w-4 sm:mr-2"/> <span className="hidden sm:inline">Respirar</span></TabsTrigger>
             <TabsTrigger value="anclaje"><Hand className="h-4 w-4 sm:mr-2"/> <span className="hidden sm:inline">Anclaje</span></TabsTrigger>
             <TabsTrigger value="frase"><Quote className="h-4 w-4 sm:mr-2"/> <span className="hidden sm:inline">Frase</span></TabsTrigger>
-            <TabsTrigger value="autocuidado"><ClipboardCheck className="h-4 w-4 sm:mr-2"/> <span className="hidden sm:inline">Autocuidado</span></TabsTrigger>
+            <TabsTrigger value="rituales"><HeartHandshake className="h-4 w-4 sm:mr-2"/> <span className="hidden sm:inline">Rituales</span></TabsTrigger>
           </TabsList>
           
           <div className="flex-grow overflow-y-auto mt-4">
@@ -111,23 +142,57 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
                   <p className="text-lg text-muted-foreground mt-4">Repítelo las veces que necesites. Es un permiso para estar en proceso.</p>
               </div>
             </TabsContent>
-
-            <TabsContent value="autocuidado" className="h-full">
-              <div className="flex flex-col text-left h-full p-4 border rounded-lg bg-background/50">
-                  <p className="text-lg text-muted-foreground mb-4">Para cuando la energía no alcanza ni para lo básico. Esto no es una orden, es un recordatorio amable de lo que tu cuerpo necesita.</p>
+            
+            <TabsContent value="rituales" className="h-full">
+              <div className="flex flex-col text-left h-full p-2 sm:p-4 border rounded-lg bg-secondary/50">
+                  <div className='text-center mb-4'>
+                    <h3 className='font-bold text-lg text-foreground'>Rituales de Reanimación</h3>
+                    <p className="text-base text-muted-foreground">Pequeños actos sagrados para volver a habitar tu cuerpo. Elige solo uno.</p>
+                  </div>
                   <div className="space-y-3">
                       {autocuidadoItems.map(item => {
                           const Icon = item.icon;
                           return (
-                            <div key={item.text} className="flex items-center gap-4 p-3 rounded-lg bg-secondary">
-                                <Icon className="h-6 w-6 text-secondary-foreground flex-shrink-0" />
-                                <p className="text-lg text-secondary-foreground font-semibold">
-                                    {item.text}
-                                </p>
+                            <div key={item.title} className="flex items-start gap-4 p-4 rounded-lg bg-card border shadow-sm">
+                                <Icon className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
+                                <div>
+                                    <p className="text-lg text-foreground font-bold">
+                                        {item.title}
+                                    </p>
+                                    <p className="text-base text-muted-foreground">
+                                        {item.description}
+                                    </p>
+                                </div>
                             </div>
                           );
                       })}
                   </div>
+
+                  <Accordion type="single" collapsible className="w-full mt-4">
+                    <AccordionItem value="item-1" className="border-none">
+                      <AccordionTrigger className="font-bold text-foreground hover:no-underline text-base rounded-md px-4 bg-card border shadow-sm">
+                        ¿Necesitas más?
+                      </AccordionTrigger>
+                      <AccordionContent className="pt-3 space-y-3">
+                         {autocuidadoProfundo.map(item => {
+                          const Icon = item.icon;
+                          return (
+                            <div key={item.title} className="flex items-start gap-4 p-4 rounded-lg bg-card border shadow-sm">
+                                <Icon className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
+                                <div>
+                                    <p className="text-lg text-foreground font-bold">
+                                        {item.title}
+                                    </p>
+                                    <p className="text-base text-muted-foreground">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </div>
+                          );
+                      })}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
               </div>
             </TabsContent>
           </div>
@@ -140,3 +205,5 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
     </Dialog>
   );
 }
+
+    
