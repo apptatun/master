@@ -21,7 +21,7 @@ const dailyMissionPlan: string[] = [
     'm43',   // Día 3: OPERACIÓN "RINCÓN DE CONQUISTA"
     'm4',    // Día 4: OPERACIÓN LAVARROPAS
     'm39',   // Día 5: Guardián de la Vestimenta (20 min)
-    'm8',    // Día 6: Di "buen día" o "gracias"
+    'm26',   // Día 6: Ejercicio de Anclaje 5-4-3-2-1
     'm13',   // Día 7: Ponte ropa limpia (2 min)
     'm1',    // Día 8: OPERACIÓN HORNALLA
     'm23',   // Día 9: Revisa tu saldo bancario

@@ -220,7 +220,7 @@ export const missions: Mission[] = [
    {
     id: 'm9',
     title: 'Hacé tu cama (2 min)',
-    description: 'Estira las sábanas.',
+    description: 'Estira las sábanas y el acolchado para empezar el día con un logro visible.',
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Es una "victoria de 2 minutos" que le ordena a tu cerebro que el día ya empezó. Es el primer paso para tomar control.',
@@ -235,7 +235,7 @@ export const missions: Mission[] = [
   {
     id: 'm14',
     title: 'Ordena un solo lugar (7 min)',
-    description: 'Elegí UNA sola cosa y ordenala (la silla con ropa, el escritorio).',
+    description: 'Elegí UNA sola cosa y ordenala (la silla con ropa, un estante del escritorio).',
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Concentrarte en un solo punto de mejora evita que te sientas abrumado por el desorden general.',
@@ -251,7 +251,7 @@ export const missions: Mission[] = [
    {
     id: 'm17',
     title: 'Descongela el freezer',
-    description: 'Descongelar el freezer sin causar una inundación.',
+    description: 'Descongelar el freezer sin causar una inundación ni usar un secador de pelo.',
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Enfrentar una tarea doméstica grande te demuestra que podés manejar proyectos más complejos de lo que creés.',
@@ -285,7 +285,7 @@ export const missions: Mission[] = [
   {
     id: 'm18',
     title: 'Saca la basura',
-    description: 'Saca los residuos sin posponer.',
+    description: 'Saca los residuos sin posponer para liberar espacio físico y mental.',
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Completar una tarea rutinaria de inmediato rompe el ciclo de la procrastinación y libera espacio mental.',
@@ -395,7 +395,7 @@ export const missions: Mission[] = [
   {
     id: 'm22',
     title: 'Envía un email de consulta',
-    description: 'Enviar una consulta a un servicio técnico o administrativo.',
+    description: 'Enviar una consulta a un servicio técnico o administrativo por email.',
     type: 'interactive',
     category: 'dominio-digital',
     why: 'Usar la comunicación escrita te permite pensar y editar, eliminando la presión de la respuesta inmediata.',
@@ -422,7 +422,7 @@ export const missions: Mission[] = [
   {
     id: 'm33',
     title: 'Crea tu primer CV',
-    description: 'Crear tu primer CV usando una plantilla simple.',
+    description: 'Crear tu primer CV usando una plantilla simple, aunque no tengas experiencia laboral.',
     type: 'interactive',
     category: 'dominio-digital',
     why: 'Plasmar tus (pocas o muchas) experiencias en un documento te ayuda a ver tu propio valor y potencial.',
@@ -458,7 +458,7 @@ export const missions: Mission[] = [
   {
     id: 'm23',
     title: 'Revisa tu saldo bancario',
-    description: 'Revisar tu saldo bancario online.',
+    description: 'Revisar tu saldo bancario online sin juzgar el número, solo para informarte.',
     type: 'interactive',
     category: 'finanzas-ninja',
     why: 'Mirar tus finanzas de frente, aunque sea por 5 segundos, disminuye el poder que la incertidumbre tiene sobre vos.',
@@ -473,7 +473,7 @@ export const missions: Mission[] = [
   {
     id: 'm30',
     title: 'Paga una factura online',
-    description: 'Paga una factura o servicio online por primera vez.',
+    description: 'Paga una factura o servicio online por primera vez para tomar control de tus responsabilidades.',
     type: 'interactive',
     category: 'finanzas-ninja',
     why: 'Tomar control de una pequeña responsabilidad financiera reduce la ansiedad sobre "el dinero" y te empodera.',
@@ -506,7 +506,7 @@ export const missions: Mission[] = [
   {
     id: 'm5',
     title: 'Levántate e hidrátate (1 min)',
-    description: 'Levantate e hidrátate.',
+    description: 'Levantate y bebe un vaso de agua al sonar la alarma. Sin posponer.',
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Romper el ciclo de postergación con una acción física simple entrena tu "músculo" de la voluntad.',
@@ -521,7 +521,7 @@ export const missions: Mission[] = [
   {
     id: 'm6',
     title: 'Bebe un vaso de agua (1 min)',
-    description: 'Bebe un vaso de agua al despertar.',
+    description: 'Bebe un vaso de agua al despertar, antes de tocar el celular.',
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Es la forma más rápida de reactivar tu cuerpo y mente después de horas de ayuno.',
@@ -535,7 +535,7 @@ export const missions: Mission[] = [
   {
     id: 'm12',
     title: 'Cepíllate los dientes (3 min)',
-    description: 'Cepíllate los dientes.',
+    description: 'Cepíllate los dientes como un acto de autocuidado consciente.',
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Es un acto de autocuidado básico que envía una señal a tu cerebro de que mereces atención y limpieza.',
@@ -550,7 +550,7 @@ export const missions: Mission[] = [
   {
     id: 'm13',
     title: 'Ponte ropa limpia (2 min)',
-    description: 'Ponte ropa limpia, aunque no salgas.',
+    description: 'Ponte ropa limpia, aunque no salgas de casa, para cambiar tu estado mental.',
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Cambiar el pijama por ropa te ayuda a diferenciar entre descanso y actividad, preparando tu mente para el día.',
@@ -565,7 +565,7 @@ export const missions: Mission[] = [
   {
     id: 'm16',
     title: 'Apaga pantallas 1h antes de dormir',
-    description: 'Desconéctate para conectar con tu descanso.',
+    description: 'Desconéctate de las pantallas para conectar con tu descanso.',
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Regular tus ciclos de sueño es el hack de productividad más potente que existe.',
@@ -580,7 +580,7 @@ export const missions: Mission[] = [
   {
     id: 'm24',
     title: 'Ducha express de 5 minutos',
-    description: 'Ducha express de 5 minutos usando un timer.',
+    description: 'Ducha express de 5 minutos usando un timer para energizarte.',
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Completar una tarea básica con un límite de tiempo te energiza y te da una sensación de eficiencia.',
@@ -595,7 +595,7 @@ export const missions: Mission[] = [
   {
     id: 'm25',
     title: 'Come 1 fruta y 1 vaso de agua',
-    description: 'Ingerir 1 fruta y 1 vaso de agua.',
+    description: 'Ingerir 1 fruta y 1 vaso de agua como un combo de energía rápida.',
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Es el combo de energía y cuidado más simple y efectivo que existe. Le estás dando a tu cuerpo combustible de calidad.',
@@ -609,39 +609,43 @@ export const missions: Mission[] = [
   },
   {
     id: 'm26',
-    title: 'Ejercicio de anclaje (5 sonidos, 3 colores)',
-    description: 'Nombrar 5 sonidos que oyes y 3 colores que ves.',
+    title: 'Ejercicio de Anclaje 5-4-3-2-1',
+    description: 'Una técnica rápida para calmar la ansiedad y volver al presente usando tus 5 sentidos.',
     type: 'interactive',
     category: 'laboratorio-mental',
-    why: 'Este ejercicio te saca de tu cabeza y te ancla en el presente, cortando de raíz el espiral de ansiedad.',
+    why: 'Este ejercicio te saca de tu cabeza y te ancla en el presente, cortando de raíz el espiral de pensamientos ansiosos. Es una herramienta poderosa para manejar momentos de pánico o agobio.',
     reward: 'Ancla Sensorial',
     steps: [
       {
-        title: 'Paso 1: Hacé una pausa',
-        description: 'No importa dónde estés. Simplemente detente por un momento. No necesitas cerrar los ojos.'
+        title: 'Paso 1: Hacé una pausa y respira',
+        description: 'No importa dónde estés. Detente un momento. Toma una respiración profunda y lenta para empezar.'
       },
       {
-        title: 'Paso 2: Escuchá',
-        description: 'Concentrate en tu oído. Identificá cinco sonidos distintos. El teclado, un auto afuera, tu propia respiración, un pájaro, el zumbido de la heladera. Nombralos en tu mente.'
+        title: 'Paso 2: Observa 5 cosas',
+        description: 'Mira a tu alrededor y nombra mentalmente 5 objetos que puedas ver. Pueden ser cualquier cosa: una lapicera, una silla, una mancha en la pared, una nube, tu propia mano. Solo obsérvalos.'
       },
       {
-        title: 'Paso 3: Mirá',
-        description: 'Ahora, usá tu vista. Encontrá tres colores diferentes a tu alrededor. El azul de la pantalla, el negro de tu silla, el blanco de la pared. Nombralos.'
+        title: 'Paso 3: Siente 4 cosas',
+        description: 'Ahora, presta atención a tu sentido del tacto. Identifica 4 cosas que puedas sentir. Por ejemplo: la textura de tu ropa, la silla bajo tu peso, la temperatura del aire, tus pies en el suelo.'
       },
       {
-        title: 'Paso 4: Respirá',
-        description: 'Tomá una respiración profunda y sentí cómo tus pies tocan el suelo o tu cuerpo se apoya en la silla. Ya está.'
+        title: 'Paso 4: Escucha 3 cosas',
+        description: 'Cierra los ojos si te ayuda. Concéntrate en 3 sonidos que puedas oír. Puede ser el sonido de un auto a lo lejos, el zumbido de un aparato electrónico, tu propia respiración.'
       },
       {
-        title: 'Paso 5: ¡Anclado!',
-        description: 'Acabás de usar una técnica poderosa para calmar tu sistema nervioso. Es una herramienta que ahora tenés para siempre. ¡Victoria!'
+        title: 'Paso 5: Huele 2 cosas',
+        description: 'Concéntrate en tu olfato. ¿Qué puedes oler? Quizás el aroma del café, el perfume de alguien, o simplemente el olor neutro de la habitación. Si no hueles nada, intenta recordar un olor que te guste.'
+      },
+       {
+        title: 'Paso 6: Saborea 1 cosa',
+        description: 'Finalmente, presta atención a tu sentido del gusto. Nombra 1 cosa que puedas saborear. Puede ser el gusto que quedó de tu última comida, o simplemente la sensación de tu propia boca. ¡Listo! Volviste al presente.'
       }
     ]
   },
   {
     id: 'm27',
     title: 'Escribe una preocupación y rómpela',
-    description: 'Escribir una única preocupación en un papel y romperlo.',
+    description: 'Escribir una única preocupación en un papel y destruirlo para quitarle poder.',
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Externalizar un pensamiento le quita poder y el acto físico de destruirlo ofrece un cierre simbólico.',
@@ -656,7 +660,7 @@ export const missions: Mission[] = [
   {
     id: 'm34',
     title: 'Detecta un disparador de ansiedad',
-    description: 'Identificar UNA situación o pensamiento que te genera ansiedad y anotarlo.',
+    description: 'Identificar UNA situación o pensamiento que te genera ansiedad y anotarlo para entenderlo.',
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Nombrar a tu "monstruo" le quita poder. Lo que se puede nombrar, se puede manejar.',
@@ -671,7 +675,7 @@ export const missions: Mission[] = [
   {
     id: 'm35',
     title: 'Caminá 30 minutos',
-    description: 'Caminar durante 30 minutos escuchando un podcast o música.',
+    description: 'Caminar durante 30 minutos escuchando un podcast o música para despejar la mente.',
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'El movimiento físico es el antidepresivo natural más efectivo y accesible que existe.',
@@ -689,7 +693,7 @@ export const missions: Mission[] = [
   {
     id: 'm7',
     title: 'Sal a la puerta (5 min)',
-    description: 'Pisa la calle solo para observar.',
+    description: 'Pisa la calle solo para observar el entorno, sin ninguna otra meta.',
     type: 'interactive',
     category: 'primeros-pasos',
     why: 'Exponerte al entorno sin un objetivo reduce la ansiedad de "tener que hacer algo" afuera.',
@@ -704,7 +708,7 @@ export const missions: Mission[] = [
   {
     id: 'm11',
     title: 'Compra algo en el kiosco',
-    description: 'Comprar 1 producto sin voz temblorosa.',
+    description: 'Comprar 1 producto en un kiosco, una interacción de bajo riesgo.',
     type: 'interactive',
     category: 'primeros-pasos',
     why: 'Completar una transacción de bajo riesgo aumenta tu confianza para futuras interacciones.',
@@ -739,7 +743,7 @@ export const missions: Mission[] = [
   {
     id: 'm19',
     title: 'Toma un transporte público',
-    description: 'Sube al transporte público en una hora de poco tráfico.',
+    description: 'Sube al transporte público en una hora de poco tráfico para familiarizarte con el sistema.',
     type: 'interactive',
     category: 'primeros-pasos',
     why: 'Dominar una ruta de transporte público te da autonomía y expande tu mapa mental de la ciudad.',
@@ -777,7 +781,7 @@ export const missions: Mission[] = [
   {
     id: 'm20',
     title: 'Llega a un lugar usando GPS',
-    description: 'Llegar a un consultorio usando GPS.',
+    description: 'Llegar a un lugar desconocido, como un consultorio, usando el GPS de tu celular.',
     type: 'interactive',
     category: 'primeros-pasos',
     why: 'Aprender a confiar en una herramienta te quita la presión de tener que "saber" todo y reduce la ansiedad de perderte.',
@@ -809,7 +813,7 @@ export const missions: Mission[] = [
   {
     id: 'm8',
     title: 'Di "buen día" o "gracias"',
-    description: 'Decir "buen día" o "gracias".',
+    description: 'Decir "buen día" o "gracias" en una tienda o al recibir algo.',
     type: 'interactive',
     category: 'interacciones-humanas',
     why: 'Esta micro-interacción activa las neuronas espejo y te recuerda que eres parte de una comunidad.',
@@ -823,7 +827,7 @@ export const missions: Mission[] = [
   {
     id: 'm15',
     title: 'Reactivar Contacto (2 min)',
-    description: 'Mándale un "hola, ¿cómo estás?" a alguien de confianza.',
+    description: 'Mándale un "hola, ¿cómo estás?" a alguien de confianza con quien no hablas hace rato.',
     type: 'interactive',
     category: 'interacciones-humanas',
     why: 'Iniciar el contacto te pone en una posición activa en tus relaciones, en lugar de pasiva.',
@@ -838,7 +842,7 @@ export const missions: Mission[] = [
   {
     id: 'm21',
     title: 'Pide un turno médico por teléfono',
-    description: 'Pedir un turno médico por teléfono.',
+    description: 'Pedir un turno médico por teléfono, superando la barrera de la llamada.',
     type: 'interactive',
     category: 'interacciones-humanas',
     why: 'Superar la barrera de una llamada te entrena para interacciones más complejas y te da control sobre tu salud.',
@@ -886,7 +890,7 @@ export const missions: Mission[] = [
   {
     id: 'm28',
     title: 'Reintenta una acción que te costó',
-    description: 'Reintentar una acción que salteaste o sentiste que te costó.',
+    description: 'Reintentar una acción que salteaste o sentiste que te costó mucho en el pasado.',
     type: 'interactive',
     category: 'aventuras-de-crecimiento',
     why: 'La resiliencia no es no fallar, es volver a intentarlo. Esto fortalece tu auto-confianza más que 10 éxitos seguidos.',
@@ -901,7 +905,7 @@ export const missions: Mission[] = [
   {
     id: 'm32',
     title: 'Ve al cine solo',
-    description: 'Ir al cine a ver una película solo.',
+    description: 'Ir al cine a ver una película solo, como un acto de independencia.',
     type: 'interactive',
     category: 'aventuras-de-crecimiento',
     why: 'Disfrutar de tu propia compañía en un espacio público es un superpoder que aniquila la dependencia y el "qué dirán".',
