@@ -88,7 +88,13 @@ export default function DashboardPage() {
             if (fallbackMission) {
                 fullPlan.push(fallbackMission.id);
             } else {
-                break; // Avoid infinite loop if no generic missions are left
+                // If no generic missions are left, grab any mission not already in the plan
+                const anyOtherMission = missions.find(m => !fullPlan.includes(m.id));
+                if (anyOtherMission) {
+                    fullPlan.push(anyOtherMission.id);
+                } else {
+                    break; // Avoid infinite loop if all missions have been used
+                }
             }
         }
         
@@ -340,5 +346,4 @@ export default function DashboardPage() {
       </main>
     </div>
   );
-
-    
+}
