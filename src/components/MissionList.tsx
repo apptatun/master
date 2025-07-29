@@ -22,13 +22,14 @@ interface MissionListProps {
   onRest: () => void;
   onResume: () => void;
   onUseAlternative: (alternativeId: string) => void;
+  onSaveFeedback: (missionId: string, feeling: string) => void;
   isCurrentMissionCompleted: boolean;
   allMissionsCompleted: boolean;
   userChoseToRest: boolean;
   currentDay: number;
 }
 
-export function MissionList({ mission, completedMissions, onCompleteMission, onAdvanceToNextDay, onRest, onResume, onUseAlternative, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
+export function MissionList({ mission, completedMissions, onCompleteMission, onAdvanceToNextDay, onRest, onResume, onUseAlternative, onSaveFeedback, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [showRejectionMessage, setShowRejectionMessage] = useState(false);
@@ -48,6 +49,11 @@ export function MissionList({ mission, completedMissions, onCompleteMission, onA
   
   const handleDeclineMission = () => {
     setShowRejectionMessage(true);
+  }
+
+  const handleFeedback = (feeling: string) => {
+    onSaveFeedback(mission.id, feeling);
+    setShowFeedback(false);
   }
 
   const renderContent = () => {
@@ -80,7 +86,7 @@ export function MissionList({ mission, completedMissions, onCompleteMission, onA
     }
     
     if (showFeedback && isCurrentMissionCompleted) {
-      return <EmojiFeedback onFeedback={() => setShowFeedback(false)} />;
+      return <EmojiFeedback onFeedback={handleFeedback} />;
     }
 
     if (showRejectionMessage) {

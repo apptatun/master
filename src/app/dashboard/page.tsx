@@ -8,7 +8,7 @@ import { DashboardHeader } from '@/components/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
 import { Check, ArrowLeft, ArrowRight, Trophy, Sparkles } from 'lucide-react';
-import type { Mission } from '@/lib/types';
+import type { Mission, FeedbackEntry } from '@/lib/types';
 import Confetti from 'react-confetti';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -43,6 +43,7 @@ export default function DashboardPage() {
   const [userChoseToRest, setUserChoseToRest] = useState(false);
   const [restDate, setRestDate] = useState<string | null>(null);
   const [activeMissionId, setActiveMissionId] = useState<string | null>(null);
+  const [feedbackHistory, setFeedbackHistory] = useState<FeedbackEntry[]>([]);
 
 
   const { toast } = useToast();
@@ -83,6 +84,11 @@ export default function DashboardPage() {
             setRestDate(savedRestDate);
         }
     }
+
+    const savedFeedback = localStorage.getItem('feedbackHistory');
+    if (savedFeedback) {
+        setFeedbackHistory(JSON.parse(savedFeedback));
+    }
     
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -110,6 +116,13 @@ export default function DashboardPage() {
     }
   }, [restDate, isMounted]);
 
+  useEffect(() => {
+    if(isMounted) {
+        localStorage.setItem('feedbackHistory', JSON.stringify(feedbackHistory));
+    }
+  }, [feedbackHistory, isMounted]);
+
+
   const handleCompleteMission = (missionId: string) => {
     if (completedMissions.includes(missionId)) return;
 
@@ -136,6 +149,15 @@ export default function DashboardPage() {
       ),
       description: <div className="text-base">{mission?.reward || 'Un día a la vez.'}</div>
     });
+  };
+
+  const handleSaveFeedback = (missionId: string, feeling: string) => {
+    const newFeedback: FeedbackEntry = {
+        missionId,
+        feeling,
+        date: new Date().toISOString(),
+    };
+    setFeedbackHistory([...feedbackHistory, newFeedback]);
   };
   
   const handleAdvanceToNextDay = () => {
@@ -183,9 +205,11 @@ export default function DashboardPage() {
     setRestDate(null);
     setUserChoseToRest(false);
     setActiveMissionId(dailyMissionPlan[0]);
+    setFeedbackHistory([]);
     localStorage.removeItem('completedMissions');
     localStorage.removeItem('currentDayIndex');
     localStorage.removeItem('restDate');
+    localStorage.removeItem('feedbackHistory');
     toast({
       title: 'Progreso Reiniciado',
       description: 'Has vuelto al Día 1. ¡Una nueva oportunidad para empezar!',
@@ -250,6 +274,7 @@ export default function DashboardPage() {
                         onUseAlternative={handleUseAlternative}
                         userChoseToRest={userChoseToRest}
                         onResume={handleResume}
+                        onSaveFeedback={handleSaveFeedback}
                         allMissionsCompleted={currentDayIndex >= dailyMissionPlan.length - 1 && isCurrentMissionCompleted}
                         currentDay={currentDayIndex + 1}
                     />
@@ -262,3 +287,4 @@ export default function DashboardPage() {
     </div>
   );
 }
+

@@ -64,3 +64,9 @@ export interface Mission {
   reward?: string;
   alternativeMissionId?: string;
 }
+
+export interface FeedbackEntry {
+  missionId: string;
+  feeling: string;
+  date: string;
+}
