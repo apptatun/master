@@ -11,6 +11,7 @@ import { cn } from '@/lib/utils';
 import { AiAssistantModal } from './AiAssistantModal';
 import { EmojiFeedback } from './EmojiFeedback';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 
 interface MissionListProps {
@@ -136,8 +137,16 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                 
                 {mission.why && (
                     <div className="pt-3 mt-4 border-t">
-                        <p className="font-bold text-foreground text-base sm:text-xl">¿Por qué esto?</p>
-                        <p className="text-base sm:text-lg text-muted-foreground leading-snug">{mission.why}</p>
+                      <Accordion type="single" collapsible className="w-full">
+                        <AccordionItem value="item-1" className="border-b-0">
+                          <AccordionTrigger className="font-bold text-foreground text-base sm:text-xl hover:no-underline py-2">
+                            ¿Por qué esto ayuda?
+                          </AccordionTrigger>
+                          <AccordionContent className="text-base sm:text-lg text-muted-foreground leading-snug">
+                            {mission.why}
+                          </AccordionContent>
+                        </AccordionItem>
+                      </Accordion>
                     </div>
                 )}
               </CardContent>
