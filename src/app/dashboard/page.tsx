@@ -7,7 +7,7 @@ import { MissionList } from '@/components/MissionList';
 import { DashboardHeader } from '@/components/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
-import { Check, ArrowLeft, ArrowRight, Trophy } from 'lucide-react';
+import { Check, ArrowLeft, ArrowRight, Trophy, Sparkles } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import Confetti from 'react-confetti';
 import { Button } from '@/components/ui/button';
@@ -130,8 +130,8 @@ export default function DashboardPage() {
     toast({
       title: (
         <div className="flex items-center">
-          <Trophy className="mr-2 h-5 w-5 text-yellow-400" />
-          <span className="font-bold text-lg">{mission?.reward ? 'Logro Desbloqueado' : 'Un paso más'}</span>
+          <Sparkles className="mr-2 h-5 w-5 text-accent" />
+          <span className="font-bold text-lg">{mission?.reward ? '¡Bien hecho!' : 'Un paso más'}</span>
         </div>
       ),
       description: <div className="text-base">{mission?.reward || 'Un día a la vez.'}</div>

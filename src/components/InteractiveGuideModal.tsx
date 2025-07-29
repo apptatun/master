@@ -81,12 +81,12 @@ export function InteractiveGuideModal({
                     Anterior
                 </Button>
                 <Button onClick={handleNext} className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-6 py-6">
-                    {isLastStep ? 'Listo, ¡Un paso más!' : 'Próximo paso'}
+                    {isLastStep ? 'Listo, ¡un paso más!' : 'Próximo paso'}
                     {isLastStep && <Check className="ml-2 h-5 w-5" />}
                 </Button>
             </div>
             <Button variant="outline" onClick={handleComplete} className="w-full text-base">
-                Ya sé cómo seguir (Saltar y conquistar)
+                Ya sé cómo seguir (Marcar como hecho)
             </Button>
         </DialogFooter>
       </DialogContent>

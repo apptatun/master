@@ -11,7 +11,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'supervivencia-culinaria',
     why: 'Cada uno viene con su historia. Tal vez ya usaste la cocina mil veces. Tal vez nunca prendiste una hornalla porque no te dejaron, o te dio miedo. Todo está bien. Acá no se trata de “saber” o “no saber”. Se trata de empezar a hacer, con calma y dignidad.',
-    reward: 'Ingeniero Termodinámico LV.1',
+    reward: 'Fuego bajo control',
     steps: [
       {
         title: 'Paso 1: UBICAR HORNALLA ESTABLE',
@@ -42,7 +42,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'supervivencia-culinaria',
     why: 'Aprender a preparar un alimento básico te da independencia y te conecta con un ritual universal.',
-    reward: 'Sobreviviente del Arroz',
+    reward: 'Tu primer arroz',
     steps: [
         {
             title: 'Paso 1: Medir el arroz',
@@ -77,7 +77,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'supervivencia-culinaria',
     why: 'Participar en un ritual cultural te conecta con otros y te ofrece un momento de pausa y reflexión.',
-    reward: 'Cebador de Leyenda',
+    reward: 'Compañero del mate',
     steps: [
         {
             title: 'Paso 1: Calentar el agua',
@@ -112,7 +112,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'supervivencia-culinaria',
     why: 'Dominar una receta simple te da un rápido retorno de inversión en confianza culinaria.',
-    reward: 'Domador de Yemas',
+    reward: 'Huevo en su punto',
     steps: [
       { title: 'Poné una sartén a fuego medio con un chorrito de aceite.' },
       { title: 'Rompé el huevo en un tazón pequeño primero (así no caen cáscaras).' },
@@ -128,7 +128,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'supervivencia-culinaria',
     why: 'Tomar control de tu alimentación, aunque sea con algo mínimo, es un acto de auto-cuidado fundamental. Te demuestra que sos capaz de proveer para vos mismo y nutrirte intencionalmente, rompiendo el ciclo de la pasividad.',
-    reward: 'Chef de Autonomía Lv.1',
+    reward: 'Autonomía en la cocina',
     steps: [
         {
             title: 'DEFINIR OBJETIVO NUTRICIONAL',
@@ -161,7 +161,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Ver la pileta más limpia cambia la sensación general del lugar. Es un impacto visual inmediato que le demuestra a tu cerebro que podés generar orden a partir del caos, un pequeño pero poderoso acto de control.',
-    reward: 'GUARDIÁN DE LA PILETA LV.1',
+    reward: 'Pileta despejada',
     alternativeMissionId: 'm43',
     steps: [
         {
@@ -193,7 +193,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Este es un paso fundamental para tu autonomía. Puede que siempre lo haya hecho alguien más, o que te parezca una tarea complicada. Estamos acá para desglosarlo y que lo hagas a tu ritmo.',
-    reward: 'Maestro Lavandero LV.1',
+    reward: 'Ropa en proceso',
     steps: [
         {
             title: 'Paso 1: RECOPILAR SUMINISTROS',
@@ -224,7 +224,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Es una "victoria de 2 minutos" que le ordena a tu cerebro que el día ya empezó. Es el primer paso para tomar control.',
-    reward: 'Ingeniero/a de Camas',
+    reward: 'Cama lista para empezar',
     steps: [
         { title: 'Sacudí la almohada y ponela en la cabecera.'},
         { title: 'Tomá la sábana de arriba y estirala hasta cubrir la cama.'},
@@ -239,7 +239,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Concentrarte en un solo punto de mejora evita que te sientas abrumado por el desorden general.',
-    reward: 'Exterminador/a de Caos',
+    reward: 'Un rincón en orden',
      steps: [
         { title: 'Elegí un único lugar pequeño: una silla, una mesa, un estante.'},
         { title: 'Sacá todo de ahí.'},
@@ -255,6 +255,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Enfrentar una tarea doméstica grande te demuestra que podés manejar proyectos más complejos de lo que creés.',
+    reward: 'Un rincón en orden',
     steps: [
       {
         title: 'Paso 1: Seguridad y Preparación',
@@ -289,7 +290,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Completar una tarea rutinaria de inmediato rompe el ciclo de la procrastinación y libera espacio mental.',
-    reward: 'Expulsor de Residuos',
+    reward: 'Espacio liberado',
     steps: [
         { title: 'Atá la bolsa de basura actual.'},
         { title: 'Sacala del tacho.'},
@@ -304,7 +305,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Hacer estas tres cosas a propósito, incluso si ya las hacés, establece un tono de intención para tu día. Es una forma de decir "yo controlo el inicio de mi día". Es una victoria triple antes de empezar.',
-    reward: 'PIONERO DEL ALBA LV.1',
+    reward: 'Primer paso del día',
     steps: [
       {
         title: 'DESACTIVAR LA ALARMA Y PONER AMBOS PIES EN EL PISO',
@@ -335,7 +336,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Cuando el entorno físico está desordenado, la mente puede sentirse igual. Ordenar un espacio, por pequeño que sea, es una victoria visible e inmediata. Es como limpiar el "campo de batalla" de tu día a día, y te demuestra que SÍ podés influir y cambiar tu ambiente, un acto poderoso contra la sensación de estar "trabado".',
-    reward: 'Arquitecto de Mini-Espacios Lv.1',
+    reward: 'Un espacio con más calma',
     steps: [
         {
             title: 'IDENTIFICAR ZONA DE IMPACTO',
@@ -366,7 +367,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Organizar tu ropa o un cajón personal es un acto de empoderamiento y auto-organización. Te permite visualizar tus pertenencias, tomar decisiones sobre ellas y mantener un orden que reduce el estrés diario y la "pasividad". Es un entrenamiento para la toma de decisiones y la auto-organización, habilidades vitales para la independencia. Cada prenda que doblas y guardas en su lugar es un pequeño paso hacia un "yo" más capaz y en control.',
-    reward: 'Estratega Textil Lv.1',
+    reward: 'Un cajón más claro',
     steps: [
         {
             title: 'DELIMITAR ZONA DE ORDEN',
@@ -399,7 +400,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'dominio-digital',
     why: 'Usar la comunicación escrita te permite pensar y editar, eliminando la presión de la respuesta inmediata.',
-    reward: 'Embajador/a Digital',
+    reward: 'Consulta enviada',
     steps: [
       {
         title: 'Paso 1: Identifica el Asunto',
@@ -426,6 +427,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'dominio-digital',
     why: 'Plasmar tus (pocas o muchas) experiencias en un documento te ayuda a ver tu propio valor y potencial.',
+    reward: 'Consulta enviada',
     steps: [
       {
         title: 'Paso 1: Buscá una plantilla',
@@ -462,7 +464,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'finanzas-ninja',
     why: 'Mirar tus finanzas de frente, aunque sea por 5 segundos, disminuye el poder que la incertidumbre tiene sobre vos.',
-    reward: 'Vigilante Financiero',
+    reward: 'Información es poder',
     steps: [
         { title: 'Abrí la app de tu banco o la página web.'},
         { title: 'Ingresá con tu usuario y contraseña.'},
@@ -477,7 +479,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'finanzas-ninja',
     why: 'Tomar control de una pequeña responsabilidad financiera reduce la ansiedad sobre "el dinero" y te empodera.',
-    reward: 'Ninja de Pagos',
+    reward: 'Una cuenta menos',
     steps: [
       {
         title: 'Paso 1: La Factura',
@@ -510,7 +512,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Romper el ciclo de postergación con una acción física simple entrena tu "músculo" de la voluntad.',
-    reward: 'Activador/a Corporal',
+    reward: 'Cuerpo en movimiento',
     steps: [
         { title: 'Cuando suene la alarma, sentate en la cama.'},
         { title: 'Poné los dos pies en el suelo.'},
@@ -525,7 +527,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Es la forma más rápida de reactivar tu cuerpo y mente después de horas de ayuno.',
-    reward: 'Maestro/a de la Hidratación',
+    reward: 'Primer cuidado del día',
     steps: [
         { title: 'Tené un vaso de agua al lado de tu cama desde la noche anterior.'},
         { title: 'Al despertar, antes de mirar el celular, tómalo.'},
@@ -539,7 +541,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Es un acto de autocuidado básico que envía una señal a tu cerebro de que mereces atención y limpieza.',
-    reward: 'Guardián de la Sonrisa',
+    reward: 'Un momento para vos',
     steps: [
         { title: 'Poné pasta en el cepillo.'},
         { title: 'Cepillá los dientes de arriba y abajo por fuera.'},
@@ -554,7 +556,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Cambiar el pijama por ropa te ayuda a diferenciar entre descanso y actividad, preparando tu mente para el día.',
-    reward: 'Estratega de Vestuario',
+    reward: 'Listo/a para el día',
     steps: [
         { title: 'Sacate el pijama.'},
         { title: 'Elegí una remera y un pantalón limpios.'},
@@ -569,7 +571,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Regular tus ciclos de sueño es el hack de productividad más potente que existe.',
-    reward: 'Guardián del Sueño',
+    reward: 'Preparando el descanso',
     steps: [
         { title: 'Poné una alarma 1 hora antes de tu hora de dormir habitual.'},
         { title: 'Cuando suene, dejá el celular, la compu o la tele.'},
@@ -584,7 +586,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Completar una tarea básica con un límite de tiempo te energiza y te da una sensación de eficiencia.',
-    reward: 'Velocista Acuático/a',
+    reward: 'Energía renovada',
     steps: [
         { title: 'Poné un cronómetro de 5 minutos en tu celular.'},
         { title: 'Metete a la ducha y dale play.'},
@@ -599,7 +601,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Es el combo de energía y cuidado más simple y efectivo que existe. Le estás dando a tu cuerpo combustible de calidad.',
-    reward: 'Nutricionista de Combate',
+    reward: 'Combustible para el cuerpo',
     steps: [
         { title: 'Elegí cualquier fruta que tengas a mano.'},
         { title: 'Lavala bien.'},
@@ -614,7 +616,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Este ejercicio te saca de tu cabeza y te ancla en el presente, cortando de raíz el espiral de pensamientos ansiosos. Es una herramienta poderosa para manejar momentos de pánico o agobio.',
-    reward: 'Ancla Sensorial',
+    reward: 'De vuelta al presente',
     steps: [
       {
         title: 'Paso 1: Hacé una pausa y respira',
@@ -649,7 +651,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Externalizar un pensamiento le quita poder y el acto físico de destruirlo ofrece un cierre simbólico.',
-    reward: 'Destructor/a de Preocupaciones',
+    reward: 'Una carga menos',
     steps: [
         { title: 'Tomá un papel y un lápiz.'},
         { title: 'Escribí una sola cosa que te esté preocupando mucho.'},
@@ -664,7 +666,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'Nombrar a tu "monstruo" le quita poder. Lo que se puede nombrar, se puede manejar.',
-    reward: 'Detective Emocional',
+    reward: 'Algo más claro',
     steps: [
         { title: 'Hacé una pausa y pensá: ¿qué te hizo sentir mal hoy o ayer?'},
         { title: 'Identificá una sola cosa. Sé específico. Ejemplo: "Pensar en llamar a X persona".'},
@@ -679,7 +681,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'laboratorio-mental',
     why: 'El movimiento físico es el antidepresivo natural más efectivo y accesible que existe.',
-    reward: 'Explorador/a Urbano/a',
+    reward: 'Mente despejada',
     steps: [
         { title: 'Ponete zapatillas cómodas.'},
         { title: 'Elegí un podcast o una lista de música que te guste.'},
@@ -697,7 +699,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'primeros-pasos',
     why: 'Exponerte al entorno sin un objetivo reduce la ansiedad de "tener que hacer algo" afuera.',
-    reward: 'Vigilante de Vereda',
+    reward: 'Primer contacto con el exterior',
     steps: [
         { title: 'Salí a la puerta de tu casa.'},
         { title: 'Quedate ahí parado 1 minuto. Solo mirá a tu alrededor.'},
@@ -712,7 +714,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'primeros-pasos',
     why: 'Completar una transacción de bajo riesgo aumenta tu confianza para futuras interacciones.',
-    reward: 'Comerciante Intrépido/a',
+    reward: 'Misión de abastecimiento',
     steps: [
       {
         title: 'Paso 1: El Objetivo',
@@ -747,6 +749,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'primeros-pasos',
     why: 'Dominar una ruta de transporte público te da autonomía y expande tu mapa mental de la ciudad.',
+    reward: 'Misión de abastecimiento',
     steps: [
       {
         title: 'Paso 1: Planificar la Ruta',
@@ -785,6 +788,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'primeros-pasos',
     why: 'Aprender a confiar en una herramienta te quita la presión de tener que "saber" todo y reduce la ansiedad de perderte.',
+    reward: 'Misión de abastecimiento',
     steps: [
       {
         title: 'Paso 1: El Destino',
@@ -817,7 +821,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'interacciones-humanas',
     why: 'Esta micro-interacción activa las neuronas espejo y te recuerda que eres parte de una comunidad.',
-    reward: 'Diplomático/a Social',
+    reward: 'Un gesto amable',
     steps: [
         { title: 'Al entrar a un negocio, decí "buen día" o "buenas tardes".'},
         { title: 'Cuando te den algo, decí "gracias".'},
@@ -831,7 +835,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'interacciones-humanas',
     why: 'Iniciar el contacto te pone en una posición activa en tus relaciones, en lugar de pasiva.',
-    reward: 'Reconector/a Social',
+    reward: 'Un puente extendido',
     steps: [
         { title: 'Elegí a un amigo o familiar con quien no hablás hace rato.'},
         { title: 'Abrí su chat.'},
@@ -846,7 +850,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'interacciones-humanas',
     why: 'Superar la barrera de una llamada te entrena para interacciones más complejas y te da control sobre tu salud.',
-    reward: 'Coordinador/a de Salud',
+    reward: 'Turno agendado',
     steps: [
       {
         title: 'Paso 1: Prepara la información',
@@ -877,7 +881,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'interacciones-humanas',
     why: 'Aprender a poner límites es la habilidad de autocuidado más importante. Protege tu tiempo y energía.',
-    reward: 'Defensor/a de Límites',
+    reward: 'Tu tiempo es tuyo',
     steps: [
         { title: 'La próxima vez que te pidan algo que no querés hacer, hacé una pausa.'},
         { title: 'Decí una frase amable pero firme. Ej: "Gracias por pensar en mí, pero hoy no puedo."'},
@@ -894,7 +898,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'aventuras-de-crecimiento',
     why: 'La resiliencia no es no fallar, es volver a intentarlo. Esto fortalece tu auto-confianza más que 10 éxitos seguidos.',
-    reward: 'Fénix Resiliente',
+    reward: 'Un paso más, a tu ritmo',
     steps: [
         { title: 'Recordá una acción que hayas evitado con "No hoy, gracias".'},
         { title: 'Leela de nuevo. ¿Te sentís un 1% más preparado hoy?'},
@@ -909,7 +913,7 @@ export const missions: Mission[] = [
     type: 'interactive',
     category: 'aventuras-de-crecimiento',
     why: 'Disfrutar de tu propia compañía en un espacio público es un superpoder que aniquila la dependencia y el "qué dirán".',
-    reward: 'Cinéfilo/a Independiente',
+    reward: 'Una cita con vos mismo/a',
     steps: [
         { title: 'Buscá la cartelera y elegí una película que VOS quieras ver.'},
         { title: 'Comprá la entrada online para evitar la fila.'},
@@ -923,7 +927,7 @@ export const missions: Mission[] = [
     description: 'Reconectar con el exterior sin presión, gestionando la ansiedad de salir.',
     type: 'interactive',
     category: 'primeros-pasos',
-    reward: 'EXPLORADOR DE HORIZONTES LV.1',
+    reward: 'Horizonte a la vista',
     steps: [
         {
             title: 'UBICAR TU PUNTO DE OBSERVACIÓN SEGURO (VENTANA/BALCÓN/PUERTA CON LUZ)',
@@ -949,7 +953,7 @@ export const missions: Mission[] = [
     description: 'Establecer un micro-hábito de autocuidado para iniciar el día.',
     type: 'interactive',
     category: 'laboratorio-mental',
-    reward: 'MAESTRO DESPERTADOR LV.1',
+    reward: 'Mañana en marcha',
     steps: [
         {
             title: 'PREPARAR TU "KIT DE DESPERTAR" (VASO DE AGUA AL LADO DE LA CAMA)',
@@ -975,7 +979,7 @@ export const missions: Mission[] = [
     description: 'Realizar una interacción social mínima y controlada para reducir la ansiedad.',
     type: 'interactive',
     category: 'interacciones-humanas',
-    reward: 'COMUNICADOR NÓVEL LV.1',
+    reward: 'Conexión iniciada',
     steps: [
         {
             title: 'ELEGIR UN "OBJETIVO SEGURO" (PERSONA CONFIABLE O CONOCIDA)',
@@ -1001,7 +1005,7 @@ export const missions: Mission[] = [
     description: 'Organizar un espacio personal muy pequeño para sentir control sobre el entorno.',
     type: 'interactive',
     category: 'rescate-de-territorio',
-    reward: 'ESTRATEGA DEL ESPACIO LV.1',
+    reward: 'Un rincón en orden',
     steps: [
         {
             title: 'ELEGIR UN ÁREA MINÚSCULA Y MUY ESPECÍFICA',
@@ -1027,7 +1031,7 @@ export const missions: Mission[] = [
     description: 'Interrumpir una actividad prolongada (como juegos o redes) con una pausa activa para recargar la atención y evitar la pasividad.',
     type: 'interactive',
     category: 'laboratorio-mental',
-    reward: 'CONTROLADOR DE FLUJO LV.1',
+    reward: 'Pausa consciente',
     steps: [
         {
             title: 'IDENTIFICAR UNA ACTIVIDAD DE "ABSORCIÓN" QUE ESTÉS HACIENDO',

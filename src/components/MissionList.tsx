@@ -59,7 +59,7 @@ export function MissionList({ mission, completedMissions, onCompleteMission, onA
           <Trophy className="mx-auto h-16 w-16 text-accent mb-4" />
           <h3 className="text-2xl sm:text-3xl font-bold text-foreground">¡Felicitaciones!</h3>
           <p className="text-lg text-muted-foreground mt-2">
-            ¡Conquistaste el desafío de 15 días! Este es un logro inmenso. Tomate un momento para celebrar todo tu increíble progreso.
+            Completaste el plan de 15 días. Este es un gran paso. Tomate un momento para celebrar tu progreso.
           </p>
         </div>
       );
@@ -117,7 +117,7 @@ export function MissionList({ mission, completedMissions, onCompleteMission, onA
                   {isCurrentMissionCompleted && (
                       <div className="flex-shrink-0 flex items-center gap-2 bg-green-100 text-green-800 px-2 sm:px-3 py-1 rounded-full text-sm font-bold z-10">
                           <CircleCheck className="h-5 w-5"/>
-                          <span className="hidden sm:inline">Completado</span>
+                          <span className="hidden sm:inline">Hecho</span>
                       </div>
                   )}
                 </div>
@@ -157,7 +157,7 @@ export function MissionList({ mission, completedMissions, onCompleteMission, onA
                         Ver cómo se hace
                         </Button>
                         <Button onClick={() => handleCompleteMission(mission.id)} className="flex-1 bg-green-600 text-white hover:bg-green-700 text-base">
-                        Ya sé cómo seguir
+                        Marcar como hecho
                         </Button>
                     </div>
                     
