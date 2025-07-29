@@ -24,12 +24,17 @@ import {
   DropdownMenuItem, 
   DropdownMenuTrigger 
 } from '@/components/ui/dropdown-menu';
-
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Badge } from '@/components/ui/badge';
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale';
+import { Shield, BarChart, Quote } from 'lucide-react';
 
 interface ResponseArmoryDialogProps {
   isOpen: boolean;
   onClose: () => void;
   onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void;
+  feedbackHistory: FeedbackEntry[];
 }
 
 const sections = [
@@ -146,8 +151,16 @@ const armoryFeelings = [
     { value: 'Frustrado/a', label: 'Frustrado/a' },
 ] as const;
 
+const armoryFeelingMap: { [key: string]: { color: string } } = {
+    'Poderoso/a': { color: 'bg-blue-200 text-blue-900' },
+    'Aliviado/a': { color: 'bg-green-200 text-green-900' },
+    'Seguro/a': { color: 'bg-indigo-200 text-indigo-900' },
+    'Igual': { color: 'bg-gray-200 text-gray-900' },
+    'Frustrado/a': { color: 'bg-red-200 text-red-900' },
+};
 
-function ArmoryFeedbackSelector({ quote, onSaveFeedback }: { quote: string, onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void }) {
+
+function ArmoryFeedbackSelector({ quote, onSaveFeedback, onCloseDialog }: { quote: string, onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void, onCloseDialog: () => void }) {
 
     const handleSelect = (feeling: ArmoryFeedbackData['feeling']) => {
         onSaveFeedback({
@@ -157,6 +170,7 @@ function ArmoryFeedbackSelector({ quote, onSaveFeedback }: { quote: string, onSa
                 feeling
             }
         });
+        onCloseDialog();
     }
 
     return (
@@ -183,41 +197,95 @@ function ArmoryFeedbackSelector({ quote, onSaveFeedback }: { quote: string, onSa
     );
 }
 
-export function ResponseArmoryDialog({ isOpen, onClose, onSaveFeedback }: ResponseArmoryDialogProps) {
+export function ResponseArmoryDialog({ isOpen, onClose, onSaveFeedback, feedbackHistory }: ResponseArmoryDialogProps) {
+  
+  const sortedHistory = [...(feedbackHistory || [])].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  const armoryHistory = sortedHistory.filter((e): e is Extract<FeedbackEntry, { type: 'armory' }> => e.type === 'armory');
+
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-xl bg-card flex flex-col max-h-[90vh]">
         <DialogHeader>
           <DialogTitle className="font-headline text-2xl sm:text-3xl">Armería de Respuestas</DialogTitle>
           <DialogDescription className="text-base pt-2">
-            Herramientas para cuando te sentís presionado. No son para pelear, son para proteger tu proceso. Elige una categoría para ver las respuestas.
+            Herramientas para cuando te sentís presionado. No son para pelear, son para proteger tu proceso.
           </DialogDescription>
         </DialogHeader>
         
-        <div className="flex-1 min-h-0 overflow-y-auto my-4 pr-4 -mr-4">
-             <Accordion type="single" collapsible className="w-full">
-                {sections.map(section => (
-                    <AccordionItem value={section.title} key={section.title}>
-                        <AccordionTrigger className="font-bold text-lg text-foreground text-left hover:no-underline">
-                            {section.title}
-                        </AccordionTrigger>
-                        <AccordionContent>
-                            <div className="space-y-4 pt-2">
-                                {section.responses.map(response => (
-                                    <div key={response.quote} className="p-3 border rounded-lg bg-background/50 text-left">
-                                        <p className="font-bold text-foreground text-base">{response.quote}</p>
-                                        <p className="text-sm text-muted-foreground mt-1">Por qué funciona: {response.why}</p>
-                                        <div className="mt-2">
-                                            <ArmoryFeedbackSelector quote={response.quote} onSaveFeedback={onSaveFeedback} />
-                                        </div>
+        <Tabs defaultValue="phrases" className="w-full flex-grow flex flex-col min-h-0 pt-2">
+             <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="phrases">
+                    <Shield className="mr-2 h-4 w-4" />
+                    Frases
+                </TabsTrigger>
+                <TabsTrigger value="radar">
+                    <BarChart className="mr-2 h-4 w-4" />
+                    Mi Radar
+                </TabsTrigger>
+            </TabsList>
+
+            <div className="flex-1 min-h-0 overflow-y-auto my-4 pr-4 -mr-4">
+                <TabsContent value="phrases" className="h-full mt-0">
+                     <Accordion type="single" collapsible className="w-full">
+                        {sections.map(section => (
+                            <AccordionItem value={section.title} key={section.title}>
+                                <AccordionTrigger className="font-bold text-lg text-foreground text-left hover:no-underline">
+                                    {section.title}
+                                </AccordionTrigger>
+                                <AccordionContent>
+                                    <div className="space-y-4 pt-2">
+                                        {section.responses.map(response => (
+                                            <div key={response.quote} className="p-3 border rounded-lg bg-background/50 text-left">
+                                                <p className="font-bold text-foreground text-base">{response.quote}</p>
+                                                <p className="text-sm text-muted-foreground mt-1">Por qué funciona: {response.why}</p>
+                                                <div className="mt-2">
+                                                    <ArmoryFeedbackSelector quote={response.quote} onSaveFeedback={onSaveFeedback} onCloseDialog={onClose} />
+                                                </div>
+                                            </div>
+                                        ))}
                                     </div>
-                                ))}
+                                </AccordionContent>
+                            </AccordionItem>
+                        ))}
+                    </Accordion>
+                </TabsContent>
+
+                <TabsContent value="radar" className="h-full mt-0">
+                     <div className="space-y-4">
+                        {armoryHistory.length > 0 ? armoryHistory.map((entry) => {
+                            const feelingInfo = armoryFeelingMap[entry.data.feeling] || { color: 'bg-gray-200 text-gray-900' };
+                            return (
+                                <div key={entry.id} className="p-4 border rounded-lg bg-background/50 text-left flex flex-col gap-2">
+                                    <div className="flex items-start gap-3">
+                                        <Quote className="h-5 w-5 text-muted-foreground mt-1 flex-shrink-0" />
+                                        <p className="font-bold text-foreground text-base flex-grow">"{entry.data.quote}"</p>
+                                    </div>
+                                    <div className="flex items-center justify-between pl-8">
+                                        <p className="text-sm text-muted-foreground">
+                                            {format(new Date(entry.date), "d 'de' MMMM, yyyy 'a las' HH:mm", { locale: es })}
+                                        </p>
+                                         <Badge variant="outline" className={`font-bold text-sm ${feelingInfo.color}`}>
+                                            Me sentí: {entry.data.feeling}
+                                        </Badge>
+                                    </div>
+                                </div>
+                            )
+                        }) : (
+                             <div className="text-center text-muted-foreground py-10 px-4">
+                                <p className="font-bold text-lg text-foreground mb-2">Aquí no hay que hacer nada, solo observar.</p>
+                                <p>Este radar te muestra qué "escudos" te han funcionado mejor en el pasado.</p>
+                                <ol className="list-decimal list-inside text-left mt-4 bg-background/50 p-4 rounded-lg text-foreground">
+                                    <li>Ve a la pestaña de <span className="font-bold">"Frases"</span>.</li>
+                                    <li>Elige una frase que te sirva.</li>
+                                    <li>Haz clic en <span className="font-bold">"Lo usé, ¿cómo me sentí?"</span>.</li>
+                                    <li>Tu registro aparecerá aquí, ayudándote a ver tus patrones.</li>
+                                </ol>
                             </div>
-                        </AccordionContent>
-                    </AccordionItem>
-                ))}
-            </Accordion>
-        </div>
+                        )}
+                    </div>
+                </TabsContent>
+            </div>
+        </Tabs>
 
         <DialogFooter className="mt-auto pt-4 border-t">
           <Button onClick={onClose} className="w-full sm:w-auto">Entendido</Button>

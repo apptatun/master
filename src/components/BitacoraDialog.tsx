@@ -14,8 +14,7 @@ import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import type { FeedbackEntry, Mission } from '@/lib/types';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Shield, Trophy, Quote } from 'lucide-react';
+import { Trophy } from 'lucide-react';
 
 
 interface BitacoraDialogProps {
@@ -31,14 +30,6 @@ const missionFeelingMap: { [key: string]: { emoji: string; color: string } } = {
     'Un poco mejor': { emoji: '😊', color: 'bg-green-200 text-green-900' },
 }
 
-const armoryFeelingMap: { [key: string]: { color: string } } = {
-    'Poderoso/a': { color: 'bg-blue-200 text-blue-900' },
-    'Aliviado/a': { color: 'bg-green-200 text-green-900' },
-    'Seguro/a': { color: 'bg-indigo-200 text-indigo-900' },
-    'Igual': { color: 'bg-gray-200 text-gray-900' },
-    'Frustrado/a': { color: 'bg-red-200 text-red-900' },
-};
-
 export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: BitacoraDialogProps) {
 
   const getMissionTitle = (missionId: string) => {
@@ -49,99 +40,48 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
   const sortedHistory = [...feedbackHistory].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   
   const missionHistory = sortedHistory.filter((e): e is Extract<FeedbackEntry, { type: 'mission' }> => e.type === 'mission');
-  const armoryHistory = sortedHistory.filter((e): e is Extract<FeedbackEntry, { type: 'armory' }> => e.type === 'armory');
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-xl bg-card flex flex-col max-h-[90vh]">
         <DialogHeader>
-          <DialogTitle className="font-headline text-2xl sm:text-3xl">Mi Bitácora</DialogTitle>
-          <DialogDescription className="text-base pt-2">
-            Este es tu registro personal. Un recordatorio de cada paso que has dado, tanto en tus movidas como en tus interacciones.
-          </DialogDescription>
+          <div className="flex items-center gap-3">
+             <Trophy className="h-8 w-8 text-accent" />
+            <div>
+              <DialogTitle className="font-headline text-2xl sm:text-3xl">Mi Diario de Movidas</DialogTitle>
+              <DialogDescription className="text-base pt-1">
+                Tu registro de cada paso dado. Un recordatorio de tu progreso.
+              </DialogDescription>
+            </div>
+          </div>
         </DialogHeader>
 
-        <Tabs defaultValue="missions" className="w-full flex-grow flex flex-col min-h-0 pt-2">
-            <TabsList className="grid w-full grid-cols-2">
-                <TabsTrigger value="missions">
-                    <Trophy className="mr-2 h-4 w-4" />
-                    Mis Movidas
-                </TabsTrigger>
-                <TabsTrigger value="armory">
-                    <Shield className="mr-2 h-4 w-4" />
-                    Radar Emocional
-                </TabsTrigger>
-            </TabsList>
-            
-            <div className="flex-1 min-h-0 overflow-y-auto my-4 pr-4 -mr-4">
-                <TabsContent value="missions" className="h-full mt-0">
-                    <div className="space-y-4">
-                        {missionHistory.length > 0 ? missionHistory.map((entry) => {
-                            const feelingInfo = missionFeelingMap[entry.data.feeling] || { emoji: '🤔', color: 'bg-gray-200 text-gray-900' };
-                            return (
-                                <div key={entry.id} className="p-4 border rounded-lg bg-background/50 text-left flex items-start gap-4">
-                                    <span className="text-2xl mt-1">{feelingInfo.emoji}</span>
-                                    <div className='flex-grow'>
-                                        <p className="font-bold text-foreground text-lg">{getMissionTitle(entry.data.missionId)}</p>
-                                        <p className="text-sm text-muted-foreground">
-                                            {format(new Date(entry.date), "d 'de' MMMM, yyyy 'a las' HH:mm", { locale: es })}
-                                        </p>
-                                    </div>
-                                    <Badge variant="outline" className={`font-bold text-sm ${feelingInfo.color}`}>
-                                        {entry.data.feeling}
-                                    </Badge>
-                                </div>
-                            )
-                        }) : (
-                            <div className="text-center text-muted-foreground py-10">
-                                <p>Aún no hay movidas en tu bitácora.</p>
-                                <p>¡Completa tu primera movida para empezar a escribir tu historia!</p>
-                            </div>
-                        )}
-                    </div>
-                </TabsContent>
-
-                <TabsContent value="armory" className="h-full mt-0">
-                     <div className="space-y-4">
-                        {armoryHistory.length > 0 ? armoryHistory.map((entry) => {
-                            const feelingInfo = armoryFeelingMap[entry.data.feeling] || { color: 'bg-gray-200 text-gray-900' };
-                            return (
-                                <div key={entry.id} className="p-4 border rounded-lg bg-background/50 text-left flex flex-col gap-2">
-                                    <div className="flex items-start gap-3">
-                                        <Quote className="h-5 w-5 text-muted-foreground mt-1 flex-shrink-0" />
-                                        <p className="font-bold text-foreground text-base flex-grow">"{entry.data.quote}"</p>
-                                    </div>
-                                    <div className="flex items-center justify-between pl-8">
-                                        <p className="text-sm text-muted-foreground">
-                                            {format(new Date(entry.date), "d 'de' MMMM, yyyy 'a las' HH:mm", { locale: es })}
-                                        </p>
-                                         <Badge variant="outline" className={`font-bold text-sm ${feelingInfo.color}`}>
-                                            Me sentí: {entry.data.feeling}
-                                        </Badge>
-                                    </div>
-                                </div>
-                            )
-                        }) : (
-                            <div className="text-center text-muted-foreground py-10 px-4">
-                                <p className="font-bold text-lg text-foreground mb-2">Aquí no hay que hacer nada, solo observar.</p>
-                                <p>
-                                    Este es el resultado de tus acciones en la "Armería de Respuestas".
-                                </p>
-                                <ol className="list-decimal list-inside text-left mt-4 bg-background/50 p-4 rounded-lg text-foreground">
-                                    <li>Ve a la <span className="font-bold">Armería</span> (el ícono del escudo 🛡️).</li>
-                                    <li>Elige una frase que te sirva.</li>
-                                    <li>Haz clic en <span className="font-bold">"Lo usé, ¿cómo me sentí?"</span>.</li>
-                                    <li>Tu registro aparecerá aquí.</li>
-                                </ol>
-                                <p className="mt-4">
-                                    Con el tiempo, este radar te ayudará a ver qué "escudos" te dan más poder.
+        <div className="flex-1 min-h-0 overflow-y-auto my-4 pr-4 -mr-4">
+            <div className="space-y-4">
+                {missionHistory.length > 0 ? missionHistory.map((entry) => {
+                    const feelingInfo = missionFeelingMap[entry.data.feeling] || { emoji: '🤔', color: 'bg-gray-200 text-gray-900' };
+                    return (
+                        <div key={entry.id} className="p-4 border rounded-lg bg-background/50 text-left flex items-start gap-4">
+                            <span className="text-2xl mt-1">{feelingInfo.emoji}</span>
+                            <div className='flex-grow'>
+                                <p className="font-bold text-foreground text-lg">{getMissionTitle(entry.data.missionId)}</p>
+                                <p className="text-sm text-muted-foreground">
+                                    {format(new Date(entry.date), "d 'de' MMMM, yyyy 'a las' HH:mm", { locale: es })}
                                 </p>
                             </div>
-                        )}
+                            <Badge variant="outline" className={`font-bold text-sm ${feelingInfo.color}`}>
+                                {entry.data.feeling}
+                            </Badge>
+                        </div>
+                    )
+                }) : (
+                    <div className="text-center text-muted-foreground py-10">
+                        <p>Aún no hay movidas en tu bitácora.</p>
+                        <p>¡Completa tu primera movida para empezar a escribir tu historia!</p>
                     </div>
-                </TabsContent>
+                )}
             </div>
-        </Tabs>
+        </div>
 
         <DialogFooter className="mt-auto pt-4 border-t">
           <Button onClick={onClose} className="w-full sm:w-auto">Cerrar</Button>

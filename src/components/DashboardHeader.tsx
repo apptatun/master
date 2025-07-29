@@ -47,7 +47,7 @@ export function DashboardHeader({
             <div className="flex items-center gap-1 sm:gap-2">
                 <Button variant="ghost" size="icon" onClick={() => setIsBitacoraOpen(true)}>
                     <BookOpen className="h-6 w-6" />
-                    <span className="sr-only">Mi Bitácora</span>
+                    <span className="sr-only">Mi Bitácora de Movidas</span>
                 </Button>
                 <Button variant="ghost" size="icon" onClick={() => setIsArmoryOpen(true)}>
                     <Shield className="h-6 w-6" />
@@ -69,6 +69,7 @@ export function DashboardHeader({
             isOpen={isArmoryOpen}
             onClose={() => setIsArmoryOpen(false)}
             onSaveFeedback={onSaveFeedback}
+            feedbackHistory={feedbackHistory}
         />
         <BitacoraDialog
             isOpen={isBitacoraOpen}
