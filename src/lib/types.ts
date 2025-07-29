@@ -62,4 +62,5 @@ export interface Mission {
   steps?: Step[];
   why?: string;
   reward?: string;
+  alternativeMissionId?: string;
 }

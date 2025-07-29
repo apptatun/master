@@ -42,6 +42,8 @@ export default function DashboardPage() {
   const [windowSize, setWindowSize] = useState<{ width: number, height: number }>({ width: 0, height: 0 });
   const [userChoseToRest, setUserChoseToRest] = useState(false);
   const [restDate, setRestDate] = useState<string | null>(null);
+  const [activeMissionId, setActiveMissionId] = useState<string | null>(null);
+
 
   const { toast } = useToast();
 
@@ -60,10 +62,13 @@ export default function DashboardPage() {
     
     const savedDayIndex = localStorage.getItem('currentDayIndex');
     if (savedDayIndex) {
-      setCurrentDayIndex(parseInt(savedDayIndex, 10));
+      const dayIndex = parseInt(savedDayIndex, 10);
+      setCurrentDayIndex(dayIndex);
+      setActiveMissionId(dailyMissionPlan[dayIndex]);
     } else {
         localStorage.setItem('completedMissions', '[]');
         localStorage.setItem('currentDayIndex', '0');
+        setActiveMissionId(dailyMissionPlan[0]);
     }
 
     const savedRestDate = localStorage.getItem('restDate');
@@ -85,20 +90,35 @@ export default function DashboardPage() {
   useEffect(() => {
     if(isMounted) {
         localStorage.setItem('completedMissions', JSON.stringify(completedMissions));
+    }
+  }, [completedMissions, isMounted]);
+
+  useEffect(() => {
+    if(isMounted) {
         localStorage.setItem('currentDayIndex', currentDayIndex.toString());
+        setActiveMissionId(dailyMissionPlan[currentDayIndex]);
+    }
+  }, [currentDayIndex, isMounted]);
+
+  useEffect(() => {
+    if(isMounted) {
         if (restDate) {
             localStorage.setItem('restDate', restDate);
         } else {
             localStorage.removeItem('restDate');
         }
     }
-  }, [completedMissions, currentDayIndex, restDate, isMounted]);
+  }, [restDate, isMounted]);
 
   const handleCompleteMission = (missionId: string) => {
     if (completedMissions.includes(missionId)) return;
 
-    const newCompleted = [...completedMissions, missionId];
-    setCompletedMissions(newCompleted);
+    const originalMissionIdForDay = dailyMissionPlan[currentDayIndex];
+    if (!completedMissions.includes(originalMissionIdForDay)) {
+        const newCompleted = [...completedMissions, originalMissionIdForDay];
+        setCompletedMissions(newCompleted);
+    }
+    
     setUserChoseToRest(false);
     setRestDate(null);
 
@@ -148,12 +168,21 @@ export default function DashboardPage() {
     setUserChoseToRest(false);
     setRestDate(null);
   }
+  
+  const handleUseAlternative = (alternativeId: string) => {
+    setActiveMissionId(alternativeId);
+    toast({
+        title: '¡Plan B activado!',
+        description: 'A veces, la mejor estrategia es cambiar de táctica. ¡Vamos con esta!',
+    });
+  }
 
   const handleResetProgress = () => {
     setCompletedMissions([]);
     setCurrentDayIndex(0);
     setRestDate(null);
     setUserChoseToRest(false);
+    setActiveMissionId(dailyMissionPlan[0]);
     localStorage.removeItem('completedMissions');
     localStorage.removeItem('currentDayIndex');
     localStorage.removeItem('restDate');
@@ -163,15 +192,14 @@ export default function DashboardPage() {
     });
   };
 
-  if (!isMounted) {
+  if (!isMounted || !activeMissionId) {
     return null;
   }
   
-  const missionIdForToday = dailyMissionPlan[currentDayIndex];
-  const currentMission = missions.find(m => m.id === missionIdForToday);
-  const isCurrentMissionCompleted = currentMission ? completedMissions.includes(currentMission.id) : false;
+  const originalMissionIdForDay = dailyMissionPlan[currentDayIndex];
+  const currentMission = missions.find(m => m.id === activeMissionId);
+  const isCurrentMissionCompleted = completedMissions.includes(originalMissionIdForDay);
   
-  // The user can go to the next day if the next day is within the range of completed actions, or it's the very next one.
   const maxUnlockedDay = completedMissions.length;
   const canGoToNextDay = currentDayIndex < maxUnlockedDay;
   
@@ -201,12 +229,13 @@ export default function DashboardPage() {
             <div className="border-t pt-4 sm:pt-8">
                  {currentMission ? (
                     <MissionList
-                        missions={[currentMission]}
+                        mission={currentMission}
                         completedMissions={completedMissions}
                         onCompleteMission={handleCompleteMission}
                         onAdvanceToNextDay={handleAdvanceToNextDay}
                         isCurrentMissionCompleted={isCurrentMissionCompleted}
                         onRest={handleRest}
+                        onUseAlternative={handleUseAlternative}
                         userChoseToRest={userChoseToRest}
                         onResume={handleResume}
                         allMissionsCompleted={currentDayIndex >= dailyMissionPlan.length - 1 && isCurrentMissionCompleted}

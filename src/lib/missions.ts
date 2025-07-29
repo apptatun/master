@@ -162,6 +162,7 @@ export const missions: Mission[] = [
     category: 'rescate-de-territorio',
     why: 'Ver la pileta más limpia cambia la sensación general del lugar. Es un impacto visual inmediato que le demuestra a tu cerebro que podés generar orden a partir del caos, un pequeño pero poderoso acto de control.',
     reward: 'GUARDIÁN DE LA PILETA LV.1',
+    alternativeMissionId: 'm43',
     steps: [
         {
             title: 'IDENTIFICAR TUS "OBJETIVOS PRIORITARIOS" (3 PLATOS/UTENSILIOS CUALESQUIERA)',
@@ -350,7 +351,7 @@ export const missions: Mission[] = [
         },
         {
             title: 'CLASIFICAR OBJETOS (DECISIÓN CRÍTICA)',
-            description: 'Toma cada objeto que sacaste y decide: ¿Lo necesito o lo uso regularmente? ¿Me trae alegría o es funcional? Crea tres pilas: "Va de nuevo aquí", "Va a otro lado (guardar)", "Descartar/Donar".\n¿Dudas mucho? [PELIGRO/SOLUCIÓN]: "Si lo dudas, probablemente no lo necesitas. Sé brutalmente honesto contigo mismo. Menos es más en este ritual."',
+            description: 'Toma cada objeto que sacaste y decide: ¿Lo necesito o lo uso regularmente? ¿Me trae alegría o es funcional? Crea tres pilas: "Va de nuevo aquí", "Va a otro lado (guardar)", "Descartar/Donar".\n¿Dudas mucho? [PELIGRO/SOLUCIÓN]: "Si lo dudas más de 5 segundos, probablemente no lo necesitas. Sé brutalmente honesto contigo mismo. Menos es más en este ritual."',
         },
         {
             title: 'REORGANIZACIÓN ESTRATÉGICA',

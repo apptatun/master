@@ -5,29 +5,31 @@ import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { InteractiveGuideModal } from './InteractiveGuideModal';
-import { Rocket, Check, Bot, Sparkles, Trophy, Coffee, Play, ArrowRight, CircleCheck } from 'lucide-react';
+import { Rocket, Check, Bot, Sparkles, Trophy, Coffee, Play, ArrowRight, CircleCheck, RefreshCw } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { AiAssistantModal } from './AiAssistantModal';
 import { EmojiFeedback } from './EmojiFeedback';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { missions } from '@/lib/missions';
 
 
 interface MissionListProps {
-  missions: Mission[];
+  mission: Mission;
   completedMissions: string[];
   onCompleteMission: (missionId: string) => void;
   onAdvanceToNextDay: () => void;
   onRest: () => void;
   onResume: () => void;
+  onUseAlternative: (alternativeId: string) => void;
   isCurrentMissionCompleted: boolean;
   allMissionsCompleted: boolean;
   userChoseToRest: boolean;
   currentDay: number;
 }
 
-export function MissionList({ missions, completedMissions, onCompleteMission, onAdvanceToNextDay, onRest, onResume, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
+export function MissionList({ mission, completedMissions, onCompleteMission, onAdvanceToNextDay, onRest, onResume, onUseAlternative, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [isAssistantModalOpen, setIsAssistantModalOpen] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
@@ -49,8 +51,6 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
   const handleDeclineMission = () => {
     setShowRejectionMessage(true);
   }
-  
-  const mission = missions[0];
 
   const renderContent = () => {
     if (allMissionsCompleted) {
@@ -154,7 +154,7 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                  <CardFooter className="flex flex-col items-stretch gap-3 bg-foreground/5 py-4 px-4 sm:py-5 sm:px-6">
                     {mission.type === 'interactive' && (
                       <div className="flex flex-col sm:flex-row gap-3">
-                        <Button onClick={() => handleOpenModal(mission)} className="flex-1 group bg-accent text-accent-foreground hover:bg-accent/90 text-base">
+                         <Button onClick={() => handleOpenModal(mission)} className="flex-1 group bg-accent text-accent-foreground hover:bg-accent/90 text-base">
                            Ver cómo se hace
                         </Button>
                         <Button onClick={() => handleCompleteMission(mission.id)} className="flex-1 bg-green-600 text-white hover:bg-green-700 text-base">
@@ -168,11 +168,17 @@ export function MissionList({ missions, completedMissions, onCompleteMission, on
                       </Button>
                     )}
                     
-                    <div className="flex justify-between items-center gap-4 mt-2">
+                    <div className="flex justify-between items-center flex-wrap gap-2 mt-2">
                         <Button variant="ghost" onClick={() => setIsAssistantModalOpen(true)} className="text-muted-foreground text-base">
                             <Bot className="mr-2 h-4 w-4"/>
                             Necesito una mano
                         </Button>
+                        {mission.alternativeMissionId && (
+                           <Button variant="ghost" onClick={() => onUseAlternative(mission.alternativeMissionId!)} className="text-muted-foreground text-base">
+                                <RefreshCw className="mr-2 h-4 w-4"/>
+                                ¿No aplica? Probar otra cosa
+                            </Button>
+                        )}
                          <Tooltip>
                             <TooltipTrigger asChild>
                               <Button variant="ghost" onClick={handleDeclineMission} className="text-muted-foreground text-base">
