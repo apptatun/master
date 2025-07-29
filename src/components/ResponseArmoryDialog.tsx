@@ -272,14 +272,17 @@ export function ResponseArmoryDialog({ isOpen, onClose, onSaveFeedback, feedback
                             )
                         }) : (
                              <div className="text-center text-muted-foreground py-10 px-4">
-                                <p className="font-bold text-lg text-foreground mb-2">Aquí no hay que hacer nada, solo observar.</p>
-                                <p>Este radar te muestra qué "escudos" te han funcionado mejor en el pasado.</p>
-                                <ol className="list-decimal list-inside text-left mt-4 bg-background/50 p-4 rounded-lg text-foreground">
-                                    <li>Ve a la pestaña de <span className="font-bold">"Frases"</span>.</li>
-                                    <li>Elige una frase que te sirva.</li>
-                                    <li>Haz clic en <span className="font-bold">"Lo usé, ¿cómo me sentí?"</span>.</li>
-                                    <li>Tu registro aparecerá aquí, ayudándote a ver tus patrones.</li>
-                                </ol>
+                                <p className="font-bold text-lg text-foreground mb-2">Aquí es para observar, no para actuar.</p>
+                                <p className="mb-4">Este radar te muestra qué "escudos" te han funcionado mejor en el pasado.</p>
+                                <div className="text-left bg-background/50 p-4 rounded-lg text-foreground border">
+                                    <h3 className="font-bold mb-2">¿Cómo funciona?</h3>
+                                    <ol className="list-decimal list-inside space-y-2">
+                                        <li>Ve a la pestaña de <span className="font-bold">"Frases"</span> (aquí al lado).</li>
+                                        <li>Elige una frase que necesites.</li>
+                                        <li>Haz clic en <span className="font-bold text-accent">"Lo usé, ¿cómo me sentí?"</span>.</li>
+                                        <li>Tu registro aparecerá aquí para que veas tus patrones.</li>
+                                    </ol>
+                                </div>
                             </div>
                         )}
                     </div>
