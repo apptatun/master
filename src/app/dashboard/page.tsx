@@ -336,7 +336,7 @@ export default function DashboardPage() {
         onResetProgress={handleResetProgress} 
         feedbackHistory={feedbackHistory} 
         missions={missions}
-        onSaveFeedback={handleSaveFeedback}
+        onSaveFeedback={onSaveFeedback}
       />
       <main className="flex-1 overflow-y-auto container mx-auto p-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="space-y-4 text-center">
@@ -402,7 +402,7 @@ export default function DashboardPage() {
                         onCompleteMission={handleCompleteMission}
                         onAdvanceToNextDay={handleAdvanceToNextDay}
                         isCurrentMissionCompleted={isCurrentMissionCompleted}
-                        onRest={onRest}
+                        onRest={handleRest}
                         onUseAlternative={handleUseAlternative}
                         userChoseToRest={userChoseToRest}
                         onResume={handleResume}
