@@ -7,22 +7,23 @@ import { MissionList } from '@/components/MissionList';
 import { DashboardHeader } from '@/components/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
-import { Check, ArrowLeft, ArrowRight, Trophy, Sparkles } from 'lucide-react';
+import { Check, ArrowLeft, ArrowRight, Trophy, Sparkles, BrainCircuit } from 'lucide-react';
 import type { Mission, FeedbackEntry } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 
 // For now, we define a fixed 15-day mission plan here.
 // Later, this could be more dynamic.
 const dailyMissionPlan: string[] = [
-    'm36',   // Día 1: PROTOCOLO "DESPERTAR CON PROPÓSITO"
-    'm3_v2', // Día 2: OPERACIÓN "ESPEJO LÍQUIDO"
-    'm43',   // Día 3: OPERACIÓN "RINCÓN DE CONQUISTA"
-    'm4',    // Día 4: OPERACIÓN LAVARROPAS
+    'm36',   // Día 1: Despertar con propósito
+    'm3_v2', // Día 2: Limpieza "Espejo Líquido"
+    'm43',   // Día 3: Rincón de conquista
+    'm4',    // Día 4: Poner a lavar la ropa
     'm39',   // Día 5: Guardián de la Vestimenta (20 min)
     'm26',   // Día 6: Ejercicio de Anclaje 5-4-3-2-1
     'm13',   // Día 7: Ponte ropa limpia (2 min)
-    'm1',    // Día 8: OPERACIÓN HORNALLA
+    'm1',    // Día 8: Encender la hornalla
     'm23',   // Día 9: Revisa tu saldo bancario
     'm15',   // Día 10: Reactivar Contacto (2 min)
     'm14',   // Día 11: Ordena un solo lugar (7 min)
@@ -41,6 +42,7 @@ export default function DashboardPage() {
   const [restDate, setRestDate] = useState<string | null>(null);
   const [activeMissionId, setActiveMissionId] = useState<string | null>(null);
   const [feedbackHistory, setFeedbackHistory] = useState<FeedbackEntry[]>([]);
+  const [isAdaptiveMode, setIsAdaptiveMode] = useState(false);
 
 
   const { toast } = useToast();
@@ -57,11 +59,9 @@ export default function DashboardPage() {
     if (savedDayIndex) {
       const dayIndex = parseInt(savedDayIndex, 10);
       setCurrentDayIndex(dayIndex);
-      setActiveMissionId(dailyMissionPlan[dayIndex]);
     } else {
         localStorage.setItem('completedMissions', '[]');
         localStorage.setItem('currentDayIndex', '0');
-        setActiveMissionId(dailyMissionPlan[0]);
     }
 
     const savedRestDate = localStorage.getItem('restDate');
@@ -85,6 +85,24 @@ export default function DashboardPage() {
   }, []);
 
   useEffect(() => {
+    if (isMounted) {
+        // Adaptive Mode Logic
+        const lastTwoFeedbacks = feedbackHistory.slice(-2);
+        const needsIntervention = lastTwoFeedbacks.length === 2 && lastTwoFeedbacks.every(f => f.feeling === 'Mal');
+
+        if (needsIntervention) {
+            setIsAdaptiveMode(true);
+            const mentalMissions = missions.filter(m => m.category === 'laboratorio-mental');
+            const randomMission = mentalMissions[Math.floor(Math.random() * mentalMissions.length)];
+            setActiveMissionId(randomMission.id);
+        } else {
+            setIsAdaptiveMode(false);
+            setActiveMissionId(dailyMissionPlan[currentDayIndex]);
+        }
+    }
+  }, [currentDayIndex, feedbackHistory, isMounted]);
+
+  useEffect(() => {
     if(isMounted) {
         localStorage.setItem('completedMissions', JSON.stringify(completedMissions));
     }
@@ -93,7 +111,6 @@ export default function DashboardPage() {
   useEffect(() => {
     if(isMounted) {
         localStorage.setItem('currentDayIndex', currentDayIndex.toString());
-        setActiveMissionId(dailyMissionPlan[currentDayIndex]);
     }
   }, [currentDayIndex, isMounted]);
 
@@ -117,6 +134,8 @@ export default function DashboardPage() {
   const handleCompleteMission = (missionId: string) => {
     if (completedMissions.includes(missionId)) return;
 
+    // We always mark the *original* mission for the day as complete
+    // to advance progress, even if an adaptive one was shown.
     const originalMissionIdForDay = dailyMissionPlan[currentDayIndex];
     if (!completedMissions.includes(originalMissionIdForDay)) {
         const newCompleted = [...completedMissions, originalMissionIdForDay];
@@ -125,6 +144,7 @@ export default function DashboardPage() {
     
     setUserChoseToRest(false);
     setRestDate(null);
+    setIsAdaptiveMode(false); // Reset adaptive mode after completion
 
     const mission = missions.find(m => m.id === missionId);
 
@@ -132,7 +152,7 @@ export default function DashboardPage() {
       title: (
         <div className="flex items-center">
           <Sparkles className="mr-2 h-5 w-5 text-accent" />
-          <span className="font-bold text-lg">{mission?.reward ? '¡Bien hecho!' : 'Un paso más'}</span>
+          <span className="font-bold text-lg">{mission?.reward ? 'Un paso más' : 'Un paso más'}</span>
         </div>
       ),
       description: <div className="text-base">{mission?.reward || 'Un día a la vez.'}</div>
@@ -234,14 +254,14 @@ export default function DashboardPage() {
                 </div>
                  <div className="flex justify-center items-center gap-2 mb-4">
                   {dailyMissionPlan.map((missionId, index) => {
-                    const isCompleted = completedMissions.includes(missionId);
+                    const isOriginalCompleted = completedMissions.includes(dailyMissionPlan[index]);
                     const isCurrent = index === currentDayIndex;
                     return (
                       <div
                         key={`progress-${index}`}
                         className={cn(
                           'h-3 w-3 rounded-full transition-all',
-                          isCompleted ? 'bg-accent' : 'bg-muted',
+                          isOriginalCompleted ? 'bg-accent' : 'bg-muted',
                           isCurrent && 'ring-2 ring-accent ring-offset-2 ring-offset-background'
                         )}
                       />
@@ -249,6 +269,16 @@ export default function DashboardPage() {
                   })}
                 </div>
             </div>
+            
+            {isAdaptiveMode && (
+              <Alert variant="default" className="text-left bg-secondary border-secondary-foreground/20 max-w-2xl mx-auto">
+                <BrainCircuit className="h-5 w-5" />
+                <AlertDescription className="text-secondary-foreground">
+                  Notamos que los últimos pasos fueron difíciles. Está bien. Hoy te proponemos algo más suave para recargar energías. Sin presión.
+                </AlertDescription>
+              </Alert>
+            )}
+
             <div className="border-t pt-4 sm:pt-8">
                  {currentMission ? (
                     <MissionList
@@ -274,3 +304,5 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+    
