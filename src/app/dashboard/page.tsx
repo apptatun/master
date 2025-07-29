@@ -313,11 +313,13 @@ export default function DashboardPage() {
   };
   
   useEffect(() => {
-     const userGoal = localStorage.getItem('userGoal');
-     if (completedMissions.length >= fixedMissionPlan.length && userGoal && dailyMissionPlan.length < TOTAL_DAYS) {
-        generateMissionPlan();
+     if (typeof window !== 'undefined') {
+        const userGoal = localStorage.getItem('userGoal');
+        if (completedMissions.length >= fixedMissionPlan.length && userGoal && dailyMissionPlan.length < TOTAL_DAYS) {
+            generateMissionPlan();
+        }
      }
-  }, [localStorage.getItem('userGoal')]);
+  }, [completedMissions, dailyMissionPlan]);
 
 
   if (!isMounted || !activeMissionId) {
@@ -419,3 +421,5 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+    
