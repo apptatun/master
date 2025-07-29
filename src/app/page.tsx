@@ -75,10 +75,10 @@ export default function Home() {
             <div className="max-w-3xl space-y-6 flex flex-col items-center justify-center h-full min-h-[50vh] px-4 sm:px-8">
               <div className="space-y-4 text-left">
                 <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl text-center">
-                  15 días para romper el ciclo del "mañana empiezo".
+                  15 movidas que empiezan a cambiarlo todo.
                 </h2>
                 <p className="text-base text-muted-foreground md:text-lg text-center">
-                  En ese tiempo no vas a cambiar tu vida entera, pero SÍ vas a:
+                  No es un plan de 2 semanas, es una secuencia de victorias que te ayudarán a:
                 </p>
 
                 <ul className="space-y-3 text-base text-foreground md:text-lg max-w-2xl mx-auto pt-2">
@@ -115,10 +115,10 @@ export default function Home() {
             <div className="max-w-3xl space-y-6 flex flex-col items-center justify-center h-full min-h-[50vh] px-4 sm:px-8">
                <div className="space-y-4">
                   <p className="text-lg text-muted-foreground md:text-xl">
-                    Cada día vas a tener <span className="font-bold text-foreground">UNA tarea simple.</span> No es una lista de pendientes, es una micro-victoria diseñada para darte un golpe de energía y confianza.
+                    Cada día vas a tener <span className="font-bold text-foreground">UNA movida simple.</span> No es una lista de pendientes, es una micro-victoria diseñada para darte un golpe de energía y confianza.
                   </p>
                   <p className="text-base text-muted-foreground md:text-lg">
-                    Si no te sale, no pasa nada: podés repetirla mañana o tomarte el tiempo que necesites. <span className="font-bold text-foreground">Lo importante no es la velocidad, sino que sigas adelante.</span>
+                    Si no te sale, no pasa nada: podés probar una alternativa o tomarte un descanso. <span className="font-bold text-foreground">Lo importante no es la velocidad, sino que sigas adelante.</span>
                   </p>
                   <p className="text-base font-bold text-foreground md:text-lg pt-2">
                     Arrancamos desde tu cuarto. Sin salir de casa. Sin presión.
@@ -130,7 +130,7 @@ export default function Home() {
                   className="group bg-accent text-accent-foreground hover:bg-accent/90 text-base sm:text-lg rounded-full font-sans font-bold h-14 px-10 mt-8"
                   onClick={handleStart}
                 >
-                  OK, me intriga. ¿Cuál es la primera misión?
+                  OK, me intriga. ¿Cuál es la primera movida?
                 </Button>
             </div>
           </CarouselItem>

@@ -34,7 +34,7 @@ export default function DashboardPage() {
   const [userChoseToRest, setUserChoseToRest] = useState(false);
   const [activeMissionId, setActiveMissionId] = useState<string | null>(null);
   const [isAdaptiveMode, setIsAdaptiveMode] = useState(false);
-  const [dailyMissionPlan, setDailyMissionPlan] = useState<string[]>(fixedMissionPlan);
+  const [dailyMissionPlan, setDailyMissionPlan] = useLocalStorage<string[]>('dailyMissionPlan', []);
 
 
   const { toast } = useToast();
@@ -52,43 +52,39 @@ export default function DashboardPage() {
         }
     }
 
-    // Generate the dynamic part of the plan
-    const userGoal = localStorage.getItem('userGoal') || 'energy';
-    const goalCategories = subCategoryMap[userGoal as keyof typeof subCategoryMap];
-    
-    const potentialMissions = missions.filter(m => 
-        (goalCategories as string[]).includes(m.category) && 
-        !fixedMissionPlan.includes(m.id)
-    );
+    if (dailyMissionPlan.length < TOTAL_DAYS) {
+        // Generate the dynamic part of the plan
+        const userGoal = localStorage.getItem('userGoal') || 'energy';
+        const goalCategories = subCategoryMap[userGoal as keyof typeof subCategoryMap];
+        
+        const potentialMissions = missions.filter(m => 
+            (goalCategories as string[]).includes(m.category) && 
+            !fixedMissionPlan.includes(m.id)
+        );
 
-    // Simple randomization, can be improved later.
-    const shuffledMissions = [...potentialMissions].sort(() => 0.5 - Math.random());
-    
-    const dynamicMissionIds = shuffledMissions
-        .map(m => m.id)
-        .slice(0, TOTAL_DAYS - fixedMissionPlan.length);
+        // Simple randomization, can be improved later.
+        const shuffledMissions = [...potentialMissions].sort(() => 0.5 - Math.random());
+        
+        const dynamicMissionIds = shuffledMissions
+            .map(m => m.id)
+            .slice(0, TOTAL_DAYS - fixedMissionPlan.length);
 
-    const fullPlan = [...fixedMissionPlan, ...dynamicMissionIds];
-    
-    // Ensure we have a fallback if missions run out
-    while (fullPlan.length < TOTAL_DAYS) {
-        fullPlan.push('g1'); // Fallback mission
+        const fullPlan = [...fixedMissionPlan, ...dynamicMissionIds];
+        
+        // Ensure we have a fallback if missions run out
+        while (fullPlan.length < TOTAL_DAYS) {
+            fullPlan.push('g1'); // Fallback mission
+        }
+        
+        setDailyMissionPlan(fullPlan);
     }
     
-    setDailyMissionPlan(fullPlan);
-
-    // Set initial active mission based on the generated plan
-    if (fullPlan[currentDayIndex]) {
-        setActiveMissionId(fullPlan[currentDayIndex]);
-    } else {
-        // Handle case where plan is not yet generated or index is out of bounds
-        setActiveMissionId(fixedMissionPlan[0]);
-    }
 
   }, []);
 
   useEffect(() => {
-    if (isMounted) {
+    // This effect now depends on dailyMissionPlan being ready
+    if(dailyMissionPlan.length > 0) {
         const missionFeedback = feedbackHistory.filter((f): f is Extract<FeedbackEntry, { type: 'mission' }> => f.type === 'mission');
         
         const lastTwoFeedbacks = missionFeedback.slice(-2);
@@ -105,30 +101,34 @@ export default function DashboardPage() {
         const totalStressScore = lastTwoFeedbacks.reduce((sum, current) => sum + getStressScore(current.data.feeling), 0);
 
         const needsIntervention = lastTwoFeedbacks.length === 2 && totalStressScore >= 3;
+        
+        const currentPlanMissionId = dailyMissionPlan[currentDayIndex];
 
-        if (needsIntervention) {
+        if (needsIntervention && !isAdaptiveMode) {
             setIsAdaptiveMode(true);
             const mentalMissions = missions.filter(m => m.category === 'laboratorio-mental');
-            // Find a mental mission not already completed
-            let randomMission = mentalMissions.find(m => !completedMissions.includes(m.id));
-            if (!randomMission) { // if all are completed, just pick one
+            let randomMission = mentalMissions.find(m => !completedMissions.includes(m.id) && m.id !== currentPlanMissionId);
+            if (!randomMission) {
                  randomMission = mentalMissions[Math.floor(Math.random() * mentalMissions.length)];
             }
             if (randomMission) {
+                // Insert the adaptive mission and shift the rest
+                const newPlan = [...dailyMissionPlan];
+                newPlan.splice(currentDayIndex, 0, randomMission.id);
+                setDailyMissionPlan(newPlan);
                 setActiveMissionId(randomMission.id);
             }
         } else {
             setIsAdaptiveMode(false);
-            setActiveMissionId(dailyMissionPlan[currentDayIndex]);
+            setActiveMissionId(currentPlanMissionId);
         }
     }
-  }, [currentDayIndex, feedbackHistory, isMounted, dailyMissionPlan, completedMissions]);
+  }, [currentDayIndex, feedbackHistory, dailyMissionPlan, setDailyMissionPlan]);
 
 
   const handleCompleteMission = (missionId: string) => {
-    const originalMissionIdForDay = dailyMissionPlan[currentDayIndex];
-    if (originalMissionIdForDay && !completedMissions.includes(originalMissionIdForDay)) {
-        const newCompleted = [...completedMissions, originalMissionIdForDay];
+    if (!completedMissions.includes(missionId)) {
+        const newCompleted = [...completedMissions, missionId];
         setCompletedMissions(newCompleted);
     }
     
@@ -197,7 +197,11 @@ export default function DashboardPage() {
   }
   
   const handleUseAlternative = (alternativeId: string) => {
-    setActiveMissionId(alternativeId);
+     const newPlan = [...dailyMissionPlan];
+     newPlan[currentDayIndex] = alternativeId;
+     setDailyMissionPlan(newPlan);
+     setActiveMissionId(alternativeId);
+
     toast({
         title: '¡Plan B activado!',
         description: 'A veces, la mejor estrategia es cambiar de táctica. ¡Vamos con esta!',
@@ -209,22 +213,19 @@ export default function DashboardPage() {
     setCurrentDayIndex(0);
     setRestDate(null);
     setUserChoseToRest(false);
-    setActiveMissionId(dailyMissionPlan[0]);
     setFeedbackHistory([]);
+    setDailyMissionPlan([]); // This will trigger regeneration
     localStorage.removeItem('userGoal');
-    toast({
-      title: 'Progreso Reiniciado',
-      description: 'Has vuelto al Día 1. ¡Una nueva oportunidad para empezar!',
-    });
+    localStorage.removeItem('dailyMissionPlan'); // Force clear
+    window.location.reload(); // Easiest way to force a full reset
   };
 
   if (!isMounted || !activeMissionId) {
     return null;
   }
   
-  const originalMissionIdForDay = dailyMissionPlan[currentDayIndex];
   const currentMission = missions.find(m => m.id === activeMissionId);
-  const isCurrentMissionCompleted = originalMissionIdForDay ? completedMissions.includes(originalMissionIdForDay) : false;
+  const isCurrentMissionCompleted = completedMissions.includes(activeMissionId);
   
   const maxUnlockedDay = completedMissions.length;
   const canGoToNextDay = currentDayIndex < maxUnlockedDay;
@@ -245,29 +246,35 @@ export default function DashboardPage() {
                         <ArrowLeft className="h-6 w-6" />
                     </Button>
                     <h1 className="font-headline text-2xl sm:text-3xl font-bold tracking-tight text-foreground min-w-[200px] sm:min-w-[280px]">
-                        Día {currentDayIndex + 1}
+                        Movida {currentDayIndex + 1}
                     </h1>
-                    <Button onClick={handleNextDay} variant="ghost" size="icon" disabled={!canGoToNextDay || currentDayIndex >= TOTAL_DAYS - 1}>
+                    <Button onClick={handleNextDay} variant="ghost" size="icon" disabled={!canGoToNextDay || currentDayIndex >= dailyMissionPlan.length - 1}>
                         <ArrowRight className="h-6 w-6" />
                     </Button>
                 </div>
                  <div className="flex justify-center items-center gap-2 mb-4">
                   {Array.from({ length: TOTAL_DAYS }).map((_, index) => {
-                    const originalMissionId = dailyMissionPlan[index];
-                    const isOriginalCompleted = originalMissionId ? completedMissions.includes(originalMissionId) : false;
+                    const missionIdAtIndex = dailyMissionPlan.find(m_id => {
+                        const originalIndex = dailyMissionPlan.indexOf(m_id);
+                        return originalIndex === index;
+                    });
+                    const isCompleted = missionIdAtIndex ? completedMissions.includes(missionIdAtIndex) : false;
+
                     const isCurrent = index === currentDayIndex;
+                    
                     return (
                       <div
                         key={`progress-${index}`}
                         className={cn(
                           'h-3 w-3 rounded-full transition-all',
-                          isOriginalCompleted ? 'bg-accent' : 'bg-muted',
+                          isCompleted ? 'bg-accent' : 'bg-muted',
                           isCurrent && 'ring-2 ring-accent ring-offset-2 ring-offset-background'
                         )}
                       />
                     );
                   })}
                 </div>
+                <p className="text-sm text-muted-foreground">{completedMissions.length} de {TOTAL_DAYS} movidas completadas</p>
             </div>
             
             {isAdaptiveMode && (
@@ -283,7 +290,6 @@ export default function DashboardPage() {
                  {currentMission ? (
                     <MissionList
                         mission={currentMission}
-                        completedMissions={completedMissions}
                         onCompleteMission={handleCompleteMission}
                         onAdvanceToNextDay={handleAdvanceToNextDay}
                         isCurrentMissionCompleted={isCurrentMissionCompleted}

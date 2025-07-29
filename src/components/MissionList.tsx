@@ -16,7 +16,6 @@ import { missions } from '@/lib/missions';
 
 interface MissionListProps {
   mission: Mission;
-  completedMissions: string[];
   onCompleteMission: (missionId: string) => void;
   onAdvanceToNextDay: () => void;
   onRest: () => void;
@@ -29,7 +28,7 @@ interface MissionListProps {
   currentDay: number;
 }
 
-export function MissionList({ mission, completedMissions, onCompleteMission, onAdvanceToNextDay, onRest, onResume, onUseAlternative, onSaveFeedback, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
+export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, onRest, onResume, onUseAlternative, onSaveFeedback, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
   const [showRejectionMessage, setShowRejectionMessage] = useState(false);
@@ -69,7 +68,7 @@ export function MissionList({ mission, completedMissions, onCompleteMission, onA
           <Trophy className="mx-auto h-16 w-16 text-accent mb-4" />
           <h3 className="text-2xl sm:text-3xl font-bold text-foreground">¡Felicitaciones!</h3>
           <p className="text-lg text-muted-foreground mt-2">
-            Completaste el plan de 15 días. Este es un gran paso. Tomate un momento para celebrar tu progreso.
+            Completaste las 15 movidas fundamentales. Este es un gran logro. Tomate un momento para celebrar tu progreso.
           </p>
         </div>
       );
@@ -196,11 +195,11 @@ export function MissionList({ mission, completedMissions, onCompleteMission, onA
              {isCurrentMissionCompleted && !showFeedback && (
                  <div className="mt-8 text-center p-4 sm:p-6 bg-card rounded-lg border">
                     <p className="text-base sm:text-xl text-muted-foreground mt-2 mb-6">
-                      Hoy te hiciste cargo de una cosa más. Te vemos mañana para la siguiente.
+                      Hoy te hiciste cargo de una cosa más. Te vemos para la siguiente.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button onClick={onAdvanceToNextDay} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground" disabled={allMissionsCompleted}>
-                            Ir al Día {currentDay + 1}
+                            Siguiente Movida
                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Button>
                         <Button onClick={onRest} size="lg" variant="outline" className="text-lg">
