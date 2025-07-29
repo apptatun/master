@@ -11,7 +11,7 @@ import { Check, ArrowLeft, ArrowRight, Trophy, Sparkles } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import Confetti from 'react-confetti';
 import { Button } from '@/components/ui/button';
-import { Progress } from '@/components/ui/progress';
+import { cn } from '@/lib/utils';
 
 // For now, we define a fixed 15-day mission plan here.
 // Later, this could be more dynamic.
@@ -202,9 +202,6 @@ export default function DashboardPage() {
   
   const maxUnlockedDay = completedMissions.length;
   const canGoToNextDay = currentDayIndex < maxUnlockedDay;
-  
-  const progressPercentage = (currentDayIndex / (dailyMissionPlan.length -1) ) * 100;
-
 
   return (
     <div className="flex h-screen flex-col bg-background">
@@ -213,18 +210,33 @@ export default function DashboardPage() {
       <main className="flex-1 overflow-y-auto container mx-auto p-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="space-y-4 text-center">
             <div className="pt-2">
-                 <div className="flex items-center justify-center gap-2 sm:gap-4 mb-2">
+                 <div className="flex items-center justify-center gap-2 sm:gap-4 mb-4">
                     <Button onClick={handlePreviousDay} variant="ghost" size="icon" disabled={currentDayIndex === 0}>
                         <ArrowLeft className="h-6 w-6" />
                     </Button>
                     <h1 className="font-headline text-2xl sm:text-3xl font-bold tracking-tight text-foreground min-w-[200px] sm:min-w-[280px]">
-                        Día {currentDayIndex + 1} de {dailyMissionPlan.length}
+                        Día {currentDayIndex + 1}
                     </h1>
                     <Button onClick={handleNextDay} variant="ghost" size="icon" disabled={!canGoToNextDay || currentDayIndex >= dailyMissionPlan.length - 1}>
                         <ArrowRight className="h-6 w-6" />
                     </Button>
                 </div>
-                 <Progress value={progressPercentage} className="w-full max-w-sm mx-auto" />
+                 <div className="flex justify-center items-center gap-2 mb-4">
+                  {dailyMissionPlan.map((missionId, index) => {
+                    const isCompleted = completedMissions.includes(missionId);
+                    const isCurrent = index === currentDayIndex;
+                    return (
+                      <div
+                        key={`progress-${index}`}
+                        className={cn(
+                          'h-3 w-3 rounded-full transition-all',
+                          isCompleted ? 'bg-accent' : 'bg-muted',
+                          isCurrent && 'ring-2 ring-accent ring-offset-2 ring-offset-background'
+                        )}
+                      />
+                    );
+                  })}
+                </div>
             </div>
             <div className="border-t pt-4 sm:pt-8">
                  {currentMission ? (
