@@ -48,7 +48,7 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
           </DialogDescription>
         </DialogHeader>
         
-        <ScrollArea className="my-4 flex-grow pr-4 -mr-4">
+        <div className="flex-1 min-h-0 overflow-y-auto my-4 pr-4 -mr-4">
             <div className="space-y-4">
                 {sortedHistory.length > 0 ? sortedHistory.map((entry, index) => {
                     const feelingInfo = feelingMap[entry.feeling] || { emoji: '🤔', color: 'bg-gray-200 text-gray-900' };
@@ -73,7 +73,7 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
                     </div>
                 )}
             </div>
-        </ScrollArea>
+        </div>
 
         <DialogFooter className="mt-auto pt-4 border-t">
           <Button onClick={onClose} className="w-full sm:w-auto">Cerrar</Button>

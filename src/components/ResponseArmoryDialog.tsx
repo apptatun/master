@@ -69,6 +69,15 @@ const sections = [
                 why: 'Muestra seguridad y evita caer en la trampa de la comparación.'
             }
         ]
+    },
+    {
+        title: 'Para cuando juzgan tu ritmo:',
+        responses: [
+            {
+                quote: '“Estoy honrando mi propio tempo. La consistencia, no la velocidad, es lo que construye cimientos sólidos.”',
+                why: 'Cambia el foco de "lento" a "consistente", un valor que inspira respeto.'
+            }
+        ]
     }
 ]
 
@@ -83,7 +92,7 @@ export function ResponseArmoryDialog({ isOpen, onClose }: ResponseArmoryDialogPr
           </DialogDescription>
         </DialogHeader>
         
-        <ScrollArea className="my-4 flex-grow pr-4 -mr-4">
+        <div className="flex-1 min-h-0 overflow-y-auto my-4 pr-4 -mr-4">
             <div className="space-y-6">
                 {sections.map(section => (
                     <div key={section.title}>
@@ -102,7 +111,7 @@ export function ResponseArmoryDialog({ isOpen, onClose }: ResponseArmoryDialogPr
                     <p>Estas frases no son máscaras. Son formas de cuidarte mientras te das el permiso de estar en proceso.</p>
                 </div>
             </div>
-        </ScrollArea>
+        </div>
 
         <DialogFooter className="mt-auto pt-4 border-t">
           <Button onClick={onClose} className="w-full sm:w-auto">Entendido</Button>
