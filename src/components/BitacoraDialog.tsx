@@ -48,8 +48,8 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
   
   const sortedHistory = [...feedbackHistory].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   
-  const missionHistory = sortedHistory.filter(e => e.type === 'mission');
-  const armoryHistory = sortedHistory.filter(e => e.type === 'armory');
+  const missionHistory = sortedHistory.filter((e): e is Extract<FeedbackEntry, { type: 'mission' }> => e.type === 'mission');
+  const armoryHistory = sortedHistory.filter((e): e is Extract<FeedbackEntry, { type: 'armory' }> => e.type === 'armory');
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -65,7 +65,7 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
             <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="missions">
                     <Trophy className="mr-2 h-4 w-4" />
-                    Mis Victorias
+                    Mis Movidas
                 </TabsTrigger>
                 <TabsTrigger value="armory">
                     <Shield className="mr-2 h-4 w-4" />
