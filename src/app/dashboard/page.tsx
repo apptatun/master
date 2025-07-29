@@ -89,6 +89,7 @@ export default function DashboardPage() {
     // The main useEffect will handle redirection.
     if (completedMissions.length >= fixedMissionPlan.length && !userGoal) {
         setDailyMissionPlan(newPlan);
+        router.push('/setup');
         return;
     }
 
