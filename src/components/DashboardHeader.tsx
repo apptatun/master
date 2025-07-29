@@ -3,12 +3,13 @@
 
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { RotateCcw, Shield, BookOpen } from 'lucide-react';
+import { RotateCcw, Shield, BookOpen, HeartPulse } from 'lucide-react';
 import { ResetProgressDialog } from './ResetProgressDialog';
 import { useState } from 'react';
 import { ResponseArmoryDialog } from './ResponseArmoryDialog';
 import { BitacoraDialog } from './BitacoraDialog';
 import type { FeedbackEntry, Mission } from '@/lib/types';
+import { RescueBoxDialog } from './RescueBoxDialog';
 
 
 interface DashboardHeaderProps {
@@ -21,6 +22,7 @@ export function DashboardHeader({ onResetProgress, feedbackHistory, missions }: 
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const [isArmoryOpen, setIsArmoryOpen] = useState(false);
   const [isBitacoraOpen, setIsBitacoraOpen] = useState(false);
+  const [isRescueBoxOpen, setIsRescueBoxOpen] = useState(false);
 
   return (
     <>
@@ -33,7 +35,11 @@ export function DashboardHeader({ onResetProgress, feedbackHistory, missions }: 
                 </h1>
             </div>
             </Link>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2">
+                <Button variant="ghost" size="icon" onClick={() => setIsRescueBoxOpen(true)}>
+                    <HeartPulse className="h-6 w-6" />
+                    <span className="sr-only">Caja de Rescate</span>
+                </Button>
                 <Button variant="ghost" size="icon" onClick={() => setIsBitacoraOpen(true)}>
                     <BookOpen className="h-6 w-6" />
                     <span className="sr-only">Mi Bitácora</span>
@@ -63,6 +69,10 @@ export function DashboardHeader({ onResetProgress, feedbackHistory, missions }: 
             onClose={() => setIsBitacoraOpen(false)}
             feedbackHistory={feedbackHistory}
             missions={missions}
+        />
+        <RescueBoxDialog
+            isOpen={isRescueBoxOpen}
+            onClose={() => setIsRescueBoxOpen(false)}
         />
     </>
   );
