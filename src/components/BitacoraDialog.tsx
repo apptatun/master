@@ -14,7 +14,7 @@ import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import type { FeedbackEntry, Mission } from '@/lib/types';
-import { Trophy } from 'lucide-react';
+import { BookOpen, Trophy } from 'lucide-react';
 
 
 interface BitacoraDialogProps {
@@ -46,11 +46,11 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
       <DialogContent className="sm:max-w-xl bg-card flex flex-col max-h-[90vh]">
         <DialogHeader>
           <div className="flex items-center gap-3">
-             <Trophy className="h-8 w-8 text-accent" />
+             <BookOpen className="h-8 w-8 text-accent" />
             <div>
               <DialogTitle className="font-headline text-2xl sm:text-3xl">Mi Diario de Movidas</DialogTitle>
               <DialogDescription className="text-base pt-1">
-                Tu registro de cada paso dado. Un recordatorio de tu progreso.
+                Tu registro de victorias. Úsalo como defensa contra la duda en los días difíciles.
               </DialogDescription>
             </div>
           </div>
@@ -75,9 +75,11 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
                         </div>
                     )
                 }) : (
-                    <div className="text-center text-muted-foreground py-10">
-                        <p>Aún no hay movidas en tu bitácora.</p>
-                        <p>¡Completa tu primera movida para empezar a escribir tu historia!</p>
+                    <div className="text-center text-muted-foreground py-10 px-4">
+                        <Trophy className="mx-auto h-12 w-12 text-accent/50 mb-4" />
+                        <p className="font-bold text-lg text-foreground mb-2">Aquí se escribirán tus logros.</p>
+                        <p>Cada movida que completes aparecerá aquí como un recordatorio de que SÍ estás avanzando.</p>
+                        <p className="mt-2">Completa tu primera movida para empezar a construir tu historial.</p>
                     </div>
                 )}
             </div>
