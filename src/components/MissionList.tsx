@@ -31,7 +31,6 @@ interface MissionListProps {
 export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, onRest, onResume, onUseAlternative, onSaveFeedback, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
-  const [showRejectionMessage, setShowRejectionMessage] = useState(false);
 
   const handleOpenModal = (mission: Mission) => {
     setSelectedMission(mission);
@@ -46,10 +45,6 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
     setShowFeedback(true);
   };
   
-  const handleDeclineMission = () => {
-    setShowRejectionMessage(true);
-  }
-
   const handleFeedback = (feeling: MissionFeedbackData['feeling']) => {
     onSaveFeedback({
       type: 'mission',
@@ -92,18 +87,6 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
     
     if (showFeedback && isCurrentMissionCompleted) {
       return <EmojiFeedback onFeedback={handleFeedback} />;
-    }
-
-    if (showRejectionMessage) {
-        return (
-             <div className="text-center p-6 bg-card rounded-lg border">
-                <Sparkles className="mx-auto h-12 w-12 text-accent mb-4" />
-                <h3 className="text-2xl sm:text-3xl font-bold text-foreground">Está bien.</h3>
-                <p className="text-lg text-muted-foreground mt-2">
-                 A veces decir que no también es avanzar. <br/> Volvé cuando te sientas con ganas.
-                </p>
-              </div>
-        )
     }
     
     if (!mission) {
@@ -179,7 +162,7 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
                         )}
                          <Tooltip>
                             <TooltipTrigger asChild>
-                              <Button variant="ghost" onClick={handleDeclineMission} className="text-muted-foreground text-base">
+                              <Button variant="ghost" onClick={onRest} className="text-muted-foreground text-base">
                                   No hoy, gracias
                               </Button>
                             </TooltipTrigger>
