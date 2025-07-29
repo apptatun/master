@@ -27,6 +27,12 @@ const goals = [
     icon: Users,
     title: 'Animarme a conectar',
     description: 'Para dar pequeños pasos que te ayuden a interactuar con otros sin que se sienta una montaña.',
+  },
+  {
+    id: 'general',
+    icon: Shuffle,
+    title: 'Un camino equilibrado',
+    description: '¿No te decides? Esta opción te dará una mezcla variada de movidas de todas las áreas.',
   }
 ];
 
@@ -65,7 +71,7 @@ export default function SetupPage() {
           </motion.div>
 
           <motion.div 
-            className="mt-10 grid grid-cols-1 md:grid-cols-3 gap-6"
+            className="mt-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.5 }}
@@ -87,7 +93,7 @@ export default function SetupPage() {
                   <CardContent className="flex-grow flex flex-col justify-between">
                     <p className="text-muted-foreground text-base">{goal.description}</p>
                     <div className="mt-6 flex items-center justify-end text-accent font-bold opacity-0 group-hover:opacity-100 transition-opacity">
-                      <span>Empezar por acá</span>
+                      <span>Elegir este camino</span>
                       <ArrowRight className="ml-2 h-5 w-5" />
                     </div>
                   </CardContent>
@@ -95,25 +101,6 @@ export default function SetupPage() {
               </motion.div>
             ))}
           </motion.div>
-
-          <motion.div
-            className="mt-12"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1, duration: 0.5 }}
-          >
-            <p className="text-muted-foreground mb-4">¿No te decides?</p>
-            <Button
-              variant="outline"
-              size="lg"
-              className="w-full md:w-auto text-base md:text-lg h-auto py-3 whitespace-normal md:whitespace-nowrap"
-              onClick={() => handleSelectGoal('general')}
-            >
-              <Shuffle className="mr-2 h-5 w-5" />
-              Sorpréndeme con un camino equilibrado
-            </Button>
-          </motion.div>
-
         </div>
       </main>
     </div>
