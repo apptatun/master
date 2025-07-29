@@ -57,7 +57,7 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
         <DialogHeader>
           <DialogTitle className="font-headline text-2xl sm:text-3xl">Mi Bitácora</DialogTitle>
           <DialogDescription className="text-base pt-2">
-            Este es tu registro personal. Un recordatorio de cada paso que has dado, tanto en tus misiones como en tus interacciones.
+            Este es tu registro personal. Un recordatorio de cada paso que has dado, tanto en tus movidas como en tus interacciones.
           </DialogDescription>
         </DialogHeader>
 
@@ -95,8 +95,8 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
                             )
                         }) : (
                             <div className="text-center text-muted-foreground py-10">
-                                <p>Aún no hay entradas en tu bitácora.</p>
-                                <p>¡Completa tu primera misión para empezar a escribir tu historia!</p>
+                                <p>Aún no hay movidas en tu bitácora.</p>
+                                <p>¡Completa tu primera movida para empezar a escribir tu historia!</p>
                             </div>
                         )}
                     </div>
@@ -124,9 +124,14 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
                                 </div>
                             )
                         }) : (
-                            <div className="text-center text-muted-foreground py-10">
-                                <p>Tu radar emocional está esperando datos.</p>
-                                <p>Usa una respuesta de la Armería y registra cómo te sentiste para empezar a ver tus patrones.</p>
+                            <div className="text-center text-muted-foreground py-10 px-4">
+                                <p className="font-bold text-lg text-foreground mb-2">¿Qué es esto?</p>
+                                <p>
+                                    Cada vez que uses una respuesta de la "Armería" y registres cómo te sentiste, aparecerá aquí.
+                                </p>
+                                <p className="mt-2">
+                                    Con el tiempo, este radar te ayudará a ver qué "escudos" te dan más poder y cuáles necesitas ajustar. <span className="font-bold">Es tu herramienta para conocerte.</span>
+                                </p>
                             </div>
                         )}
                     </div>
