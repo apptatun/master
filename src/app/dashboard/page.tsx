@@ -12,6 +12,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Alert, AlertDescription } from '@/components/ui/alert';
 import { subCategoryMap } from '@/lib/types';
+import useLocalStorage from '@/hooks/useLocalStorage';
 
 // The first 3 days are fixed to build a foundation.
 const fixedMissionPlan: string[] = [
@@ -24,13 +25,14 @@ const TOTAL_DAYS = 15;
 
 
 export default function DashboardPage() {
-  const [completedMissions, setCompletedMissions] = useState<string[]>([]);
+  const [completedMissions, setCompletedMissions] = useLocalStorage<string[]>('completedMissions', []);
+  const [currentDayIndex, setCurrentDayIndex] = useLocalStorage<number>('currentDayIndex', 0);
+  const [restDate, setRestDate] = useLocalStorage<string | null>('restDate', null);
+  const [feedbackHistory, setFeedbackHistory] = useLocalStorage<FeedbackEntry[]>('feedbackHistory', []);
+  
   const [isMounted, setIsMounted] = useState(false);
-  const [currentDayIndex, setCurrentDayIndex] = useState(0);
   const [userChoseToRest, setUserChoseToRest] = useState(false);
-  const [restDate, setRestDate] = useState<string | null>(null);
   const [activeMissionId, setActiveMissionId] = useState<string | null>(null);
-  const [feedbackHistory, setFeedbackHistory] = useState<FeedbackEntry[]>([]);
   const [isAdaptiveMode, setIsAdaptiveMode] = useState(false);
   const [dailyMissionPlan, setDailyMissionPlan] = useState<string[]>(fixedMissionPlan);
 
@@ -39,37 +41,17 @@ export default function DashboardPage() {
 
   useEffect(() => {
     setIsMounted(true);
-    let initialDayIndex = 0;
-
-    const savedCompleted = localStorage.getItem('completedMissions');
-    if (savedCompleted) {
-      setCompletedMissions(JSON.parse(savedCompleted));
-    }
     
-    const savedDayIndex = localStorage.getItem('currentDayIndex');
-    if (savedDayIndex) {
-      initialDayIndex = parseInt(savedDayIndex, 10);
-      setCurrentDayIndex(initialDayIndex);
-    } 
-
-    const savedRestDate = localStorage.getItem('restDate');
-    if (savedRestDate) {
+    if (restDate) {
         const today = new Date().toISOString().split('T')[0];
-        if (savedRestDate < today) {
+        if (restDate < today) {
             setUserChoseToRest(false);
-            localStorage.removeItem('restDate');
             setRestDate(null);
         } else {
             setUserChoseToRest(true);
-            setRestDate(savedRestDate);
         }
     }
 
-    const savedFeedback = localStorage.getItem('feedbackHistory');
-    if (savedFeedback) {
-        setFeedbackHistory(JSON.parse(savedFeedback));
-    }
-    
     // Generate the dynamic part of the plan
     const userGoal = localStorage.getItem('userGoal') || 'energy';
     const goalCategories = subCategoryMap[userGoal as keyof typeof subCategoryMap];
@@ -96,8 +78,8 @@ export default function DashboardPage() {
     setDailyMissionPlan(fullPlan);
 
     // Set initial active mission based on the generated plan
-    if (fullPlan[initialDayIndex]) {
-        setActiveMissionId(fullPlan[initialDayIndex]);
+    if (fullPlan[currentDayIndex]) {
+        setActiveMissionId(fullPlan[currentDayIndex]);
     } else {
         // Handle case where plan is not yet generated or index is out of bounds
         setActiveMissionId(fixedMissionPlan[0]);
@@ -127,33 +109,6 @@ export default function DashboardPage() {
     }
   }, [currentDayIndex, feedbackHistory, isMounted, dailyMissionPlan, completedMissions]);
 
-  useEffect(() => {
-    if(isMounted) {
-        localStorage.setItem('completedMissions', JSON.stringify(completedMissions));
-    }
-  }, [completedMissions, isMounted]);
-
-  useEffect(() => {
-    if(isMounted) {
-        localStorage.setItem('currentDayIndex', currentDayIndex.toString());
-    }
-  }, [currentDayIndex, isMounted]);
-
-  useEffect(() => {
-    if(isMounted) {
-        if (restDate) {
-            localStorage.setItem('restDate', restDate);
-        } else {
-            localStorage.removeItem('restDate');
-        }
-    }
-  }, [restDate, isMounted]);
-
-  useEffect(() => {
-    if(isMounted) {
-        localStorage.setItem('feedbackHistory', JSON.stringify(feedbackHistory));
-    }
-  }, [feedbackHistory, isMounted]);
 
   const handleCompleteMission = (missionId: string) => {
     const originalMissionIdForDay = dailyMissionPlan[currentDayIndex];
@@ -241,10 +196,6 @@ export default function DashboardPage() {
     setUserChoseToRest(false);
     setActiveMissionId(dailyMissionPlan[0]);
     setFeedbackHistory([]);
-    localStorage.removeItem('completedMissions');
-    localStorage.removeItem('currentDayIndex');
-    localStorage.removeItem('restDate');
-    localStorage.removeItem('feedbackHistory');
     localStorage.removeItem('userGoal');
     toast({
       title: 'Progreso Reiniciado',
