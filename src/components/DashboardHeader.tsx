@@ -1,9 +1,13 @@
 
+'use client';
+
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { RotateCcw } from 'lucide-react';
+import { RotateCcw, Shield } from 'lucide-react';
 import { ResetProgressDialog } from './ResetProgressDialog';
 import { useState } from 'react';
+import { ResponseArmoryDialog } from './ResponseArmoryDialog';
+
 
 interface DashboardHeaderProps {
     onResetProgress: () => void;
@@ -11,6 +15,7 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ onResetProgress }: DashboardHeaderProps) {
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
+  const [isArmoryOpen, setIsArmoryOpen] = useState(false);
 
   return (
     <>
@@ -23,7 +28,11 @@ export function DashboardHeader({ onResetProgress }: DashboardHeaderProps) {
                 </h1>
             </div>
             </Link>
-            <div>
+            <div className="flex items-center gap-2">
+                <Button variant="ghost" size="icon" onClick={() => setIsArmoryOpen(true)}>
+                    <Shield className="h-6 w-6" />
+                    <span className="sr-only">Armería de Respuestas</span>
+                </Button>
                 <Button variant="ghost" size="icon" onClick={() => setIsResetDialogOpen(true)}>
                     <RotateCcw className="h-6 w-6" />
                     <span className="sr-only">Reiniciar Progreso</span>
@@ -35,6 +44,10 @@ export function DashboardHeader({ onResetProgress }: DashboardHeaderProps) {
             isOpen={isResetDialogOpen}
             onClose={() => setIsResetDialogOpen(false)}
             onConfirm={onResetProgress}
+        />
+        <ResponseArmoryDialog
+            isOpen={isArmoryOpen}
+            onClose={() => setIsArmoryOpen(false)}
         />
     </>
   );
