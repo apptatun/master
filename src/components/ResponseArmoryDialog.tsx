@@ -17,7 +17,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger, PopoverPortal } from '@/components/ui/popover';
 import { Command, CommandGroup, CommandItem } from '@/components/ui/command';
 import type { FeedbackEntry, ArmoryFeedbackData } from '@/lib/types';
 
@@ -168,20 +168,22 @@ function ArmoryFeedbackSelector({ quote, onSaveFeedback }: { quote: string, onSa
                     Lo usé, ¿cómo me sentí?
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-[200px] p-0">
-                <Command>
-                    <CommandGroup>
-                        {armoryFeelings.map((feeling) => (
-                            <CommandItem
-                                key={feeling.value}
-                                onSelect={() => handleSelect(feeling.label)}
-                            >
-                                {feeling.label}
-                            </CommandItem>
-                        ))}
-                    </CommandGroup>
-                </Command>
-            </PopoverContent>
+            <PopoverPortal>
+                <PopoverContent className="w-[200px] p-0">
+                    <Command>
+                        <CommandGroup>
+                            {armoryFeelings.map((feeling) => (
+                                <CommandItem
+                                    key={feeling.value}
+                                    onSelect={() => handleSelect(feeling.label)}
+                                >
+                                    {feeling.label}
+                                </CommandItem>
+                            ))}
+                        </CommandGroup>
+                    </Command>
+                </PopoverContent>
+            </PopoverPortal>
         </Popover>
     );
 }
