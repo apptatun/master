@@ -14,6 +14,7 @@ import { cn } from '@/lib/utils';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { subCategoryMap } from '@/lib/types';
 import useLocalStorage from '@/hooks/useLocalStorage';
+import { RescueBoxDialog } from '@/components/RescueBoxDialog';
 
 // The first 3 days are fixed to build a foundation.
 const fixedMissionPlan: string[] = [
@@ -434,5 +435,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-    
