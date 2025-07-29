@@ -65,7 +65,7 @@ const sections = [
                 why: 'Corta la comparación de raíz, sin agresividad. Es una declaración de auto-respeto.'
             },
             {
-                quote: '“Me alegro por él/ella. Yo estoy trabajando en mis propias metas.”',
+                quote: '“Me alegro mucho por él/ella. Yo estoy trabajando en mis propias metas.”',
                 why: 'Muestra seguridad y evita caer en la trampa de la comparación.'
             }
         ]
@@ -97,6 +97,27 @@ const sections = [
             {
                 quote: '“Mi valor no se mide por mi productividad.”',
                 why: 'Separa tu identidad de tus logros. Te recuerda que mereces descanso y respeto incondicionalmente.'
+            }
+        ]
+    },
+    {
+        title: '🤖 Modo "Sigilo" (Respuestas de baja energía)',
+        responses: [
+            {
+                quote: '“Estoy en una etapa de reinvención profesional. Gracias por preguntar.”',
+                why: 'Corta una pregunta sobre trabajo de forma elegante y final.'
+            },
+            {
+                quote: '“Es un tema en el que estoy trabajando. Cuando tenga algo que compartir, lo haré.”',
+                why: 'Pone un límite claro sin dar detalles. Útil para casi cualquier pregunta personal.'
+            },
+            {
+                quote: '“Gracias por el consejo, lo voy a pensar.”',
+                why: 'Una forma neutral de recibir consejos no pedidos sin comprometerte a nada.'
+            },
+            {
+                quote: '“Aprecio tu interés. Es un proceso personal.”',
+                why: 'Valida la intención del otro pero protege tu privacidad de forma contundente.'
             }
         ]
     }
