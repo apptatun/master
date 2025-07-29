@@ -18,7 +18,7 @@ import {
   AccordionTrigger,
 } from '@/components/ui/accordion';
 import { Popover, PopoverContent, PopoverTrigger, PopoverPortal } from '@/components/ui/popover';
-import { Command, CommandGroup, CommandItem } from '@/components/ui/command';
+import { Command, CommandGroup, CommandItem, CommandList } from '@/components/ui/command';
 import type { FeedbackEntry, ArmoryFeedbackData } from '@/lib/types';
 
 interface ResponseArmoryDialogProps {
@@ -171,16 +171,18 @@ function ArmoryFeedbackSelector({ quote, onSaveFeedback }: { quote: string, onSa
             <PopoverPortal>
                 <PopoverContent className="w-[200px] p-0">
                     <Command>
-                        <CommandGroup>
-                            {armoryFeelings.map((feeling) => (
-                                <CommandItem
-                                    key={feeling.value}
-                                    onSelect={() => handleSelect(feeling.label)}
-                                >
-                                    {feeling.label}
-                                </CommandItem>
-                            ))}
-                        </CommandGroup>
+                        <CommandList>
+                            <CommandGroup>
+                                {armoryFeelings.map((feeling) => (
+                                    <CommandItem
+                                        key={feeling.value}
+                                        onSelect={() => handleSelect(feeling.label)}
+                                    >
+                                        {feeling.label}
+                                    </CommandItem>
+                                ))}
+                            </CommandGroup>
+                        </CommandList>
                     </Command>
                 </PopoverContent>
             </PopoverPortal>
@@ -190,7 +192,7 @@ function ArmoryFeedbackSelector({ quote, onSaveFeedback }: { quote: string, onSa
 
 export function ResponseArmoryDialog({ isOpen, onClose, onSaveFeedback }: ResponseArmoryDialogProps) {
   return (
-    <Dialog open={isOpen} onOpenChange={onClose}>
+    <Dialog open={isOpen} onOpenChange={onClose} modal={false}>
       <DialogContent className="sm:max-w-xl bg-card flex flex-col max-h-[90vh]">
         <DialogHeader>
           <DialogTitle className="font-headline text-2xl sm:text-3xl">Armería de Respuestas</DialogTitle>
