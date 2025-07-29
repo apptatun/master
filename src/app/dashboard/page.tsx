@@ -53,19 +53,30 @@ export default function DashboardPage() {
     }
 
     if (dailyMissionPlan.length < TOTAL_DAYS) {
-        // Generate the dynamic part of the plan
         const userGoal = localStorage.getItem('userGoal') || 'energy';
         const goalCategories = subCategoryMap[userGoal as keyof typeof subCategoryMap];
         
+        // Prioritize missions from the selected goal
         const potentialMissions = missions.filter(m => 
             (goalCategories as string[]).includes(m.category) && 
             !fixedMissionPlan.includes(m.id)
         );
 
-        // Simple randomization, can be improved later.
-        const shuffledMissions = [...potentialMissions].sort(() => 0.5 - Math.random());
+        // Get other missions as fallback
+        const fallbackMissions = missions.filter(m => 
+            !goalCategories.includes(m.category as any) &&
+            !fixedMissionPlan.includes(m.id) &&
+            m.category !== 'generic'
+        );
+
+        // Simple randomization for both lists
+        const shuffledPotential = [...potentialMissions].sort(() => 0.5 - Math.random());
+        const shuffledFallback = [...fallbackMissions].sort(() => 0.5 - Math.random());
+
+        // Combine prioritized and fallback missions
+        const combinedMissions = [...shuffledPotential, ...shuffledFallback];
         
-        const dynamicMissionIds = shuffledMissions
+        const dynamicMissionIds = combinedMissions
             .map(m => m.id)
             .slice(0, TOTAL_DAYS - fixedMissionPlan.length);
 
@@ -73,7 +84,12 @@ export default function DashboardPage() {
         
         // Ensure we have a fallback if missions run out
         while (fullPlan.length < TOTAL_DAYS) {
-            fullPlan.push('g1'); // Fallback mission
+            const fallbackMission = missions.find(m => m.category === 'generic' && !fullPlan.includes(m.id));
+            if (fallbackMission) {
+                fullPlan.push(fallbackMission.id);
+            } else {
+                break; // Avoid infinite loop if no generic missions are left
+            }
         }
         
         setDailyMissionPlan(fullPlan);
