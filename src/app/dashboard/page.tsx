@@ -83,45 +83,60 @@ export default function DashboardPage() {
   }, []);
 
   useEffect(() => {
-    // This effect now depends on dailyMissionPlan being ready
-    if(dailyMissionPlan.length > 0) {
-        const missionFeedback = feedbackHistory.filter((f): f is Extract<FeedbackEntry, { type: 'mission' }> => f.type === 'mission');
-        
-        const lastTwoFeedbacks = missionFeedback.slice(-2);
+    if (dailyMissionPlan.length > 0) {
+      const missionFeedback = feedbackHistory.filter(
+        (f): f is Extract<FeedbackEntry, {type: 'mission'}> =>
+          f.type === 'mission'
+      );
 
-        const getStressScore = (feeling: MissionFeedbackData['feeling']) => {
-          switch(feeling) {
-            case 'Mal': return 2;
-            case 'Más o menos': return 1;
-            case 'Un poco mejor': return 0;
-            default: return 0;
-          }
-        };
+      const lastThreeFeedbacks = missionFeedback.slice(-3);
 
-        const totalStressScore = lastTwoFeedbacks.reduce((sum, current) => sum + getStressScore(current.data.feeling), 0);
-
-        const needsIntervention = lastTwoFeedbacks.length === 2 && totalStressScore >= 3;
-        
-        const currentPlanMissionId = dailyMissionPlan[currentDayIndex];
-
-        if (needsIntervention && !isAdaptiveMode) {
-            setIsAdaptiveMode(true);
-            const mentalMissions = missions.filter(m => m.category === 'laboratorio-mental');
-            let randomMission = mentalMissions.find(m => !completedMissions.includes(m.id) && m.id !== currentPlanMissionId);
-            if (!randomMission) {
-                 randomMission = mentalMissions[Math.floor(Math.random() * mentalMissions.length)];
-            }
-            if (randomMission) {
-                // Insert the adaptive mission and shift the rest
-                const newPlan = [...dailyMissionPlan];
-                newPlan.splice(currentDayIndex, 0, randomMission.id);
-                setDailyMissionPlan(newPlan);
-                setActiveMissionId(randomMission.id);
-            }
-        } else {
-            setIsAdaptiveMode(false);
-            setActiveMissionId(currentPlanMissionId);
+      const getStressScore = (feeling: MissionFeedbackData['feeling']) => {
+        switch (feeling) {
+          case 'Mal':
+            return 2;
+          case 'Más o menos':
+            return 1;
+          case 'Un poco mejor':
+            return 0;
+          default:
+            return 0;
         }
+      };
+
+      const totalStressScore = lastThreeFeedbacks.reduce(
+        (sum, current) => sum + getStressScore(current.data.feeling),
+        0
+      );
+
+      const needsIntervention =
+        lastThreeFeedbacks.length >= 2 && totalStressScore >= 4;
+
+      const currentPlanMissionId = dailyMissionPlan[currentDayIndex];
+
+      if (needsIntervention && !isAdaptiveMode) {
+        setIsAdaptiveMode(true);
+        const mentalMissions = missions.filter(
+          m => m.category === 'laboratorio-mental'
+        );
+        let randomMission = mentalMissions.find(
+          m =>
+            !completedMissions.includes(m.id) && m.id !== currentPlanMissionId
+        );
+        if (!randomMission) {
+          randomMission =
+            mentalMissions[Math.floor(Math.random() * mentalMissions.length)];
+        }
+        if (randomMission) {
+          const newPlan = [...dailyMissionPlan];
+          newPlan.splice(currentDayIndex, 0, randomMission.id);
+          setDailyMissionPlan(newPlan);
+          setActiveMissionId(randomMission.id);
+        }
+      } else {
+        setIsAdaptiveMode(false);
+        setActiveMissionId(currentPlanMissionId);
+      }
     }
   }, [currentDayIndex, feedbackHistory, dailyMissionPlan, setDailyMissionPlan]);
 
@@ -309,4 +324,5 @@ export default function DashboardPage() {
       </main>
     </div>
   );
-}
+
+    
