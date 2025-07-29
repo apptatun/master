@@ -125,7 +125,7 @@ export function MissionList({ mission, completedMissions, onCompleteMission, onA
               <CardContent className="space-y-1 px-4 sm:px-6 pb-4 pt-2">
                 <p className="text-base sm:text-xl text-muted-foreground leading-snug">{mission.description}</p>
                 
-                {mission.type === 'checkbox' && mission.steps && (
+                {mission.type === 'interactive' && mission.steps && !mission.why && (
                   <div className="space-y-1 pt-2">
                     <ol className="list-decimal list-inside space-y-1 text-base sm:text-xl text-muted-foreground leading-snug">
                       {mission.steps.map((step, index) => (
@@ -152,21 +152,14 @@ export function MissionList({ mission, completedMissions, onCompleteMission, onA
               </CardContent>
               {!isCurrentMissionCompleted && (
                  <CardFooter className="flex flex-col items-stretch gap-3 bg-foreground/5 py-4 px-4 sm:py-5 sm:px-6">
-                    {mission.type === 'interactive' && (
-                      <div className="flex flex-col sm:flex-row gap-3">
-                         <Button onClick={() => handleOpenModal(mission)} className="flex-1 group bg-accent text-accent-foreground hover:bg-accent/90 text-base">
-                           Ver cómo se hace
+                    <div className="flex flex-col sm:flex-row gap-3">
+                        <Button onClick={() => handleOpenModal(mission)} className="flex-1 group bg-accent text-accent-foreground hover:bg-accent/90 text-base">
+                        Ver cómo se hace
                         </Button>
                         <Button onClick={() => handleCompleteMission(mission.id)} className="flex-1 bg-green-600 text-white hover:bg-green-700 text-base">
-                           Ya sé cómo seguir
+                        Ya sé cómo seguir
                         </Button>
-                      </div>
-                    )}
-                    {mission.type === 'checkbox' && (
-                      <Button onClick={() => handleCompleteMission(mission.id)} size="lg" className="w-full text-lg px-4 py-6 bg-accent text-accent-foreground hover:bg-accent/90">
-                        <Check className="mr-2 h-5 w-5" /> Listo, ¡Un paso más!
-                      </Button>
-                    )}
+                    </div>
                     
                     <div className="flex justify-between items-center flex-wrap gap-2 mt-2">
                         <Button variant="ghost" onClick={() => setIsAssistantModalOpen(true)} className="text-muted-foreground text-base">
