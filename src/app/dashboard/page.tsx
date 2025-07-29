@@ -2,36 +2,25 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { MissionList } from '@/components/MissionList';
 import { DashboardHeader } from '@/components/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
-import { Check, ArrowLeft, ArrowRight, Trophy, Sparkles, BrainCircuit } from 'lucide-react';
-import type { Mission, FeedbackEntry } from '@/lib/types';
+import { ArrowLeft, ArrowRight, Sparkles, BrainCircuit } from 'lucide-react';
+import type { Mission, FeedbackEntry, SubCategory } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Alert, AlertDescription } from '@/components/ui/alert';
+import { subCategoryMap } from '@/lib/types';
 
-// For now, we define a fixed 15-day mission plan here.
-// Later, this could be more dynamic.
-const dailyMissionPlan: string[] = [
+// The first 3 days are fixed to build a foundation.
+const fixedMissionPlan: string[] = [
     'm36',   // Día 1: Despertar con propósito
     'm3_v2', // Día 2: Limpieza "Espejo Líquido"
     'm43',   // Día 3: Rincón de conquista
-    'm4',    // Día 4: Poner a lavar la ropa
-    'm39',   // Día 5: Guardián de la Vestimenta (20 min)
-    'm26',   // Día 6: Ejercicio de Anclaje 5-4-3-2-1
-    'm13',   // Día 7: Ponte ropa limpia (2 min)
-    'm1',    // Día 8: Encender la hornalla
-    'm23',   // Día 9: Revisa tu saldo bancario
-    'm15',   // Día 10: Reactivar Contacto (2 min)
-    'm14',   // Día 11: Ordena un solo lugar (7 min)
-    'm11',   // Día 12: Compra algo en el kiosco
-    'm45',   // Día 13: Permiso para no saber
-    'm46',   // Día 14: Inmersión Digital
-    'm28'    // Día 15: Reintenta una acción que te costó
 ];
+
+const TOTAL_DAYS = 15;
 
 
 export default function DashboardPage() {
@@ -43,12 +32,14 @@ export default function DashboardPage() {
   const [activeMissionId, setActiveMissionId] = useState<string | null>(null);
   const [feedbackHistory, setFeedbackHistory] = useState<FeedbackEntry[]>([]);
   const [isAdaptiveMode, setIsAdaptiveMode] = useState(false);
+  const [dailyMissionPlan, setDailyMissionPlan] = useState<string[]>(fixedMissionPlan);
 
 
   const { toast } = useToast();
 
   useEffect(() => {
     setIsMounted(true);
+    let initialDayIndex = 0;
 
     const savedCompleted = localStorage.getItem('completedMissions');
     if (savedCompleted) {
@@ -57,12 +48,9 @@ export default function DashboardPage() {
     
     const savedDayIndex = localStorage.getItem('currentDayIndex');
     if (savedDayIndex) {
-      const dayIndex = parseInt(savedDayIndex, 10);
-      setCurrentDayIndex(dayIndex);
-    } else {
-        localStorage.setItem('completedMissions', '[]');
-        localStorage.setItem('currentDayIndex', '0');
-    }
+      initialDayIndex = parseInt(savedDayIndex, 10);
+      setCurrentDayIndex(initialDayIndex);
+    } 
 
     const savedRestDate = localStorage.getItem('restDate');
     if (savedRestDate) {
@@ -81,7 +69,40 @@ export default function DashboardPage() {
     if (savedFeedback) {
         setFeedbackHistory(JSON.parse(savedFeedback));
     }
+
+    // Generate the dynamic part of the plan
+    const userGoal = localStorage.getItem('userGoal') || 'energy';
+    const goalCategories = subCategoryMap[userGoal as keyof typeof subCategoryMap];
     
+    const potentialMissions = missions.filter(m => 
+        (goalCategories as string[]).includes(m.category) && 
+        !fixedMissionPlan.includes(m.id)
+    );
+
+    // Simple randomization, can be improved later.
+    const shuffledMissions = [...potentialMissions].sort(() => 0.5 - Math.random());
+    
+    const dynamicMissionIds = shuffledMissions
+        .map(m => m.id)
+        .slice(0, TOTAL_DAYS - fixedMissionPlan.length);
+
+    const fullPlan = [...fixedMissionPlan, ...dynamicMissionIds];
+    
+    // Ensure we have a fallback if missions run out
+    while (fullPlan.length < TOTAL_DAYS) {
+        fullPlan.push('g1'); // Fallback mission
+    }
+    
+    setDailyMissionPlan(fullPlan);
+
+    // Set initial active mission based on the generated plan
+    if (fullPlan[initialDayIndex]) {
+        setActiveMissionId(fullPlan[initialDayIndex]);
+    } else {
+        // Handle case where plan is not yet generated or index is out of bounds
+        setActiveMissionId(fixedMissionPlan[0]);
+    }
+
   }, []);
 
   useEffect(() => {
@@ -93,14 +114,18 @@ export default function DashboardPage() {
         if (needsIntervention) {
             setIsAdaptiveMode(true);
             const mentalMissions = missions.filter(m => m.category === 'laboratorio-mental');
-            const randomMission = mentalMissions[Math.floor(Math.random() * mentalMissions.length)];
+            // Find a mental mission not already completed
+            let randomMission = mentalMissions.find(m => !completedMissions.includes(m.id));
+            if (!randomMission) { // if all are completed, just pick one
+                 randomMission = mentalMissions[Math.floor(Math.random() * mentalMissions.length)];
+            }
             setActiveMissionId(randomMission.id);
         } else {
             setIsAdaptiveMode(false);
             setActiveMissionId(dailyMissionPlan[currentDayIndex]);
         }
     }
-  }, [currentDayIndex, feedbackHistory, isMounted]);
+  }, [currentDayIndex, feedbackHistory, isMounted, dailyMissionPlan, completedMissions]);
 
   useEffect(() => {
     if(isMounted) {
@@ -132,12 +157,10 @@ export default function DashboardPage() {
 
 
   const handleCompleteMission = (missionId: string) => {
-    if (completedMissions.includes(missionId)) return;
-
     // We always mark the *original* mission for the day as complete
     // to advance progress, even if an adaptive one was shown.
     const originalMissionIdForDay = dailyMissionPlan[currentDayIndex];
-    if (!completedMissions.includes(originalMissionIdForDay)) {
+    if (originalMissionIdForDay && !completedMissions.includes(originalMissionIdForDay)) {
         const newCompleted = [...completedMissions, originalMissionIdForDay];
         setCompletedMissions(newCompleted);
     }
@@ -218,6 +241,7 @@ export default function DashboardPage() {
     localStorage.removeItem('currentDayIndex');
     localStorage.removeItem('restDate');
     localStorage.removeItem('feedbackHistory');
+    localStorage.removeItem('userGoal');
     toast({
       title: 'Progreso Reiniciado',
       description: 'Has vuelto al Día 1. ¡Una nueva oportunidad para empezar!',
@@ -230,7 +254,7 @@ export default function DashboardPage() {
   
   const originalMissionIdForDay = dailyMissionPlan[currentDayIndex];
   const currentMission = missions.find(m => m.id === activeMissionId);
-  const isCurrentMissionCompleted = completedMissions.includes(originalMissionIdForDay);
+  const isCurrentMissionCompleted = originalMissionIdForDay ? completedMissions.includes(originalMissionIdForDay) : false;
   
   const maxUnlockedDay = completedMissions.length;
   const canGoToNextDay = currentDayIndex < maxUnlockedDay;
@@ -248,13 +272,14 @@ export default function DashboardPage() {
                     <h1 className="font-headline text-2xl sm:text-3xl font-bold tracking-tight text-foreground min-w-[200px] sm:min-w-[280px]">
                         Día {currentDayIndex + 1}
                     </h1>
-                    <Button onClick={handleNextDay} variant="ghost" size="icon" disabled={!canGoToNextDay || currentDayIndex >= dailyMissionPlan.length - 1}>
+                    <Button onClick={handleNextDay} variant="ghost" size="icon" disabled={!canGoToNextDay || currentDayIndex >= TOTAL_DAYS - 1}>
                         <ArrowRight className="h-6 w-6" />
                     </Button>
                 </div>
                  <div className="flex justify-center items-center gap-2 mb-4">
-                  {dailyMissionPlan.map((missionId, index) => {
-                    const isOriginalCompleted = completedMissions.includes(dailyMissionPlan[index]);
+                  {Array.from({ length: TOTAL_DAYS }).map((_, index) => {
+                    const originalMissionId = dailyMissionPlan[index];
+                    const isOriginalCompleted = originalMissionId ? completedMissions.includes(originalMissionId) : false;
                     const isCurrent = index === currentDayIndex;
                     return (
                       <div
@@ -292,7 +317,7 @@ export default function DashboardPage() {
                         userChoseToRest={userChoseToRest}
                         onResume={handleResume}
                         onSaveFeedback={handleSaveFeedback}
-                        allMissionsCompleted={currentDayIndex >= dailyMissionPlan.length - 1 && isCurrentMissionCompleted}
+                        allMissionsCompleted={completedMissions.length >= TOTAL_DAYS}
                         currentDay={currentDayIndex + 1}
                     />
                  ) : (

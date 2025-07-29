@@ -7,7 +7,7 @@ export const missions: Mission[] = [
   {
     id: 'm1',
     title: 'Encender la hornalla',
-    description: 'Misión de Activación de Zona de Cocción. Objetivo: hervir agua en una olla de forma segura.',
+    description: 'Una misión de activación para que te familiarices con la cocina de forma segura, hirviendo agua en una olla.',
     type: 'interactive',
     category: 'supervivencia-culinaria',
     why: 'Cada uno viene con su historia. Tal vez ya usaste la cocina mil veces. Tal vez nunca prendiste una hornalla porque no te dejaron, o te dio miedo. Todo está bien. Acá no se trata de “saber” o “no saber”. Se trata de empezar a hacer, con calma y dignidad.',
@@ -38,7 +38,7 @@ export const missions: Mission[] = [
   {
     id: 'm2',
     title: 'Arroz sin engrudo (20 min)',
-    description: 'Prepara tu primer arroz.',
+    description: 'Prepara tu primer arroz. Un alimento básico que te da independencia.',
     type: 'interactive',
     category: 'supervivencia-culinaria',
     why: 'Aprender a preparar un alimento básico te da independencia y te conecta con un ritual universal.',
@@ -73,7 +73,7 @@ export const missions: Mission[] = [
   {
     id: 'm10',
     title: 'Prepara tu primer mate (5 min)',
-    description: 'Prepara tu primer mate.',
+    description: 'Anímate a preparar un mate, un ritual cultural que te conecta con otros.',
     type: 'interactive',
     category: 'supervivencia-culinaria',
     why: 'Participar en un ritual cultural te conecta con otros y te ofrece un momento de pausa y reflexión.',
@@ -124,7 +124,7 @@ export const missions: Mission[] = [
   {
     id: 'm38',
     title: 'Piloto de abastecimiento (15 min)',
-    description: 'Un paso esencial para cuidar tu energía y autonomía. Prepara un snack simple, cómelo y limpia lo que usaste.',
+    description: 'Prepara un snack simple, cómelo y limpia lo que usaste. Un paso esencial para cuidar tu energía y autonomía.',
     type: 'interactive',
     category: 'supervivencia-culinaria',
     why: 'Tomar control de tu alimentación, aunque sea con algo mínimo, es un acto de auto-cuidado fundamental. Te demuestra que sos capaz de proveer para vos mismo y nutrirte intencionalmente, rompiendo el ciclo de la pasividad.',
@@ -189,7 +189,7 @@ export const missions: Mission[] = [
   {
     id: 'm4',
     title: 'Poner a lavar la ropa',
-    description: 'Protocolo de Higiene Textil. Objetivo: poner una tanda de ropa en el lavarropas y dejarla lista para tender.',
+    description: 'Poner una tanda de ropa en el lavarropas y dejarla lista para tender. Un paso fundamental para tu autonomía.',
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Este es un paso fundamental para tu autonomía. Puede que siempre lo haya hecho alguien más, o que te parezca una tarea complicada. Estamos acá para desglosarlo y que lo hagas a tu ritmo.',
@@ -251,7 +251,7 @@ export const missions: Mission[] = [
    {
     id: 'm17',
     title: 'Descongela el freezer',
-    description: 'Descongelar el freezer sin causar una inundación ni usar un secador de pelo.',
+    description: 'Descongelar el freezer sin causar una inundación. Una tarea que demuestra que podés manejar proyectos complejos.',
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Enfrentar una tarea doméstica grande te demuestra que podés manejar proyectos más complejos de lo que creés.',
@@ -303,7 +303,7 @@ export const missions: Mission[] = [
     title: 'Despertar con propósito',
     description: 'Iniciar el día con una micro-victoria consciente, sentando las bases de la proactividad y el control personal.',
     type: 'interactive',
-    category: 'rescate-de-territorio',
+    category: 'laboratorio-mental',
     why: 'Hacer estas tres cosas a propósito, incluso si ya las hacés, establece un tono de intención para tu día. Es una forma de decir "yo controlo el inicio de mi día". Es una victoria triple antes de empezar.',
     reward: 'Primer paso del día',
     steps: [
@@ -363,7 +363,7 @@ export const missions: Mission[] = [
   {
     id: 'm39',
     title: 'Guardián de la vestimenta (20 min)',
-    description: 'Una secuencia para organizar un área clave de tu autonomía personal.',
+    description: 'Organiza un área clave de tu autonomía personal, como un cajón de ropa.',
     type: 'interactive',
     category: 'rescate-de-territorio',
     why: 'Organizar tu ropa o un cajón personal es un acto de empoderamiento y auto-organización. Te permite visualizar tus pertenencias, tomar decisiones sobre ellas y mantener un orden que reduce el estrés diario y la "pasividad". Es un entrenamiento para la toma de decisiones y la auto-organización, habilidades vitales para la independencia. Cada prenda que doblas y guardas en su lugar es un pequeño paso hacia un "yo" más capaz y en control.',
@@ -396,7 +396,7 @@ export const missions: Mission[] = [
   {
     id: 'm22',
     title: 'Envía un email de consulta',
-    description: 'Enviar una consulta a un servicio técnico o administrativo por email.',
+    description: 'Envía una consulta a un servicio técnico o administrativo por email. Una forma de comunicación de baja presión.',
     type: 'interactive',
     category: 'dominio-digital',
     why: 'Usar la comunicación escrita te permite pensar y editar, eliminando la presión de la respuesta inmediata.',
@@ -423,7 +423,7 @@ export const missions: Mission[] = [
   {
     id: 'm33',
     title: 'Crea tu primer CV',
-    description: 'Crear tu primer CV usando una plantilla simple, aunque no tengas experiencia laboral.',
+    description: 'Crea tu primer CV usando una plantilla simple, aunque no tengas experiencia laboral.',
     type: 'interactive',
     category: 'dominio-digital',
     why: 'Plasmar tus (pocas o muchas) experiencias en un documento te ayuda a ver tu propio valor y potencial.',
@@ -460,7 +460,7 @@ export const missions: Mission[] = [
   {
     id: 'm23',
     title: 'Revisa tu saldo bancario',
-    description: 'Revisar tu saldo bancario online sin juzgar el número, solo para informarte.',
+    description: 'Revisa tu saldo bancario online sin juzgar el número, solo para informarte.',
     type: 'interactive',
     category: 'finanzas-ninja',
     why: 'Mirar tus finanzas de frente, aunque sea por 5 segundos, disminuye el poder que la incertidumbre tiene sobre vos.',
@@ -817,7 +817,7 @@ export const missions: Mission[] = [
   {
     id: 'm8',
     title: 'Di "buen día" o "gracias"',
-    description: 'Decir "buen día" o "gracias" en una tienda o al recibir algo.',
+    description: 'Decir "buen día" o "gracias" en una tienda o al recibir algo. Una micro-interacción que activa la conexión.',
     type: 'interactive',
     category: 'interacciones-humanas',
     why: 'Esta micro-interacción activa las neuronas espejo y te recuerda que eres parte de una comunidad.',
@@ -877,7 +877,7 @@ export const missions: Mission[] = [
   {
     id: 'm31',
     title: 'Di "no" a algo pequeño',
-    description: 'Decir "no" a un pequeño pedido o invitación sin sentirte culpable.',
+    description: 'Decir "no" a un pequeño pedido o invitación sin sentirte culpable. Un acto de autocuidado.',
     type: 'interactive',
     category: 'interacciones-humanas',
     why: 'Aprender a poner límites es la habilidad de autocuidado más importante. Protege tu tiempo y energía.',
@@ -1114,3 +1114,5 @@ export const missions: Mission[] = [
     ]
   }
 ];
+
+    

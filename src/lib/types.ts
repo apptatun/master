@@ -4,36 +4,35 @@ export interface Step {
   description?: string;
 }
 
-export type Path = 'en-casa' | 'explorador';
+export type Goal = 'energy' | 'space' | 'social';
 
 export type SubCategory = 
-  // En Casa
-  | 'supervivencia-culinaria'
-  | 'rescate-de-territorio'
-  | 'dominio-digital'
-  | 'finanzas-ninja'
+  // 'energy' goal
   | 'laboratorio-mental'
-  // Explorador
+  | 'supervivencia-culinaria'
+  // 'space' goal
+  | 'rescate-de-territorio'
+  // 'social' goal
   | 'primeros-pasos'
   | 'interacciones-humanas'
-  | 'misiones-oficiales'
-  | 'preparacion-laboral'
+  | 'dominio-digital'
+  | 'finanzas-ninja'
   | 'aventuras-de-crecimiento';
 
-export const subCategoryMap: Record<Path, SubCategory[]> = {
-  'en-casa': [
-    'rescate-de-territorio',
+export const subCategoryMap: Record<Goal, SubCategory[]> = {
+  'energy': [
     'laboratorio-mental',
     'supervivencia-culinaria',
-    'dominio-digital',
-    'finanzas-ninja',
   ],
-  explorador: [
+  'space': [
+    'rescate-de-territorio',
+  ],
+  'social': [
     'primeros-pasos',
     'interacciones-humanas',
-    'misiones-oficiales',
-    'preparacion-laboral',
-    'aventuras-de-crecimiento',
+    'dominio-digital',
+    'finanzas-ninja',
+    'aventuras-de-crecimiento'
   ]
 };
 
@@ -70,3 +69,5 @@ export interface FeedbackEntry {
   feeling: string;
   date: string;
 }
+
+    
