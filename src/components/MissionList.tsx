@@ -8,7 +8,6 @@ import { InteractiveGuideModal } from './InteractiveGuideModal';
 import { Rocket, Check, Bot, Sparkles, Trophy, Coffee, Play, ArrowRight, CircleCheck, RefreshCw } from 'lucide-react';
 import type { Mission } from '@/lib/types';
 import { cn } from '@/lib/utils';
-import { AiAssistantModal } from './AiAssistantModal';
 import { EmojiFeedback } from './EmojiFeedback';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -31,7 +30,6 @@ interface MissionListProps {
 
 export function MissionList({ mission, completedMissions, onCompleteMission, onAdvanceToNextDay, onRest, onResume, onUseAlternative, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
-  const [isAssistantModalOpen, setIsAssistantModalOpen] = useState(false);
   const [showFeedback, setShowFeedback] = useState(false);
   const [showRejectionMessage, setShowRejectionMessage] = useState(false);
 
@@ -157,15 +155,11 @@ export function MissionList({ mission, completedMissions, onCompleteMission, onA
                         Ver cómo se hace
                         </Button>
                         <Button onClick={() => handleCompleteMission(mission.id)} className="flex-1 bg-green-600 text-white hover:bg-green-700 text-base">
-                        Marcar como hecho
+                        Listo, un paso más
                         </Button>
                     </div>
                     
                     <div className="flex justify-between items-center flex-wrap gap-2 mt-2">
-                        <Button variant="ghost" onClick={() => setIsAssistantModalOpen(true)} className="text-muted-foreground text-base">
-                            <Bot className="mr-2 h-4 w-4"/>
-                            Necesito una mano
-                        </Button>
                         {mission.alternativeMissionId && (
                            <Button variant="ghost" onClick={() => onUseAlternative(mission.alternativeMissionId!)} className="text-muted-foreground text-base">
                                 <RefreshCw className="mr-2 h-4 w-4"/>
@@ -190,7 +184,7 @@ export function MissionList({ mission, completedMissions, onCompleteMission, onA
              {isCurrentMissionCompleted && !showFeedback && (
                  <div className="mt-8 text-center p-4 sm:p-6 bg-card rounded-lg border">
                     <p className="text-base sm:text-xl text-muted-foreground mt-2 mb-6">
-                      Listo. Ya está hecho. Te vemos mañana para la siguiente.
+                      Hoy te hiciste cargo de una cosa más. Te vemos mañana para la siguiente.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button onClick={onAdvanceToNextDay} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground" disabled={allMissionsCompleted}>
@@ -221,13 +215,6 @@ export function MissionList({ mission, completedMissions, onCompleteMission, onA
           onComplete={() => {
             handleCompleteMission(selectedMission.id)
           }}
-        />
-      )}
-      {mission && !isCurrentMissionCompleted && !allMissionsCompleted && (
-         <AiAssistantModal
-          missionTitle={mission.title}
-          isOpen={isAssistantModalOpen}
-          onClose={() => setIsAssistantModalOpen(false)}
         />
       )}
     </Card>
