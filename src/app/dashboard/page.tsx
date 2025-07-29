@@ -410,7 +410,7 @@ export default function DashboardPage() {
                         onUseAlternative={handleUseAlternative}
                         userChoseToRest={userChoseToRest}
                         onResume={handleResume}
-                        onSaveFeedback={onSaveFeedback}
+                        onSaveFeedback={handleSaveFeedback}
                         allMissionsCompleted={completedMissions.length >= TOTAL_DAYS}
                         currentDay={currentDayIndex + 1}
                     />
