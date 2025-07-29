@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Ear, Eye, Hand, Quote, Wind, Droplets, Smile, Shirt, Apple, Waves, Bath, HeartHandshake } from 'lucide-react';
+import { Ear, Eye, Hand, Quote, Wind, Droplets, Smile, Shirt, Apple, Waves, Bath, HeartHandshake, Music, Sparkles, Brain } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
@@ -63,6 +63,24 @@ const autocuidadoProfundo = [
         title: '"Restaurar tu Sonrisa"',
         description: 'Cepíllate los dientes. Es un gesto simple para recuperar la sensación de ser tú.'
     },
+];
+
+const sensorialItems = [
+    {
+        icon: Music,
+        title: '"Resonar con Vida"',
+        description: 'Escucha una canción que alguna vez te dio fuerza. No importa si no sientes nada. Dale play como quien abre una ventana.'
+    },
+    {
+        icon: Sparkles,
+        title: '"Aromas que Invocan"',
+        description: 'Abre un frasco de café, una fruta cítrica, una esencia. Inhala profundamente. Deja que algo te despierte por dentro.'
+    },
+    {
+        icon: Brain,
+        title: '"Recordatorio de Existencia"',
+        description: 'Di tu nombre en voz baja. Una vez. Luego otra. Recuerda que estás aquí, y que eso es suficiente.'
+    }
 ]
 
 export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) {
@@ -144,10 +162,10 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
             </TabsContent>
             
             <TabsContent value="rituales" className="h-full">
-              <div className="flex flex-col text-left h-full p-2 sm:p-4 border rounded-lg bg-secondary/50">
+              <div className="flex flex-col text-left h-full p-1 sm:p-2 rounded-lg">
                   <div className='text-center mb-4'>
                     <h3 className='font-bold text-lg text-foreground'>Rituales de Reanimación</h3>
-                    <p className="text-base text-muted-foreground">Pequeños actos sagrados para volver a habitar tu cuerpo. Elige solo uno.</p>
+                    <p className="text-base text-muted-foreground px-2">Pequeños actos sagrados para volver a habitar tu cuerpo. Elige solo uno.</p>
                   </div>
                   <div className="space-y-3">
                       {autocuidadoItems.map(item => {
@@ -168,13 +186,36 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
                       })}
                   </div>
 
-                  <Accordion type="single" collapsible className="w-full mt-4">
+                  <Accordion type="single" collapsible className="w-full mt-4 space-y-3">
                     <AccordionItem value="item-1" className="border-none">
                       <AccordionTrigger className="font-bold text-foreground hover:no-underline text-base rounded-md px-4 bg-card border shadow-sm">
-                        ¿Necesitas más?
+                        ¿Necesitas algo más profundo?
                       </AccordionTrigger>
                       <AccordionContent className="pt-3 space-y-3">
                          {autocuidadoProfundo.map(item => {
+                          const Icon = item.icon;
+                          return (
+                            <div key={item.title} className="flex items-start gap-4 p-4 rounded-lg bg-card border shadow-sm">
+                                <Icon className="h-8 w-8 text-accent flex-shrink-0 mt-1" />
+                                <div>
+                                    <p className="text-lg text-foreground font-bold">
+                                        {item.title}
+                                    </p>
+                                    <p className="text-base text-muted-foreground">
+                                        {item.description}
+                                    </p>
+                                </div>
+                            </div>
+                          );
+                      })}
+                      </AccordionContent>
+                    </AccordionItem>
+                    <AccordionItem value="item-2" className="border-none">
+                      <AccordionTrigger className="font-bold text-foreground hover:no-underline text-base rounded-md px-4 bg-card border shadow-sm">
+                        ¿Poca energía física? Prueba esto
+                      </AccordionTrigger>
+                      <AccordionContent className="pt-3 space-y-3">
+                         {sensorialItems.map(item => {
                           const Icon = item.icon;
                           return (
                             <div key={item.title} className="flex items-start gap-4 p-4 rounded-lg bg-card border shadow-sm">
@@ -205,5 +246,3 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
     </Dialog>
   );
 }
-
-    
