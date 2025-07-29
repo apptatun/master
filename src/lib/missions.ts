@@ -521,50 +521,6 @@ export const missions: Mission[] = [
     ]
   },
   {
-    id: 'm6',
-    title: 'Bebe un vaso de agua (1 min)',
-    description: 'Bebe un vaso de agua al despertar, antes de tocar el celular.',
-    type: 'interactive',
-    category: 'laboratorio-mental',
-    why: 'Es la forma más rápida de reactivar tu cuerpo y mente después de horas de ayuno.',
-    reward: 'Primer cuidado del día',
-    steps: [
-        { title: 'Tené un vaso de agua al lado de tu cama desde la noche anterior.'},
-        { title: 'Al despertar, antes de mirar el celular, tómalo.'},
-        { title: 'Bébelo tranquilamente. ¡Listo! Tu cuerpo te lo agradece.'}
-    ]
-  },
-  {
-    id: 'm12',
-    title: 'Cepíllate los dientes (3 min)',
-    description: 'Cepíllate los dientes como un acto de autocuidado consciente.',
-    type: 'interactive',
-    category: 'laboratorio-mental',
-    why: 'Es un acto de autocuidado básico que envía una señal a tu cerebro de que mereces atención y limpieza.',
-    reward: 'Un momento para vos',
-    steps: [
-        { title: 'Poné pasta en el cepillo.'},
-        { title: 'Cepillá los dientes de arriba y abajo por fuera.'},
-        { title: 'Cepillá por dentro y las muelas.'},
-        { title: 'Enjuagate bien. ¡Sonrisa lista!'}
-    ]
-  },
-  {
-    id: 'm13',
-    title: 'Ponte ropa limpia (2 min)',
-    description: 'Ponte ropa limpia, aunque no salgas de casa, para cambiar tu estado mental.',
-    type: 'interactive',
-    category: 'laboratorio-mental',
-    why: 'Cambiar el pijama por ropa te ayuda a diferenciar entre descanso y actividad, preparando tu mente para el día.',
-    reward: 'Listo/a para el día',
-    steps: [
-        { title: 'Sacate el pijama.'},
-        { title: 'Elegí una remera y un pantalón limpios.'},
-        { title: 'Ponételos. No tiene que ser ropa de calle, solo limpia.'},
-        { title: '¡Listo! Ya cambiaste el chip del modo "dormir" al modo "estar".'}
-    ]
-  },
-  {
     id: 'm16',
     title: 'Apaga pantallas 1h antes de dormir',
     description: 'Desconéctate de las pantallas para conectar con tu descanso.',
@@ -577,36 +533,6 @@ export const missions: Mission[] = [
         { title: 'Cuando suene, dejá el celular, la compu o la tele.'},
         { title: 'Hacé algo analógico: leé un libro, escuchá música, ordená algo.'},
         { title: '¡Listo! Estás preparando a tu cerebro para un descanso de calidad.'}
-    ]
-  },
-  {
-    id: 'm24',
-    title: 'Ducha express de 5 minutos',
-    description: 'Ducha express de 5 minutos usando un timer para energizarte.',
-    type: 'interactive',
-    category: 'laboratorio-mental',
-    why: 'Completar una tarea básica con un límite de tiempo te energiza y te da una sensación de eficiencia.',
-    reward: 'Energía renovada',
-    steps: [
-        { title: 'Poné un cronómetro de 5 minutos en tu celular.'},
-        { title: 'Metete a la ducha y dale play.'},
-        { title: 'Mojate, enjabonate, enjuagate. ¡A buen ritmo!'},
-        { title: 'Salí antes de que suene la alarma. ¡Victoria express!'}
-    ]
-  },
-  {
-    id: 'm25',
-    title: 'Come 1 fruta y 1 vaso de agua',
-    description: 'Ingerir 1 fruta y 1 vaso de agua como un combo de energía rápida.',
-    type: 'interactive',
-    category: 'laboratorio-mental',
-    why: 'Es el combo de energía y cuidado más simple y efectivo que existe. Le estás dando a tu cuerpo combustible de calidad.',
-    reward: 'Combustible para el cuerpo',
-    steps: [
-        { title: 'Elegí cualquier fruta que tengas a mano.'},
-        { title: 'Lavala bien.'},
-        { title: 'Cométela.'},
-        { title: 'Tomá un vaso de agua. ¡Cuerpo recargado!'}
     ]
   },
   {
