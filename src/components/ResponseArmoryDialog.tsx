@@ -78,6 +78,27 @@ const sections = [
                 why: 'Cambia el foco de "lento" a "consistente", un valor que inspira respeto.'
             }
         ]
+    },
+    {
+        title: '💭 Banco de Pensamientos (Escudos para tu voz interior)',
+        responses: [
+            {
+                quote: '“No tengo que tener todo resuelto hoy.”',
+                why: 'Te da permiso para vivir en el presente y alivia la presión de tener un plan perfecto.'
+            },
+            {
+                quote: '“Está bien ir lento, siempre y cuando no me detenga.”',
+                why: 'Valora el progreso constante por sobre la velocidad. Cada paso, no importa cuán pequeño, es una victoria.'
+            },
+            {
+                quote: '“Esto también va a pasar.”',
+                why: 'Un recordatorio de que los malos momentos son temporales. Te ayuda a ganar perspectiva cuando te sientes abrumado.'
+            },
+            {
+                quote: '“Mi valor no se mide por mi productividad.”',
+                why: 'Separa tu identidad de tus logros. Te recuerda que mereces descanso y respeto incondicionalmente.'
+            }
+        ]
     }
 ]
 
@@ -88,7 +109,7 @@ export function ResponseArmoryDialog({ isOpen, onClose }: ResponseArmoryDialogPr
         <DialogHeader>
           <DialogTitle className="font-headline text-2xl sm:text-3xl">Armería de Respuestas</DialogTitle>
           <DialogDescription className="text-base pt-2">
-            Herramientas para cuando te sentís presionado. No son para pelear, son para proteger tu proceso. Úsalas como un escudo frente a preguntas incómodas o juicios sobre tu momento de vida.
+            Herramientas para cuando te sentís presionado. No son para pelear, son para proteger tu proceso. Respuestas que podés usar frente a preguntas incómodas o juicios sobre tu momento de vida.
           </DialogDescription>
         </DialogHeader>
         
