@@ -261,7 +261,7 @@ export default function DashboardPage() {
 
   return (
     <div className="flex h-screen flex-col bg-background">
-      <DashboardHeader onResetProgress={handleResetProgress} />
+      <DashboardHeader onResetProgress={handleResetProgress} feedbackHistory={feedbackHistory} missions={missions} />
       <main className="flex-1 overflow-y-auto container mx-auto p-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="space-y-4 text-center">
             <div className="pt-2">
@@ -329,5 +329,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-    

@@ -3,19 +3,24 @@
 
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { RotateCcw, Shield } from 'lucide-react';
+import { RotateCcw, Shield, BookOpen } from 'lucide-react';
 import { ResetProgressDialog } from './ResetProgressDialog';
 import { useState } from 'react';
 import { ResponseArmoryDialog } from './ResponseArmoryDialog';
+import { BitacoraDialog } from './BitacoraDialog';
+import type { FeedbackEntry, Mission } from '@/lib/types';
 
 
 interface DashboardHeaderProps {
     onResetProgress: () => void;
+    feedbackHistory: FeedbackEntry[];
+    missions: Mission[];
 }
 
-export function DashboardHeader({ onResetProgress }: DashboardHeaderProps) {
+export function DashboardHeader({ onResetProgress, feedbackHistory, missions }: DashboardHeaderProps) {
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const [isArmoryOpen, setIsArmoryOpen] = useState(false);
+  const [isBitacoraOpen, setIsBitacoraOpen] = useState(false);
 
   return (
     <>
@@ -29,6 +34,10 @@ export function DashboardHeader({ onResetProgress }: DashboardHeaderProps) {
             </div>
             </Link>
             <div className="flex items-center gap-2">
+                <Button variant="ghost" size="icon" onClick={() => setIsBitacoraOpen(true)}>
+                    <BookOpen className="h-6 w-6" />
+                    <span className="sr-only">Mi Bitácora</span>
+                </Button>
                 <Button variant="ghost" size="icon" onClick={() => setIsArmoryOpen(true)}>
                     <Shield className="h-6 w-6" />
                     <span className="sr-only">Armería de Respuestas</span>
@@ -48,6 +57,12 @@ export function DashboardHeader({ onResetProgress }: DashboardHeaderProps) {
         <ResponseArmoryDialog
             isOpen={isArmoryOpen}
             onClose={() => setIsArmoryOpen(false)}
+        />
+        <BitacoraDialog
+            isOpen={isBitacoraOpen}
+            onClose={() => setIsBitacoraOpen(false)}
+            feedbackHistory={feedbackHistory}
+            missions={missions}
         />
     </>
   );
