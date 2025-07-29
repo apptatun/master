@@ -106,7 +106,7 @@ export default function SetupPage() {
             <Button
               variant="outline"
               size="lg"
-              className="text-lg"
+              className="w-full md:w-auto text-base md:text-lg h-auto py-3 whitespace-normal md:whitespace-nowrap"
               onClick={() => handleSelectGoal('general')}
             >
               <Shuffle className="mr-2 h-5 w-5" />
