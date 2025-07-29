@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Waves, Ear, Eye, Hand, Quote } from 'lucide-react';
+import { Ear, Eye, Hand, Quote } from 'lucide-react';
 import { useState } from 'react';
 
 const groundingSteps = [
@@ -51,7 +51,7 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
                   <div className="relative w-40 h-40 flex items-center justify-center">
                       <div className="absolute w-full h-full bg-accent/20 rounded-full animate-pulse-slow"></div>
                       <div className="absolute w-40 h-40 bg-accent/80 rounded-full animate-breath"></div>
-                      <p className="z-10 text-accent-foreground font-bold text-lg breathing-text">Respira</p>
+                      <p className="z-10 text-accent-foreground font-bold text-lg">Respira</p>
                   </div>
               </div>
             </TabsContent>

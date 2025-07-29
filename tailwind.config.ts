@@ -72,12 +72,12 @@ export default {
           to: { height: "0" },
         },
         "breath": {
-            '0%, 100%': { transform: 'scale(0.8)', opacity: '0.8' },
-            '50%': { transform: 'scale(1.2)', opacity: '1' },
+          '0%, 100%': { transform: 'scale(0.8)', opacity: '0.8' },
+          '50%': { transform: 'scale(1.2)', opacity: '1' },
         },
         "pulse-slow": {
-            '0%, 100%': { opacity: '1' },
-            '50%': { opacity: '0.5' },
+          '0%, 100%': { opacity: '1' },
+          '50%': { opacity: '0.5' },
         }
       },
       animation: {
