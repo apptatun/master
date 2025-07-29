@@ -35,7 +35,7 @@ export function ResetProgressDialog({
         <AlertDialogHeader>
           <AlertDialogTitle>¿Estás seguro que quieres reiniciar?</AlertDialogTitle>
           <AlertDialogDescription>
-            Toda tu aventura y tus logros hasta ahora se borrarán. Esta acción no se puede deshacer. Empezarás de nuevo desde el Día 1.
+            Toda tu aventura y tus logros hasta ahora se borrarán. Esta acción no se puede deshacer. Empezarás de nuevo desde la pantalla de bienvenida.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

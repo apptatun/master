@@ -7,11 +7,11 @@ import { MissionList } from '@/components/MissionList';
 import { DashboardHeader } from '@/components/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
-import { ArrowLeft, ArrowRight, Sparkles, BrainCircuit } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles, BrainCircuit, HeartPulse } from 'lucide-react';
 import type { Mission, FeedbackEntry, MissionFeedbackData } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import { subCategoryMap } from '@/lib/types';
 import useLocalStorage from '@/hooks/useLocalStorage';
 
@@ -37,6 +37,9 @@ export default function DashboardPage() {
   const [activeMissionId, setActiveMissionId] = useState<string | null>(null);
   const [isAdaptiveMode, setIsAdaptiveMode] = useState(false);
   const [dailyMissionPlan, setDailyMissionPlan] = useLocalStorage<string[]>('dailyMissionPlan', []);
+  
+  const [showRescueAlert, setShowRescueAlert] = useState(false);
+  const [isRescueBoxOpen, setIsRescueBoxOpen] = useState(false);
 
 
   const { toast } = useToast();
@@ -55,63 +58,78 @@ export default function DashboardPage() {
     }
 
     if (dailyMissionPlan.length < TOTAL_DAYS) {
-        const userGoal = localStorage.getItem('userGoal');
-        
-        let newPlan = [...fixedMissionPlan];
-
-        if (completedMissions.length >= fixedMissionPlan.length && userGoal) {
-            let potentialMissions: Mission[];
-            
-            if (userGoal === 'general') {
-                // General path: mix of all categories
-                potentialMissions = missions.filter(m => 
-                    !newPlan.includes(m.id) && m.category !== 'generic'
-                );
-            } else {
-                // Goal-specific path
-                const goalCategories = subCategoryMap[userGoal as keyof typeof subCategoryMap];
-                
-                potentialMissions = missions.filter(m => 
-                    (goalCategories as string[]).includes(m.category) && 
-                    !newPlan.includes(m.id)
-                );
-
-                const fallbackMissions = missions.filter(m => 
-                    !goalCategories.includes(m.category as any) &&
-                    !newPlan.includes(m.id) &&
-                    m.category !== 'generic'
-                );
-                
-                potentialMissions = [...potentialMissions, ...fallbackMissions];
-            }
-            
-            const shuffledMissions = [...potentialMissions].sort(() => 0.5 - Math.random());
-            
-            const dynamicMissionIds = shuffledMissions
-                .map(m => m.id)
-                .slice(0, TOTAL_DAYS - newPlan.length);
-
-            newPlan = [...newPlan, ...dynamicMissionIds];
-        }
-        
-        while (newPlan.length < TOTAL_DAYS) {
-            const fallbackMission = missions.find(m => m.category === 'generic' && !newPlan.includes(m.id));
-            if (fallbackMission) {
-                newPlan.push(fallbackMission.id);
-            } else {
-                const anyOtherMission = missions.find(m => !newPlan.includes(m.id));
-                if (anyOtherMission) {
-                    newPlan.push(anyOtherMission.id);
-                } else {
-                    break; 
-                }
-            }
-        }
-        setDailyMissionPlan(newPlan);
+        generateMissionPlan();
     }
     
 
   }, [completedMissions.length]);
+
+  useEffect(() => {
+    // This effect runs when the plan is generated or the user goal changes.
+    if (dailyMissionPlan.length === TOTAL_DAYS && !activeMissionId) {
+       setActiveMissionId(dailyMissionPlan[currentDayIndex]);
+    }
+  }, [dailyMissionPlan, currentDayIndex, activeMissionId]);
+
+
+  const generateMissionPlan = () => {
+    const userGoal = localStorage.getItem('userGoal');
+    let newPlan = [...fixedMissionPlan];
+
+    if (completedMissions.length >= fixedMissionPlan.length && !userGoal) {
+        // Don't generate the rest of the plan until a goal is set.
+        return;
+    }
+
+    if (userGoal) {
+        let potentialMissions: Mission[];
+        
+        if (userGoal === 'general') {
+            potentialMissions = missions.filter(m => 
+                !newPlan.includes(m.id) && m.category !== 'generic'
+            );
+        } else {
+            const goalCategories = subCategoryMap[userGoal as keyof typeof subCategoryMap];
+            
+            const goalSpecificMissions = missions.filter(m => 
+                (goalCategories as string[]).includes(m.category) && 
+                !newPlan.includes(m.id)
+            );
+            
+            const otherMissions = missions.filter(m => 
+                !(goalCategories as string[]).includes(m.category) &&
+                !newPlan.includes(m.id) &&
+                m.category !== 'generic'
+            );
+
+            potentialMissions = [...goalSpecificMissions, ...otherMissions];
+        }
+        
+        const shuffledMissions = [...potentialMissions].sort(() => 0.5 - Math.random());
+        
+        const dynamicMissionIds = shuffledMissions
+            .map(m => m.id)
+            .slice(0, TOTAL_DAYS - newPlan.length);
+
+        newPlan = [...newPlan, ...dynamicMissionIds];
+    }
+    
+    // Fallback to fill up any remaining slots
+    while (newPlan.length < TOTAL_DAYS) {
+        const fallbackMission = missions.find(m => m.category === 'generic' && !newPlan.includes(m.id));
+        if (fallbackMission) {
+            newPlan.push(fallbackMission.id);
+        } else {
+            const anyOtherMission = missions.find(m => !newPlan.includes(m.id));
+            if (anyOtherMission) {
+                newPlan.push(anyOtherMission.id);
+            } else {
+                break; // No more missions to add
+            }
+        }
+    }
+    setDailyMissionPlan(newPlan);
+  }
 
   useEffect(() => {
     if (dailyMissionPlan.length > 0) {
@@ -143,9 +161,10 @@ export default function DashboardPage() {
       const needsIntervention =
         lastThreeFeedbacks.length >= 3 && totalStressScore >= 4;
 
-      const currentPlanMissionId = dailyMissionPlan[currentDayIndex];
+      let currentPlanMissionId = dailyMissionPlan[currentDayIndex];
+      const isCurrentAdaptive = dailyMissionPlan[currentDayIndex]?.startsWith('adaptive_');
 
-      if (needsIntervention && !isAdaptiveMode) {
+      if (needsIntervention && !isAdaptiveMode && !isCurrentAdaptive) {
         setIsAdaptiveMode(true);
         const mentalMissions = missions.filter(
           m => m.category === 'laboratorio-mental'
@@ -160,14 +179,19 @@ export default function DashboardPage() {
         }
         if (randomMission) {
           const newPlan = [...dailyMissionPlan];
+          // We add a special prefix to distinguish it, but the mission ID is still valid
+          const adaptiveMissionId = `adaptive_${randomMission.id}`;
           newPlan.splice(currentDayIndex, 0, randomMission.id);
+          // Don't add to total days, just insert it
+          newPlan.pop(); 
           setDailyMissionPlan(newPlan);
-          setActiveMissionId(randomMission.id);
+          currentPlanMissionId = randomMission.id;
         }
-      } else {
-        setIsAdaptiveMode(false);
-        setActiveMissionId(currentPlanMissionId);
+      } else if (!needsIntervention && isAdaptiveMode) {
+          setIsAdaptiveMode(false);
       }
+      
+      setActiveMissionId(currentPlanMissionId);
     }
   }, [currentDayIndex, feedbackHistory, dailyMissionPlan, setDailyMissionPlan]);
 
@@ -181,18 +205,18 @@ export default function DashboardPage() {
         newCompleted = [...completedMissions];
     }
     
-    // REDIRECTION LOGIC
     const userHasCompletedFoundations = fixedMissionPlan.every(id => newCompleted.includes(id));
     const userGoal = localStorage.getItem('userGoal');
 
     if (userHasCompletedFoundations && !userGoal) {
         router.push('/setup');
-        return; // Stop further execution to allow redirection
+        return;
     }
 
     setUserChoseToRest(false);
     setRestDate(null);
     setIsAdaptiveMode(false);
+    setShowRescueAlert(false);
 
     const mission = missions.find(m => m.id === missionId);
 
@@ -214,12 +238,18 @@ export default function DashboardPage() {
       date: new Date().toISOString(),
     };
     setFeedbackHistory([...feedbackHistory, newFeedback]);
+    
+    setShowRescueAlert(false);
 
     if (feedback.type === 'armory') {
         toast({
             title: 'Radar actualizado',
             description: 'Tu experiencia ha sido registrada en la bitácora. ¡Buen trabajo!',
         });
+    }
+
+    if (feedback.type === 'mission' && feedback.data.feeling === 'Mal') {
+        setShowRescueAlert(true);
     }
   };
   
@@ -229,17 +259,20 @@ export default function DashboardPage() {
     }
     setUserChoseToRest(false);
     setRestDate(null);
+    setShowRescueAlert(false);
   };
 
   const handleNextDay = () => {
     if (currentDayIndex < dailyMissionPlan.length - 1) {
         setCurrentDayIndex(currentDayIndex + 1);
+        setShowRescueAlert(false);
     }
   };
 
   const handlePreviousDay = () => {
     if (currentDayIndex > 0) {
         setCurrentDayIndex(currentDayIndex - 1);
+        setShowRescueAlert(false);
     }
   };
   
@@ -272,11 +305,20 @@ export default function DashboardPage() {
     setRestDate(null);
     setUserChoseToRest(false);
     setFeedbackHistory([]);
-    setDailyMissionPlan([]); // This will trigger regeneration
+    setDailyMissionPlan([]);
     localStorage.removeItem('userGoal');
-    localStorage.removeItem('dailyMissionPlan'); // Force clear
-    window.location.reload(); // Easiest way to force a full reset
+    localStorage.removeItem('dailyMissionPlan');
+    localStorage.removeItem('hasSeenOnboarding');
+    router.push('/');
   };
+  
+  useEffect(() => {
+     const userGoal = localStorage.getItem('userGoal');
+     if (completedMissions.length >= fixedMissionPlan.length && userGoal && dailyMissionPlan.length < TOTAL_DAYS) {
+        generateMissionPlan();
+     }
+  }, [localStorage.getItem('userGoal')]);
+
 
   if (!isMounted || !activeMissionId) {
     return null;
@@ -312,12 +354,8 @@ export default function DashboardPage() {
                 </div>
                  <div className="flex justify-center items-center gap-2 mb-4">
                   {Array.from({ length: TOTAL_DAYS }).map((_, index) => {
-                    const missionIdAtIndex = dailyMissionPlan.find(m_id => {
-                        const originalIndex = dailyMissionPlan.indexOf(m_id);
-                        return originalIndex === index;
-                    });
+                    const missionIdAtIndex = dailyMissionPlan[index];
                     const isCompleted = missionIdAtIndex ? completedMissions.includes(missionIdAtIndex) : false;
-
                     const isCurrent = index === currentDayIndex;
                     
                     return (
@@ -344,6 +382,19 @@ export default function DashboardPage() {
               </Alert>
             )}
 
+            {showRescueAlert && (
+                 <Alert variant="default" className="text-left bg-secondary border-secondary-foreground/20 max-w-2xl mx-auto">
+                    <HeartPulse className="h-5 w-5" />
+                    <AlertTitle className="font-bold">A veces, un paso atrás es parte del camino.</AlertTitle>
+                    <AlertDescription className="text-secondary-foreground flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-2">
+                      <p>Notamos que este paso fue difícil. No pasa nada. ¿Necesitas una herramienta rápida para volver a tu centro?</p>
+                      <Button onClick={() => { setIsRescueBoxOpen(true); setShowRescueAlert(false); }} size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 flex-shrink-0">
+                        Abrir Caja de Rescate
+                      </Button>
+                    </AlertDescription>
+                </Alert>
+            )}
+
             <div className="border-t pt-4 sm:pt-8">
                  {currentMission ? (
                     <MissionList
@@ -351,7 +402,7 @@ export default function DashboardPage() {
                         onCompleteMission={handleCompleteMission}
                         onAdvanceToNextDay={handleAdvanceToNextDay}
                         isCurrentMissionCompleted={isCurrentMissionCompleted}
-                        onRest={handleRest}
+                        onRest={onRest}
                         onUseAlternative={handleUseAlternative}
                         userChoseToRest={userChoseToRest}
                         onResume={handleResume}
