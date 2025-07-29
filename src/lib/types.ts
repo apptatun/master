@@ -70,4 +70,9 @@ export interface FeedbackEntry {
   date: string;
 }
 
+export interface ArmoryFeedbackEntry {
+  quote: string;
+  feeling: string;
+  date: string;
+}
     

@@ -1,6 +1,7 @@
 
 'use client';
 
+import { useState } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -10,17 +11,20 @@ import {
   DialogFooter,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { ScrollArea } from '@/components/ui/scroll-area';
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Command, CommandGroup, CommandItem } from '@/components/ui/command';
+import { Check, ChevronsUpDown } from 'lucide-react';
 
 interface ResponseArmoryDialogProps {
   isOpen: boolean;
   onClose: () => void;
+  onSaveFeedback: (quote: string, feeling: string) => void;
 }
 
 const sections = [
@@ -127,9 +131,53 @@ const sections = [
             }
         ]
     }
-]
+];
 
-export function ResponseArmoryDialog({ isOpen, onClose }: ResponseArmoryDialogProps) {
+const armoryFeelings = [
+    { value: 'powerful', label: 'Poderoso/a' },
+    { value: 'relieved', label: 'Aliviado/a' },
+    { value: 'secure', label: 'Seguro/a' },
+    { value: 'neutral', label: 'Igual' },
+    { value: 'frustrated', label: 'Frustrado/a' },
+];
+
+function ArmoryFeedbackSelector({ quote, onSaveFeedback }: { quote: string, onSaveFeedback: (quote: string, feeling: string) => void }) {
+    const [open, setOpen] = useState(false);
+
+    return (
+        <Popover open={open} onOpenChange={setOpen}>
+            <PopoverTrigger asChild>
+                <Button
+                    variant="link"
+                    role="combobox"
+                    aria-expanded={open}
+                    className="p-0 h-auto text-xs text-muted-foreground hover:text-accent"
+                >
+                    Lo usé, ¿cómo me sentí?
+                </Button>
+            </PopoverTrigger>
+            <PopoverContent className="w-[200px] p-0">
+                <Command>
+                    <CommandGroup>
+                        {armoryFeelings.map((feeling) => (
+                            <CommandItem
+                                key={feeling.value}
+                                onSelect={() => {
+                                    onSaveFeedback(quote, feeling.label);
+                                    setOpen(false);
+                                }}
+                            >
+                                {feeling.label}
+                            </CommandItem>
+                        ))}
+                    </CommandGroup>
+                </Command>
+            </PopoverContent>
+        </Popover>
+    );
+}
+
+export function ResponseArmoryDialog({ isOpen, onClose, onSaveFeedback }: ResponseArmoryDialogProps) {
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-xl bg-card flex flex-col max-h-[90vh]">
@@ -140,31 +188,29 @@ export function ResponseArmoryDialog({ isOpen, onClose }: ResponseArmoryDialogPr
           </DialogDescription>
         </DialogHeader>
         
-        <div className="flex-1 min-h-0 overflow-y-auto my-4">
-            <ScrollArea className="h-full pr-4 -mr-4">
-                 <Accordion type="single" collapsible className="w-full">
-                    {sections.map(section => (
-                        <AccordionItem value={section.title} key={section.title}>
-                            <AccordionTrigger className="font-bold text-lg text-foreground text-left hover:no-underline">
-                                {section.title}
-                            </AccordionTrigger>
-                            <AccordionContent>
-                                <div className="space-y-4 pt-2">
-                                    {section.responses.map(response => (
-                                        <div key={response.quote} className="p-3 border rounded-lg bg-background/50 text-left">
-                                            <p className="font-bold text-foreground text-base">{response.quote}</p>
-                                            <p className="text-sm text-muted-foreground mt-1">Por qué funciona: {response.why}</p>
+        <div className="flex-1 min-h-0 overflow-y-auto my-4 pr-4 -mr-4">
+             <Accordion type="single" collapsible className="w-full">
+                {sections.map(section => (
+                    <AccordionItem value={section.title} key={section.title}>
+                        <AccordionTrigger className="font-bold text-lg text-foreground text-left hover:no-underline">
+                            {section.title}
+                        </AccordionTrigger>
+                        <AccordionContent>
+                            <div className="space-y-4 pt-2">
+                                {section.responses.map(response => (
+                                    <div key={response.quote} className="p-3 border rounded-lg bg-background/50 text-left">
+                                        <p className="font-bold text-foreground text-base">{response.quote}</p>
+                                        <p className="text-sm text-muted-foreground mt-1">Por qué funciona: {response.why}</p>
+                                        <div className="mt-2">
+                                            <ArmoryFeedbackSelector quote={response.quote} onSaveFeedback={onSaveFeedback} />
                                         </div>
-                                    ))}
-                                </div>
-                            </AccordionContent>
-                        </AccordionItem>
-                    ))}
-                </Accordion>
-                 <div className="pt-6 mt-4 border-t text-center text-muted-foreground text-sm">
-                    <p>Estas frases no son máscaras. Son formas de cuidarte mientras te das el permiso de estar en proceso.</p>
-                </div>
-            </ScrollArea>
+                                    </div>
+                                ))}
+                            </div>
+                        </AccordionContent>
+                    </AccordionItem>
+                ))}
+            </Accordion>
         </div>
 
         <DialogFooter className="mt-auto pt-4 border-t">

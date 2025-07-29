@@ -7,7 +7,7 @@ import { DashboardHeader } from '@/components/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
 import { ArrowLeft, ArrowRight, Sparkles, BrainCircuit } from 'lucide-react';
-import type { Mission, FeedbackEntry, SubCategory } from '@/lib/types';
+import type { Mission, FeedbackEntry, SubCategory, ArmoryFeedbackEntry } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -31,6 +31,7 @@ export default function DashboardPage() {
   const [restDate, setRestDate] = useState<string | null>(null);
   const [activeMissionId, setActiveMissionId] = useState<string | null>(null);
   const [feedbackHistory, setFeedbackHistory] = useState<FeedbackEntry[]>([]);
+  const [armoryFeedback, setArmoryFeedback] = useState<ArmoryFeedbackEntry[]>([]);
   const [isAdaptiveMode, setIsAdaptiveMode] = useState(false);
   const [dailyMissionPlan, setDailyMissionPlan] = useState<string[]>(fixedMissionPlan);
 
@@ -68,6 +69,11 @@ export default function DashboardPage() {
     const savedFeedback = localStorage.getItem('feedbackHistory');
     if (savedFeedback) {
         setFeedbackHistory(JSON.parse(savedFeedback));
+    }
+    
+    const savedArmoryFeedback = localStorage.getItem('armoryFeedback');
+    if (savedArmoryFeedback) {
+        setArmoryFeedback(JSON.parse(savedArmoryFeedback));
     }
 
     // Generate the dynamic part of the plan
@@ -155,6 +161,12 @@ export default function DashboardPage() {
     }
   }, [feedbackHistory, isMounted]);
 
+  useEffect(() => {
+    if(isMounted) {
+        localStorage.setItem('armoryFeedback', JSON.stringify(armoryFeedback));
+    }
+  }, [armoryFeedback, isMounted]);
+
 
   const handleCompleteMission = (missionId: string) => {
     // We always mark the *original* mission for the day as complete
@@ -190,6 +202,19 @@ export default function DashboardPage() {
     };
     setFeedbackHistory([...feedbackHistory, newFeedback]);
   };
+  
+  const handleSaveArmoryFeedback = (quote: string, feeling: string) => {
+    const newFeedback: ArmoryFeedbackEntry = {
+        quote,
+        feeling,
+        date: new Date().toISOString(),
+    };
+    setArmoryFeedback([...armoryFeedback, newFeedback]);
+    toast({
+        title: 'Radar actualizado',
+        description: 'Tu experiencia ha sido registrada en la bitácora. ¡Buen trabajo!',
+    })
+  }
   
   const handleAdvanceToNextDay = () => {
     if (currentDayIndex < dailyMissionPlan.length - 1) {
@@ -237,11 +262,13 @@ export default function DashboardPage() {
     setUserChoseToRest(false);
     setActiveMissionId(dailyMissionPlan[0]);
     setFeedbackHistory([]);
+    setArmoryFeedback([]);
     localStorage.removeItem('completedMissions');
     localStorage.removeItem('currentDayIndex');
     localStorage.removeItem('restDate');
     localStorage.removeItem('feedbackHistory');
     localStorage.removeItem('userGoal');
+    localStorage.removeItem('armoryFeedback');
     toast({
       title: 'Progreso Reiniciado',
       description: 'Has vuelto al Día 1. ¡Una nueva oportunidad para empezar!',
@@ -261,7 +288,13 @@ export default function DashboardPage() {
 
   return (
     <div className="flex h-screen flex-col bg-background">
-      <DashboardHeader onResetProgress={handleResetProgress} feedbackHistory={feedbackHistory} missions={missions} />
+      <DashboardHeader 
+        onResetProgress={handleResetProgress} 
+        feedbackHistory={feedbackHistory} 
+        missions={missions}
+        armoryFeedback={armoryFeedback}
+        onSaveArmoryFeedback={handleSaveArmoryFeedback}
+      />
       <main className="flex-1 overflow-y-auto container mx-auto p-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="space-y-4 text-center">
             <div className="pt-2">
