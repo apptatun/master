@@ -7,7 +7,7 @@ import { DashboardHeader } from '@/components/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
 import { ArrowLeft, ArrowRight, Sparkles, BrainCircuit } from 'lucide-react';
-import type { Mission, FeedbackEntry } from '@/lib/types';
+import type { Mission, FeedbackEntry, MissionFeedbackData } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Alert, AlertDescription } from '@/components/ui/alert';
@@ -89,9 +89,22 @@ export default function DashboardPage() {
 
   useEffect(() => {
     if (isMounted) {
-        const missionFeedback = feedbackHistory.filter(f => f.type === 'mission' && f.data.feeling === 'Mal');
+        const missionFeedback = feedbackHistory.filter((f): f is Extract<FeedbackEntry, { type: 'mission' }> => f.type === 'mission');
+        
         const lastTwoFeedbacks = missionFeedback.slice(-2);
-        const needsIntervention = lastTwoFeedbacks.length === 2;
+
+        const getStressScore = (feeling: MissionFeedbackData['feeling']) => {
+          switch(feeling) {
+            case 'Mal': return 2;
+            case 'Más o menos': return 1;
+            case 'Un poco mejor': return 0;
+            default: return 0;
+          }
+        };
+
+        const totalStressScore = lastTwoFeedbacks.reduce((sum, current) => sum + getStressScore(current.data.feeling), 0);
+
+        const needsIntervention = lastTwoFeedbacks.length === 2 && totalStressScore >= 3;
 
         if (needsIntervention) {
             setIsAdaptiveMode(true);
@@ -101,7 +114,9 @@ export default function DashboardPage() {
             if (!randomMission) { // if all are completed, just pick one
                  randomMission = mentalMissions[Math.floor(Math.random() * mentalMissions.length)];
             }
-            setActiveMissionId(randomMission.id);
+            if (randomMission) {
+                setActiveMissionId(randomMission.id);
+            }
         } else {
             setIsAdaptiveMode(false);
             setActiveMissionId(dailyMissionPlan[currentDayIndex]);
