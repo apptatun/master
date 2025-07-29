@@ -116,11 +116,11 @@ export default function Home() {
                   <p className="text-lg text-muted-foreground md:text-xl">
                     Cada día vas a tener <span className="font-bold text-foreground">UNA movida simple.</span> No es una lista de pendientes, es una micro-victoria diseñada para darte un golpe de energía y confianza.
                   </p>
+                   <p className="text-base font-bold text-foreground md:text-lg pt-2">
+                    Algunos días conquistas montañas. Otros días, sostenerte en la roca ya es heroísmo. Ambos son válidos. Ambos tienen su espacio aquí.
+                  </p>
                   <p className="text-base text-muted-foreground md:text-lg">
                     Si no te sale, no pasa nada: podés probar una alternativa o tomarte un descanso. <span className="font-bold text-foreground">Lo importante no es la velocidad, sino que sigas adelante.</span>
-                  </p>
-                  <p className="text-base font-bold text-foreground md:text-lg pt-2">
-                    Arrancamos desde tu cuarto. Sin salir de casa. Sin presión.
                   </p>
                 </div>
 
