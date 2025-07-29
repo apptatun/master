@@ -600,6 +600,58 @@ export const missions: Mission[] = [
         { title: '¡Listo! Generaste endorfinas y despejaste la mente.'}
     ]
   },
+  {
+    id: 'm41',
+    title: 'Activación matutina',
+    description: 'Establecer un micro-hábito de autocuidado para iniciar el día, rompiendo el ciclo de postergación con una acción física simple. Incluye beber agua.',
+    type: 'interactive',
+    category: 'laboratorio-mental',
+    reward: 'Mañana en marcha',
+    steps: [
+        {
+            title: 'PREPARAR TU "KIT DE DESPERTAR" (VASO DE AGUA AL LADO DE LA CAMA)',
+            description: '[AYUDA EXTRA]: "Hazlo ahora, es un paso clave para mañana. Pequeño esfuerzo, gran impacto."'
+        },
+        {
+            title: 'AL SONAR LA ALARMA, PONER AMBOS PIES FUERA DE LA CAMA',
+            description: 'No pienses, solo reacciona al sonido. Siéntate en el borde de la cama.'
+        },
+        {
+            title: 'LEVANTARTE Y TOMAR EL VASO DE AGUA',
+            description: '[SOLUCIÓN]: "Intenta visualizarlo la noche anterior. Un pequeño truco."'
+        },
+        {
+            title: 'BEBER EL AGUA LENTAMENTE, SINTIENDO LA HIDRATACIÓN',
+            description: 'Conéctate con la sensación. Este es tu combustible. ¡Victoria! Ganaste la primera batalla del día.'
+        }
+    ]
+  },
+  {
+    id: 'm44',
+    title: 'Gestión de energía',
+    description: 'Interrumpir una actividad prolongada (como juegos o redes) con una pausa activa para recargar la atención y evitar la pasividad.',
+    type: 'interactive',
+    category: 'laboratorio-mental',
+    reward: 'Pausa consciente',
+    steps: [
+        {
+            title: 'IDENTIFICAR UNA ACTIVIDAD DE "ABSORCIÓN" QUE ESTÉS HACIENDO',
+            description: 'Ej: Jugar videojuegos, ver series, navegar en el móvil.'
+        },
+        {
+            title: 'PONER PAUSA AL JUEGO O SALIR DE LA APLICACIÓN (SÓLO POR 90 SEGUNDOS)',
+            description: 'Es una pausa táctica, no un adiós.'
+        },
+        {
+            title: 'REALIZAR UNA "ACCIÓN DE DESBLOQUEO" FÍSICA Y SIMPLE',
+            description: 'Ej: Levantarte y estirar los brazos, ir por un vaso de agua, mirar por la ventana 30 segundos, dar 5 pasos por la habitación.'
+        },
+        {
+            title: 'VOLVER A LA ACTIVIDAD SI LO DESEAS (O NO, LA ELECCIÓN ES TUYA)',
+            description: 'La misión está cumplida al haber tomado la pausa consciente.'
+        }
+    ]
+  },
   
   // MODO EXPLORADOR
   // Primeros Pasos
@@ -708,6 +760,29 @@ export const missions: Mission[] = [
       }
     ]
   },
+  {
+    id: 'm40',
+    title: 'Horizonte Cero',
+    description: 'Reconectar con el exterior sin presión, gestionando la ansiedad de salir. Pisa la calle solo para observar el entorno, sin ninguna otra meta.',
+    type: 'interactive',
+    category: 'primeros-pasos',
+    why: 'Exponerte al entorno sin un objetivo reduce la ansiedad de "tener que hacer algo" afuera. Esta es una misión progresiva para reconectar a tu ritmo.',
+    reward: 'Horizonte a la vista',
+    steps: [
+        {
+            title: 'NIVEL 1: PUNTO DE OBSERVACIÓN SEGURO',
+            description: 'Ubícate en un lugar donde veas el exterior (ventana, balcón). Abre un poco para sentir el aire y nombra mentalmente 3 cosas que veas (un árbol, una nube, un auto). Respira profundo.'
+        },
+        {
+            title: 'NIVEL 2: UMBRAL DE LA PUERTA',
+            description: 'Sal a la puerta de tu casa. Quédate ahí parado 1 minuto. Solo mira a tu alrededor. Siente el aire, los sonidos. No hay que hacer nada más. Vuelve adentro cuando quieras.'
+        },
+        {
+            title: 'NIVEL 3 (OPCIONAL): EXPEDICIÓN A LA ESQUINA',
+            description: 'Si te sientes bien, camina hasta la esquina de tu calle y vuelve. No hay apuro. El objetivo es solo el trayecto. ¡Completar cualquier nivel es una victoria total!'
+        }
+    ]
+  },
 
   // Interacciones Humanas
   {
@@ -785,6 +860,32 @@ export const missions: Mission[] = [
         { title: '¡Listo! Defendiste tu tiempo y tu energía. Es una victoria enorme.'}
     ]
   },
+  {
+    id: 'm42',
+    title: 'Desafío de micro-interacción',
+    description: 'Realizar una interacción social mínima y controlada para reducir la ansiedad.',
+    type: 'interactive',
+    category: 'interacciones-humanas',
+    reward: 'Conexión iniciada',
+    steps: [
+        {
+            title: 'ELEGIR UN "OBJETIVO SEGURO" (PERSONA CONFIABLE O CONOCIDA)',
+            description: '[AYUDA EXTRA]: "Piensa en un tendero, un vecino, alguien con quien no haya mucha presión."'
+        },
+        {
+            title: 'FORMULAR UNA PREGUNTA O SALUDO SIMPLE Y NEUTRAL',
+            description: 'Ej: "¿Cómo estás?", "¿Qué tal tu día?", "Hola." (Si es online: un emoji de saludo 👋).'
+        },
+        {
+            title: 'REALIZAR LA PREGUNTA/SALUDO (EN PERSONA: MIRADA BREVE, VOZ CLARA)',
+            description: 'Respira antes de hablar. Es solo un momento.'
+        },
+        {
+            title: 'ESCUCHAR LA RESPUESTA (NO ES NECESARIO EXTENDER LA CONVERSACIÓN)',
+            description: 'Tu objetivo era interactuar. Lo lograste.'
+        }
+    ]
+  },
 
   // Aventuras de Crecimiento
   {
@@ -818,89 +919,6 @@ export const missions: Mission[] = [
     ]
   },
   {
-    id: 'm40',
-    title: 'Horizonte Cero',
-    description: 'Reconectar con el exterior sin presión, gestionando la ansiedad de salir. Pisa la calle solo para observar el entorno, sin ninguna otra meta.',
-    type: 'interactive',
-    category: 'primeros-pasos',
-    why: 'Exponerte al entorno sin un objetivo reduce la ansiedad de "tener que hacer algo" afuera.',
-    reward: 'Horizonte a la vista',
-    steps: [
-        {
-            title: 'UBICAR TU PUNTO DE OBSERVACIÓN SEGURO (VENTANA/BALCÓN/PUERTA CON LUZ)',
-            description: '[AYUDA EXTRA]: "Encuentra el lugar más cercano donde veas el exterior, aunque sea una rendija."'
-        },
-        {
-            title: 'ABRIR O ACERCARTE LO SUFICIENTE PARA SENTIR EL AIRE/VER EL CIELO',
-            description: '[SOLUCIÓN]: "Abre un poco más o quédate un segundo más concentrado."'
-        },
-        {
-            title: 'IDENTIFICAR Y NOMBRAR MENTALMENTE 3 COSAS EN EL EXTERIOR (CUALQUIERA)',
-            description: 'Ej: un árbol, una nube, un auto rojo, una persona lejana. No hay juicio, solo observación.'
-        },
-        {
-            title: 'RESPIRAR PROFUNDO 3 VECES INHALANDO AIRE FRESCO',
-            description: 'Concéntrate en la sensación del aire al entrar y salir de tu cuerpo.'
-        },
-        {
-            title: 'NIVEL 2 (Opcional): Salí a la puerta de tu casa.',
-            description: 'Quedate ahí parado 1 minuto. Solo mirá a tu alrededor. Si te sientes bien, camina hasta la esquina y vuelve. ¡Es un gran paso!'
-        }
-    ]
-  },
-  {
-    id: 'm41',
-    title: 'Activación matutina',
-    description: 'Establecer un micro-hábito de autocuidado para iniciar el día, rompiendo el ciclo de postergación con una acción física simple.',
-    type: 'interactive',
-    category: 'laboratorio-mental',
-    reward: 'Mañana en marcha',
-    steps: [
-        {
-            title: 'PREPARAR TU "KIT DE DESPERTAR" (VASO DE AGUA AL LADO DE LA CAMA)',
-            description: '[AYUDA EXTRA]: "Hazlo ahora, es un paso clave para mañana. Pequeño esfuerzo, gran impacto."'
-        },
-        {
-            title: 'AL SONAR LA ALARMA, PONER AMBOS PIES FUERA DE LA CAMA',
-            description: 'No pienses, solo reacciona al sonido. Siéntate en el borde de la cama.'
-        },
-        {
-            title: 'LEVANTARTE Y TOMAR EL VASO DE AGUA',
-            description: '[SOLUCIÓN]: "Intenta visualizarlo la noche anterior. Un pequeño truco."'
-        },
-        {
-            title: 'BEBER EL AGUA LENTAMENTE, SINTIENDO LA HIDRATACIÓN',
-            description: 'Conéctate con la sensación. Este es tu combustible. ¡Victoria! Ganaste la primera batalla del día.'
-        }
-    ]
-  },
-  {
-    id: 'm42',
-    title: 'Desafío de micro-interacción',
-    description: 'Realizar una interacción social mínima y controlada para reducir la ansiedad.',
-    type: 'interactive',
-    category: 'interacciones-humanas',
-    reward: 'Conexión iniciada',
-    steps: [
-        {
-            title: 'ELEGIR UN "OBJETIVO SEGURO" (PERSONA CONFIABLE O CONOCIDA)',
-            description: '[AYUDA EXTRA]: "Piensa en un tendero, un vecino, alguien con quien no haya mucha presión."'
-        },
-        {
-            title: 'FORMULAR UNA PREGUNTA O SALUDO SIMPLE Y NEUTRAL',
-            description: 'Ej: "¿Cómo estás?", "¿Qué tal tu día?", "Hola." (Si es online: un emoji de saludo 👋).'
-        },
-        {
-            title: 'REALIZAR LA PREGUNTA/SALUDO (EN PERSONA: MIRADA BREVE, VOZ CLARA)',
-            description: 'Respira antes de hablar. Es solo un momento.'
-        },
-        {
-            title: 'ESCUCHAR LA RESPUESTA (NO ES NECESARIO EXTENDER LA CONVERSACIÓN)',
-            description: 'Tu objetivo era interactuar. Lo lograste.'
-        }
-    ]
-  },
-  {
     id: 'm43',
     title: 'Rincón de conquista',
     description: 'Organizar un espacio personal muy pequeño para sentir control sobre el entorno.',
@@ -928,55 +946,6 @@ export const missions: Mission[] = [
   },
   {
     id: 'm44',
-    title: 'Gestión de energía',
-    description: 'Interrumpir una actividad prolongada (como juegos o redes) con una pausa activa para recargar la atención y evitar la pasividad.',
-    type: 'interactive',
-    category: 'laboratorio-mental',
-    reward: 'Pausa consciente',
-    steps: [
-        {
-            title: 'IDENTIFICAR UNA ACTIVIDAD DE "ABSORCIÓN" QUE ESTÉS HACIENDO',
-            description: 'Ej: Jugar videojuegos, ver series, navegar en el móvil.'
-        },
-        {
-            title: 'PONER PAUSA AL JUEGO O SALIR DE LA APLICACIÓN (SÓLO POR 90 SEGUNDOS)',
-            description: 'Es una pausa táctica, no un adiós.'
-        },
-        {
-            title: 'REALIZAR UNA "ACCIÓN DE DESBLOQUEO" FÍSICA Y SIMPLE',
-            description: 'Ej: Levantarte y estirar los brazos, ir por un vaso de agua, mirar por la ventana 30 segundos, dar 5 pasos por la habitación.'
-        },
-        {
-            title: 'VOLVER A LA ACTIVIDAD SI LO DESEAS (O NO, LA ELECCIÓN ES TUYA)',
-            description: 'La misión está cumplida al haber tomado la pausa consciente.'
-        }
-    ]
-  },
-  {
-    id: 'm45',
-    title: 'Permiso para no saber',
-    description: 'Hoy no se trata de hacer, sino de explorar. Está bien no tener un plan. Vamos a buscar pistas sobre lo que te interesa, sin ninguna presión.',
-    type: 'interactive',
-    category: 'laboratorio-mental',
-    why: 'Validar la incertidumbre le quita poder a la angustia. Permitirte sentir curiosidad sin la presión de "encontrar tu pasión" es un acto radical de autocuidado.',
-    reward: 'Chispas de curiosidad',
-    steps: [
-        { 
-          title: 'Paso 1: Preparar tu herramienta',
-          description: 'Busca papel y lápiz, o abre una nota en tu celular. Este es tu laboratorio de ideas, no un examen.'
-        },
-        { 
-          title: 'Paso 2: Cazar curiosidades',
-          description: 'Piensa en 3 cosas que te hayan generado la más mínima curiosidad últimamente. Pueden ser raras, "tontas" o "inútiles". Anótalas. Ejemplos: ¿cómo funciona un motor?, ¿por qué ese edificio tiene esa forma?, la historia de una banda que escuchaste.'
-        },
-        { 
-          title: 'Paso 3: Observar sin juzgar',
-          description: 'Mira tu lista. No tienes que hacer nada con ella. El objetivo de hoy era solo encontrar esas chispas de interés. Lo lograste.'
-        },
-    ]
-  },
-  {
-    id: 'm46',
     title: 'Expedición Digital Segura',
     description: 'La curiosidad es un músculo. Hoy vamos a ejercitarlo de una forma segura y controlada, expandiendo un poco tu mundo sin salir de tu zona de confort.',
     type: 'interactive',
@@ -996,6 +965,51 @@ export const missions: Mission[] = [
           title: 'Paso 3: Reflexión final',
           description: '¿Qué sentiste? ¿Interés? ¿Aburrimiento? ¿Te surgieron más preguntas? No hay respuesta correcta. El objetivo era solo explorar lo desconocido, y eso ya lo hiciste. ¡Un paso más!'
         },
+    ]
+  },
+  {
+    id: 'm45',
+    title: 'Micro-fiesta privada (2 min)',
+    description: 'Poné una canción que te guste y mové el cuerpo 30 segundos. No es ejercicio, es un desahogo para desbloquear la energía.',
+    type: 'interactive',
+    category: 'laboratorio-mental',
+    why: 'A veces, el cuerpo necesita un sacudón para que la mente le siga. Esta es una forma de liberar tensión sin la presión de una rutina de ejercicio formal.',
+    reward: 'Energía en movimiento',
+    steps: [
+        { title: 'Elegí una canción que te de energía o te traiga buenos recuerdos.'},
+        { title: 'Ponela a un volumen que te guste.'},
+        { title: 'Cerrá los ojos si querés y simplemente movete. Saltá, bailá, sacudí los brazos. No hay forma incorrecta de hacerlo.'},
+        { title: 'Cuando termine, respira hondo. ¡Listo! Cortaste la inercia.'}
+    ]
+  },
+  {
+    id: 'm46',
+    title: 'Apadrina una planta (5 min)',
+    description: 'Elige una planta que ya tengas o consigue una pequeña. Hoy tu misión es solo observarla y darle un poco de agua.',
+    type: 'interactive',
+    category: 'aventuras-de-crecimiento',
+    why: 'Cuidar de otro ser vivo, incluso uno tan simple como una planta, crea un sentido de propósito y responsabilidad suave. Verla crecer es un recordatorio visual de tu constancia.',
+    reward: 'Conexión natural',
+    steps: [
+        { title: 'Acércate a tu planta. Si no tienes, puede ser una ramita en un vaso con agua.'},
+        { title: 'Observala de cerca. Mirá sus hojas, sus colores, su forma.'},
+        { title: 'Tocá la tierra. ¿Está seca? Si es así, ponle un poco de agua.'},
+        { title: '¡Misión cumplida! Has establecido un pacto de cuidado.'}
+    ]
+  },
+  {
+    id: 'm47',
+    title: 'Botón de Reinicio (3 min)',
+    description: 'Un ritual rápido para resetear un mal momento o una mala racha durante el día. Te da permiso para empezar de nuevo, ahora mismo.',
+    type: 'interactive',
+    category: 'laboratorio-mental',
+    why: 'No tienes que esperar a mañana para sentirte mejor. Este ritual corta el ciclo de un mal momento y te da una nueva oportunidad, reforzando tu capacidad de cambiar tu estado de ánimo.',
+    reward: 'Día reseteado',
+    steps: [
+        { title: 'Andá al baño o a la cocina.'},
+        { title: 'Lavate las manos y la cara con agua fría, sintiendo cómo te despierta.'},
+        { title: 'Cámbiate la remera. Es un cambio simbólico de "piel".'},
+        { title: 'Abrí una ventana y respira profundo tres veces. ¡Listo! Estás en un nuevo momento. El anterior ya pasó.'}
     ]
   },
   
