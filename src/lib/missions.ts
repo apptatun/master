@@ -506,21 +506,6 @@ export const missions: Mission[] = [
 
   // Laboratorio Mental
   {
-    id: 'm5',
-    title: 'Levántate e hidrátate (1 min)',
-    description: 'Levantate y bebe un vaso de agua al sonar la alarma. Sin posponer.',
-    type: 'interactive',
-    category: 'laboratorio-mental',
-    why: 'Romper el ciclo de postergación con una acción física simple entrena tu "músculo" de la voluntad.',
-    reward: 'Cuerpo en movimiento',
-    steps: [
-        { title: 'Cuando suene la alarma, sentate en la cama.'},
-        { title: 'Poné los dos pies en el suelo.'},
-        { title: 'Levantate. No pienses, solo hacelo.'},
-        { title: 'Caminá a la cocina y tomá un vaso de agua. ¡Ganaste!'}
-    ]
-  },
-  {
     id: 'm16',
     title: 'Apaga pantallas 1h antes de dormir',
     description: 'Desconéctate de las pantallas para conectar con tu descanso.',
@@ -618,21 +603,6 @@ export const missions: Mission[] = [
   
   // MODO EXPLORADOR
   // Primeros Pasos
-  {
-    id: 'm7',
-    title: 'Sal a la puerta (5 min)',
-    description: 'Pisa la calle solo para observar el entorno, sin ninguna otra meta.',
-    type: 'interactive',
-    category: 'primeros-pasos',
-    why: 'Exponerte al entorno sin un objetivo reduce la ansiedad de "tener que hacer algo" afuera.',
-    reward: 'Primer contacto con el exterior',
-    steps: [
-        { title: 'Salí a la puerta de tu casa.'},
-        { title: 'Quedate ahí parado 1 minuto. Solo mirá a tu alrededor.'},
-        { title: 'Caminá hasta la esquina. Volvé.'},
-        { title: '¡Listo! Te expusiste al mundo exterior y sobreviviste. ¡Es un gran paso!'}
-    ]
-  },
   {
     id: 'm11',
     title: 'Compra algo en el kiosco',
@@ -850,9 +820,10 @@ export const missions: Mission[] = [
   {
     id: 'm40',
     title: 'Horizonte Cero',
-    description: 'Reconectar con el exterior sin presión, gestionando la ansiedad de salir.',
+    description: 'Reconectar con el exterior sin presión, gestionando la ansiedad de salir. Pisa la calle solo para observar el entorno, sin ninguna otra meta.',
     type: 'interactive',
     category: 'primeros-pasos',
+    why: 'Exponerte al entorno sin un objetivo reduce la ansiedad de "tener que hacer algo" afuera.',
     reward: 'Horizonte a la vista',
     steps: [
         {
@@ -870,13 +841,17 @@ export const missions: Mission[] = [
         {
             title: 'RESPIRAR PROFUNDO 3 VECES INHALANDO AIRE FRESCO',
             description: 'Concéntrate en la sensación del aire al entrar y salir de tu cuerpo.'
+        },
+        {
+            title: 'NIVEL 2 (Opcional): Salí a la puerta de tu casa.',
+            description: 'Quedate ahí parado 1 minuto. Solo mirá a tu alrededor. Si te sientes bien, camina hasta la esquina y vuelve. ¡Es un gran paso!'
         }
     ]
   },
   {
     id: 'm41',
     title: 'Activación matutina',
-    description: 'Establecer un micro-hábito de autocuidado para iniciar el día.',
+    description: 'Establecer un micro-hábito de autocuidado para iniciar el día, rompiendo el ciclo de postergación con una acción física simple.',
     type: 'interactive',
     category: 'laboratorio-mental',
     reward: 'Mañana en marcha',
@@ -886,8 +861,8 @@ export const missions: Mission[] = [
             description: '[AYUDA EXTRA]: "Hazlo ahora, es un paso clave para mañana. Pequeño esfuerzo, gran impacto."'
         },
         {
-            title: 'AL SONAR LA ALARMA, PONER UN PIE FUERA DE LA CAMA',
-            description: 'No pienses, solo reacciona al sonido.'
+            title: 'AL SONAR LA ALARMA, PONER AMBOS PIES FUERA DE LA CAMA',
+            description: 'No pienses, solo reacciona al sonido. Siéntate en el borde de la cama.'
         },
         {
             title: 'LEVANTARTE Y TOMAR EL VASO DE AGUA',
@@ -895,7 +870,7 @@ export const missions: Mission[] = [
         },
         {
             title: 'BEBER EL AGUA LENTAMENTE, SINTIENDO LA HIDRATACIÓN',
-            description: 'Conéctate con la sensación. Este es tu combustible.'
+            description: 'Conéctate con la sensación. Este es tu combustible. ¡Victoria! Ganaste la primera batalla del día.'
         }
     ]
   },
@@ -1002,7 +977,7 @@ export const missions: Mission[] = [
   },
   {
     id: 'm46',
-    title: 'Inmersión Digital',
+    title: 'Expedición Digital Segura',
     description: 'La curiosidad es un músculo. Hoy vamos a ejercitarlo de una forma segura y controlada, expandiendo un poco tu mundo sin salir de tu zona de confort.',
     type: 'interactive',
     category: 'aventuras-de-crecimiento',
