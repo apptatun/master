@@ -34,8 +34,9 @@ export default function SetupPage() {
   const router = useRouter();
 
   useEffect(() => {
-    // If setup is already complete, redirect to dashboard
-    if (localStorage.getItem('userGoal')) {
+    // This check is a safeguard, but the primary logic is now in the dashboard.
+    const completedMissions = JSON.parse(localStorage.getItem('completedMissions') || '[]');
+    if (localStorage.getItem('userGoal') && completedMissions.length > 3) {
       router.replace('/dashboard');
     }
   }, [router]);
@@ -56,10 +57,10 @@ export default function SetupPage() {
             transition={{ duration: 0.5 }}
           >
             <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-              Un último paso antes de empezar.
+              ¡Excelente comienzo! Ahora, calibremos tu brújula.
             </h1>
             <p className="mt-4 text-lg text-muted-foreground md:text-xl max-w-2xl mx-auto">
-              Saber qué es lo más importante para vos ahora nos ayuda a darte un empujón en la dirección correcta. Sin presiones, esto se puede cambiar después.
+              Has completado las 3 movidas fundamentales. Saber qué es lo más importante para vos ahora nos ayuda a personalizar el resto de tu viaje.
             </p>
           </motion.div>
 
