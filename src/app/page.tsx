@@ -74,7 +74,7 @@ export default function Home() {
             <div className="max-w-3xl space-y-6 flex flex-col items-center justify-center h-full min-h-[50vh] px-4 sm:px-8">
               <div className="space-y-4 text-left">
                 <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl text-center">
-                  15 movidas que cambian el pulso.
+                  15 movidas que cambian tu pulso.
                 </h2>
                 <p className="text-base text-muted-foreground md:text-lg text-center">
                   Esto no es un plan de 15 días, es una secuencia de victorias simples para que vuelvas a sentirte capaz y en control.
