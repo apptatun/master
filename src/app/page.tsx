@@ -54,13 +54,13 @@ export default function Home() {
             <div className="max-w-3xl space-y-6 flex flex-col items-center justify-center h-full min-h-[50vh] px-4 sm:px-8">
               <div className="space-y-4">
                  <h1 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl">
-                  Hola,
+                  ¿Te sentís en pausa?
                 </h1>
                 <p className="text-lg text-muted-foreground md:text-xl pt-2">
-                  Puede que llegaste acá porque sentís que el mundo avanza y vos estás en pausa. Quizás te cuesta arrancar, te tiemblan las manos, o no sabés qué hacer con tu vida.
+                  Puede que el mundo avance rápido y vos estés sintiendo que te quedaste atrás. Quizás te cuesta arrancar, no sabés qué hacer con tu vida, o sentís ansiedad al pensar en el futuro.
                 </p>
                 <p className="text-lg text-foreground font-bold md:text-xl pt-2">
-                  No sos un vago. No sos un inútil. Solo estás trabado. Y eso le pasa a muchos más de los que pensás.
+                  No sos un vago. No sos un inútil. Solo estás trabado, y eso le pasa a muchísimos jóvenes. A veces, la sobreprotección nos quita herramientas para volar.
                 </p>
               </div>
                <div className="pt-10 flex justify-center items-center text-muted-foreground">
@@ -74,10 +74,10 @@ export default function Home() {
             <div className="max-w-3xl space-y-6 flex flex-col items-center justify-center h-full min-h-[50vh] px-4 sm:px-8">
               <div className="space-y-4 text-left">
                 <h2 className="font-headline text-2xl font-bold tracking-tight text-foreground sm:text-3xl text-center">
-                  15 movidas que empiezan a cambiarlo todo.
+                  15 movidas que cambian el pulso.
                 </h2>
                 <p className="text-base text-muted-foreground md:text-lg text-center">
-                  No es un plan de 15 días, es una secuencia de victorias que te ayudarán a:
+                  Esto no es un plan de 15 días, es una secuencia de victorias simples para que vuelvas a sentirte capaz y en control.
                 </p>
 
                 <ul className="space-y-3 text-base text-foreground md:text-lg max-w-2xl mx-auto pt-2">
@@ -87,19 +87,15 @@ export default function Home() {
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="mr-3 mt-1 h-6 w-6 flex-shrink-0 text-accent" />
-                    <span>Mejorar tu rutina de sueño (y quienes te rodean lo van a notar).</span>
+                    <span>Mejorar tu energía y bienestar, incluyendo tu sueño.</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="mr-3 mt-1 h-6 w-6 flex-shrink-0 text-accent" />
-                    <span>Completar al menos UNA cosa por día que te haga sentir capaz y en control.</span>
+                    <span>Completar UNA cosa por día que te haga sentir orgulloso.</span>
                   </li>
                    <li className="flex items-start">
                     <CheckCircle className="mr-3 mt-1 h-6 w-6 flex-shrink-0 text-accent" />
-                    <span>Tener respuestas claras cuando te pregunten qué hiciste hoy.</span>
-                  </li>
-                   <li className="flex items-start">
-                    <CheckCircle className="mr-3 mt-1 h-6 w-6 flex-shrink-0 text-accent" />
-                    <span>Pasar de "no sé por dónde empezar" a "estoy haciendo algo", con un sentido de propósito renovado.</span>
+                    <span>Pasar del "no sé por dónde empezar" al "estoy haciendo algo".</span>
                   </li>
                 </ul>
               </div>
@@ -114,13 +110,13 @@ export default function Home() {
             <div className="max-w-3xl space-y-6 flex flex-col items-center justify-center h-full min-h-[50vh] px-4 sm:px-8">
                <div className="space-y-4">
                   <p className="text-lg text-muted-foreground md:text-xl">
-                    Cada día vas a tener <span className="font-bold text-foreground">UNA movida simple.</span> No es una lista de pendientes, es una micro-victoria diseñada para darte un golpe de energía y confianza.
+                    Cada día te espera UNA única "micro-victoria". Es una acción simple, diseñada para darte un golpe de energía y confianza, sin presión ni juicios.
                   </p>
                    <p className="text-base font-bold text-foreground md:text-lg pt-2">
-                    Algunos días conquistas montañas. Otros días, sostenerte en la roca ya es heroísmo. Ambos son válidos. Ambos tienen su espacio aquí.
+                    Algunos días volarás, otros, simplemente avanzarás un paso. Ambos son válidos.
                   </p>
                   <p className="text-base text-muted-foreground md:text-lg">
-                    Si no te sale, no pasa nada: podés probar una alternativa o tomarte un descanso. <span className="font-bold text-foreground">Lo importante no es la velocidad, sino que sigas adelante.</span>
+                    Si no te sale, no pasa nada: podés probar una alternativa o tomarte un descanso. Lo importante es que sigas adelante, a tu ritmo y con tu dignidad.
                   </p>
                 </div>
 
