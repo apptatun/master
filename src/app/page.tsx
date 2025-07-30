@@ -77,7 +77,7 @@ export default function Home() {
                   15 movidas que cambian tu pulso.
                 </h2>
                 <p className="text-base text-muted-foreground md:text-lg text-center">
-                  Esto no es un plan de 15 días, es una secuencia de victorias simples para que vuelvas a sentirte capaz y en control.
+                  Esto no es un plan de 15 días, es una secuencia de "movidas" —victorias simples— para que vuelvas a sentirte capaz y en control.
                 </p>
 
                 <ul className="space-y-3 text-base text-foreground md:text-lg max-w-2xl mx-auto pt-2">
