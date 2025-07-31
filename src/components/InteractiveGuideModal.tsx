@@ -65,9 +65,11 @@ export function InteractiveGuideModal({
       <DialogContent className="sm:max-w-[525px] bg-card flex flex-col max-h-[90vh]">
         <DialogHeader>
           <DialogTitle className="font-headline text-2xl sm:text-3xl">{mission.title}</DialogTitle>
-          <DialogDescription className="text-base pt-2">
-            ¿Ya sabés hacer esto? Perfecto. Podés saltear los pasos que quieras. Pero si no estás 100% seguro, te acompaño sin juzgarte. Nadie nace sabiendo, y esto no es un examen.
-          </DialogDescription>
+           {currentStep === 0 && (
+             <DialogDescription className="text-base pt-2">
+                ¿Ya sabés hacer esto? Perfecto. Podés saltear los pasos que quieras. Pero si no estás 100% seguro, te acompaño sin juzgarte. Nadie nace sabiendo, y esto no es un examen.
+             </DialogDescription>
+           )}
         </DialogHeader>
         <div className="my-4 flex-grow space-y-3 overflow-y-auto px-1">
           <p className="font-bold text-xl text-foreground">{steps[currentStep]?.title}</p>
