@@ -22,13 +22,13 @@ interface MissionListProps {
   onResume: () => void;
   onUseAlternative: (alternativeId: string) => void;
   onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void;
-  isCurrentMissionCompleted: boolean;
+  isMissionCompleted: boolean;
   allMissionsCompleted: boolean;
   userChoseToRest: boolean;
   currentDay: number;
 }
 
-export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, onRest, onResume, onUseAlternative, onSaveFeedback, isCurrentMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
+export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, onRest, onResume, onUseAlternative, onSaveFeedback, isMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
 
@@ -85,7 +85,7 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
       )
     }
     
-    if (showFeedback && isCurrentMissionCompleted) {
+    if (showFeedback && isMissionCompleted) {
       return <EmojiFeedback onFeedback={handleFeedback} />;
     }
     
@@ -102,11 +102,11 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
     return (
       <TooltipProvider>
         <div className="space-y-6">
-            <Card key={mission.id} className={cn('transition-all border-2 bg-card shadow-xl rounded-2xl', isCurrentMissionCompleted && 'border-green-500/50 opacity-80')}>
+            <Card key={mission.id} className={cn('transition-all border-2 bg-card shadow-xl rounded-2xl', isMissionCompleted && 'border-green-500/50 opacity-80')}>
               <CardHeader className="p-4 sm:p-6 pb-2">
                 <div className="flex justify-between items-start gap-4">
                   <CardTitle className="font-headline text-2xl sm:text-4xl font-bold text-foreground">{mission.title}</CardTitle>
-                  {isCurrentMissionCompleted && (
+                  {isMissionCompleted && (
                       <div className="flex-shrink-0 flex items-center gap-2 bg-green-100 text-green-800 px-2 sm:px-3 py-1 rounded-full text-sm font-bold z-10">
                           <CircleCheck className="h-5 w-5"/>
                           <span className="hidden sm:inline">Hecho</span>
@@ -142,7 +142,7 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
                     </div>
                 )}
               </CardContent>
-              {!isCurrentMissionCompleted && (
+              {!isMissionCompleted && (
                  <CardFooter className="flex flex-col items-stretch gap-3 bg-foreground/5 py-4 px-4 sm:py-5 sm:px-6">
                     <div className="flex flex-col sm:flex-row gap-3">
                         <Button onClick={() => handleOpenModal(mission)} className="flex-1 group bg-accent text-accent-foreground hover:bg-accent/90 text-base">
@@ -175,7 +175,7 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
               )}
             </Card>
 
-             {isCurrentMissionCompleted && !showFeedback && (
+             {isMissionCompleted && !showFeedback && (
                  <div className="mt-8 text-center p-4 sm:p-6 bg-card rounded-lg border">
                     <p className="text-base sm:text-xl text-muted-foreground mt-2 mb-6">
                       Hoy te hiciste cargo de una cosa más. Te vemos para la siguiente.
@@ -214,3 +214,5 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
     </Card>
   );
 }
+
+    

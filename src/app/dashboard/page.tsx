@@ -27,16 +27,16 @@ const TOTAL_DAYS = 15;
 
 export default function DashboardPage() {
   const router = useRouter();
-  const [completedMissions, setCompletedMissions] = useLocalStorage<string[]>('completedMissions', []);
   const [currentDayIndex, setCurrentDayIndex] = useLocalStorage<number>('currentDayIndex', 0);
   const [restDate, setRestDate] = useLocalStorage<string | null>('restDate', null);
   const [feedbackHistory, setFeedbackHistory] = useLocalStorage<FeedbackEntry[]>('feedbackHistory', []);
+  const [dailyMissionPlan, setDailyMissionPlan] = useLocalStorage<string[]>('dailyMissionPlan', []);
   
   const [isMounted, setIsMounted] = useState(false);
   const [userChoseToRest, setUserChoseToRest] = useState(false);
   const [activeMissionId, setActiveMissionId] = useState<string | null>(null);
   const [isAdaptiveMode, setIsAdaptiveMode] = useState(false);
-  const [dailyMissionPlan, setDailyMissionPlan] = useLocalStorage<string[]>('dailyMissionPlan', []);
+  const [missionCompletedToday, setMissionCompletedToday] = useState(false);
   
   const [showRescueAlert, setShowRescueAlert] = useState(false);
   const [isRescueBoxOpen, setIsRescueBoxOpen] = useState(false);
@@ -139,9 +139,11 @@ export default function DashboardPage() {
         const mentalMissions = missions.filter(
           m => m.category === 'laboratorio-mental'
         );
+        const completedMissionIds = dailyMissionPlan.slice(0, currentDayIndex);
+
         let randomMission = mentalMissions.find(
           m =>
-            !completedMissions.includes(m.id) && m.id !== currentPlanMissionId
+            !completedMissionIds.includes(m.id) && m.id !== currentPlanMissionId
         );
         if (!randomMission) {
           randomMission =
@@ -149,10 +151,8 @@ export default function DashboardPage() {
         }
         if (randomMission) {
           const newPlan = [...dailyMissionPlan];
-          // We add a special prefix to distinguish it, but the mission ID is still valid
           const adaptiveMissionId = `adaptive_${randomMission.id}`;
           newPlan.splice(currentDayIndex, 0, randomMission.id);
-          // Don't add to total days, just insert it
           newPlan.pop(); 
           setDailyMissionPlan(newPlan);
           currentPlanMissionId = randomMission.id;
@@ -167,14 +167,8 @@ export default function DashboardPage() {
 
 
   const handleCompleteMission = (missionId: string) => {
-    let newCompleted: string[];
-    if (!completedMissions.includes(missionId)) {
-        newCompleted = [...completedMissions, missionId];
-        setCompletedMissions(newCompleted);
-    } else {
-        newCompleted = [...completedMissions];
-    }
-
+    setMissionCompletedToday(true);
+    
     setUserChoseToRest(false);
     setRestDate(null);
     setIsAdaptiveMode(false);
@@ -218,6 +212,7 @@ export default function DashboardPage() {
   const handleAdvanceToNextDay = () => {
     if (currentDayIndex < dailyMissionPlan.length - 1) {
       setCurrentDayIndex(currentDayIndex + 1);
+      setMissionCompletedToday(false);
     }
     setUserChoseToRest(false);
     setRestDate(null);
@@ -227,6 +222,7 @@ export default function DashboardPage() {
   const handleNextDay = () => {
     if (currentDayIndex < dailyMissionPlan.length - 1) {
         setCurrentDayIndex(currentDayIndex + 1);
+        setMissionCompletedToday(false);
         setShowRescueAlert(false);
     }
   };
@@ -234,6 +230,7 @@ export default function DashboardPage() {
   const handlePreviousDay = () => {
     if (currentDayIndex > 0) {
         setCurrentDayIndex(currentDayIndex - 1);
+        setMissionCompletedToday(false);
         setShowRescueAlert(false);
     }
   };
@@ -262,12 +259,12 @@ export default function DashboardPage() {
   }
 
   const handleResetProgress = () => {
-    setCompletedMissions([]);
     setCurrentDayIndex(0);
     setRestDate(null);
     setUserChoseToRest(false);
     setFeedbackHistory([]);
     setDailyMissionPlan([]);
+    setMissionCompletedToday(false);
     localStorage.removeItem('userGoal');
     localStorage.removeItem('dailyMissionPlan');
     localStorage.removeItem('hasSeenOnboarding');
@@ -282,6 +279,13 @@ export default function DashboardPage() {
      }
   }, [dailyMissionPlan]);
 
+  useEffect(() => {
+    if (dailyMissionPlan.length > 0) {
+      setActiveMissionId(dailyMissionPlan[currentDayIndex]);
+    }
+    // Always reset completion status when day changes
+    setMissionCompletedToday(false); 
+  }, [currentDayIndex, dailyMissionPlan]);
 
   if (!isMounted || !activeMissionId) {
     return (
@@ -292,10 +296,7 @@ export default function DashboardPage() {
   }
   
   const currentMission = missions.find(m => m.id === activeMissionId);
-  const isCurrentMissionCompleted = completedMissions.includes(activeMissionId);
-  
-  const maxUnlockedDay = completedMissions.length;
-  const canGoToNextDay = currentDayIndex < maxUnlockedDay;
+  const allMissionsCompleted = currentDayIndex >= TOTAL_DAYS - 1 && missionCompletedToday;
 
   return (
     <div className="flex h-screen flex-col bg-background">
@@ -314,14 +315,13 @@ export default function DashboardPage() {
                     <h1 className="font-headline text-2xl sm:text-3xl font-bold tracking-tight text-foreground min-w-[200px] sm:min-w-[280px]">
                         Movida {currentDayIndex + 1}
                     </h1>
-                    <Button onClick={handleNextDay} variant="ghost" size="icon" disabled={!canGoToNextDay || currentDayIndex >= dailyMissionPlan.length - 1}>
+                    <Button onClick={handleNextDay} variant="ghost" size="icon" disabled={currentDayIndex >= dailyMissionPlan.length - 1}>
                         <ArrowRight className="h-6 w-6" />
                     </Button>
                 </div>
                  <div className="flex justify-center items-center gap-2 mb-4">
                   {Array.from({ length: TOTAL_DAYS }).map((_, index) => {
-                    const missionIdAtIndex = dailyMissionPlan[index];
-                    const isCompleted = missionIdAtIndex ? completedMissions.includes(missionIdAtIndex) : false;
+                    const isCompleted = index < currentDayIndex;
                     const isCurrent = index === currentDayIndex;
                     
                     return (
@@ -329,14 +329,14 @@ export default function DashboardPage() {
                         key={`progress-${index}`}
                         className={cn(
                           'h-3 w-3 rounded-full transition-all',
-                          isCompleted ? 'bg-accent' : 'bg-muted',
+                           isCompleted ? 'bg-accent' : 'bg-muted',
                           isCurrent && 'ring-2 ring-accent ring-offset-2 ring-offset-background'
                         )}
                       />
                     );
                   })}
                 </div>
-                <p className="text-sm text-muted-foreground">{completedMissions.length} de {TOTAL_DAYS} movidas completadas</p>
+                <p className="text-sm text-muted-foreground">{currentDayIndex} de {TOTAL_DAYS} movidas completadas</p>
             </div>
             
             {isAdaptiveMode && (
@@ -367,13 +367,13 @@ export default function DashboardPage() {
                         mission={currentMission}
                         onCompleteMission={handleCompleteMission}
                         onAdvanceToNextDay={handleAdvanceToNextDay}
-                        isCurrentMissionCompleted={isCurrentMissionCompleted}
+                        isMissionCompleted={missionCompletedToday}
                         onRest={handleRest}
                         onUseAlternative={handleUseAlternative}
                         userChoseToRest={userChoseToRest}
                         onResume={handleResume}
                         onSaveFeedback={handleSaveFeedback}
-                        allMissionsCompleted={completedMissions.length >= TOTAL_DAYS}
+                        allMissionsCompleted={allMissionsCompleted}
                         currentDay={currentDayIndex + 1}
                     />
                  ) : (
