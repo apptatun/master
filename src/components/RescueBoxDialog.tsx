@@ -255,5 +255,3 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
     </Dialog>
   );
 }
-
-    
