@@ -3,12 +3,19 @@
 
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { RotateCcw, Shield, BookOpen } from 'lucide-react';
+import { RotateCcw, Shield, BookOpen, Moon, Sun } from 'lucide-react';
 import { ResetProgressDialog } from './ResetProgressDialog';
 import { useState } from 'react';
 import { ResponseArmoryDialog } from './ResponseArmoryDialog';
 import { BitacoraDialog } from './BitacoraDialog';
 import type { FeedbackEntry, Mission } from '@/lib/types';
+import { useTheme } from 'next-themes';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 
 interface DashboardHeaderProps {
@@ -27,6 +34,7 @@ export function DashboardHeader({
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const [isArmoryOpen, setIsArmoryOpen] = useState(false);
   const [isBitacoraOpen, setIsBitacoraOpen] = useState(false);
+  const { setTheme } = useTheme();
 
   return (
     <>
@@ -48,6 +56,26 @@ export function DashboardHeader({
                     <Shield className="h-6 w-6" />
                     <span className="sr-only">Armería de Respuestas</span>
                 </Button>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                      <Sun className="h-[1.5rem] w-[1.5rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+                      <Moon className="absolute h-[1.5rem] w-[1.5rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+                      <span className="sr-only">Toggle theme</span>
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent align="end">
+                    <DropdownMenuItem onClick={() => setTheme("light")}>
+                      Claro
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setTheme("dark")}>
+                      Oscuro
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setTheme("system")}>
+                      Sistema
+                    </DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
                 <Button variant="ghost" size="icon" onClick={() => setIsResetDialogOpen(true)}>
                     <RotateCcw className="h-6 w-6" />
                     <span className="sr-only">Reiniciar Progreso</span>
