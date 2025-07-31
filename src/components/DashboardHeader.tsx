@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { RotateCcw, Shield, BookOpen, Moon, Sun, HeartPulse } from 'lucide-react';
+import { RotateCcw, Shield, BookOpen, Moon, Sun } from 'lucide-react';
 import { ResetProgressDialog } from './ResetProgressDialog';
 import { useState } from 'react';
 import { ResponseArmoryDialog } from './ResponseArmoryDialog';
@@ -16,6 +16,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { RescueBoxDialog } from './RescueBoxDialog';
 
 
 interface DashboardHeaderProps {
@@ -59,7 +60,7 @@ export function DashboardHeader({
                     <span className="sr-only">Armería de Respuestas</span>
                 </Button>
                  <Button variant="ghost" size="icon" onClick={onOpenRescueBox}>
-                    <HeartPulse className="h-6 w-6" />
+                    <Shield className="h-6 w-6" />
                     <span className="sr-only">Caja de Rescate</span>
                 </Button>
                 <DropdownMenu>
@@ -109,3 +110,5 @@ export function DashboardHeader({
     </>
   );
 }
+
+    

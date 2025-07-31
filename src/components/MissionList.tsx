@@ -20,7 +20,6 @@ interface MissionListProps {
   onAdvanceToNextDay: () => void;
   onRest: () => void;
   onResume: () => void;
-  onUseAlternative: (alternativeId: string) => void;
   onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void;
   isMissionCompleted: boolean;
   allMissionsCompleted: boolean;
@@ -28,7 +27,7 @@ interface MissionListProps {
   currentDay: number;
 }
 
-export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, onRest, onResume, onUseAlternative, onSaveFeedback, isMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
+export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, onRest, onResume, onSaveFeedback, isMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
 
@@ -208,3 +207,5 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
     </Card>
   );
 }
+
+    

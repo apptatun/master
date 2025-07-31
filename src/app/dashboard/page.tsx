@@ -7,7 +7,7 @@ import { MissionList } from '@/components/MissionList';
 import { DashboardHeader } from '@/components/DashboardHeader';
 import { useToast } from '@/hooks/use-toast';
 import { missions } from '@/lib/missions';
-import { ArrowLeft, ArrowRight, Sparkles, BrainCircuit, HeartPulse } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Sparkles, BrainCircuit, HeartPulse, Shield } from 'lucide-react';
 import type { Mission, FeedbackEntry, MissionFeedbackData } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -72,11 +72,12 @@ export default function DashboardPage() {
 
 
   const generateMissionPlan = () => {
-    let newPlan = [...fixedMissionPlan];
+    const newPlan = [...fixedMissionPlan];
+    const fixedMissionIds = new Set(fixedMissionPlan);
 
     // Filter out missions that are already in the fixed plan or are generic
     const potentialMissions = missions.filter(m => 
-        !newPlan.includes(m.id) && m.category !== 'generic'
+        !fixedMissionIds.has(m.id) && m.category !== 'generic'
     );
     
     // Shuffle the potential missions randomly
@@ -87,18 +88,18 @@ export default function DashboardPage() {
         .map(m => m.id)
         .slice(0, TOTAL_DAYS - newPlan.length);
 
-    newPlan = [...newPlan, ...dynamicMissionIds];
+    const finalPlan = [...newPlan, ...dynamicMissionIds];
     
     // Fallback to fill up any remaining slots to prevent empty days
-    if (newPlan.length < TOTAL_DAYS) {
-        const existingIds = new Set(newPlan);
+    if (finalPlan.length < TOTAL_DAYS) {
+        const existingIds = new Set(finalPlan);
         const fallbackMissions = missions
             .filter(m => !existingIds.has(m.id))
             .map(m => m.id);
         
-        newPlan.push(...fallbackMissions.slice(0, TOTAL_DAYS - newPlan.length));
+        finalPlan.push(...fallbackMissions.slice(0, TOTAL_DAYS - finalPlan.length));
     }
-    setDailyMissionPlan(newPlan);
+    setDailyMissionPlan(finalPlan);
   }
 
   useEffect(() => {
@@ -216,6 +217,7 @@ export default function DashboardPage() {
     }
     setUserChoseToRest(false);
     setRestDate(null);
+    setIsAdaptiveMode(false);
     setShowRescueAlert(false);
   };
 
@@ -246,18 +248,6 @@ export default function DashboardPage() {
     setRestDate(null);
   }
   
-  const handleUseAlternative = (alternativeId: string) => {
-     const newPlan = [...dailyMissionPlan];
-     newPlan[currentDayIndex] = alternativeId;
-     setDailyMissionPlan(newPlan);
-     setActiveMissionId(alternativeId);
-
-    toast({
-        title: '¡Plan B activado!',
-        description: 'A veces, la mejor estrategia es cambiar de táctica. ¡Vamos con esta!',
-    });
-  }
-
   const handleResetProgress = () => {
     setCurrentDayIndex(0);
     setRestDate(null);
@@ -338,7 +328,7 @@ export default function DashboardPage() {
                     );
                   })}
                 </div>
-                <p className="text-sm text-muted-foreground">{currentDayIndex} de {TOTAL_DAYS} movidas completadas</p>
+                <p className="text-sm text-muted-foreground">{currentDayIndex} de {TOTAL_DAYS -1} movidas completadas</p>
             </div>
             
             {isAdaptiveMode && (
@@ -371,7 +361,6 @@ export default function DashboardPage() {
                         onAdvanceToNextDay={handleAdvanceToNextDay}
                         isMissionCompleted={missionCompletedToday}
                         onRest={handleRest}
-                        onUseAlternative={handleUseAlternative}
                         userChoseToRest={userChoseToRest}
                         onResume={handleResume}
                         onSaveFeedback={handleSaveFeedback}
@@ -392,3 +381,5 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+    
