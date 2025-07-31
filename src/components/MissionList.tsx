@@ -153,13 +153,7 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
                         </Button>
                     </div>
                     
-                    <div className="flex justify-between items-center flex-wrap gap-2 mt-2">
-                        {mission.alternativeMissionId && (
-                           <Button variant="ghost" onClick={() => onUseAlternative(mission.alternativeMissionId!)} className="text-muted-foreground text-base">
-                                <RefreshCw className="mr-2 h-4 w-4"/>
-                                ¿No aplica? Probar otra cosa
-                            </Button>
-                        )}
+                    <div className="flex justify-end items-center flex-wrap gap-2 mt-2">
                          <Tooltip>
                             <TooltipTrigger asChild>
                               <Button variant="ghost" onClick={onRest} className="text-muted-foreground text-base">
@@ -214,5 +208,3 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
     </Card>
   );
 }
-
-    

@@ -17,7 +17,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import type { FeedbackEntry } from '@/lib/types';
+import type { FeedbackEntry, ArmoryFeedbackData } from '@/lib/types';
 import { 
   DropdownMenu, 
   DropdownMenuContent, 
@@ -34,6 +34,7 @@ import { useToast } from '@/hooks/use-toast';
 interface ResponseArmoryDialogProps {
   isOpen: boolean;
   onClose: () => void;
+  onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void;
   feedbackHistory: FeedbackEntry[];
 }
 
@@ -191,19 +192,11 @@ function ArmoryFeedbackSelector({ quote, onSave, onCloseDialog }: { quote: strin
     );
 }
 
-export function ResponseArmoryDialog({ isOpen, onClose, feedbackHistory }: ResponseArmoryDialogProps) {
-  const { toast } = useToast();
+export function ResponseArmoryDialog({ isOpen, onClose, onSaveFeedback, feedbackHistory }: ResponseArmoryDialogProps) {
   
   const sortedHistory = [...(feedbackHistory || [])].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   const armoryHistory = sortedHistory.filter((e): e is Extract<FeedbackEntry, { type: 'armory' }> => e.type === 'armory');
   
-  const onSaveFeedback = (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => {
-     toast({
-        title: 'Radar actualizado',
-        description: 'Tu experiencia ha sido registrada en la bitácora. ¡Buen trabajo!',
-     });
-  };
-
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-xl bg-card flex flex-col max-h-[90vh]">

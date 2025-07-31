@@ -20,6 +20,7 @@ import {
 
 interface DashboardHeaderProps {
     onResetProgress: () => void;
+    onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void;
     feedbackHistory: FeedbackEntry[];
     missions: Mission[];
     onOpenRescueBox: () => void;
@@ -27,6 +28,7 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ 
     onResetProgress, 
+    onSaveFeedback,
     feedbackHistory, 
     missions, 
     onOpenRescueBox
@@ -95,6 +97,8 @@ export function DashboardHeader({
         <ResponseArmoryDialog
             isOpen={isArmoryOpen}
             onClose={() => setIsArmoryOpen(false)}
+            onSaveFeedback={onSaveFeedback}
+            feedbackHistory={feedbackHistory}
         />
         <BitacoraDialog
             isOpen={isBitacoraOpen}

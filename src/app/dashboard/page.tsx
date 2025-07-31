@@ -304,6 +304,7 @@ export default function DashboardPage() {
         onResetProgress={handleResetProgress} 
         feedbackHistory={feedbackHistory} 
         missions={missions}
+        onSaveFeedback={handleSaveFeedback}
         onOpenRescueBox={() => setIsRescueBoxOpen(true)}
       />
       <main className="flex-1 overflow-y-auto container mx-auto p-4 sm:px-6 lg:px-8 max-w-4xl">
