@@ -304,6 +304,7 @@ export default function DashboardPage() {
         onResetProgress={handleResetProgress} 
         feedbackHistory={feedbackHistory} 
         missions={missions}
+        onOpenRescueBox={() => setIsRescueBoxOpen(true)}
       />
       <main className="flex-1 overflow-y-auto container mx-auto p-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="space-y-4 text-center">
@@ -385,9 +386,8 @@ export default function DashboardPage() {
       <RescueBoxDialog
         isOpen={isRescueBoxOpen}
         onClose={() => setIsRescueBoxOpen(false)}
+        onSaveFeedback={handleSaveFeedback}
       />
     </div>
   );
 }
-
-    

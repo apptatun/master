@@ -17,7 +17,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from '@/components/ui/accordion';
-import type { FeedbackEntry, ArmoryFeedbackData } from '@/lib/types';
+import type { FeedbackEntry } from '@/lib/types';
 import { 
   DropdownMenu, 
   DropdownMenuContent, 
@@ -29,11 +29,11 @@ import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { Shield, BarChart, Quote } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 interface ResponseArmoryDialogProps {
   isOpen: boolean;
   onClose: () => void;
-  onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void;
   feedbackHistory: FeedbackEntry[];
 }
 
@@ -160,16 +160,10 @@ const armoryFeelingMap: { [key: string]: { color: string } } = {
 };
 
 
-function ArmoryFeedbackSelector({ quote, onSaveFeedback, onCloseDialog }: { quote: string, onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void, onCloseDialog: () => void }) {
+function ArmoryFeedbackSelector({ quote, onSave, onCloseDialog }: { quote: string, onSave: (feeling: any) => void, onCloseDialog: () => void }) {
 
-    const handleSelect = (feeling: ArmoryFeedbackData['feeling']) => {
-        onSaveFeedback({
-            type: 'armory',
-            data: {
-                quote,
-                feeling
-            }
-        });
+    const handleSelect = (feeling: any) => {
+        onSave(feeling);
         onCloseDialog();
     }
 
@@ -197,10 +191,18 @@ function ArmoryFeedbackSelector({ quote, onSaveFeedback, onCloseDialog }: { quot
     );
 }
 
-export function ResponseArmoryDialog({ isOpen, onClose, onSaveFeedback, feedbackHistory }: ResponseArmoryDialogProps) {
+export function ResponseArmoryDialog({ isOpen, onClose, feedbackHistory }: ResponseArmoryDialogProps) {
+  const { toast } = useToast();
   
   const sortedHistory = [...(feedbackHistory || [])].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   const armoryHistory = sortedHistory.filter((e): e is Extract<FeedbackEntry, { type: 'armory' }> => e.type === 'armory');
+  
+  const onSaveFeedback = (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => {
+     toast({
+        title: 'Radar actualizado',
+        description: 'Tu experiencia ha sido registrada en la bitácora. ¡Buen trabajo!',
+     });
+  };
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
@@ -239,7 +241,11 @@ export function ResponseArmoryDialog({ isOpen, onClose, onSaveFeedback, feedback
                                                 <p className="font-bold text-foreground text-base">{response.quote}</p>
                                                 <p className="text-sm text-muted-foreground mt-1">Por qué funciona: {response.why}</p>
                                                 <div className="mt-2">
-                                                    <ArmoryFeedbackSelector quote={response.quote} onSaveFeedback={onSaveFeedback} onCloseDialog={onClose} />
+                                                    <ArmoryFeedbackSelector 
+                                                        quote={response.quote} 
+                                                        onSave={(feeling) => onSaveFeedback({type: 'armory', data: {quote: response.quote, feeling}})} 
+                                                        onCloseDialog={onClose} 
+                                                    />
                                                 </div>
                                             </div>
                                         ))}

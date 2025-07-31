@@ -11,10 +11,10 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Ear, Eye, Hand, Quote, Wind, Droplets, Smile, Shirt, Apple, Waves, Bath, HeartHandshake, Music, Sparkles, Brain, AlertTriangle } from 'lucide-react';
+import { Ear, Eye, Hand, Quote, Wind, Droplets, Smile, Shirt, Apple, Waves, Bath, HeartHandshake, Music, Sparkles, Brain, AlertTriangle, HeartPulse } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
+import type { FeedbackEntry, ArmoryFeedbackData } from '@/lib/types';
 
 
 const groundingSteps = [
@@ -84,7 +84,13 @@ const sensorialItems = [
     }
 ]
 
-export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) {
+interface RescueBoxDialogProps {
+    isOpen: boolean;
+    onClose: () => void;
+    onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void;
+}
+
+export function RescueBoxDialog({ isOpen, onClose, onSaveFeedback }: RescueBoxDialogProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [activeQuote, setActiveQuote] = useState('');
 
@@ -109,10 +115,15 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
     <Dialog open={isOpen} onOpenChange={onClose}>
       <DialogContent className="sm:max-w-md bg-card flex flex-col max-h-[90vh]">
         <DialogHeader>
-          <DialogTitle className="font-headline text-2xl sm:text-3xl">Caja de Rescate</DialogTitle>
-          <DialogDescription className="text-base pt-2">
-            Herramientas para reconectar cuando la mente naufraga. Sin presión, solo un apoyo para volver a tu centro.
-          </DialogDescription>
+           <div className="flex items-center gap-3">
+              <HeartPulse className="h-8 w-8 text-accent" />
+              <div>
+                <DialogTitle className="font-headline text-2xl sm:text-3xl">Caja de Rescate</DialogTitle>
+                <DialogDescription className="text-base pt-1">
+                  Herramientas para reconectar cuando la mente naufraga. Sin presión, solo un apoyo para volver a tu centro.
+                </DialogDescription>
+              </div>
+           </div>
         </DialogHeader>
 
         <Tabs defaultValue="respiracion" className="w-full flex-grow flex flex-col min-h-0 pt-2">
@@ -123,7 +134,7 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
             <TabsTrigger value="rituales"><HeartHandshake className="h-4 w-4 sm:mr-2"/> <span className="hidden sm:inline">Rituales</span></TabsTrigger>
           </TabsList>
           
-          <div className="flex-grow overflow-y-auto mt-4">
+          <div className="flex-grow overflow-y-auto mt-4 pr-2 -mr-4">
             <TabsContent value="respiracion" className="h-full">
               <div className="flex flex-col items-center justify-center text-center h-full p-4 border rounded-lg bg-background/50">
                   <p className="text-lg text-muted-foreground mb-6">Sigue el ritmo del círculo. Inhala cuando crece, exhala cuando se encoge.</p>

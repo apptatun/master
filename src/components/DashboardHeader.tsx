@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { RotateCcw, Shield, BookOpen, Moon, Sun } from 'lucide-react';
+import { RotateCcw, Shield, BookOpen, Moon, Sun, HeartPulse } from 'lucide-react';
 import { ResetProgressDialog } from './ResetProgressDialog';
 import { useState } from 'react';
 import { ResponseArmoryDialog } from './ResponseArmoryDialog';
@@ -22,12 +22,14 @@ interface DashboardHeaderProps {
     onResetProgress: () => void;
     feedbackHistory: FeedbackEntry[];
     missions: Mission[];
+    onOpenRescueBox: () => void;
 }
 
 export function DashboardHeader({ 
     onResetProgress, 
     feedbackHistory, 
     missions, 
+    onOpenRescueBox
 }: DashboardHeaderProps) {
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const [isArmoryOpen, setIsArmoryOpen] = useState(false);
@@ -53,6 +55,10 @@ export function DashboardHeader({
                 <Button variant="ghost" size="icon" onClick={() => setIsArmoryOpen(true)}>
                     <Shield className="h-6 w-6" />
                     <span className="sr-only">Armería de Respuestas</span>
+                </Button>
+                 <Button variant="ghost" size="icon" onClick={onOpenRescueBox}>
+                    <HeartPulse className="h-6 w-6" />
+                    <span className="sr-only">Caja de Rescate</span>
                 </Button>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -89,7 +95,6 @@ export function DashboardHeader({
         <ResponseArmoryDialog
             isOpen={isArmoryOpen}
             onClose={() => setIsArmoryOpen(false)}
-            feedbackHistory={feedbackHistory}
         />
         <BitacoraDialog
             isOpen={isBitacoraOpen}
@@ -100,5 +105,3 @@ export function DashboardHeader({
     </>
   );
 }
-
-    
