@@ -11,9 +11,10 @@ import {
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Ear, Eye, Hand, Quote, Wind, Droplets, Smile, Shirt, Apple, Waves, Bath, HeartHandshake, Music, Sparkles, Brain } from 'lucide-react';
+import { Ear, Eye, Hand, Quote, Wind, Droplets, Smile, Shirt, Apple, Waves, Bath, HeartHandshake, Music, Sparkles, Brain, AlertTriangle } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 
 
 const groundingSteps = [
@@ -113,6 +114,14 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
             Herramientas para reconectar cuando la mente naufraga. Sin presión, solo un apoyo para volver a tu centro.
           </DialogDescription>
         </DialogHeader>
+
+        <Alert variant="destructive" className="mt-4">
+          <AlertTriangle className="h-4 w-4" />
+          <AlertTitle className="font-bold">Aviso Importante</AlertTitle>
+          <AlertDescription>
+            Esta es una herramienta de apoyo. No reemplaza la ayuda de un profesional. Si estás en crisis o tienes pensamientos de autolesión, por favor busca ayuda profesional de inmediato.
+          </AlertDescription>
+        </Alert>
 
         <Tabs defaultValue="respiracion" className="w-full flex-grow flex flex-col min-h-0 pt-2">
           <TabsList className="grid w-full grid-cols-4">
@@ -246,3 +255,5 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
     </Dialog>
   );
 }
+
+  
