@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogFooter,
+  DialogDescription,
 } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Check } from 'lucide-react';
@@ -64,11 +65,9 @@ export function InteractiveGuideModal({
       <DialogContent className="sm:max-w-[525px] bg-card flex flex-col max-h-[90vh]">
         <DialogHeader>
           <DialogTitle className="font-headline text-2xl sm:text-3xl">{mission.title}</DialogTitle>
-           <div className='pt-2'>
-            <p className="text-muted-foreground text-base">
-                ¿Ya sabés hacer esto? Perfecto. Podés saltear los pasos que quieras. Pero si no estás 100% seguro, te acompaño sin juzgarte. Nadie nace sabiendo, y esto no es un examen.
-            </p>
-          </div>
+          <DialogDescription className="text-base pt-2">
+            ¿Ya sabés hacer esto? Perfecto. Podés saltear los pasos que quieras. Pero si no estás 100% seguro, te acompaño sin juzgarte. Nadie nace sabiendo, y esto no es un examen.
+          </DialogDescription>
         </DialogHeader>
         <div className="my-4 flex-grow space-y-3 overflow-y-auto px-1">
           <p className="font-bold text-xl text-foreground">{steps[currentStep]?.title}</p>
