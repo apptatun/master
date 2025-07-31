@@ -349,7 +349,7 @@ export default function DashboardPage() {
         onResetProgress={handleResetProgress} 
         feedbackHistory={feedbackHistory} 
         missions={missions}
-        onSaveFeedback={handleSaveFeedback}
+        onSaveFeedback={onSaveFeedback}
       />
       <main className="flex-1 overflow-y-auto container mx-auto p-4 sm:px-6 lg:px-8 max-w-4xl">
         <div className="space-y-4 text-center">
@@ -396,12 +396,12 @@ export default function DashboardPage() {
             )}
 
             {showRescueAlert && (
-                 <Alert variant="default" className="text-left bg-secondary border-secondary-foreground/20 max-w-2xl mx-auto">
+                 <Alert variant="default" className="text-left bg-pink-100 border-pink-200 text-pink-900 dark:bg-pink-950 dark:border-pink-800 dark:text-pink-200 max-w-2xl mx-auto [&>svg]:text-pink-600 dark:[&>svg]:text-pink-400">
                     <HeartPulse className="h-5 w-5" />
                     <AlertTitle className="font-bold">A veces, un paso atrás es parte del camino.</AlertTitle>
-                    <AlertDescription className="text-secondary-foreground flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-2">
+                    <AlertDescription className="text-pink-800 dark:text-pink-200/90 flex flex-col sm:flex-row sm:items-center justify-between gap-4 mt-2">
                       <p>Notamos que este paso fue difícil. No pasa nada. ¿Necesitas una herramienta rápida para volver a tu centro?</p>
-                      <Button onClick={() => { setIsRescueBoxOpen(true); setShowRescueAlert(false); }} size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 flex-shrink-0">
+                      <Button onClick={() => { setIsRescueBoxOpen(true); setShowRescueAlert(false); }} size="sm" className="bg-pink-500 text-white hover:bg-pink-600 dark:bg-pink-600 dark:text-white dark:hover:bg-pink-700 flex-shrink-0">
                         Abrir Caja de Rescate
                       </Button>
                     </AlertDescription>
