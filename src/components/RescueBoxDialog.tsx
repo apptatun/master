@@ -115,10 +115,10 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
           </DialogDescription>
         </DialogHeader>
 
-        <Alert variant="destructive" className="mt-4">
-          <AlertTriangle className="h-4 w-4" />
-          <AlertTitle className="font-bold">Aviso Importante</AlertTitle>
-          <AlertDescription>
+        <Alert className="mt-4 bg-red-50 border-red-200 text-red-900">
+          <AlertTriangle className="h-4 w-4 !text-red-600" />
+          <AlertTitle className="font-bold !text-red-800">Aviso Importante</AlertTitle>
+          <AlertDescription className="!text-red-700">
             Esta es una herramienta de apoyo. No reemplaza la ayuda de un profesional. Si estás en crisis o tienes pensamientos de autolesión, por favor busca ayuda profesional de inmediato.
           </AlertDescription>
         </Alert>
@@ -256,4 +256,4 @@ export function RescueBoxDialog({ isOpen, onClose }: { isOpen: boolean, onClose:
   );
 }
 
-  
+    
