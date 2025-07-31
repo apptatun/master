@@ -22,14 +22,12 @@ interface DashboardHeaderProps {
     onResetProgress: () => void;
     feedbackHistory: FeedbackEntry[];
     missions: Mission[];
-    onSaveFeedback: (feedback: Omit<FeedbackEntry, 'id' | 'date'>) => void;
 }
 
 export function DashboardHeader({ 
     onResetProgress, 
     feedbackHistory, 
     missions, 
-    onSaveFeedback, 
 }: DashboardHeaderProps) {
   const [isResetDialogOpen, setIsResetDialogOpen] = useState(false);
   const [isArmoryOpen, setIsArmoryOpen] = useState(false);
@@ -91,7 +89,6 @@ export function DashboardHeader({
         <ResponseArmoryDialog
             isOpen={isArmoryOpen}
             onClose={() => setIsArmoryOpen(false)}
-            onSaveFeedback={onSaveFeedback}
             feedbackHistory={feedbackHistory}
         />
         <BitacoraDialog
