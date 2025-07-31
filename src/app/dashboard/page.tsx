@@ -12,7 +12,6 @@ import type { Mission, FeedbackEntry, MissionFeedbackData } from '@/lib/types';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import { subCategoryMap } from '@/lib/types';
 import useLocalStorage from '@/hooks/useLocalStorage';
 import { RescueBoxDialog } from '@/components/RescueBoxDialog';
 
@@ -47,14 +46,6 @@ export default function DashboardPage() {
 
   useEffect(() => {
     setIsMounted(true);
-    
-    const userHasCompletedFoundations = fixedMissionPlan.every(id => completedMissions.includes(id));
-    const userGoal = localStorage.getItem('userGoal');
-
-    if (userHasCompletedFoundations && !userGoal) {
-        router.push('/setup');
-        return;
-    }
 
     if (restDate) {
         const today = new Date().toISOString().split('T')[0];
@@ -70,8 +61,7 @@ export default function DashboardPage() {
         generateMissionPlan();
     }
     
-
-  }, [completedMissions.length, router]);
+  }, []);
 
   useEffect(() => {
     // This effect runs when the plan is generated or the user goal changes.
@@ -82,49 +72,22 @@ export default function DashboardPage() {
 
 
   const generateMissionPlan = () => {
-    const userGoal = localStorage.getItem('userGoal');
     let newPlan = [...fixedMissionPlan];
 
-    // If the foundational missions are done but there's no goal, don't proceed.
-    // The main useEffect will handle redirection.
-    if (completedMissions.length >= fixedMissionPlan.length && !userGoal) {
-        setDailyMissionPlan(newPlan);
-        router.push('/setup');
-        return;
-    }
+    // Filter out missions that are already in the fixed plan or are generic
+    const potentialMissions = missions.filter(m => 
+        !newPlan.includes(m.id) && m.category !== 'generic'
+    );
+    
+    // Shuffle the potential missions randomly
+    const shuffledMissions = [...potentialMissions].sort(() => 0.5 - Math.random());
+    
+    // Take missions to fill up the plan to TOTAL_DAYS
+    const dynamicMissionIds = shuffledMissions
+        .map(m => m.id)
+        .slice(0, TOTAL_DAYS - newPlan.length);
 
-    if (userGoal) {
-        let potentialMissions: Mission[];
-        
-        if (userGoal === 'general') {
-            potentialMissions = missions.filter(m => 
-                !newPlan.includes(m.id) && m.category !== 'generic'
-            );
-        } else {
-            const goalCategories = subCategoryMap[userGoal as keyof typeof subCategoryMap];
-            
-            const goalSpecificMissions = missions.filter(m => 
-                (goalCategories as string[]).includes(m.category) && 
-                !newPlan.includes(m.id)
-            );
-            
-            const otherMissions = missions.filter(m => 
-                !(goalCategories as string[]).includes(m.category) &&
-                !newPlan.includes(m.id) &&
-                m.category !== 'generic'
-            );
-
-            potentialMissions = [...goalSpecificMissions, ...otherMissions];
-        }
-        
-        const shuffledMissions = [...potentialMissions].sort(() => 0.5 - Math.random());
-        
-        const dynamicMissionIds = shuffledMissions
-            .map(m => m.id)
-            .slice(0, TOTAL_DAYS - newPlan.length);
-
-        newPlan = [...newPlan, ...dynamicMissionIds];
-    }
+    newPlan = [...newPlan, ...dynamicMissionIds];
     
     // Fallback to fill up any remaining slots to prevent empty days
     if (newPlan.length < TOTAL_DAYS) {
@@ -210,14 +173,6 @@ export default function DashboardPage() {
         setCompletedMissions(newCompleted);
     } else {
         newCompleted = [...completedMissions];
-    }
-    
-    const userHasCompletedFoundations = fixedMissionPlan.every(id => newCompleted.includes(id));
-    const userGoal = localStorage.getItem('userGoal');
-
-    if (userHasCompletedFoundations && !userGoal) {
-        router.push('/setup');
-        return;
     }
 
     setUserChoseToRest(false);
@@ -321,12 +276,11 @@ export default function DashboardPage() {
   
   useEffect(() => {
      if (typeof window !== 'undefined') {
-        const userGoal = localStorage.getItem('userGoal');
-        if (completedMissions.length >= fixedMissionPlan.length && userGoal && dailyMissionPlan.length < TOTAL_DAYS) {
+        if (dailyMissionPlan.length < TOTAL_DAYS) {
             generateMissionPlan();
         }
      }
-  }, [completedMissions, dailyMissionPlan]);
+  }, [dailyMissionPlan]);
 
 
   if (!isMounted || !activeMissionId) {
