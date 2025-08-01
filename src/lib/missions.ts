@@ -78,29 +78,6 @@ export const missions: Mission[] = [
     ]
   },
   {
-    id: 'm29',
-    title: 'Cocina un huevo frito (5 min)',
-    description: 'Cocina un huevo frito sin que se queme ni se rompa la yema.',
-    type: 'interactive',
-    category: 'supervivencia-culinaria',
-    why: 'Dominar una receta simple te da un rápido retorno de inversión en confianza culinaria. Es una prueba tangible de que puedes transformar ingredientes crudos en algo delicioso y nutritivo.',
-    reward: 'Huevo en su punto',
-    steps: [
-      { 
-        title: 'Paso 1: PREPARACIÓN',
-        description: 'Poné una sartén a fuego medio con un chorrito de aceite. Rompé el huevo en un tazón pequeño primero para evitar que caigan cáscaras en la sartén.'
-      },
-      {
-        title: 'Paso 2: COCCIÓN',
-        description: 'Verté el huevo con cuidado en la sartén caliente. Cociná por 2-3 minutos hasta que la clara esté blanca y firme, pero la yema siga líquida.'
-      },
-      { 
-        title: 'Paso 3: ¡A COMER!',
-        description: 'Sácalo con una espátula y ponelo en un plato. ¡Listo! Buen provecho.'
-      }
-    ]
-  },
-  {
     id: 'm38',
     title: 'Piloto de abastecimiento (5 min)',
     description: 'Prepara un snack simple, cómelo y limpia lo que usaste. Un ciclo completo de autocuidado.',
