@@ -48,7 +48,15 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
   };
   
   const handleFeedback = (selectedFeeling: MissionFeedbackData['feeling']) => {
-    setFeeling(selectedFeeling);
+     onSaveFeedback({
+        type: 'mission',
+        data: {
+          missionId: mission.id,
+          feeling: selectedFeeling,
+          reflection: '', // No more reflection
+        },
+      });
+      setShowFeedback(false);
   }
 
   const handleSaveReflection = () => {
@@ -97,27 +105,7 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
     }
     
     if (showFeedback && isMissionCompleted) {
-       if (!feeling) {
-         return <EmojiFeedback onFeedback={handleFeedback} />;
-       } else {
-         return (
-            <div className="text-center p-6 bg-card rounded-lg border space-y-4">
-                <h3 className="text-2xl font-bold text-foreground">¿Algo más que quieras anotar?</h3>
-                <p className="text-muted-foreground">Es solo para vos. Si no, no pasa nada. Dale a "Guardar" y listo.</p>
-                <div className="text-left space-y-2">
-                  <Label htmlFor="reflection">Tu reflexión (opcional):</Label>
-                  <Textarea 
-                    id="reflection"
-                    value={reflection}
-                    onChange={(e) => setReflection(e.target.value)}
-                    placeholder="Hoy sentí que..."
-                    className="min-h-[100px]"
-                  />
-                </div>
-                <Button onClick={handleSaveReflection} size="lg">Guardar y continuar</Button>
-            </div>
-         );
-       }
+       return <EmojiFeedback onFeedback={handleFeedback} />;
     }
     
     if (!mission) {
