@@ -30,8 +30,6 @@ interface MissionListProps {
 export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, onRest, onResume, onSaveFeedback, isMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
-  const [reflection, setReflection] = useState('');
-  const [feeling, setFeeling] = useState<MissionFeedbackData['feeling'] | null>(null);
 
   const handleOpenModal = (mission: Mission) => {
     setSelectedMission(mission);
@@ -52,26 +50,10 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
         data: {
           missionId: mission.id,
           feeling: selectedFeeling,
-          reflection: '', // No more reflection
+          reflection: '',
         },
       });
       setShowFeedback(false);
-  }
-
-  const handleSaveReflection = () => {
-    if (feeling) {
-      onSaveFeedback({
-        type: 'mission',
-        data: {
-          missionId: mission.id,
-          feeling,
-          reflection: reflection.trim(),
-        },
-      });
-      setShowFeedback(false);
-      setFeeling(null);
-      setReflection('');
-    }
   }
 
   const renderContent = () => {
@@ -162,7 +144,7 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
                 
                 {mission.why && (
                     <div className="pt-3 mt-4 border-t">
-                        <h4 className="font-bold text-foreground text-base sm:text-xl py-2">¿Por qué esto ayuda?</h4>
+                        <h4 className="py-2 font-bold text-foreground text-base sm:text-xl">¿Por qué esto ayuda?</h4>
                         <p className="text-base sm:text-lg text-muted-foreground leading-snug">{mission.why}</p>
                     </div>
                 )}
