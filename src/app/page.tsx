@@ -60,7 +60,7 @@ export default function Home() {
                   Puede que el mundo avance rápido y vos estés sintiendo que te quedaste atrás. Quizás te cuesta arrancar, no sabés qué hacer con tu vida, o sentís ansiedad al pensar en el futuro.
                 </p>
                 <p className="text-lg text-foreground font-bold md:text-xl pt-2">
-                  No sos un vago. No sos un inútil. Solo estás trabado, y eso le pasa a muchísimos jóvenes. A veces, la sobreprotección nos quita herramientas para volar.
+                  No sos un vago. No sos un inútil. Solo estás trabado, y eso le pasa a muchísimos jóvenes. A veces, el mundo espera que volemos sin darnos tiempo a desplegar las alas.
                 </p>
               </div>
                <div className="pt-10 flex justify-center items-center text-muted-foreground">
