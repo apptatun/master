@@ -10,7 +10,6 @@ import type { Mission, FeedbackEntry, MissionFeedbackData } from '@/lib/types';
 import { cn } from '@/lib/utils';
 import { EmojiFeedback } from './EmojiFeedback';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 
@@ -163,16 +162,8 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
                 
                 {mission.why && (
                     <div className="pt-3 mt-4 border-t">
-                      <Accordion type="single" collapsible className="w-full">
-                        <AccordionItem value="item-1" className="border-b-0">
-                          <AccordionTrigger className="font-bold text-foreground text-base sm:text-xl hover:no-underline py-2">
-                            ¿Por qué esto ayuda?
-                          </AccordionTrigger>
-                          <AccordionContent className="text-base sm:text-lg text-muted-foreground leading-snug">
-                            {mission.why}
-                          </AccordionContent>
-                        </AccordionItem>
-                      </Accordion>
+                        <h4 className="font-bold text-foreground text-base sm:text-xl py-2">¿Por qué esto ayuda?</h4>
+                        <p className="text-base sm:text-lg text-muted-foreground leading-snug">{mission.why}</p>
                     </div>
                 )}
               </CardContent>
