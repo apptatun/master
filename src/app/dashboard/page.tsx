@@ -149,10 +149,10 @@ export default function DashboardPage() {
         if (randomMission) {
           const newPlan = [...dailyMissionPlan];
           const adaptiveMissionId = `adaptive_${randomMission.id}`;
-          newPlan.splice(currentDayIndex, 0, randomMission.id);
+          newPlan.splice(currentDayIndex, 0, adaptiveMissionId);
           newPlan.pop(); 
           setDailyMissionPlan(newPlan);
-          currentPlanMissionId = randomMission.id;
+          currentPlanMissionId = adaptiveMissionId;
         }
       } else if (!needsIntervention && isAdaptiveMode) {
           setIsAdaptiveMode(false);
@@ -171,7 +171,7 @@ export default function DashboardPage() {
     setIsAdaptiveMode(false);
     setShowRescueAlert(false);
 
-    const mission = missions.find(m => m.id === missionId);
+    const mission = missions.find(m => m.id === missionId.replace('adaptive_', ''));
 
     toast({
       title: (
@@ -258,7 +258,7 @@ export default function DashboardPage() {
   };
   
   useEffect(() => {
-    if (dailyMissionPlan.length > 0) {
+    if (dailyMissionPlan.length > 0 && dailyMissionPlan[currentDayIndex]) {
       setActiveMissionId(dailyMissionPlan[currentDayIndex]);
     }
     // Always reset completion status when day changes
@@ -273,7 +273,7 @@ export default function DashboardPage() {
     );
   }
   
-  const currentMission = missions.find(m => m.id === activeMissionId);
+  const currentMission = missions.find(m => m.id === activeMissionId.replace('adaptive_', ''));
   const allMissionsCompleted = currentDayIndex >= TOTAL_DAYS - 1 && missionCompletedToday;
 
   return (
@@ -369,3 +369,5 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+    
