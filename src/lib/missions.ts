@@ -14,16 +14,16 @@ export const missions: Mission[] = [
     reward: 'Fuego bajo control',
     steps: [
       {
-        title: 'Paso 1: UBICAR HORNALLA ESTABLE',
-        description: 'La seguridad es clave. Elige una hornalla, preferentemente una de las de atrás. Son las más seguras. Si no estás 100% seguro, pide ayuda.',
+        title: 'Paso 1: UBICAR HORNALLA Y PEDIR AYUDA SI ES NECESARIO',
+        description: 'La seguridad es lo primero. Si NUNCA hiciste esto o no te sentís 100% seguro, este es el momento de pedir ayuda a alguien con experiencia. No hay vergüenza en preguntar. Es inteligente. Elige una hornalla, preferentemente una de las de atrás. Son las más seguras.',
       },
       {
-        title: 'Paso 2: ENCENDER Y AJUSTAR LA LLAMA',
-        description: 'Presiona y gira la perilla para encender la hornalla. Si es manual, acerca un fósforo con cuidado. Una llama azul es óptima. Si es amarilla o naranja, apaga todo, ventila y avisa a un adulto.',
+        title: 'Paso 2: ENCENDER Y AJUSTAR LA LLAMA (CON MUCHO CUIDADO)',
+        description: 'Presiona y gira la perilla para encender la hornalla. Si es encendido manual, acerca un fósforo o encendedor con mucho cuidado. Una llama azul y estable es óptima. Si es amarilla/naranja o irregular, apaga todo inmediatamente, ventila y avisa a un adulto. No sigas adelante.',
       },
       {
         title: 'Paso 3: COLOCAR OLLA CON AGUA',
-        description: 'Llena una olla con agua (dejando 3/4 de espacio libre) y colócala con cuidado sobre la hornalla encendida. ¡Misión cumplida! Has dominado el fuego.',
+        description: 'Llena una olla con agua (dejando 3/4 de espacio libre para que no rebase) y colócala con cuidado sobre la hornalla encendida. ¡Misión cumplida! Has dominado el fuego de forma segura.',
       },
     ],
   },
@@ -549,29 +549,6 @@ export const missions: Mission[] = [
         description: 'Ve a la caja, pon el producto en el mostrador y paga. Si quieres, di "gracias". ¡Lo lograste! Saliste con tu botín.',
       },
     ],
-  },
-  {
-    id: 'm19',
-    title: 'Toma un transporte público',
-    description: 'Sube al transporte público en una hora de poco tráfico para familiarizarte con el sistema.',
-    type: 'interactive',
-    category: 'primeros-pasos',
-    why: 'Dominar una ruta de transporte público te da autonomía y expande tu mapa mental de la ciudad. Te hace sentir más capaz y menos dependiente.',
-    reward: 'Transporte dominado',
-    steps: [
-      {
-        title: 'Paso 1: PLANIFICAR Y PREPARAR',
-        description: 'Usa una app de mapas para ver qué bus te sirve y dónde está la parada. Elige una hora de poco tráfico. Ten a mano tu tarjeta de transporte con saldo.'
-      },
-      {
-        title: 'Paso 2: IR A LA PARADA Y HACER LA SEÑAL',
-        description: 'Camina hasta la parada. Cuando veas que tu bus se acerca, extiende el brazo para que el conductor sepa que debe parar.'
-      },
-      {
-        title: 'Paso 3: SUBIR, PAGAR Y BAJAR',
-        description: 'Sube con calma y apoya tu tarjeta en la máquina. Busca un asiento. Toca el timbre un poco antes de tu parada de destino para bajar. ¡Misión cumplida!'
-      }
-    ]
   },
   {
     id: 'm40',
