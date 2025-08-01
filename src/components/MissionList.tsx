@@ -108,6 +108,27 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
        return <EmojiFeedback onFeedback={handleFeedback} />;
     }
     
+    if (isMissionCompleted && !showFeedback) {
+        return (
+            <div className="text-center p-6 sm:p-8 bg-card rounded-lg border">
+                <CircleCheck className="mx-auto h-12 w-12 text-green-500 mb-4" />
+                <h3 className="text-2xl sm:text-3xl font-bold text-foreground">¡Movida completada!</h3>
+                <p className="text-lg text-muted-foreground mt-2 mb-6">
+                  Hoy te hiciste cargo. Eso es lo que importa.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <Button onClick={onAdvanceToNextDay} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground" disabled={allMissionsCompleted}>
+                        Vamos con la siguiente
+                        <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Button>
+                    <Button onClick={onRest} size="lg" variant="outline" className="text-lg">
+                        Descanso por hoy
+                    </Button>
+                </div>
+            </div>
+        );
+    }
+    
     if (!mission) {
       return (
         <div className="text-center p-8">
@@ -121,16 +142,10 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
     return (
       <TooltipProvider>
         <div className="space-y-6">
-            <Card key={mission.id} className={cn('transition-all border-2 bg-card shadow-xl rounded-2xl', isMissionCompleted && 'border-green-500/50 opacity-80')}>
+            <Card key={mission.id} className={'transition-all border-2 bg-card shadow-xl rounded-2xl'}>
               <CardHeader className="p-4 sm:p-6 pb-2">
                 <div className="flex justify-between items-start gap-4">
                   <CardTitle className="font-headline text-2xl sm:text-4xl font-bold text-foreground">{mission.title}</CardTitle>
-                  {isMissionCompleted && (
-                      <div className="flex-shrink-0 flex items-center gap-2 bg-green-100 text-green-800 px-2 sm:px-3 py-1 rounded-full text-sm font-bold z-10">
-                          <CircleCheck className="h-5 w-5"/>
-                          <span className="hidden sm:inline">Hecho</span>
-                      </div>
-                  )}
                 </div>
               </CardHeader>
               <CardContent className="space-y-1 px-4 sm:px-6 pb-4 pt-2">
@@ -161,49 +176,30 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
                     </div>
                 )}
               </CardContent>
-              {!isMissionCompleted && (
-                 <CardFooter className="flex flex-col items-stretch gap-3 bg-foreground/5 py-4 px-4 sm:py-5 sm:px-6">
-                    <div className="flex flex-col sm:flex-row gap-3">
-                        <Button onClick={() => handleOpenModal(mission)} className="flex-1 group bg-accent text-accent-foreground hover:bg-accent/90 text-base">
-                        Ver cómo se hace
-                        </Button>
-                        <Button onClick={() => handleCompleteMission(mission.id)} className="flex-1 bg-green-600 text-white hover:bg-green-700 text-base">
-                        Listo, un paso más
-                        </Button>
-                    </div>
-                    
-                    <div className="flex justify-end items-center flex-wrap gap-2 mt-2">
-                         <Tooltip>
-                            <TooltipTrigger asChild>
-                              <Button variant="ghost" onClick={onRest} className="text-muted-foreground text-base">
-                                  Hoy paso, pero sigo en camino
-                              </Button>
-                            </TooltipTrigger>
-                            <TooltipContent>
-                              <p>Podés retomarlo la próxima. No pasa nada.</p>
-                            </TooltipContent>
-                          </Tooltip>
-                    </div>
-                </CardFooter>
-              )}
+              <CardFooter className="flex flex-col items-stretch gap-3 bg-foreground/5 py-4 px-4 sm:py-5 sm:px-6">
+                <div className="flex flex-col sm:flex-row gap-3">
+                    <Button onClick={() => handleOpenModal(mission)} className="flex-1 group bg-accent text-accent-foreground hover:bg-accent/90 text-base">
+                    Ver cómo se hace
+                    </Button>
+                    <Button onClick={() => handleCompleteMission(mission.id)} className="flex-1 bg-green-600 text-white hover:bg-green-700 text-base">
+                    Listo, un paso más
+                    </Button>
+                </div>
+                
+                <div className="flex justify-end items-center flex-wrap gap-2 mt-2">
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <Button variant="ghost" onClick={onRest} className="text-muted-foreground text-base">
+                              Hoy paso, pero sigo en camino
+                          </Button>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Podés retomarlo la próxima. No pasa nada.</p>
+                        </TooltipContent>
+                      </Tooltip>
+                </div>
+              </CardFooter>
             </Card>
-
-             {isMissionCompleted && !showFeedback && (
-                 <div className="mt-8 text-center p-4 sm:p-6 bg-card rounded-lg border">
-                    <p className="text-base sm:text-xl text-muted-foreground mt-2 mb-6">
-                      Hoy te hiciste cargo de una cosa más. Te vemos para la siguiente.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                        <Button onClick={onAdvanceToNextDay} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground" disabled={allMissionsCompleted}>
-                            Vamos con otra
-                            <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                        </Button>
-                        <Button onClick={onRest} size="lg" variant="outline" className="text-lg">
-                            Descanso por hoy
-                        </Button>
-                    </div>
-                  </div>
-            )}
         </div>
       </TooltipProvider>
     );
@@ -227,5 +223,3 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
     </Card>
   );
 }
-
-    
