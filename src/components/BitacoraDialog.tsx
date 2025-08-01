@@ -14,7 +14,7 @@ import { Badge } from '@/components/ui/badge';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale';
 import type { FeedbackEntry, Mission, MissionFeedbackData } from '@/lib/types';
-import { BookOpen, Trophy, Sparkles } from 'lucide-react';
+import { BookOpen, Trophy, Sparkles, Quote } from 'lucide-react';
 
 
 interface BitacoraDialogProps {
@@ -71,7 +71,17 @@ export function BitacoraDialog({ isOpen, onClose, feedbackHistory, missions }: B
                              <p className="text-sm text-muted-foreground">
                                 {format(new Date(entry.date), "d 'de' MMMM, yyyy 'a las' HH:mm", { locale: es })}
                             </p>
-                            {feelingInfo.wisdom && (
+                            
+                            {entry.data.reflection && (
+                                <div className="mt-2 pt-2 border-t border-dashed">
+                                    <p className="text-sm text-accent-foreground/80 italic flex items-start gap-3">
+                                        <Quote className="h-4 w-4 text-accent flex-shrink-0 mt-0.5" />
+                                        <span>{entry.data.reflection}</span>
+                                    </p>
+                                </div>
+                            )}
+
+                            {feelingInfo.wisdom && !entry.data.reflection && (
                                 <div className="mt-2 pt-2 border-t border-dashed">
                                     <p className="text-sm text-accent-foreground/80 italic flex items-center gap-2">
                                         <Sparkles className="h-4 w-4 text-accent" />

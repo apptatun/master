@@ -11,7 +11,8 @@ import { cn } from '@/lib/utils';
 import { EmojiFeedback } from './EmojiFeedback';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-import { missions } from '@/lib/missions';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
 
 
 interface MissionListProps {
@@ -30,6 +31,8 @@ interface MissionListProps {
 export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, onRest, onResume, onSaveFeedback, isMissionCompleted, allMissionsCompleted, userChoseToRest, currentDay }: MissionListProps) {
   const [selectedMission, setSelectedMission] = useState<Mission | null>(null);
   const [showFeedback, setShowFeedback] = useState(false);
+  const [reflection, setReflection] = useState('');
+  const [feeling, setFeeling] = useState<MissionFeedbackData['feeling'] | null>(null);
 
   const handleOpenModal = (mission: Mission) => {
     setSelectedMission(mission);
@@ -44,15 +47,24 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
     setShowFeedback(true);
   };
   
-  const handleFeedback = (feeling: MissionFeedbackData['feeling']) => {
-    onSaveFeedback({
-      type: 'mission',
-      data: {
-        missionId: mission.id,
-        feeling,
-      },
-    });
-    setShowFeedback(false);
+  const handleFeedback = (selectedFeeling: MissionFeedbackData['feeling']) => {
+    setFeeling(selectedFeeling);
+  }
+
+  const handleSaveReflection = () => {
+    if (feeling) {
+      onSaveFeedback({
+        type: 'mission',
+        data: {
+          missionId: mission.id,
+          feeling,
+          reflection: reflection.trim(),
+        },
+      });
+      setShowFeedback(false);
+      setFeeling(null);
+      setReflection('');
+    }
   }
 
   const renderContent = () => {
@@ -85,7 +97,27 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
     }
     
     if (showFeedback && isMissionCompleted) {
-      return <EmojiFeedback onFeedback={handleFeedback} />;
+       if (!feeling) {
+         return <EmojiFeedback onFeedback={handleFeedback} />;
+       } else {
+         return (
+            <div className="text-center p-6 bg-card rounded-lg border space-y-4">
+                <h3 className="text-2xl font-bold text-foreground">¿Algo más que quieras anotar?</h3>
+                <p className="text-muted-foreground">Es solo para vos. Si no, no pasa nada. Dale a "Guardar" y listo.</p>
+                <div className="text-left space-y-2">
+                  <Label htmlFor="reflection">Tu reflexión (opcional):</Label>
+                  <Textarea 
+                    id="reflection"
+                    value={reflection}
+                    onChange={(e) => setReflection(e.target.value)}
+                    placeholder="Hoy sentí que..."
+                    className="min-h-[100px]"
+                  />
+                </div>
+                <Button onClick={handleSaveReflection} size="lg">Guardar y continuar</Button>
+            </div>
+         );
+       }
     }
     
     if (!mission) {
@@ -156,11 +188,11 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
                          <Tooltip>
                             <TooltipTrigger asChild>
                               <Button variant="ghost" onClick={onRest} className="text-muted-foreground text-base">
-                                  No hoy, gracias
+                                  Hoy paso, pero sigo en camino
                               </Button>
                             </TooltipTrigger>
                             <TooltipContent>
-                              <p>Podés retomarlo mañana. No pasa nada.</p>
+                              <p>Podés retomarlo la próxima. No pasa nada.</p>
                             </TooltipContent>
                           </Tooltip>
                     </div>
@@ -175,11 +207,11 @@ export function MissionList({ mission, onCompleteMission, onAdvanceToNextDay, on
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button onClick={onAdvanceToNextDay} size="lg" className="text-lg group bg-accent hover:bg-accent/90 text-accent-foreground" disabled={allMissionsCompleted}>
-                            Siguiente Movida
+                            Vamos con otra
                             <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                         </Button>
                         <Button onClick={onRest} size="lg" variant="outline" className="text-lg">
-                            Por hoy es suficiente
+                            Descanso por hoy
                         </Button>
                     </div>
                   </div>

@@ -45,13 +45,13 @@ export interface Mission {
   steps?: Step[];
   why?: string;
   reward?: string;
-  alternativeMissionId?: string;
 }
 
 // Unified Feedback System
 export interface MissionFeedbackData {
   missionId: string;
   feeling: 'Mal' | 'Más o menos' | 'Un poco mejor';
+  reflection?: string;
 }
 
 export interface ArmoryFeedbackData {
