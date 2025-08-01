@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { Button } from './ui/button';
-import { RotateCcw, Shield, BookOpen, Moon, Sun } from 'lucide-react';
+import { RotateCcw, Shield, BookOpen, Moon, Sun, HeartPulse, Share2 } from 'lucide-react';
 import { ResetProgressDialog } from './ResetProgressDialog';
 import { useState } from 'react';
 import { ResponseArmoryDialog } from './ResponseArmoryDialog';
@@ -16,7 +16,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
-import { RescueBoxDialog } from './RescueBoxDialog';
+import { useToast } from '@/hooks/use-toast';
 
 
 interface DashboardHeaderProps {
@@ -38,6 +38,38 @@ export function DashboardHeader({
   const [isArmoryOpen, setIsArmoryOpen] = useState(false);
   const [isBitacoraOpen, setIsBitacoraOpen] = useState(false);
   const { setTheme } = useTheme();
+  const { toast } = useToast();
+
+  const handleShare = async () => {
+    const shareData = {
+      title: 'CAMINO',
+      text: 'Hola, estoy usando esta app llamada Camino y me hizo pensar en vos. Creo que podría gustarte.',
+      url: window.location.origin,
+    };
+    if (navigator.share && navigator.canShare(shareData)) {
+      try {
+        await navigator.share(shareData);
+      } catch (error) {
+        console.error('Error al compartir:', error);
+      }
+    } else {
+      // Fallback para navegadores que no soportan la API de compartir
+      try {
+        await navigator.clipboard.writeText(shareData.url);
+        toast({
+          title: 'Enlace copiado',
+          description: 'El enlace a la aplicación ha sido copiado a tu portapapeles.',
+        });
+      } catch (err) {
+        console.error('Error al copiar al portapapeles:', err);
+        toast({
+          variant: 'destructive',
+          title: 'Error',
+          description: 'No se pudo copiar el enlace.',
+        });
+      }
+    }
+  };
 
   return (
     <>
@@ -60,8 +92,12 @@ export function DashboardHeader({
                     <span className="sr-only">Armería de Respuestas</span>
                 </Button>
                  <Button variant="ghost" size="icon" onClick={onOpenRescueBox}>
-                    <Shield className="h-6 w-6" />
+                    <HeartPulse className="h-6 w-6" />
                     <span className="sr-only">Caja de Rescate</span>
+                </Button>
+                 <Button variant="ghost" size="icon" onClick={handleShare}>
+                    <Share2 className="h-6 w-6" />
+                    <span className="sr-only">Compartir</span>
                 </Button>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
@@ -110,5 +146,3 @@ export function DashboardHeader({
     </>
   );
 }
-
-    
