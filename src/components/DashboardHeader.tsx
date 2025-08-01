@@ -92,7 +92,7 @@ export function DashboardHeader({
                     <span className="sr-only">Armería de Respuestas</span>
                 </Button>
                  <Button variant="ghost" size="icon" onClick={onOpenRescueBox}>
-                    <HeartPulse className="h-6 w-6" />
+                    <HeartPulse className="h-6 w-6 text-accent" />
                     <span className="sr-only">Caja de Rescate</span>
                 </Button>
                  <Button variant="ghost" size="icon" onClick={handleShare}>
