@@ -574,29 +574,6 @@ export const missions: Mission[] = [
     ]
   },
   {
-    id: 'm20',
-    title: 'Llega a un lugar usando GPS',
-    description: 'Llegar a un lugar desconocido, como un consultorio, usando el GPS de tu celular.',
-    type: 'interactive',
-    category: 'primeros-pasos',
-    why: 'Aprender a confiar en una herramienta te quita la presión de tener que "saber" todo y reduce la ansiedad de perderte. Es una habilidad de autosuficiencia moderna.',
-    reward: 'Navegación exitosa',
-    steps: [
-      {
-        title: 'Paso 1: INGRESAR DESTINO',
-        description: 'Ten a mano la dirección exacta. Abrí tu app de mapas preferida (Google Maps, etc.) e introducila. Dale a "Iniciar".'
-      },
-      {
-        title: 'Paso 2: SEGUIR LAS INDICACIONES',
-        description: 'Confiá en la voz o en el mapa. No tenés que memorizar nada, solo seguir la siguiente indicación. Si te equivocás, la app recalculará automáticamente. ¡No hay error posible!'
-      },
-      {
-        title: 'Paso 3: LLEGADA',
-        description: 'La app te avisará cuando estés cerca. Prestá atención a los números de las calles o edificios para encontrar el lugar exacto. ¡Destino conquistado!'
-      }
-    ]
-  },
-  {
     id: 'm40',
     title: 'Horizonte Cero',
     description: 'Reconectar con el exterior sin presión, gestionando la ansiedad de salir. Pisa la calle solo para observar el entorno, sin ninguna otra meta.',

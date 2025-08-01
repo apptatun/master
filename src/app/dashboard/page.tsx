@@ -56,19 +56,15 @@ export default function DashboardPage() {
             setUserChoseToRest(true);
         }
     }
-
-    if (dailyMissionPlan.length < TOTAL_DAYS) {
-        generateMissionPlan();
-    }
     
   }, []);
 
   useEffect(() => {
     // This effect runs when the plan is generated or the user goal changes.
-    if (dailyMissionPlan.length > 0 && !activeMissionId) {
-       setActiveMissionId(dailyMissionPlan[currentDayIndex]);
+    if (dailyMissionPlan.length === 0) {
+        generateMissionPlan();
     }
-  }, [dailyMissionPlan, currentDayIndex, activeMissionId]);
+  }, [dailyMissionPlan]);
 
 
   const generateMissionPlan = () => {
@@ -262,14 +258,6 @@ export default function DashboardPage() {
   };
   
   useEffect(() => {
-     if (typeof window !== 'undefined') {
-        if (dailyMissionPlan.length < TOTAL_DAYS) {
-            generateMissionPlan();
-        }
-     }
-  }, [dailyMissionPlan]);
-
-  useEffect(() => {
     if (dailyMissionPlan.length > 0) {
       setActiveMissionId(dailyMissionPlan[currentDayIndex]);
     }
@@ -381,5 +369,3 @@ export default function DashboardPage() {
     </div>
   );
 }
-
-    
