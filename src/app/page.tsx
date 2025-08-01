@@ -128,7 +128,7 @@ export default function Home() {
                   OK, me intriga. ¿Cuál es la primera movida?
                 </Button>
                 <p className="text-xs text-muted-foreground mt-4 max-w-md mx-auto">
-                  Recordá: Camino es una herramienta de apoyo, no un reemplazo de la ayuda profesional.
+                  Recordá: Camino es una herramienta de apoyo, no un reemplazo de la ayuda profesional. Hecho con la esperanza de ser un primer paso.
                 </p>
             </div>
           </CarouselItem>
