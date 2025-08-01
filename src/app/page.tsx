@@ -132,7 +132,7 @@ export default function Home() {
                     Recordá: Camino es una herramienta de apoyo, no un reemplazo de la ayuda profesional. Hecho con la esperanza de ser un primer paso.
                   </p>
                   <p className="text-xs text-muted-foreground/80">
-                     © 2024 Camino. Todos los derechos reservados.
+                     © 2025 Camino. Todos los derechos reservados.
                   </p>
                 </div>
             </div>
